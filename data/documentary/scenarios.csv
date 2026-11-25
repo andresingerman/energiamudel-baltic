@@ -1,0 +1,273 @@
+scenario,zone,year,key,value,unit,source,url,page,notes,lineage_id
+eraa2025_nt_2035,EE,2035,capacity.battery_utility_scale,1500.0,MW,,,,"GenerationCapacities.csv, ERAA 2025 final",eraa2025.dashboard_raw_data
+eraa2025_nt_2035,EE,2035,capacity.dsr,260.0,MW,,,,"GenerationCapacities.csv, ERAA 2025 final",eraa2025.dashboard_raw_data
+eraa2025_nt_2035,EE,2035,capacity.natural_gas,135.0,MW,,,,"GenerationCapacities.csv, ERAA 2025 final",eraa2025.dashboard_raw_data
+eraa2025_nt_2035,EE,2035,capacity.small_biomass,119.0,MW,,,,"GenerationCapacities.csv, ERAA 2025 final",eraa2025.dashboard_raw_data
+eraa2025_nt_2035,EE,2035,capacity.solar_pv_utility_non_tracking,1600.0,MW,,,,"GenerationCapacities.csv, ERAA 2025 final",eraa2025.dashboard_raw_data
+eraa2025_nt_2035,EE,2035,capacity.waste,17.0,MW,,,,"GenerationCapacities.csv, ERAA 2025 final",eraa2025.dashboard_raw_data
+eraa2025_nt_2035,EE,2035,capacity.wind_offshore_fixed,1000.0,MW,,,,"GenerationCapacities.csv, ERAA 2025 final",eraa2025.dashboard_raw_data
+eraa2025_nt_2035,EE,2035,capacity.wind_onshore,3000.0,MW,,,,"GenerationCapacities.csv, ERAA 2025 final",eraa2025.dashboard_raw_data
+eraa2025_nt_2035,LT,2035,capacity.battery_utility_scale,1750.0,MW,,,,"GenerationCapacities.csv, ERAA 2025 final",eraa2025.dashboard_raw_data
+eraa2025_nt_2035,LT,2035,capacity.closed_loop_pumping,938.0,MW,,,,"GenerationCapacities.csv, ERAA 2025 final",eraa2025.dashboard_raw_data
+eraa2025_nt_2035,LT,2035,capacity.dsr,40.0,MW,,,,"GenerationCapacities.csv, ERAA 2025 final",eraa2025.dashboard_raw_data
+eraa2025_nt_2035,LT,2035,capacity.electrolyser,1300.0,MW,,,,"GenerationCapacities.csv, ERAA 2025 final",eraa2025.dashboard_raw_data
+eraa2025_nt_2035,LT,2035,capacity.natural_gas,624.0,MW,,,,"GenerationCapacities.csv, ERAA 2025 final",eraa2025.dashboard_raw_data
+eraa2025_nt_2035,LT,2035,capacity.run_of_river,127.0,MW,,,,"GenerationCapacities.csv, ERAA 2025 final",eraa2025.dashboard_raw_data
+eraa2025_nt_2035,LT,2035,capacity.small_biomass,150.0,MW,,,,"GenerationCapacities.csv, ERAA 2025 final",eraa2025.dashboard_raw_data
+eraa2025_nt_2035,LT,2035,capacity.solar_pv_rooftop_residential,1700.0,MW,,,,"GenerationCapacities.csv, ERAA 2025 final",eraa2025.dashboard_raw_data
+eraa2025_nt_2035,LT,2035,capacity.solar_pv_utility_non_tracking,3300.0,MW,,,,"GenerationCapacities.csv, ERAA 2025 final",eraa2025.dashboard_raw_data
+eraa2025_nt_2035,LT,2035,capacity.waste,60.0,MW,,,,"GenerationCapacities.csv, ERAA 2025 final",eraa2025.dashboard_raw_data
+eraa2025_nt_2035,LT,2035,capacity.wind_offshore_fixed,1400.0,MW,,,,"GenerationCapacities.csv, ERAA 2025 final",eraa2025.dashboard_raw_data
+eraa2025_nt_2035,LT,2035,capacity.wind_onshore,5520.0,MW,,,,"GenerationCapacities.csv, ERAA 2025 final",eraa2025.dashboard_raw_data
+eraa2025_nt_2035,LV,2035,capacity.battery_utility_scale,420.0,MW,,,,"GenerationCapacities.csv, ERAA 2025 final, Available on market",eraa2025.dashboard_raw_data
+eraa2025_nt_2035,LV,2035,capacity.battery_utility_scale_out_of_market,80.0,MW,,,,"GenerationCapacities.csv, ERAA 2025 final, Out of market - primary purpose ancillary service (AST's reserve battery, R-STO-8)",eraa2025.dashboard_raw_data
+eraa2025_nt_2035,LV,2035,capacity.dsr,150.0,MW,,,,"GenerationCapacities.csv, ERAA 2025 final",eraa2025.dashboard_raw_data
+eraa2025_nt_2035,LV,2035,capacity.electrolyser,1000.0,MW,,,,"GenerationCapacities.csv, ERAA 2025 final",eraa2025.dashboard_raw_data
+eraa2025_nt_2035,LV,2035,capacity.natural_gas,1051.0,MW,,,,"GenerationCapacities.csv, ERAA 2025 final",eraa2025.dashboard_raw_data
+eraa2025_nt_2035,LV,2035,capacity.pondage,1592.0,MW,,,,"GenerationCapacities.csv, ERAA 2025 final",eraa2025.dashboard_raw_data
+eraa2025_nt_2035,LV,2035,capacity.small_biomass,166.0,MW,,,,"GenerationCapacities.csv, ERAA 2025 final",eraa2025.dashboard_raw_data
+eraa2025_nt_2035,LV,2035,capacity.solar_pv_rooftop_industrial,730.0,MW,,,,"GenerationCapacities.csv, ERAA 2025 final",eraa2025.dashboard_raw_data
+eraa2025_nt_2035,LV,2035,capacity.solar_pv_rooftop_residential,560.0,MW,,,,"GenerationCapacities.csv, ERAA 2025 final",eraa2025.dashboard_raw_data
+eraa2025_nt_2035,LV,2035,capacity.solar_thermal_without_storage,70.0,MW,,,,"GenerationCapacities.csv, ERAA 2025 final",eraa2025.dashboard_raw_data
+eraa2025_nt_2035,LV,2035,capacity.wind_offshore_fixed,1000.0,MW,,,,"GenerationCapacities.csv, ERAA 2025 final",eraa2025.dashboard_raw_data
+eraa2025_nt_2035,LV,2035,capacity.wind_onshore,644.0,MW,,,,"GenerationCapacities.csv, ERAA 2025 final",eraa2025.dashboard_raw_data
+eraa2025_nt_2035,EE,2035,demand.twh,12.17,TWh,,,,"Aggregated_Demand.csv, Annual Demand AVG over climate years; ERAA models electrolysers as an additional demand activated below a threshold price (ACER Decision 06/2026 Annex Ic, p. 36, §7), so this total excludes them and the preset's electrolysers are its flexible load (R-DEM-5, ERRATA E-022)",eraa2025.dashboard_raw_data
+eraa2025_nt_2035,LT,2035,demand.twh,20.47,TWh,,,,"Aggregated_Demand.csv, Annual Demand AVG over climate years; ERAA models electrolysers as an additional demand activated below a threshold price (ACER Decision 06/2026 Annex Ic, p. 36, §7), so this total excludes them and the preset's electrolysers are its flexible load (R-DEM-5, ERRATA E-022)",eraa2025.dashboard_raw_data
+eraa2025_nt_2035,LV,2035,demand.twh,11.72,TWh,,,,"Aggregated_Demand.csv, Annual Demand AVG over climate years; ERAA models electrolysers as an additional demand activated below a threshold price (ACER Decision 06/2026 Annex Ic, p. 36, §7), so this total excludes them and the preset's electrolysers are its flexible load (R-DEM-5, ERRATA E-022). Latvia's value equals AST's B scenario including its 1.4 TWh of hydrogen within 0.5 % (docs/research/2026-09-24_realism/A_baltic_demand.md), so the Latvian submission may carry hydrogen as inflexible demand",eraa2025.dashboard_raw_data
+pemmdb_nt_2030,EE,2030,capacity.gas_ccgt_new,250.0,MW,,,,"PEMMDB Thermal sheet, net generating capacity",tyndp2024.PEMMDB2
+pemmdb_nt_2030,EE,2030,capacity.oil_shale_old,173.0,MW,,,,"PEMMDB Thermal sheet, net generating capacity",tyndp2024.PEMMDB2
+pemmdb_nt_2030,EE,2030,capacity.oil_shale_new,658.0,MW,,,,"PEMMDB Thermal sheet, net generating capacity",tyndp2024.PEMMDB2
+pemmdb_nt_2030,EE,2030,capacity.wind_onshore,861.0,MW,,,,PEMMDB Wind sheet,tyndp2024.PEMMDB2
+pemmdb_nt_2030,EE,2030,capacity.wind_offshore,0.0,MW,,,,PEMMDB Wind sheet,tyndp2024.PEMMDB2
+pemmdb_nt_2030,EE,2030,capacity.solar,1160.0,MW,,,,"PEMMDB Solar sheet, PV",tyndp2024.PEMMDB2
+pemmdb_nt_2030,LV,2030,capacity.gas_ccgt_new,1004.0,MW,,,,"PEMMDB Thermal sheet, net generating capacity",tyndp2024.PEMMDB2
+pemmdb_nt_2030,LV,2030,capacity.gas_ccgt_present_1,73.0,MW,,,,"PEMMDB Thermal sheet, net generating capacity",tyndp2024.PEMMDB2
+pemmdb_nt_2030,LV,2030,capacity.wind_onshore,237.0,MW,,,,PEMMDB Wind sheet,tyndp2024.PEMMDB2
+pemmdb_nt_2030,LV,2030,capacity.wind_offshore,500.0,MW,,,,PEMMDB Wind sheet,tyndp2024.PEMMDB2
+pemmdb_nt_2030,LV,2030,capacity.solar,136.0,MW,,,,"PEMMDB Solar sheet, PV",tyndp2024.PEMMDB2
+pemmdb_nt_2030,LV,2030,capacity.pondage,1592.0,MW,,,,PEMMDB Hydro sheet (Daugava cascade),tyndp2024.PEMMDB2
+pemmdb_nt_2030,LT,2030,capacity.gas_conventional_old_2,110.0,MW,,,,"PEMMDB Thermal sheet, net generating capacity",tyndp2024.PEMMDB2
+pemmdb_nt_2030,LT,2030,capacity.gas_ccgt_new,510.0,MW,,,,"PEMMDB Thermal sheet, net generating capacity",tyndp2024.PEMMDB2
+pemmdb_nt_2030,LT,2030,capacity.gas_ccgt_present_2,403.0,MW,,,,"PEMMDB Thermal sheet, net generating capacity",tyndp2024.PEMMDB2
+pemmdb_nt_2030,LT,2030,capacity.wind_onshore,5000.0,MW,,,,PEMMDB Wind sheet,tyndp2024.PEMMDB2
+pemmdb_nt_2030,LT,2030,capacity.wind_offshore,1400.0,MW,,,,PEMMDB Wind sheet,tyndp2024.PEMMDB2
+pemmdb_nt_2030,LT,2030,capacity.solar,5000.3,MW,,,,"PEMMDB Solar sheet, PV",tyndp2024.PEMMDB2
+pemmdb_nt_2030,LT,2030,capacity.hydro_ror,126.2,MW,,,,PEMMDB Hydro sheet,tyndp2024.PEMMDB2
+pemmdb_nt_2030,LT,2030,capacity.hydro_ps,938.0,MW,,,,PEMMDB Hydro sheet,tyndp2024.PEMMDB2
+pemmdb_nt_2040,EE,2040,capacity.gas_ccgt_new,250.0,MW,,,,"PEMMDB Thermal sheet, net generating capacity",tyndp2024.PEMMDB2
+pemmdb_nt_2040,EE,2040,capacity.oil_shale_new,464.0,MW,,,,"PEMMDB Thermal sheet, net generating capacity",tyndp2024.PEMMDB2
+pemmdb_nt_2040,EE,2040,capacity.wind_onshore,861.0,MW,,,,PEMMDB Wind sheet,tyndp2024.PEMMDB2
+pemmdb_nt_2040,EE,2040,capacity.wind_offshore,0.0,MW,,,,PEMMDB Wind sheet,tyndp2024.PEMMDB2
+pemmdb_nt_2040,EE,2040,capacity.solar,1360.0,MW,,,,"PEMMDB Solar sheet, PV",tyndp2024.PEMMDB2
+pemmdb_nt_2040,LV,2040,capacity.gas_ccgt_new,1004.0,MW,,,,"PEMMDB Thermal sheet, net generating capacity",tyndp2024.PEMMDB2
+pemmdb_nt_2040,LV,2040,capacity.gas_ccgt_present_1,73.0,MW,,,,"PEMMDB Thermal sheet, net generating capacity",tyndp2024.PEMMDB2
+pemmdb_nt_2040,LV,2040,capacity.wind_onshore,352.0,MW,,,,PEMMDB Wind sheet,tyndp2024.PEMMDB2
+pemmdb_nt_2040,LV,2040,capacity.wind_offshore,1000.0,MW,,,,PEMMDB Wind sheet,tyndp2024.PEMMDB2
+pemmdb_nt_2040,LV,2040,capacity.solar,336.0,MW,,,,"PEMMDB Solar sheet, PV",tyndp2024.PEMMDB2
+pemmdb_nt_2040,LV,2040,capacity.pondage,1592.0,MW,,,,PEMMDB Hydro sheet (Daugava cascade),tyndp2024.PEMMDB2
+pemmdb_nt_2040,LT,2040,capacity.gas_conventional_old_2,110.0,MW,,,,"PEMMDB Thermal sheet, net generating capacity",tyndp2024.PEMMDB2
+pemmdb_nt_2040,LT,2040,capacity.gas_ccgt_present_2,403.0,MW,,,,"PEMMDB Thermal sheet, net generating capacity",tyndp2024.PEMMDB2
+pemmdb_nt_2040,LT,2040,capacity.wind_onshore,5430.0,MW,,,,PEMMDB Wind sheet,tyndp2024.PEMMDB2
+pemmdb_nt_2040,LT,2040,capacity.wind_offshore,2800.0,MW,,,,PEMMDB Wind sheet,tyndp2024.PEMMDB2
+pemmdb_nt_2040,LT,2040,capacity.solar,5600.3,MW,,,,"PEMMDB Solar sheet, PV",tyndp2024.PEMMDB2
+pemmdb_nt_2040,LT,2040,capacity.hydro_ror,126.2,MW,,,,PEMMDB Hydro sheet,tyndp2024.PEMMDB2
+pemmdb_nt_2040,LT,2040,capacity.hydro_ps,938.0,MW,,,,PEMMDB Hydro sheet,tyndp2024.PEMMDB2
+elering_base_2035,EE,2035,demand.twh,12.2,TWh,elering_arengukava_2025_2034,https://elering.ee/sites/default/files/2025-01/Eesti%20elektri%C3%BClekandev%C3%B5rgu%20arengukava%202025-2034.pdf,"p. 33, Tabel 3.1","annual consumption forecast, scenario 23 of the sensitivity analysis",
+elering_base_2035,EE,2035,demand.peak_mw,2290,MW,elering_arengukava_2025_2034,https://elering.ee/sites/default/files/2025-01/Eesti%20elektri%C3%BClekandev%C3%B5rgu%20arengukava%202025-2034.pdf,"p. 33, Tabel 3.1",,
+elering_base_2035,EE,2030,demand.twh,10.4,TWh,elering_arengukava_2025_2034,https://elering.ee/sites/default/files/2025-01/Eesti%20elektri%C3%BClekandev%C3%B5rgu%20arengukava%202025-2034.pdf,"p. 33, Tabel 3.1",,
+elering_base_2035,EE,2035,capacity.controllable_need,2100,MW,elering_vka_2025,https://elering.ee/sites/default/files/public/varustuskindluse%20konverentsid/2025/Elering_VKA_2025_veeb-1.pdf,"p. 37, text under Tabel 2.4",controllable capacity required by the supply-security standard,
+elering_base_2035,EE,2035,capacity.auvere,260,MW,elering_vka_2025,https://elering.ee/sites/default/files/public/varustuskindluse%20konverentsid/2025/Elering_VKA_2025_veeb-1.pdf,"p. 37, Tabel 2.4","oil shale, existing/certain",
+elering_base_2035,EE,2035,capacity.chp_fossil,23,MW,elering_vka_2025,https://elering.ee/sites/default/files/public/varustuskindluse%20konverentsid/2025/Elering_VKA_2025_veeb-1.pdf,"p. 37, Tabel 2.4",,
+elering_base_2035,EE,2035,capacity.chp_bio,68,MW,elering_vka_2025,https://elering.ee/sites/default/files/public/varustuskindluse%20konverentsid/2025/Elering_VKA_2025_veeb-1.pdf,"p. 37, Tabel 2.4",,
+elering_base_2035,EE,2035,capacity.kiisa,250,MW,elering_vka_2025,https://elering.ee/sites/default/files/public/varustuskindluse%20konverentsid/2025/Elering_VKA_2025_veeb-1.pdf,"p. 37, Tabel 2.4","emergency reserve plant, gas/oil",
+elering_base_2035,EE,2035,capacity.battery,1500,MW,elering_vka_2025,https://elering.ee/sites/default/files/public/varustuskindluse%20konverentsid/2025/Elering_VKA_2025_veeb-1.pdf,"p. 37, Tabel 2.4",,
+elering_base_2035,EE,2035,capacity.battery_mwh,3000,MWh,elering_vka_2025,https://elering.ee/sites/default/files/public/varustuskindluse%20konverentsid/2025/Elering_VKA_2025_veeb-1.pdf,"p. 37, Tabel 2.4",,
+elering_base_2035,EE,2035,capacity.dsr,260,MW,elering_vka_2025,https://elering.ee/sites/default/files/public/varustuskindluse%20konverentsid/2025/Elering_VKA_2025_veeb-1.pdf,"p. 37, Tabel 2.4",flexible consumption,
+elering_base_2035,EE,2030,capacity.wind_offshore,1000,MW,elering_arengukava_2025_2034,https://elering.ee/sites/default/files/2025-01/Eesti%20elektri%C3%BClekandev%C3%B5rgu%20arengukava%202025-2034.pdf,"p. 63, §6.6","national ambition; 3.5 GW 2040, 7 GW 2050",
+elering_base_2035,EE,2040,capacity.wind_offshore,3500,MW,elering_arengukava_2025_2034,https://elering.ee/sites/default/files/2025-01/Eesti%20elektri%C3%BClekandev%C3%B5rgu%20arengukava%202025-2034.pdf,"p. 63, §6.6",national ambition,
+ast_a_2035,LV,2035,capacity.hydro_daugava,1588,MW,ast_pso_2025,https://www.ast.lv/sites/default/files/editor/PSO_Zinojums_2025_LV_FINAL.pdf,"p. 24-25, 1. tabula",,
+ast_b_2035,LV,2035,capacity.hydro_daugava,1588,MW,ast_pso_2025,https://www.ast.lv/sites/default/files/editor/PSO_Zinojums_2025_LV_FINAL.pdf,"p. 24-25, 1. tabula",,
+ast_eu2030_2035,LV,2035,capacity.hydro_daugava,1588,MW,ast_pso_2025,https://www.ast.lv/sites/default/files/editor/PSO_Zinojums_2025_LV_FINAL.pdf,"p. 24-25, 1. tabula",,
+ast_a_2035,LV,2035,capacity.chp_riga_tec1,0,MW,ast_pso_2025,https://www.ast.lv/sites/default/files/editor/PSO_Zinojums_2025_LV_FINAL.pdf,"p. 26, 2. tabula; p. 29, 5. tabula","1. tabula (p. 24-25) shows TEC-1 as 158/0 from 2030; scenario A resolves it: 2. tabula row 2.2 Rīgas TEC-1 = 0 MW net and 5. tabula = 0 GWh from 2030 (153 MW net and 284 GWh before)",
+ast_b_2035,LV,2035,capacity.chp_riga_tec1,158,MW,ast_pso_2025,https://www.ast.lv/sites/default/files/editor/PSO_Zinojums_2025_LV_FINAL.pdf,"p. 24-25, 1. tabula","TEC-1/TEC-2 shown 158/0 and 881/0 from 2030: 0 if closed; the balance tables keep TEC-2 in A and B, both closed in EU2030",
+ast_eu2030_2035,LV,2035,capacity.chp_riga_tec1,0,MW,ast_pso_2025,https://www.ast.lv/sites/default/files/editor/PSO_Zinojums_2025_LV_FINAL.pdf,"p. 28, 4. tabula","1. tabula (p. 24-25) shows TEC-1 as 158/0 from 2030; scenario EU2030 resolves it: 4. tabula row 2.2 Rīgas TEC-1 = 0 MW net from 2030",
+ast_a_2035,LV,2035,capacity.chp_riga_tec2,881,MW,ast_pso_2025,https://www.ast.lv/sites/default/files/editor/PSO_Zinojums_2025_LV_FINAL.pdf,"p. 24-25, 1. tabula","TEC-1/TEC-2 shown 158/0 and 881/0 from 2030: 0 if closed; the balance tables keep TEC-2 in A and B, both closed in EU2030",
+ast_b_2035,LV,2035,capacity.chp_riga_tec2,881,MW,ast_pso_2025,https://www.ast.lv/sites/default/files/editor/PSO_Zinojums_2025_LV_FINAL.pdf,"p. 24-25, 1. tabula","TEC-1/TEC-2 shown 158/0 and 881/0 from 2030: 0 if closed; the balance tables keep TEC-2 in A and B, both closed in EU2030",
+ast_eu2030_2035,LV,2035,capacity.chp_riga_tec2,0,MW,ast_pso_2025,https://www.ast.lv/sites/default/files/editor/PSO_Zinojums_2025_LV_FINAL.pdf,"p. 28, 4. tabula","1. tabula (p. 24-25) shows TEC-2 as 881/0 from 2030; scenario EU2030 resolves it: 4. tabula row 2.3 Rīgas TEC-2 = 0 MW net from 2030 (850 before)",
+ast_a_2035,LV,2035,capacity.gas_chp_small,15,MW,ast_pso_2025,https://www.ast.lv/sites/default/files/editor/PSO_Zinojums_2025_LV_FINAL.pdf,"p. 24-25, 1. tabula",,
+ast_b_2035,LV,2035,capacity.gas_chp_small,0,MW,ast_pso_2025,https://www.ast.lv/sites/default/files/editor/PSO_Zinojums_2025_LV_FINAL.pdf,"p. 24-25, 1. tabula",,
+ast_eu2030_2035,LV,2035,capacity.gas_chp_small,0,MW,ast_pso_2025,https://www.ast.lv/sites/default/files/editor/PSO_Zinojums_2025_LV_FINAL.pdf,"p. 24-25, 1. tabula",,
+ast_a_2035,LV,2035,capacity.hydro_small,30,MW,ast_pso_2025,https://www.ast.lv/sites/default/files/editor/PSO_Zinojums_2025_LV_FINAL.pdf,"p. 24-25, 1. tabula",,
+ast_b_2035,LV,2035,capacity.hydro_small,30,MW,ast_pso_2025,https://www.ast.lv/sites/default/files/editor/PSO_Zinojums_2025_LV_FINAL.pdf,"p. 24-25, 1. tabula",,
+ast_eu2030_2035,LV,2035,capacity.hydro_small,30,MW,ast_pso_2025,https://www.ast.lv/sites/default/files/editor/PSO_Zinojums_2025_LV_FINAL.pdf,"p. 24-25, 1. tabula",,
+ast_a_2035,LV,2035,capacity.wind_onshore,724,MW,ast_pso_2025,https://www.ast.lv/sites/default/files/editor/PSO_Zinojums_2025_LV_FINAL.pdf,"p. 24-25, 1. tabula",,
+ast_b_2035,LV,2035,capacity.wind_onshore,846,MW,ast_pso_2025,https://www.ast.lv/sites/default/files/editor/PSO_Zinojums_2025_LV_FINAL.pdf,"p. 24-25, 1. tabula",,
+ast_eu2030_2035,LV,2035,capacity.wind_onshore,1130,MW,ast_pso_2025,https://www.ast.lv/sites/default/files/editor/PSO_Zinojums_2025_LV_FINAL.pdf,"p. 24-25, 1. tabula",,
+ast_a_2035,LV,2035,capacity.wind_offshore,500,MW,ast_pso_2025,https://www.ast.lv/sites/default/files/editor/PSO_Zinojums_2025_LV_FINAL.pdf,"p. 24-25, 1. tabula",,
+ast_b_2035,LV,2035,capacity.wind_offshore,1000,MW,ast_pso_2025,https://www.ast.lv/sites/default/files/editor/PSO_Zinojums_2025_LV_FINAL.pdf,"p. 24-25, 1. tabula",,
+ast_eu2030_2035,LV,2035,capacity.wind_offshore,1000,MW,ast_pso_2025,https://www.ast.lv/sites/default/files/editor/PSO_Zinojums_2025_LV_FINAL.pdf,"p. 24-25, 1. tabula",,
+ast_a_2035,LV,2035,capacity.biomass,110,MW,ast_pso_2025,https://www.ast.lv/sites/default/files/editor/PSO_Zinojums_2025_LV_FINAL.pdf,"p. 24-25, 1. tabula",,
+ast_b_2035,LV,2035,capacity.biomass,116,MW,ast_pso_2025,https://www.ast.lv/sites/default/files/editor/PSO_Zinojums_2025_LV_FINAL.pdf,"p. 24-25, 1. tabula",,
+ast_eu2030_2035,LV,2035,capacity.biomass,128,MW,ast_pso_2025,https://www.ast.lv/sites/default/files/editor/PSO_Zinojums_2025_LV_FINAL.pdf,"p. 24-25, 1. tabula",,
+ast_a_2035,LV,2035,capacity.biogas,64,MW,ast_pso_2025,https://www.ast.lv/sites/default/files/editor/PSO_Zinojums_2025_LV_FINAL.pdf,"p. 24-25, 1. tabula",,
+ast_b_2035,LV,2035,capacity.biogas,70,MW,ast_pso_2025,https://www.ast.lv/sites/default/files/editor/PSO_Zinojums_2025_LV_FINAL.pdf,"p. 24-25, 1. tabula",,
+ast_eu2030_2035,LV,2035,capacity.biogas,82,MW,ast_pso_2025,https://www.ast.lv/sites/default/files/editor/PSO_Zinojums_2025_LV_FINAL.pdf,"p. 24-25, 1. tabula",,
+ast_a_2035,LV,2035,capacity.solar,1881,MW,ast_pso_2025,https://www.ast.lv/sites/default/files/editor/PSO_Zinojums_2025_LV_FINAL.pdf,"p. 24-25, 1. tabula",,
+ast_b_2035,LV,2035,capacity.solar,2537,MW,ast_pso_2025,https://www.ast.lv/sites/default/files/editor/PSO_Zinojums_2025_LV_FINAL.pdf,"p. 24-25, 1. tabula",,
+ast_eu2030_2035,LV,2035,capacity.solar,3420,MW,ast_pso_2025,https://www.ast.lv/sites/default/files/editor/PSO_Zinojums_2025_LV_FINAL.pdf,"p. 24-25, 1. tabula",,
+ast_a_2035,LV,2035,capacity.battery,420,MW,ast_pso_2025,https://www.ast.lv/sites/default/files/editor/PSO_Zinojums_2025_LV_FINAL.pdf,"p. 24-25, 1. tabula","row 5.1, independent traders' batteries (BESS 500 in row 5 = 420 + 80)",
+ast_a_2035,LV,2035,capacity.battery_tso_reserve,80,MW,ast_pso_2025,https://www.ast.lv/sites/default/files/editor/PSO_Zinojums_2025_LV_FINAL.pdf,"p. 24-25, 1. tabula","row 5.2, AST's battery for TSO reserves, outside the day-ahead market (R-STO-8)",
+ast_b_2035,LV,2035,capacity.battery,420,MW,ast_pso_2025,https://www.ast.lv/sites/default/files/editor/PSO_Zinojums_2025_LV_FINAL.pdf,"p. 24-25, 1. tabula","row 5.1, independent traders' batteries (BESS 500 in row 5 = 420 + 80)",
+ast_b_2035,LV,2035,capacity.battery_tso_reserve,80,MW,ast_pso_2025,https://www.ast.lv/sites/default/files/editor/PSO_Zinojums_2025_LV_FINAL.pdf,"p. 24-25, 1. tabula","row 5.2, AST's battery for TSO reserves, outside the day-ahead market (R-STO-8)",
+ast_eu2030_2035,LV,2035,capacity.battery,420,MW,ast_pso_2025,https://www.ast.lv/sites/default/files/editor/PSO_Zinojums_2025_LV_FINAL.pdf,"p. 24-25, 1. tabula","row 5.1, independent traders' batteries (BESS 500 in row 5 = 420 + 80)",
+ast_eu2030_2035,LV,2035,capacity.battery_tso_reserve,80,MW,ast_pso_2025,https://www.ast.lv/sites/default/files/editor/PSO_Zinojums_2025_LV_FINAL.pdf,"p. 24-25, 1. tabula","row 5.2, AST's battery for TSO reserves, outside the day-ahead market (R-STO-8)",
+ast_a_2035,LV,2035,demand.twh,8.95,TWh,ast_pso_2025,https://www.ast.lv/sites/default/files/editor/PSO_Zinojums_2025_LV_FINAL.pdf,"p. 29-31, 5.-7. tabula","Elektroenerģijas pieprasījums, GWh",
+ast_b_2035,LV,2035,demand.twh,11.47,TWh,ast_pso_2025,https://www.ast.lv/sites/default/files/editor/PSO_Zinojums_2025_LV_FINAL.pdf,"p. 29-31, 5.-7. tabula","Elektroenerģijas pieprasījums, GWh",
+ast_eu2030_2035,LV,2035,demand.twh,13.71,TWh,ast_pso_2025,https://www.ast.lv/sites/default/files/editor/PSO_Zinojums_2025_LV_FINAL.pdf,"p. 29-31, 5.-7. tabula","Elektroenerģijas pieprasījums, GWh",
+ast_a_2035,LV,2035,demand.peak_mw,1562,MW,ast_pso_2025,https://www.ast.lv/sites/default/files/editor/PSO_Zinojums_2025_LV_FINAL.pdf,"p. 26-28, 2. and 4. tabula",Maksimālā slodze,
+ast_eu2030_2035,LV,2035,demand.peak_mw,2243,MW,ast_pso_2025,https://www.ast.lv/sites/default/files/editor/PSO_Zinojums_2025_LV_FINAL.pdf,"p. 26-28, 2. and 4. tabula",Maksimālā slodze,
+ast_b_2035,LV,2035,demand.peak_mw,1912,MW,ast_pso_2025,https://www.ast.lv/sites/default/files/editor/PSO_Zinojums_2025_LV_FINAL.pdf,"p. 27, 3. tabula","Maksimālā slodze 2035, base scenario (B); the same series is on p. 7, 1. tabula",
+ast_a_2035,LV,2035,demand.electrolysis_twh,1.3,TWh,ast_pso_2025,https://www.ast.lv/sites/default/files/editor/PSO_Zinojums_2025_LV_FINAL.pdf,"p. 7, 1. tabula","Ūdeņraža iekārtu patēriņš 2035, 1300 GWh; inside demand.twh (7646 + 1300 = 8946 GWh)",
+ast_b_2035,LV,2035,demand.electrolysis_twh,3.2,TWh,ast_pso_2025,https://www.ast.lv/sites/default/files/editor/PSO_Zinojums_2025_LV_FINAL.pdf,"p. 7, 1. tabula","Ūdeņraža iekārtu patēriņš 2035, 3200 GWh; inside demand.twh (8268 + 3200 = 11468 GWh)",
+ast_eu2030_2035,LV,2035,demand.electrolysis_twh,4.7,TWh,ast_pso_2025,https://www.ast.lv/sites/default/files/editor/PSO_Zinojums_2025_LV_FINAL.pdf,"p. 7, 1. tabula","Ūdeņraža iekārtu patēriņš 2035, 4700 GWh; inside demand.twh (9007 + 4700 = 13707 GWh)",
+litgrid_nacsc_2035,LT,2035,capacity.thermal,775,MW,litgrid_plan_2026_2035,https://www.litgrid.eu/wp-content/uploads/2026/07/Litgrid-tinklo-pletros-planas-2026-2035.pdf,"p. 45, 4.2.1 lentelė",,
+litgrid_ltrsc_2035,LT,2035,capacity.thermal,775,MW,litgrid_plan_2026_2035,https://www.litgrid.eu/wp-content/uploads/2026/07/Litgrid-tinklo-pletros-planas-2026-2035.pdf,"p. 45, 4.2.1 lentelė",,
+litgrid_nacsc_2035,LT,2035,capacity.hydro_ps,1010,MW,litgrid_plan_2026_2035,https://www.litgrid.eu/wp-content/uploads/2026/07/Litgrid-tinklo-pletros-planas-2026-2035.pdf,"p. 45, 4.2.1 lentelė",,
+litgrid_ltrsc_2035,LT,2035,capacity.hydro_ps,1010,MW,litgrid_plan_2026_2035,https://www.litgrid.eu/wp-content/uploads/2026/07/Litgrid-tinklo-pletros-planas-2026-2035.pdf,"p. 45, 4.2.1 lentelė",,
+litgrid_nacsc_2035,LT,2035,capacity.hydro_ror,130,MW,litgrid_plan_2026_2035,https://www.litgrid.eu/wp-content/uploads/2026/07/Litgrid-tinklo-pletros-planas-2026-2035.pdf,"p. 45, 4.2.1 lentelė",,
+litgrid_ltrsc_2035,LT,2035,capacity.hydro_ror,130,MW,litgrid_plan_2026_2035,https://www.litgrid.eu/wp-content/uploads/2026/07/Litgrid-tinklo-pletros-planas-2026-2035.pdf,"p. 45, 4.2.1 lentelė",,
+litgrid_nacsc_2035,LT,2035,capacity.wind_onshore,5789,MW,litgrid_plan_2026_2035,https://www.litgrid.eu/wp-content/uploads/2026/07/Litgrid-tinklo-pletros-planas-2026-2035.pdf,"p. 45, 4.2.1 lentelė",,
+litgrid_ltrsc_2035,LT,2035,capacity.wind_onshore,4926,MW,litgrid_plan_2026_2035,https://www.litgrid.eu/wp-content/uploads/2026/07/Litgrid-tinklo-pletros-planas-2026-2035.pdf,"p. 45, 4.2.1 lentelė",,
+litgrid_nacsc_2035,LT,2035,capacity.wind_offshore,1400,MW,litgrid_plan_2026_2035,https://www.litgrid.eu/wp-content/uploads/2026/07/Litgrid-tinklo-pletros-planas-2026-2035.pdf,"p. 45, 4.2.1 lentelė",,
+litgrid_ltrsc_2035,LT,2035,capacity.wind_offshore,700,MW,litgrid_plan_2026_2035,https://www.litgrid.eu/wp-content/uploads/2026/07/Litgrid-tinklo-pletros-planas-2026-2035.pdf,"p. 45, 4.2.1 lentelė",,
+litgrid_nacsc_2035,LT,2035,capacity.solar,7251,MW,litgrid_plan_2026_2035,https://www.litgrid.eu/wp-content/uploads/2026/07/Litgrid-tinklo-pletros-planas-2026-2035.pdf,"p. 45, 4.2.1 lentelė",,
+litgrid_ltrsc_2035,LT,2035,capacity.solar,6084,MW,litgrid_plan_2026_2035,https://www.litgrid.eu/wp-content/uploads/2026/07/Litgrid-tinklo-pletros-planas-2026-2035.pdf,"p. 45, 4.2.1 lentelė",,
+litgrid_nacsc_2035,LT,2035,capacity.biomass,190,MW,litgrid_plan_2026_2035,https://www.litgrid.eu/wp-content/uploads/2026/07/Litgrid-tinklo-pletros-planas-2026-2035.pdf,"p. 45, 4.2.1 lentelė",,
+litgrid_ltrsc_2035,LT,2035,capacity.biomass,190,MW,litgrid_plan_2026_2035,https://www.litgrid.eu/wp-content/uploads/2026/07/Litgrid-tinklo-pletros-planas-2026-2035.pdf,"p. 45, 4.2.1 lentelė",,
+litgrid_nacsc_2035,LT,2035,capacity.waste,67,MW,litgrid_plan_2026_2035,https://www.litgrid.eu/wp-content/uploads/2026/07/Litgrid-tinklo-pletros-planas-2026-2035.pdf,"p. 45, 4.2.1 lentelė",,
+litgrid_ltrsc_2035,LT,2035,capacity.waste,67,MW,litgrid_plan_2026_2035,https://www.litgrid.eu/wp-content/uploads/2026/07/Litgrid-tinklo-pletros-planas-2026-2035.pdf,"p. 45, 4.2.1 lentelė",,
+litgrid_nacsc_2035,LT,2035,capacity.battery,4397,MW,litgrid_plan_2026_2035,https://www.litgrid.eu/wp-content/uploads/2026/07/Litgrid-tinklo-pletros-planas-2026-2035.pdf,"p. 45, 4.2.1 lentelė",,
+litgrid_ltrsc_2035,LT,2035,capacity.battery,3099,MW,litgrid_plan_2026_2035,https://www.litgrid.eu/wp-content/uploads/2026/07/Litgrid-tinklo-pletros-planas-2026-2035.pdf,"p. 45, 4.2.1 lentelė",,
+litgrid_nacsc_2035,LT,2035,demand.twh,43.5,TWh,litgrid_plan_2026_2035,https://www.litgrid.eu/wp-content/uploads/2026/07/Litgrid-tinklo-pletros-planas-2026-2035.pdf,"p. 51, 4.3.4 lentelė","bendras suvartojimas (gross consumption incl. network losses); need incl. storage charging 46.6, final 40.8",
+litgrid_nacsc_2035,LT,2035,demand.electrolysis_twh,16.7,TWh,litgrid_plan_2026_2035,https://www.litgrid.eu/wp-content/uploads/2026/07/Litgrid-tinklo-pletros-planas-2026-2035.pdf,"p. 12, §1.2",,
+litgrid_ltrsc_2035,LT,2035,demand.twh,24.3,TWh,litgrid_plan_2026_2035,https://www.litgrid.eu/wp-content/uploads/2026/07/Litgrid-tinklo-pletros-planas-2026-2035.pdf,"p. 51, 4.3.4 lentelė","bendras suvartojimas (gross consumption incl. network losses); need incl. storage charging 26.7, final 22.7",
+litgrid_ltrsc_2035,LT,2035,demand.electrolysis_twh,3.3,TWh,litgrid_plan_2026_2035,https://www.litgrid.eu/wp-content/uploads/2026/07/Litgrid-tinklo-pletros-planas-2026-2035.pdf,"p. 12, §1.2; p. 43",,
+litgrid_ltrsc_2035,LT,2035,capacity.electrolyser,670,MW,litgrid_plan_2026_2035,https://www.litgrid.eu/wp-content/uploads/2026/07/Litgrid-tinklo-pletros-planas-2026-2035.pdf,"p. 13, §1.2",LTrSc figure; NacSc not stated,
+pemmdb_nt_2030,EE,2030,flex.dsr.1000,198,MW,,,,"PEMMDB DSR sheet, market-response band at its activation price (EUR/MWh in the key)",tyndp2024.PEMMDB2
+pemmdb_nt_2030,LV,2030,flex.dsr.150,10,MW,,,,"PEMMDB DSR sheet, market-response band at its activation price (EUR/MWh in the key)",tyndp2024.PEMMDB2
+pemmdb_nt_2030,LV,2030,flex.dsr.200,20,MW,,,,"PEMMDB DSR sheet, market-response band at its activation price (EUR/MWh in the key)",tyndp2024.PEMMDB2
+pemmdb_nt_2030,LV,2030,flex.dsr.300,40,MW,,,,"PEMMDB DSR sheet, market-response band at its activation price (EUR/MWh in the key)",tyndp2024.PEMMDB2
+pemmdb_nt_2030,LV,2030,flex.dsr.500,80,MW,,,,"PEMMDB DSR sheet, market-response band at its activation price (EUR/MWh in the key)",tyndp2024.PEMMDB2
+pemmdb_nt_2030,LT,2030,flex.dsr.500,40,MW,,,,"PEMMDB DSR sheet, market-response band at its activation price (EUR/MWh in the key)",tyndp2024.PEMMDB2
+pemmdb_nt_2030,LT,2030,capacity.electrolyser,300,MW,,,,"PEMMDB Electrolyser sheet, net maximum capacity",tyndp2024.PEMMDB2
+pemmdb_nt_2030,LT,2030,efficiency.electrolyser,0.68,fraction,,,,"PEMMDB Electrolyser sheet, average efficiency: the LT00 workbook leaves it at 0; 0.68 is the value of the FI00 workbook of the same year (and of SE01-SE04, DE00)",tyndp2024.PEMMDB2
+pemmdb_nt_2040,EE,2040,flex.dsr.1000,260,MW,,,,"PEMMDB DSR sheet, market-response band at its activation price (EUR/MWh in the key)",tyndp2024.PEMMDB2
+pemmdb_nt_2040,LV,2040,flex.dsr.150,10,MW,,,,"PEMMDB DSR sheet, market-response band at its activation price (EUR/MWh in the key)",tyndp2024.PEMMDB2
+pemmdb_nt_2040,LV,2040,flex.dsr.200,20,MW,,,,"PEMMDB DSR sheet, market-response band at its activation price (EUR/MWh in the key)",tyndp2024.PEMMDB2
+pemmdb_nt_2040,LV,2040,flex.dsr.300,40,MW,,,,"PEMMDB DSR sheet, market-response band at its activation price (EUR/MWh in the key)",tyndp2024.PEMMDB2
+pemmdb_nt_2040,LV,2040,flex.dsr.500,80,MW,,,,"PEMMDB DSR sheet, market-response band at its activation price (EUR/MWh in the key)",tyndp2024.PEMMDB2
+pemmdb_nt_2040,LT,2040,flex.dsr.500,50,MW,,,,"PEMMDB DSR sheet, market-response band at its activation price (EUR/MWh in the key)",tyndp2024.PEMMDB2
+pemmdb_nt_2040,LT,2040,capacity.electrolyser,2300,MW,,,,"PEMMDB Electrolyser sheet, net maximum capacity",tyndp2024.PEMMDB2
+pemmdb_nt_2040,LT,2040,efficiency.electrolyser,0.68,fraction,,,,"PEMMDB Electrolyser sheet, average efficiency: the LT00 workbook leaves it at 0; 0.68 is the value of the FI00 workbook of the same year (and of SE01-SE04, DE00)",tyndp2024.PEMMDB2
+elering_gas_tender_2035,EE,2035,capacity.gas_ocgt,900,MW,err_2026_gas_tender,https://www.err.ee/1610004487/eleringi-gaasijaamade-plaan-tekitab-tuumajaama-rajajates-hammingut,"article, 2026-04-23","Elering's planned tender: fast-start gas plants at five sites, units of 90-250 MW, full power in 15 minutes, 72 h islanded, in service by 2035; capacity paid as a system-restoration service outside the market (R-REF-17 b)",
+elering_vka_2025_actual,EE,2025,capacity.battery,27,MW,elering_vka_2025,https://elering.ee/sites/default/files/public/varustuskindluse%20konverentsid/2025/Elering_VKA_2025_veeb-1.pdf,"p. 47–48, Tabel 2.6","installed net capacity 2025, observed not a scenario; grid-scale and frequency-reserve batteries only, behind-the-meter storage not known to network operators; 2024: 0",
+elering_vka_2025_actual,EE,2025,capacity.battery_mwh,53,MWh,elering_vka_2025,https://elering.ee/sites/default/files/public/varustuskindluse%20konverentsid/2025/Elering_VKA_2025_veeb-1.pdf,"p. 47–48, Tabel 2.6",installed storage energy 2025; 2024: 0,
+fermi_nuclear_2035,EE,2035,demand.twh,11.2,TWh,v3_presets,data/documentary/v3_presets.json,base_2025.EE.load_twh x scenario_2035.demand,2025 load x 1.30 + 100 MW flat,
+fermi_nuclear_2035,EE,2035,capacity.biomass,150.3,MW,v3_presets,data/documentary/v3_presets.json,base_2025.EE.cap_mw,unchanged 2025 base (v3 2025.json),
+fermi_nuclear_2035,EE,2035,capacity.gas,500,MW,v3_presets,data/documentary/v3_presets.json,presets.nuclear2035.set.EE,,
+fermi_nuclear_2035,EE,2035,capacity.hydro_ror,8.0,MW,v3_presets,data/documentary/v3_presets.json,base_2025.EE.cap_mw,unchanged 2025 base (v3 2025.json),
+fermi_nuclear_2035,EE,2035,capacity.oil_shale,300,MW,v3_presets,data/documentary/v3_presets.json,scenario_2035.countries.EE,,
+fermi_nuclear_2035,EE,2035,capacity.other_renewable,1.0,MW,v3_presets,data/documentary/v3_presets.json,base_2025.EE.cap_mw,unchanged 2025 base (v3 2025.json),
+fermi_nuclear_2035,EE,2035,capacity.coal_gas,78,MW,v3_presets,data/documentary/v3_presets.json,scenario_2035.countries.EE,v3 key shale_gas: Estonian oil-shale gas,
+fermi_nuclear_2035,EE,2035,capacity.solar,1700,MW,v3_presets,data/documentary/v3_presets.json,scenario_2035.countries.EE,,
+fermi_nuclear_2035,EE,2035,capacity.waste,17.0,MW,v3_presets,data/documentary/v3_presets.json,base_2025.EE.cap_mw,unchanged 2025 base (v3 2025.json),
+fermi_nuclear_2035,EE,2035,capacity.wind_offshore,0,MW,v3_presets,data/documentary/v3_presets.json,scenario_2035.countries.EE,,
+fermi_nuclear_2035,EE,2035,capacity.wind_onshore,1227.6,MW,v3_presets,data/documentary/v3_presets.json,scenario_2035.countries.EE,,
+fermi_nuclear_2035,EE,2035,capacity.battery,1200,MW,v3_presets,data/documentary/v3_presets.json,scenario_2035.battery_mw,,
+fermi_nuclear_2035,EE,2035,capacity.battery_mwh,4800,MWh,v3_presets,data/documentary/v3_presets.json,scenario_2035.battery_mw x battery_hours,"4 h, v3 meta.json",
+fermi_nuclear_2035,LV,2035,demand.twh,10.238,TWh,v3_presets,data/documentary/v3_presets.json,base_2025.LV.load_twh x scenario_2035.demand,2025 load x 1.30 + 100 MW flat,
+fermi_nuclear_2035,LV,2035,capacity.biomass,166,MW,v3_presets,data/documentary/v3_presets.json,scenario_2035.countries.LV,,
+fermi_nuclear_2035,LV,2035,capacity.gas,1112,MW,v3_presets,data/documentary/v3_presets.json,scenario_2035.countries.LV,,
+fermi_nuclear_2035,LV,2035,capacity.hydro_ror,1588.0,MW,v3_presets,data/documentary/v3_presets.json,base_2025.LV.cap_mw,unchanged 2025 base (v3 2025.json),
+fermi_nuclear_2035,LV,2035,capacity.solar,1700,MW,v3_presets,data/documentary/v3_presets.json,scenario_2035.countries.LV,,
+fermi_nuclear_2035,LV,2035,capacity.wind_offshore,0,MW,v3_presets,data/documentary/v3_presets.json,scenario_2035.countries.LV,,
+fermi_nuclear_2035,LV,2035,capacity.wind_onshore,1000,MW,v3_presets,data/documentary/v3_presets.json,scenario_2035.countries.LV,,
+fermi_nuclear_2035,LV,2035,capacity.battery,1100,MW,v3_presets,data/documentary/v3_presets.json,scenario_2035.battery_mw,,
+fermi_nuclear_2035,LV,2035,capacity.battery_mwh,4400,MWh,v3_presets,data/documentary/v3_presets.json,scenario_2035.battery_mw x battery_hours,"4 h, v3 meta.json",
+fermi_nuclear_2035,LT,2035,demand.twh,16.18,TWh,v3_presets,data/documentary/v3_presets.json,base_2025.LT.load_twh x scenario_2035.demand,2025 load x 1.30 + 100 MW flat,
+fermi_nuclear_2035,LT,2035,capacity.biomass,196,MW,v3_presets,data/documentary/v3_presets.json,scenario_2035.countries.LT,,
+fermi_nuclear_2035,LT,2035,capacity.gas,1503,MW,v3_presets,data/documentary/v3_presets.json,scenario_2035.countries.LT,,
+fermi_nuclear_2035,LT,2035,capacity.hydro_ps,900.0,MW,v3_presets,data/documentary/v3_presets.json,base_2025.LT.cap_mw,unchanged 2025 base (v3 2025.json),
+fermi_nuclear_2035,LT,2035,capacity.hydro_ror,129.0,MW,v3_presets,data/documentary/v3_presets.json,base_2025.LT.cap_mw,unchanged 2025 base (v3 2025.json),
+fermi_nuclear_2035,LT,2035,capacity.other,37.0,MW,v3_presets,data/documentary/v3_presets.json,base_2025.LT.cap_mw,unchanged 2025 base (v3 2025.json),
+fermi_nuclear_2035,LT,2035,capacity.solar,3500,MW,v3_presets,data/documentary/v3_presets.json,scenario_2035.countries.LT,,
+fermi_nuclear_2035,LT,2035,capacity.waste,70.0,MW,v3_presets,data/documentary/v3_presets.json,base_2025.LT.cap_mw,unchanged 2025 base (v3 2025.json),
+fermi_nuclear_2035,LT,2035,capacity.wind_offshore,0,MW,v3_presets,data/documentary/v3_presets.json,scenario_2035.countries.LT,,
+fermi_nuclear_2035,LT,2035,capacity.wind_onshore,3000,MW,v3_presets,data/documentary/v3_presets.json,scenario_2035.countries.LT,,
+fermi_nuclear_2035,LT,2035,capacity.battery,1140,MW,v3_presets,data/documentary/v3_presets.json,scenario_2035.battery_mw,,
+fermi_nuclear_2035,LT,2035,capacity.battery_mwh,4560,MWh,v3_presets,data/documentary/v3_presets.json,scenario_2035.battery_mw x battery_hours,"4 h, v3 meta.json",
+fermi_res_gas_2035,EE,2035,demand.twh,11.2,TWh,v3_presets,data/documentary/v3_presets.json,base_2025.EE.load_twh x scenario_2035.demand,2025 load x 1.30 + 100 MW flat,
+fermi_res_gas_2035,EE,2035,capacity.biomass,150.3,MW,v3_presets,data/documentary/v3_presets.json,base_2025.EE.cap_mw,unchanged 2025 base (v3 2025.json),
+fermi_res_gas_2035,EE,2035,capacity.gas,1400,MW,v3_presets,data/documentary/v3_presets.json,presets.gas2035.set.EE,,
+fermi_res_gas_2035,EE,2035,capacity.hydro_ror,8.0,MW,v3_presets,data/documentary/v3_presets.json,base_2025.EE.cap_mw,unchanged 2025 base (v3 2025.json),
+fermi_res_gas_2035,EE,2035,capacity.oil_shale,300,MW,v3_presets,data/documentary/v3_presets.json,scenario_2035.countries.EE,,
+fermi_res_gas_2035,EE,2035,capacity.other_renewable,1.0,MW,v3_presets,data/documentary/v3_presets.json,base_2025.EE.cap_mw,unchanged 2025 base (v3 2025.json),
+fermi_res_gas_2035,EE,2035,capacity.coal_gas,78,MW,v3_presets,data/documentary/v3_presets.json,scenario_2035.countries.EE,v3 key shale_gas: Estonian oil-shale gas,
+fermi_res_gas_2035,EE,2035,capacity.solar,2000,MW,v3_presets,data/documentary/v3_presets.json,presets.gas2035.set.EE,,
+fermi_res_gas_2035,EE,2035,capacity.waste,17.0,MW,v3_presets,data/documentary/v3_presets.json,base_2025.EE.cap_mw,unchanged 2025 base (v3 2025.json),
+fermi_res_gas_2035,EE,2035,capacity.wind_offshore,0,MW,v3_presets,data/documentary/v3_presets.json,scenario_2035.countries.EE,,
+fermi_res_gas_2035,EE,2035,capacity.wind_onshore,1227.6,MW,v3_presets,data/documentary/v3_presets.json,scenario_2035.countries.EE,,
+fermi_res_gas_2035,EE,2035,capacity.battery,1200,MW,v3_presets,data/documentary/v3_presets.json,scenario_2035.battery_mw,,
+fermi_res_gas_2035,EE,2035,capacity.battery_mwh,4800,MWh,v3_presets,data/documentary/v3_presets.json,scenario_2035.battery_mw x battery_hours,"4 h, v3 meta.json",
+fermi_res_gas_2035,LV,2035,demand.twh,10.238,TWh,v3_presets,data/documentary/v3_presets.json,base_2025.LV.load_twh x scenario_2035.demand,2025 load x 1.30 + 100 MW flat,
+fermi_res_gas_2035,LV,2035,capacity.biomass,166,MW,v3_presets,data/documentary/v3_presets.json,scenario_2035.countries.LV,,
+fermi_res_gas_2035,LV,2035,capacity.gas,1112,MW,v3_presets,data/documentary/v3_presets.json,scenario_2035.countries.LV,,
+fermi_res_gas_2035,LV,2035,capacity.hydro_ror,1588.0,MW,v3_presets,data/documentary/v3_presets.json,base_2025.LV.cap_mw,unchanged 2025 base (v3 2025.json),
+fermi_res_gas_2035,LV,2035,capacity.solar,2000,MW,v3_presets,data/documentary/v3_presets.json,presets.gas2035.set.LV,,
+fermi_res_gas_2035,LV,2035,capacity.wind_offshore,0,MW,v3_presets,data/documentary/v3_presets.json,scenario_2035.countries.LV,,
+fermi_res_gas_2035,LV,2035,capacity.wind_onshore,1000,MW,v3_presets,data/documentary/v3_presets.json,scenario_2035.countries.LV,,
+fermi_res_gas_2035,LV,2035,capacity.battery,1100,MW,v3_presets,data/documentary/v3_presets.json,scenario_2035.battery_mw,,
+fermi_res_gas_2035,LV,2035,capacity.battery_mwh,4400,MWh,v3_presets,data/documentary/v3_presets.json,scenario_2035.battery_mw x battery_hours,"4 h, v3 meta.json",
+fermi_res_gas_2035,LT,2035,demand.twh,16.18,TWh,v3_presets,data/documentary/v3_presets.json,base_2025.LT.load_twh x scenario_2035.demand,2025 load x 1.30 + 100 MW flat,
+fermi_res_gas_2035,LT,2035,capacity.biomass,196,MW,v3_presets,data/documentary/v3_presets.json,scenario_2035.countries.LT,,
+fermi_res_gas_2035,LT,2035,capacity.gas,1503,MW,v3_presets,data/documentary/v3_presets.json,scenario_2035.countries.LT,,
+fermi_res_gas_2035,LT,2035,capacity.hydro_ps,900.0,MW,v3_presets,data/documentary/v3_presets.json,base_2025.LT.cap_mw,unchanged 2025 base (v3 2025.json),
+fermi_res_gas_2035,LT,2035,capacity.hydro_ror,129.0,MW,v3_presets,data/documentary/v3_presets.json,base_2025.LT.cap_mw,unchanged 2025 base (v3 2025.json),
+fermi_res_gas_2035,LT,2035,capacity.other,37.0,MW,v3_presets,data/documentary/v3_presets.json,base_2025.LT.cap_mw,unchanged 2025 base (v3 2025.json),
+fermi_res_gas_2035,LT,2035,capacity.solar,4000,MW,v3_presets,data/documentary/v3_presets.json,presets.gas2035.set.LT,,
+fermi_res_gas_2035,LT,2035,capacity.waste,70.0,MW,v3_presets,data/documentary/v3_presets.json,base_2025.LT.cap_mw,unchanged 2025 base (v3 2025.json),
+fermi_res_gas_2035,LT,2035,capacity.wind_offshore,0,MW,v3_presets,data/documentary/v3_presets.json,scenario_2035.countries.LT,,
+fermi_res_gas_2035,LT,2035,capacity.wind_onshore,3000,MW,v3_presets,data/documentary/v3_presets.json,scenario_2035.countries.LT,,
+fermi_res_gas_2035,LT,2035,capacity.battery,1140,MW,v3_presets,data/documentary/v3_presets.json,scenario_2035.battery_mw,,
+fermi_res_gas_2035,LT,2035,capacity.battery_mwh,4560,MWh,v3_presets,data/documentary/v3_presets.json,scenario_2035.battery_mw x battery_hours,"4 h, v3 meta.json",
+elering_base_2035,EE,2035,capacity.coal_gas,78.4,MW,,,,"ENTSO-E A68 installed capacity 2026, Fossil Coal-derived gas, carried into Elering's 2035 case as a modeller's assumption, not Elering's statement (v4 D-063): neither Elering nor Enefit states that oil-shale gas keeps burning beyond 2027; Enefit Power states only that it generates from oil-shale gas (enefit_power_2026, 'Elekter ja soojus'); the Enefit 280-2 oil plant started in April 2026, so the gas continues",entsoe.A68.EE.2026
+eraa2025_nt_2035,EE,2035,flex.dsr.2000,260.0,MW,,,,"Explicit DSR detailed.csv, ERAA 2025 other data: DA activation price, max hours dispatched per day (E-032)",eraa2025.other_data
+eraa2025_nt_2035,EE,2035,flex.dsr_hours.2000,6,h/day,,,,"Explicit DSR detailed.csv, ERAA 2025 other data: DA activation price, max hours dispatched per day (E-032)",eraa2025.other_data
+eraa2025_nt_2035,LT,2035,flex.dsr.500,40.0,MW,,,,"Explicit DSR detailed.csv, ERAA 2025 other data: DA activation price, max hours dispatched per day (E-032)",eraa2025.other_data
+eraa2025_nt_2035,LT,2035,flex.dsr_hours.500,4,h/day,,,,"Explicit DSR detailed.csv, ERAA 2025 other data: DA activation price, max hours dispatched per day (E-032)",eraa2025.other_data
+eraa2025_nt_2035,LV,2035,flex.dsr.150,10.0,MW,,,,"Explicit DSR detailed.csv, ERAA 2025 other data: DA activation price, max hours dispatched per day (E-032)",eraa2025.other_data
+eraa2025_nt_2035,LV,2035,flex.dsr_hours.150,24,h/day,,,,"Explicit DSR detailed.csv, ERAA 2025 other data: DA activation price, max hours dispatched per day (E-032)",eraa2025.other_data
+eraa2025_nt_2035,LV,2035,flex.dsr.200,20.0,MW,,,,"Explicit DSR detailed.csv, ERAA 2025 other data: DA activation price, max hours dispatched per day (E-032)",eraa2025.other_data
+eraa2025_nt_2035,LV,2035,flex.dsr_hours.200,24,h/day,,,,"Explicit DSR detailed.csv, ERAA 2025 other data: DA activation price, max hours dispatched per day (E-032)",eraa2025.other_data
+eraa2025_nt_2035,LV,2035,flex.dsr.300,40.0,MW,,,,"Explicit DSR detailed.csv, ERAA 2025 other data: DA activation price, max hours dispatched per day (E-032)",eraa2025.other_data
+eraa2025_nt_2035,LV,2035,flex.dsr_hours.300,24,h/day,,,,"Explicit DSR detailed.csv, ERAA 2025 other data: DA activation price, max hours dispatched per day (E-032)",eraa2025.other_data
+eraa2025_nt_2035,LV,2035,flex.dsr.500,80.0,MW,,,,"Explicit DSR detailed.csv, ERAA 2025 other data: DA activation price, max hours dispatched per day (E-032)",eraa2025.other_data
+eraa2025_nt_2035,LV,2035,flex.dsr_hours.500,24,h/day,,,,"Explicit DSR detailed.csv, ERAA 2025 other data: DA activation price, max hours dispatched per day (E-032)",eraa2025.other_data
+elering_plan_2026_2035,EE,2030,demand.twh,10.0,TWh,elering_arengukava_2026_2035,https://eleringweb.cdn.prismic.io/eleringweb/I6Fa5cjdmHuG9ipW_Eestielektri%C3%BClekandev%C3%B5rguarengukava2026-2035.pdf,"p. 43, Tabel 3.1","'Aastane tarbimine, TWh' of the forecast, demand updated in December 2025 (footnote 10); new energy-intensive industry is left out (p. 45) and no electrolysis is named. Whether the total contains transmission losses is not stated on the page (research note A)",
+elering_plan_2026_2035,EE,2030,demand.peak_mw,1924,MW,elering_arengukava_2026_2035,https://eleringweb.cdn.prismic.io/eleringweb/I6Fa5cjdmHuG9ipW_Eestielektri%C3%BClekandev%C3%B5rguarengukava2026-2035.pdf,"p. 43, Tabel 3.1","'Tipukoormus (külm talv), MW', the cold-winter peak of the forecast",
+elering_plan_2026_2035,EE,2035,demand.twh,11.2,TWh,elering_arengukava_2026_2035,https://eleringweb.cdn.prismic.io/eleringweb/I6Fa5cjdmHuG9ipW_Eestielektri%C3%BClekandev%C3%B5rguarengukava2026-2035.pdf,"p. 43, Tabel 3.1","'Aastane tarbimine, TWh' of the forecast, demand updated in December 2025 (footnote 10); new energy-intensive industry is left out (p. 45) and no electrolysis is named. Whether the total contains transmission losses is not stated on the page (research note A)",
+elering_plan_2026_2035,EE,2035,demand.peak_mw,2148,MW,elering_arengukava_2026_2035,https://eleringweb.cdn.prismic.io/eleringweb/I6Fa5cjdmHuG9ipW_Eestielektri%C3%BClekandev%C3%B5rguarengukava2026-2035.pdf,"p. 43, Tabel 3.1","'Tipukoormus (külm talv), MW', the cold-winter peak of the forecast",
+elering_taltech_s1_2035,EE,2035,capacity.wind_onshore,1244,MW,taltech_elering_s1_2026,https://eleringweb.cdn.prismic.io/eleringweb/PZt3PXskHv4M6ix5_Eesti_10_stsenaariumi_28092026.pdf,"p. 3, table of §3","'Maismaatuul, MW', 2035",
+elering_taltech_s1_2035,EE,2035,capacity.solar,1785,MW,taltech_elering_s1_2026,https://eleringweb.cdn.prismic.io/eleringweb/PZt3PXskHv4M6ix5_Eesti_10_stsenaariumi_28092026.pdf,"p. 3, table of §3","'Päikeseenergia, MW', 2035; growth to be refined by Elering's demand study",
+elering_taltech_s1_2035,EE,2035,capacity.battery,1500,MW,taltech_elering_s1_2026,https://eleringweb.cdn.prismic.io/eleringweb/PZt3PXskHv4M6ix5_Eesti_10_stsenaariumi_28092026.pdf,"p. 3, table of §3","'BESS, MW', 2035; the energy is not given (R-STO-1: 2 h by default)",
+elering_taltech_s1_2035,EE,2035,capacity.biomass,152,MW,taltech_elering_s1_2026,https://eleringweb.cdn.prismic.io/eleringweb/PZt3PXskHv4M6ix5_Eesti_10_stsenaariumi_28092026.pdf,"p. 2, table of §3","'Biomass, MW', 2035; existing plants kept, renovated or replaced",
+elering_taltech_s1_2035,EE,2035,capacity.waste,17,MW,taltech_elering_s1_2026,https://eleringweb.cdn.prismic.io/eleringweb/PZt3PXskHv4M6ix5_Eesti_10_stsenaariumi_28092026.pdf,"p. 2, table of §3","'Jäätmed, MW', 2035; Iru CHP kept",
+elering_taltech_s1_2035,EE,2035,capacity.hydro_ror,8,MW,taltech_elering_s1_2026,https://eleringweb.cdn.prismic.io/eleringweb/PZt3PXskHv4M6ix5_Eesti_10_stsenaariumi_28092026.pdf,"p. 3, table of §3","'Läbijooksu hüdroenergia, MW', 2035",
+elering_taltech_s1_2035,EE,2035,capacity.oil_shale,270,MW,taltech_elering_s1_2026,https://eleringweb.cdn.prismic.io/eleringweb/PZt3PXskHv4M6ix5_Eesti_10_stsenaariumi_28092026.pdf,"p. 3, table of §3","'Põlevkivi, MW', 2035; the Auvere plant: S3 removes 'the 270 MW of Auvere' in 2040 (p. 5)",
+elering_taltech_s1_2035,EE,2035,capacity.gas_existing,263,MW,taltech_elering_s1_2026,https://eleringweb.cdn.prismic.io/eleringweb/PZt3PXskHv4M6ix5_Eesti_10_stsenaariumi_28092026.pdf,"p. 2, table of §3","'Maagaas, olemasolev, MW', 2035; no technology named",
+elering_taltech_s1_2035,EE,2035,capacity.gas_reserve_procurement,186,MW,taltech_elering_s1_2026,https://eleringweb.cdn.prismic.io/eleringweb/PZt3PXskHv4M6ix5_Eesti_10_stsenaariumi_28092026.pdf,"p. 2, table of §3","'Maagaas, reservide hange, MW', 2035; from 2030",
+elering_taltech_s1_2035,EE,2035,capacity.gas_restoration,900,MW,taltech_elering_s1_2026,https://eleringweb.cdn.prismic.io/eleringweb/PZt3PXskHv4M6ix5_Eesti_10_stsenaariumi_28092026.pdf,"p. 3, table of §3","'Hajutatud taaskäivitushange, MW', 2035; entered 'lihtsustatult gaasijaamadena', the procurement not having happened by the analysis",
+elering_taltech_s1_2035,EE,2035,capacity.capacity_mechanism,15,MW,taltech_elering_s1_2026,https://eleringweb.cdn.prismic.io/eleringweb/PZt3PXskHv4M6ix5_Eesti_10_stsenaariumi_28092026.pdf,"p. 3, table of §3","'Tuleviku võimsusmehhanism, MW', 2035; entered 'lihtsustatult gaasijaamadena'",
+elering_taltech_s1_2035,EE,2035,capacity.controllable_need,2100,MW,taltech_elering_s1_2026,https://eleringweb.cdn.prismic.io/eleringweb/PZt3PXskHv4M6ix5_Eesti_10_stsenaariumi_28092026.pdf,"p. 3, table of §3","'Juhitava nõudluse vajadus, MW', 2035; the 2.1 GW of domestic controllable capacity required in 2035 (p. 1)",
+elering_taltech_s1_2035,EE,2035,demand.twh,11.6,TWh,taltech_elering_s1_2026,https://eleringweb.cdn.prismic.io/eleringweb/PZt3PXskHv4M6ix5_Eesti_10_stsenaariumi_28092026.pdf,"p. 3, table of §3","'Eesti tarbimine, TWh', 2035; Elering's forecast of 2025, to be updated by its demand study; no electrolysis named",
+elering_taltech_s1_2035,EE,2035,demand.peak_mw,2300,MW,taltech_elering_s1_2026,https://eleringweb.cdn.prismic.io/eleringweb/PZt3PXskHv4M6ix5_Eesti_10_stsenaariumi_28092026.pdf,"p. 3, table of §3","'Tiputarbimine, MW', 2035; Elering's forecast of 2025",

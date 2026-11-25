@@ -1,0 +1,35 @@
+{
+  "name": "energiamudel-v5",
+  "version": "0.1.0-dev",
+  "private": true,
+  "description": "Baltic hourly day-ahead market model: the browser application (SPECIFICATION.md §11).",
+  "license": "AGPL-3.0-or-later",
+  "type": "module",
+  "engines": {
+    "node": ">=22.18"
+  },
+  "scripts": {
+    "test": "node --no-maglev --test 'test/**/*.test.ts'",
+    "lint": "tsc -p . && node scripts/lint_engine.mjs",
+    "golden": "node --no-maglev scripts/golden.ts",
+    "golden:jsc": "node --no-maglev scripts/golden_jsc.ts",
+    "bench": "node --no-maglev scripts/bench.ts",
+    "replay": "node --no-maglev scripts/replay.ts",
+    "contract": "node scripts/contract.mjs",
+    "contract:check": "node scripts/contract.mjs --check",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "site": "npm run build && node scripts/site_check.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.4",
+    "json-schema-to-typescript": "^15.0.4",
+    "typescript": "^7.0.2",
+    "vite": "8.3.4"
+  },
+  "dependencies": {
+    "chart.js": "4.5.1",
+    "highs": "1.15.4"
+  }
+}

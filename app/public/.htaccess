@@ -1,0 +1,22 @@
+# energiamudel.ee (SPECIFICATION.md R-DEP-3, R-DEP-4; DECISIONS D-124, D-125, D-178, D-318): v5 at the site's root,
+# public from 2026-10-17, behind a password from 2026-10-26 (D-178) and open to everyone again since 2026-11-25 at the
+# owner's word (D-318). Links already given out keep a home: the former staging path /v5 redirects here, and v3's
+# Data page /stat/ to the v3 archive at v3.energiamudel.ee (v3's ADR-035), which keeps v3's own password. sso.php,
+# the way in from the team's tools page (D-179), stays so that its button still lands here; its cookie gates nothing now.
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteRule ^v5(?:/(.*))?$ /$1 [R=301,L]
+  RewriteRule ^stat(/.*)?$ https://v3.energiamudel.ee/stat$1 [R=301,L]
+</IfModule>
+
+# Caching as v3 (R-DEP-4): the build's assets carry a content hash and never change under their
+# name; the page, the data files and the manifest are replaced in place on every deploy, so the
+# browser asks again each time.
+<IfModule mod_headers.c>
+  <FilesMatch "\.(js|css|wasm|woff2?)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  <FilesMatch "(\.html|\.json|\.json\.gz|\.bin\.gz)$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+</IfModule>

@@ -1,0 +1,17 @@
+# SPECIFICATION.md R-DEP-2: the repository's own gate on every push. Inert until the owner creates a
+# remote (R-PUB-6); it calls the same target as a local run.
+name: ci
+on: [push, pull_request]
+jobs:
+  ci:
+    runs-on: macos-latest # the jsc shell of JavaScriptCore, which golden:jsc needs (R-NFR-5)
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - run: make setup
+      - run: make ci

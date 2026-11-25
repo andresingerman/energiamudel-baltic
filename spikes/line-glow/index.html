@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Line glow</title>
+<!-- A separate bench of animations for the Links map's lines in service (the owner asked, 2026-11-03): nothing here is
+     in the application. Every card holds the application's own map, drawn by build.ts from app/src/ui/panel.ts on
+     design/fermi-style; only the glow differs. Served from the repository's root so that the application's fonts
+     load: see README.md beside this file. index.html is built from this file; edit this one. -->
+<style>
+@font-face { font-family: "Montserrat"; font-weight: 400; src: url("../../app/public/fonts/montserrat-400-latin.woff2") format("woff2"); }
+@font-face { font-family: "Montserrat"; font-weight: 600; src: url("../../app/public/fonts/montserrat-600-latin.woff2") format("woff2"); }
+@font-face { font-family: "Montserrat"; font-weight: 700; src: url("../../app/public/fonts/montserrat-700-latin.woff2") format("woff2"); }
+:root {
+  --bg: #F6F7F9; --surface: #FFFFFF; --surface2: #EFEEF7; --line: #DEDCEA; --ink: #1C1B29; --muted: #5A5870;
+  --navy: #03084C; --accent: #2303BD; --amber: #8A5700; --red: #C8102E; --green: #0B6E35;
+  --glow: color-mix(in srgb, var(--accent) 45%, var(--surface));
+  --text: "Montserrat", "Helvetica Neue", Arial, sans-serif; --num: var(--text);
+}
+* { box-sizing: border-box; }
+body { margin: 0; padding: 24px; background: var(--bg); color: var(--ink); font: 14px/1.45 var(--text); }
+h1 { margin: 0 0 4px; font-size: 20px; color: var(--navy); }
+.lead { margin: 0 0 14px; max-width: 920px; color: var(--muted); }
+.bar { display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: center; margin: 0 0 18px; }
+.bar button { height: 32px; padding: 0 14px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); color: var(--ink); font: 600 13px var(--text); cursor: pointer; }
+.bar button:hover { border-color: var(--accent); }
+.bar label { display: flex; gap: 8px; align-items: center; cursor: pointer; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 16px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 16px; }
+.card h2 { margin: 0 0 4px; font-size: 15px; color: var(--navy); }
+.card h2 b { display: inline-block; min-width: 22px; color: var(--accent); }
+.card p { margin: 0 0 10px; min-height: 5.8em; color: var(--muted); font-size: 13px; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.tag { padding: 2px 8px; border-radius: 6px; background: var(--surface2); font-size: 11.5px; font-weight: 600; }
+.tag.ok { background: #E3F7EC; color: var(--green); }
+.tag.no { background: #FDE8E8; color: var(--red); }
+
+/* the application's map, as theme.css draws it on design/fermi-style (D-206, D-207) */
+.lmap { display: block; width: 100%; height: auto; }
+.lmap .ln { cursor: pointer; }
+.lmap .ln .hit { stroke: transparent; stroke-width: 12; }
+.lmap .ln-on .cable { stroke: var(--accent); }
+.lmap .ln-off .cable { stroke: var(--red); stroke-dasharray: 4 3; }
+.lmap .ln-held .cable { stroke: var(--amber); stroke-dasharray: 6 2; }
+.lmap .ln:hover .cable { stroke-width: 5; }
+.lmap .node { fill: var(--surface); stroke: var(--ink); stroke-width: 1.5; }
+.lmap .land { fill: var(--surface2); stroke: var(--line); stroke-width: .6; stroke-linejoin: round; }
+.lmap .land.home { fill: color-mix(in srgb, var(--accent) 10%, var(--surface2)); stroke: color-mix(in srgb, var(--accent) 45%, var(--surface)); stroke-width: .8; }
+.lmap .edge { fill: none; stroke: rgb(0 0 0 / .45); stroke-width: .6; }
+.lmap .code { font: 11px var(--num); fill: var(--ink); }
+
+/* the glows: a band under the cable (A, B, E) or a light gradient over it (C, D); none on a line out of service */
+.glow { fill: none; stroke-linecap: round; pointer-events: none; }
+@keyframes breathe { 0%, 100% { opacity: .12; } 50% { opacity: .55; } }
+.v-a .glow, .v-b .glow { stroke: var(--glow); animation: breathe 3s ease-in-out infinite; }
+.v-e .glow { stroke: var(--glow); opacity: 0; }
+.v-e .glow.pulse { animation: breathe .8s ease-in-out 2; }
+/* the shimmer's styles: particles a dashed stroke moved by CSS, the others SMIL in the map */
+@keyframes dots { to { stroke-dashoffset: -14; } }
+/* a reader who asked for less motion: A and B a still halo, C, D and the styles nothing, E no pulse */
+.rm .glow { animation: none !important; }
+.rm .v-a .glow, .rm .v-b .glow { opacity: .3; }
+.rm .v-c .glow, .rm .v-d .glow, .rm .st .glow { visibility: hidden; }
+
+h1.sec { margin: 34px 0 4px; font-size: 18px; }
+.seg { display: inline-flex; padding: 3px; border-radius: 999px; background: var(--surface2); }
+.seg button { height: 28px; padding: 0 14px; border: 0; border-radius: 999px; background: none; color: var(--muted); font: 600 13px var(--text); cursor: pointer; }
+.seg button[aria-pressed="true"] { background: var(--accent); color: #fff; }
+.bar input[type="range"] { width: 140px; accent-color: var(--accent); }
+.bar output { min-width: 3.2em; font-weight: 600; font-variant-numeric: tabular-nums; }
+</style>
+</head>
+<body>
+<h1>Line glow: a separate bench</h1>
+<p class="lead">Six ways for the Links map to mark the lines in service, each on the application's own map
+  (design/fermi-style, 2026-11-03). Click a line on any map to switch it on or off: every map follows, and on
+  <b>E</b> a line switched on pulses. Nothing here is in the application.</p>
+<div class="bar">
+  <label><input type="checkbox" id="rm"> Reduced motion, as a reader who asked the system for less motion sees it</label>
+  <button type="button" id="pulse">Pulse E's lines again</button>
+  <button type="button" id="reset">Lines as the opening has them</button>
+</div>
+<div class="grid" id="grid"></div>
+
+<h1 class="sec">C and D: six styles of the shimmer</h1>
+<p class="lead">The same shimmer in six looks. The switch sets the way and pace for all six: <b>C</b> one stream, every line
+  the same way, as each is drawn; <b>D</b> one stream the way the year's net flow went in the opening run, the faster the
+  more TWh; <b>both ways</b> a stream on each edge of the cable, the two opposite ways, each on the right of its way as on
+  a two-way road; and <b>both ways by what each carried</b>, each stream at the pace and strength of what its way carried
+  in the year — FI→EE 6.48 TWh against EE→FI 0.64, SE4→LT 4.25 against 1.09, LT→PL 5.17 against 3.02, LT→LV 3.46
+  against 2.49, EE→LV 2.55 against 1.31. Speed and strength tune all six together.</p>
+<div class="bar">
+  <span class="seg" role="group" aria-label="Way and pace"><button type="button" data-mode="c" aria-pressed="false">C: one way</button><button type="button" data-mode="d" aria-pressed="false">D: the net flow</button><button type="button" data-mode="both" aria-pressed="true">Both ways</button><button type="button" data-mode="bothd" aria-pressed="false">Both ways, by what each carried</button></span>
+  <label>Speed <input type="range" id="speed" min="0.5" max="2" step="0.1" value="1"> <output id="speed-o">×1.0</output></label>
+  <label>Strength <input type="range" id="strength" min="0.3" max="1" step="0.05" value="0.9"> <output id="strength-o">90 %</output></label>
+</div>
+<div class="grid" id="styles"></div>
+<script>
+const NS = "http://www.w3.org/2000/svg";
+const MAP = "<svg class=\"lmap\" viewBox=\"0 0 340 288\" role=\"img\" aria-label=\"Schematic map of the lines; a line switched off is dashed red, one held for part of the year dashed amber\"><path class=\"land\" d=\"M113.2 112.0L112.1 115.0L109.1 116.4L108.6 125.7L111.2 129.3L108.5 130.8L106.5 135.7L101.5 139.1L99.4 142.2L98.4 146.8L94.0 149.2L97.1 142.4L95.4 140.3L93.0 134.5L94.1 131.7L93.8 122.7L102.8 111.2L107.0 109.9L108.9 111.1L109.7 108.3L111.1 107.7L115.1 111.0L113.2 112.0ZM56.1 177.5L55.1 177.4L54.4 174.6L54.7 163.8L59.6 151.0L61.8 149.9L67.9 132.6L68.6 131.5L70.7 132.5L69.1 134.2L69.2 137.2L65.4 146.5L64.3 152.5L63.0 154.0L57.3 175.4L56.1 177.5ZM71.4 -41.7L71.1 -36.7L72.5 -33.8L71.7 -32.4L72.6 -18.8L74.3 -13.0L73.7 -8.4L76.2 -5.9L81.4 -5.3L83.0 -1.5L89.7 -3.7L90.9 -0.5L94.4 3.8L99.7 6.8L103.3 10.3L102.8 14.5L108.5 17.5L110.0 19.8L113.1 28.0L112.7 31.0L96.9 44.3L94.4 44.6L89.9 47.5L90.2 48.8L93.7 49.3L102.2 45.5L104.7 48.9L100.1 50.4L99.1 55.0L97.1 58.0L78.4 68.4L75.9 71.7L67.5 76.9L52.5 76.5L50.2 77.7L63.2 79.8L66.3 83.7L60.1 86.1L62.8 95.3L61.2 97.5L61.1 107.6L58.9 107.8L57.9 112.0L58.6 114.1L59.0 122.2L60.1 125.0L59.6 127.9L56.1 134.8L57.3 143.0L53.2 158.0L48.7 166.7L45.3 178.3L41.4 182.3L36.9 179.8L30.1 181.2L17.7 180.8L16.2 181.9L17.1 186.2L14.9 186.7L12.7 185.5L9.1 188.5L4.9 194.5L4.6 198.8L7.7 207.2L3.9 212.7L-4.4 211.3L-15.4 214.8L-22.7 212.8L-22.7 -41.7L71.4 -41.7ZM116.5 110.0L114.2 107.9L116.4 105.0L120.8 105.7L116.9 107.4L116.5 110.0Z\"><title>Sweden</title></path><path class=\"land\" d=\"M361.2 194.0L350.9 200.7L348.0 196.5L349.0 191.2L346.4 188.9L340.7 186.6L335.3 189.9L330.1 183.7L323.8 185.2L320.7 181.6L321.9 176.7L321.2 171.4L319.7 164.8L317.5 162.5L314.9 156.6L314.6 153.2L312.9 151.4L309.2 152.3L310.8 146.8L310.9 143.6L313.5 137.8L313.4 133.6L306.9 127.9L306.3 124.7L302.6 123.8L302.7 122.9L303.7 118.1L305.8 115.6L307.0 112.5L311.7 110.8L312.3 109.6L309.9 106.9L306.1 95.0L305.7 92.9L306.7 86.0L304.3 73.6L304.5 71.4L306.3 67.2L311.8 60.3L315.0 50.9L320.8 46.9L317.6 42.3L318.8 39.4L317.6 32.3L318.6 29.9L320.3 29.7L322.2 32.3L324.9 33.7L326.9 31.9L327.6 28.6L329.1 27.1L334.3 28.9L338.8 28.0L343.3 20.8L362.7 25.2L362.7 194.2L361.2 194.0ZM362.7 20.0L359.8 15.8L356.3 12.7L341.6 12.9L335.8 7.0L331.9 5.2L328.5 -1.7L331.4 0.3L332.1 -4.6L329.0 -7.4L321.4 -3.0L312.7 -1.5L326.6 -16.5L345.7 -32.8L353.4 -41.7L362.7 -41.7L362.7 20.0ZM157.7 217.6L149.5 229.9L156.1 233.0L162.9 231.9L164.0 218.2L167.5 217.7L171.2 221.1L183.0 226.6L194.2 226.7L195.6 230.4L200.0 234.6L196.8 247.4L196.7 250.3L198.7 256.0L127.0 251.7L132.8 244.5L134.7 239.6L135.4 232.5L138.4 231.0L145.0 231.2L147.8 229.4L156.4 217.3L157.7 217.6Z\"><title>Russia</title></path><path class=\"land\" d=\"M12.6 329.2L2.9 317.6L3.1 315.4L8.4 308.2L9.3 304.3L9.4 300.7L5.9 282.1L13.2 285.9L12.5 283.1L12.7 278.2L4.8 276.3L4.8 272.9L8.7 274.0L29.2 265.0L49.6 258.8L58.0 247.8L65.4 246.0L73.9 240.5L92.6 236.0L98.0 235.9L107.9 242.4L108.8 244.5L100.6 239.8L105.8 252.9L112.8 256.3L122.6 254.8L127.0 251.7L185.2 255.9L197.9 256.3L200.0 254.4L203.5 255.6L205.0 258.2L210.4 260.9L214.3 264.9L214.8 272.6L217.6 287.6L223.5 307.9L224.8 320.1L224.4 324.9L218.4 329.2L12.6 329.2Z\"><title>Poland</title></path><path class=\"land\" d=\"M-22.7 253.6L-19.3 259.1L-12.5 265.0L-6.3 264.5L-4.0 270.1L-3.0 277.0L0.6 280.6L5.9 282.1L9.4 300.7L9.3 304.3L8.4 308.2L3.1 315.4L2.9 317.6L12.6 329.2L-22.7 329.2L-22.7 253.6ZM-6.0 257.7L-6.6 259.2L-9.2 256.8L-11.7 256.8L-13.3 260.5L-14.4 260.6L-19.0 255.7L-18.7 248.2L-17.4 246.6L-17.2 244.3L-15.0 241.8L-13.1 241.7L-11.5 245.2L-7.8 247.6L-7.5 248.6L-9.5 251.5L-9.0 253.2L-6.6 254.9L-6.0 257.7ZM4.8 272.9L4.8 276.3L-1.7 275.9L-2.2 273.4L-1.8 271.0L-3.9 268.4L-3.9 265.6L4.8 272.9Z\"><title>Germany</title></path><path class=\"land\" d=\"M134.7 5.9L138.0 6.1L141.9 9.9L140.4 12.8L137.0 13.3L136.8 16.9L130.2 16.7L128.6 11.1L128.9 9.7L131.0 8.9L131.1 11.9L132.5 11.6L133.1 8.3L131.2 6.1L132.0 4.6L133.5 3.9L134.7 5.9ZM128.5 14.0L126.5 15.2L125.1 13.1L125.8 10.7L127.6 10.6L128.5 14.0Z\"><title>Åland</title></path><path class=\"land\" d=\"M353.1 -41.4L345.7 -32.8L326.6 -16.5L312.7 -1.5L309.8 0.0L305.1 1.5L299.3 -1.8L293.6 1.2L284.1 3.6L283.8 1.2L285.7 -5.3L284.9 -5.2L282.3 1.4L280.6 3.2L276.6 3.9L272.8 1.0L271.0 1.1L272.8 6.6L270.8 6.4L266.5 9.7L265.5 9.7L264.2 7.0L259.7 10.0L255.4 10.5L252.9 12.7L240.3 16.1L236.8 19.9L234.4 19.1L220.4 22.3L214.5 21.4L208.1 27.3L204.5 28.5L203.2 28.1L208.3 22.0L208.5 19.9L205.8 18.9L203.9 16.7L202.0 12.1L201.0 11.8L199.3 17.6L196.0 19.7L191.8 19.6L191.3 17.1L192.0 14.7L191.4 14.3L192.0 12.4L194.7 11.3L194.7 10.2L192.9 9.1L194.6 5.0L187.2 4.1L178.0 -0.2L176.9 -3.9L172.6 -1.3L168.6 -4.0L166.8 -19.5L167.2 -23.3L169.5 -27.9L170.3 -32.6L170.2 -41.0L171.3 -41.7L353.1 -41.4ZM179.6 7.0L177.2 4.9L176.9 4.1L177.8 3.6L177.4 1.3L179.2 2.6L180.2 4.1L179.2 4.5L181.2 6.8L179.6 7.0ZM185.3 5.4L189.4 6.0L190.8 8.2L188.4 9.6L188.3 11.3L189.5 13.9L187.2 13.9L185.6 11.0L183.1 8.9L184.2 6.0L185.3 5.4ZM168.6 0.7L165.5 0.8L163.5 -4.3L164.7 -5.8L168.9 -1.2L168.6 0.7ZM177.6 15.0L174.4 16.1L174.6 13.7L178.3 12.4L177.6 15.0Z\"><title>Finland</title></path><path class=\"land\" d=\"M23.8 229.0L15.5 224.9L16.2 219.3L17.3 216.8L25.7 223.2L25.8 225.6L23.8 229.0Z\"><title>Denmark</title></path><path class=\"land\" d=\"M218.4 329.2L224.4 324.9L224.7 322.1L224.1 311.4L221.9 301.3L217.6 287.6L215.0 273.4L220.6 274.5L231.0 272.9L233.9 275.3L240.7 271.7L244.1 271.9L245.4 265.9L246.4 264.8L250.4 265.3L253.4 262.0L259.8 258.7L261.3 261.9L260.9 264.2L266.3 264.3L266.3 260.1L261.7 257.1L263.4 251.7L265.8 247.4L265.7 241.0L268.8 232.6L276.0 229.1L277.7 224.0L278.6 223.4L285.6 223.8L286.7 220.7L289.6 217.8L282.4 214.9L284.8 206.4L285.5 201.4L290.6 199.6L293.6 195.3L295.9 194.6L307.7 195.9L309.2 191.2L315.0 184.4L320.0 181.5L323.8 185.2L330.1 183.7L335.3 189.9L340.7 186.6L348.5 190.1L349.0 192.5L348.0 196.5L350.9 200.7L360.0 194.5L362.7 194.2L362.7 329.2L218.4 329.2Z\"><title>Belarus</title></path><path class=\"land home\" d=\"M156.4 217.3L159.0 212.5L161.3 203.5L161.0 208.9L159.4 214.6L157.7 217.6L156.4 217.3ZM198.7 256.0L196.7 250.3L196.8 247.4L200.0 234.6L195.6 230.4L194.2 226.7L183.0 226.6L171.2 221.1L167.5 217.7L164.0 218.2L163.2 214.9L164.1 210.2L160.1 195.3L159.7 184.6L173.5 174.4L183.3 170.6L194.6 171.9L201.2 171.0L203.3 171.7L205.0 174.0L208.4 172.2L222.4 173.8L229.4 176.5L237.4 175.7L245.7 170.4L247.1 170.9L250.9 179.2L264.4 183.2L273.9 191.8L278.4 197.9L285.5 201.4L284.8 206.4L282.4 214.9L289.6 217.8L286.7 220.7L285.6 223.8L278.6 223.4L277.7 224.0L276.0 229.1L268.8 232.6L265.7 241.0L265.8 247.4L263.4 251.7L261.7 257.1L266.3 260.1L266.7 263.4L264.8 265.0L260.9 264.2L261.3 261.9L259.8 258.7L253.4 262.0L250.4 265.3L246.4 264.8L245.4 265.9L244.1 271.9L240.7 271.7L233.9 275.3L231.0 272.9L216.7 274.2L215.0 273.4L214.3 264.9L212.4 262.5L205.0 258.2L203.5 255.6L200.0 254.4L198.7 256.0Z\"><title>Lithuania</title></path><path class=\"land home\" d=\"M284.3 201.2L278.4 197.9L273.9 191.8L264.4 183.2L250.9 179.2L247.1 170.9L245.7 170.4L237.4 175.7L229.4 176.5L222.4 173.8L208.4 172.2L205.0 174.0L203.3 171.7L201.2 171.0L194.6 171.9L183.3 170.6L173.5 174.4L159.7 184.6L159.0 176.7L159.4 161.0L160.3 153.2L166.6 145.1L169.1 132.4L175.2 122.1L193.9 115.7L196.0 121.0L207.1 132.4L210.5 142.1L218.7 147.1L225.1 145.5L233.0 138.7L235.3 135.4L235.8 132.3L234.9 119.0L233.5 113.2L234.0 109.6L251.9 101.5L254.5 104.3L255.5 103.8L255.7 102.2L257.0 102.5L267.3 109.7L271.8 110.9L278.8 120.8L282.5 123.2L284.1 123.7L293.9 120.5L298.9 123.4L305.3 124.0L306.3 124.7L306.9 127.9L313.4 133.6L313.5 137.8L310.9 143.6L310.8 146.8L309.2 152.3L313.9 152.0L314.6 153.2L314.9 156.6L317.5 162.5L319.7 164.8L321.9 176.7L320.7 181.6L318.1 182.0L315.0 184.4L309.2 191.2L307.7 195.9L295.9 194.6L293.6 195.3L290.6 199.6L284.3 201.2Z\"><title>Latvia</title></path><path class=\"land home\" d=\"M302.6 123.8L293.9 120.5L284.1 123.7L282.5 123.2L278.8 120.8L271.8 110.9L267.3 109.7L255.7 102.2L255.2 104.3L251.9 101.5L234.0 109.6L237.2 99.8L237.7 93.3L239.1 91.5L238.7 89.4L234.3 88.3L232.0 92.1L229.3 93.1L221.4 89.1L220.0 86.1L219.7 83.1L216.8 80.2L215.5 76.7L216.0 74.3L219.4 71.4L215.4 71.3L213.8 65.8L215.7 62.5L214.6 61.2L215.7 58.0L215.2 54.4L221.7 51.0L228.6 50.3L227.9 47.0L230.6 46.8L235.3 42.8L239.9 43.5L246.6 40.8L259.4 40.8L261.1 39.2L260.9 35.9L286.2 39.4L294.1 43.7L314.9 45.2L317.6 42.3L320.8 46.9L315.0 50.9L311.8 60.3L306.3 67.2L304.5 71.4L304.3 73.6L306.7 86.0L305.7 92.9L306.1 95.0L309.9 106.9L312.3 110.2L307.0 112.5L305.8 115.6L303.7 118.1L302.6 123.8ZM196.9 79.3L199.9 78.3L203.2 78.9L211.3 85.4L206.9 86.0L197.9 94.6L189.8 95.1L187.4 97.5L186.5 102.0L184.8 105.6L181.3 107.0L181.0 104.4L185.6 97.8L178.7 93.3L178.0 91.6L179.6 91.0L181.0 88.1L178.2 83.5L181.4 82.9L183.2 84.3L185.2 82.7L187.4 83.0L188.8 80.0L193.7 78.0L196.9 79.3ZM200.4 71.8L198.7 70.0L196.3 74.6L193.6 75.4L192.0 74.5L192.2 72.8L190.7 68.2L185.0 66.7L182.6 64.9L191.8 63.6L194.6 59.1L196.1 58.9L197.3 59.4L197.8 61.9L202.0 62.9L203.6 65.9L204.2 69.4L202.3 69.7L200.4 71.8ZM209.9 81.7L205.4 78.7L207.7 75.9L211.5 77.2L211.8 81.2L209.9 81.7Z\"><title>Estonia</title></path><g class=\"ln ln-on\" data-switch=\"estlink1\"><title>EstLink 1: on</title><line x1=\"247.4699689384164\" y1=\"10.136511906940381\" x2=\"270.4699689384164\" y2=\"70.13651190694038\" class=\"hit\"/><line x1=\"247.4699689384164\" y1=\"10.136511906940381\" x2=\"270.4699689384164\" y2=\"70.13651190694038\" class=\"cable\" stroke-width=\"2.7\"/></g><g class=\"ln ln-on\" data-switch=\"estlink2\"><title>EstLink 2: on</title><line x1=\"240\" y1=\"13\" x2=\"263\" y2=\"73\" class=\"hit\"/><line x1=\"240\" y1=\"13\" x2=\"263\" y2=\"73\" class=\"cable\" stroke-width=\"3.7\"/></g><g class=\"ln ln-off\" data-switch=\"estlink3\"><title>EstLink 3: off</title><line x1=\"232.5300310615836\" y1=\"15.863488093059619\" x2=\"255.5300310615836\" y2=\"75.86348809305962\" class=\"hit\"/><line x1=\"232.5300310615836\" y1=\"15.863488093059619\" x2=\"255.5300310615836\" y2=\"75.86348809305962\" class=\"cable\" stroke-width=\"3.8\"/></g><g class=\"ln ln-on\" data-switch=\"ee_lv\"><title>EE–LV lines: on</title><line x1=\"266.9320809950618\" y1=\"73.73398845241154\" x2=\"252.93208099506185\" y2=\"148.73398845241155\" class=\"hit\"/><line x1=\"266.9320809950618\" y1=\"73.73398845241154\" x2=\"252.93208099506185\" y2=\"148.73398845241155\" class=\"cable\" stroke-width=\"4.5\"/></g><g class=\"ln ln-off\" data-switch=\"ee_lv_4\"><title>Fourth EE–LV line: off</title><line x1=\"259.0679190049382\" y1=\"72.26601154758846\" x2=\"245.06791900493815\" y2=\"147.26601154758845\" class=\"hit\"/><line x1=\"259.0679190049382\" y1=\"72.26601154758846\" x2=\"245.06791900493815\" y2=\"147.26601154758845\" class=\"cable\" stroke-width=\"4.5\"/></g><g class=\"ln ln-on\" data-switch=\"lv_lt\"><title>LV–LT lines: on</title><line x1=\"249\" y1=\"148\" x2=\"224\" y2=\"217\" class=\"hit\"/><line x1=\"249\" y1=\"148\" x2=\"224\" y2=\"217\" class=\"cable\" stroke-width=\"4.5\"/></g><g class=\"ln ln-on\" data-switch=\"nordbalt\"><title>NordBalt: on</title><line x1=\"43\" y1=\"158\" x2=\"224\" y2=\"217\" class=\"hit\"/><line x1=\"43\" y1=\"158\" x2=\"224\" y2=\"217\" class=\"cable\" stroke-width=\"3.8\"/></g><g class=\"ln ln-on\" data-switch=\"harmony\"><title>Harmony Link: on</title><line x1=\"186.51991125660555\" y1=\"275.02794971207646\" x2=\"220.51991125660555\" y2=\"215.0279497120765\" class=\"hit\"/><line x1=\"186.51991125660555\" y1=\"275.02794971207646\" x2=\"220.51991125660555\" y2=\"215.0279497120765\" class=\"cable\" stroke-width=\"3.8\"/></g><g class=\"ln ln-on\" data-switch=\"litpol\"><title>LitPol: on</title><line x1=\"193.48008874339445\" y1=\"278.97205028792354\" x2=\"227.48008874339445\" y2=\"218.9720502879235\" class=\"hit\"/><line x1=\"193.48008874339445\" y1=\"278.97205028792354\" x2=\"227.48008874339445\" y2=\"218.9720502879235\" class=\"cable\" stroke-width=\"3.2\"/></g><circle cx=\"240\" cy=\"13\" r=\"4\" class=\"node\"/><svg x=\"249\" y=\"8\" width=\"15\" height=\"10\" viewBox=\"0 0 30 20\"><rect width=\"30\" height=\"20\" fill=\"#fff\"/><rect x=\"8\" width=\"5\" height=\"20\" fill=\"#002F6C\"/><rect y=\"7.5\" width=\"30\" height=\"5\" fill=\"#002F6C\"/><rect x=\".25\" y=\".25\" width=\"29.5\" height=\"19.5\" class=\"edge\"/></svg><text x=\"267\" y=\"17\" class=\"code\">FI</text><circle cx=\"263\" cy=\"73\" r=\"4\" class=\"node\"/><svg x=\"272\" y=\"68\" width=\"15\" height=\"10\" viewBox=\"0 0 30 20\"><rect width=\"30\" height=\"6.67\" fill=\"#0072CE\"/><rect y=\"6.67\" width=\"30\" height=\"6.67\" fill=\"#000\"/><rect y=\"13.33\" width=\"30\" height=\"6.67\" fill=\"#fff\"/><rect x=\".25\" y=\".25\" width=\"29.5\" height=\"19.5\" class=\"edge\"/></svg><text x=\"290\" y=\"77\" class=\"code\">EE</text><circle cx=\"249\" cy=\"148\" r=\"4\" class=\"node\"/><svg x=\"258\" y=\"143\" width=\"15\" height=\"10\" viewBox=\"0 0 30 20\"><rect width=\"30\" height=\"20\" fill=\"#9E3039\"/><rect y=\"8\" width=\"30\" height=\"4\" fill=\"#fff\"/><rect x=\".25\" y=\".25\" width=\"29.5\" height=\"19.5\" class=\"edge\"/></svg><text x=\"276\" y=\"152\" class=\"code\">LV</text><circle cx=\"224\" cy=\"217\" r=\"4\" class=\"node\"/><svg x=\"233\" y=\"212\" width=\"15\" height=\"10\" viewBox=\"0 0 30 20\"><rect width=\"30\" height=\"6.67\" fill=\"#FDB913\"/><rect y=\"6.67\" width=\"30\" height=\"6.67\" fill=\"#006A44\"/><rect y=\"13.33\" width=\"30\" height=\"6.67\" fill=\"#C1272D\"/><rect x=\".25\" y=\".25\" width=\"29.5\" height=\"19.5\" class=\"edge\"/></svg><text x=\"251\" y=\"221\" class=\"code\">LT</text><circle cx=\"43\" cy=\"158\" r=\"4\" class=\"node\"/><svg x=\"26\" y=\"138\" width=\"15\" height=\"10\" viewBox=\"0 0 30 20\"><rect width=\"30\" height=\"20\" fill=\"#006AA7\"/><rect x=\"9\" width=\"4\" height=\"20\" fill=\"#FECC02\"/><rect y=\"8\" width=\"30\" height=\"4\" fill=\"#FECC02\"/><rect x=\".25\" y=\".25\" width=\"29.5\" height=\"19.5\" class=\"edge\"/></svg><text x=\"44\" y=\"147\" class=\"code\">SE4</text><circle cx=\"190\" cy=\"277\" r=\"4\" class=\"node\"/><svg x=\"199\" y=\"272\" width=\"15\" height=\"10\" viewBox=\"0 0 30 20\"><rect width=\"30\" height=\"10\" fill=\"#fff\"/><rect y=\"10\" width=\"30\" height=\"10\" fill=\"#DC143C\"/><rect x=\".25\" y=\".25\" width=\"29.5\" height=\"19.5\" class=\"edge\"/></svg><text x=\"217\" y=\"281\" class=\"code\">PL</text></svg>";
+const LINES = {"estlink1":{"border":"EE-FI","name":"EstLink 1"},"estlink2":{"border":"EE-FI","name":"EstLink 2"},"estlink3":{"border":"EE-FI","name":"EstLink 3"},"ee_lv":{"border":"EE-LV","name":"EE–LV lines"},"ee_lv_4":{"border":"EE-LV","name":"Fourth EE–LV line"},"lv_lt":{"border":"LV-LT","name":"LV–LT lines"},"nordbalt":{"border":"LT-SE4","name":"NordBalt"},"harmony":{"border":"LT-PL","name":"Harmony Link"},"litpol":{"border":"LT-PL","name":"LitPol"}};
+// the year's net flow in the opening run (0 SMR, weather year 2009), TWh, + from the border code's first zone to its
+// second; read off the application's borders panel on 2026-11-03
+const FLOW = { "EE-FI": -5.83, "EE-LV": 1.24, "LV-LT": -0.98, "LT-SE4": -3.17, "LT-PL": 2.15 };
+// what each way carried in the same year, TWh: the border code's first zone to its second, and back (the borders panel's
+// "sent, TWh", 2026-11-03)
+const SENT = { "EE-FI": [0.64, 6.48], "EE-LV": [2.55, 1.31], "LV-LT": [2.49, 3.46], "LT-SE4": [1.09, 4.25], "LT-PL": [5.17, 3.02] };
+// where panel.ts starts each border's lines (x1, y1) and where it ends them
+const ENDS = { "EE-FI": ["FI", "EE"], "EE-LV": ["EE", "LV"], "LV-LT": ["LV", "LT"], "LT-SE4": ["SE4", "LT"], "LT-PL": ["PL", "LT"] };
+const PERIOD = 48; // a shimmer's spacing along its line, in the map's units (the map is 340 wide)
+
+const VARIANTS = [
+  { id: "today", letter: "0", name: "Today",
+    text: "No motion: a line in service is indigo, one switched off red and dashed, one held for part of the year amber and dashed.",
+    tags: [["", "nothing to build"], ["ok", "no motion"]] },
+  { id: "a", letter: "A", name: "Breathing band",
+    text: "Under each line in service a wider lavender band swells and fades every 3 s. Flat, no blur, no direction.",
+    tags: [["", "about 1 h"], ["ok", "flat, as the design"], ["ok", "no direction"], ["no", "WCAG 2.2.2: a pause, or a stop after 5 s"]] },
+  { id: "b", letter: "B", name: "Soft glow",
+    text: "The same rhythm with a blurred halo: the glow look. It leaves the design's flat style, and Safari draws an SVG blur more slowly.",
+    tags: [["", "about 1 h"], ["no", "leaves the flat style"], ["ok", "no direction"], ["no", "WCAG 2.2.2: a pause"]] },
+  { id: "c", letter: "C", name: "Shimmer",
+    text: "A light gradient runs along each line in service. It reads as flow, and gives each line a direction the map does not know: flows turn hour by hour.",
+    tags: [["", "about 2 h"], ["no", "a direction that is not there"], ["no", "WCAG 2.2.2: a pause"]] },
+  { id: "d", letter: "D", name: "Shimmer by the year's flow",
+    text: "The gradient runs the way the year's net flow went in the opening (0 SMR, weather year 2009), the faster the more TWh: FI→EE 5.8, SE4→LT 3.2, LT→PL 2.2, EE→LV 1.2, LT→LV 1.0.",
+    tags: [["", "about half a day"], ["ok", "direction and pace from the run"], ["", "the panel needs the run's results"], ["no", "WCAG 2.2.2: a pause"]] },
+  { id: "e", letter: "E", name: "Pulse on a change",
+    text: "Still until a line is switched on: then it pulses twice and settles. Feedback for the click, not decoration.",
+    tags: [["", "about 1 h"], ["ok", "motion only on a change"], ["ok", "WCAG 2.2.2 met"], ["ok", "no direction"]] },
+];
+
+// the shimmer's six looks: P its spacing along a line, v its pace in the map's units a second (C; D scales it by the flow)
+const STYLES = [
+  { id: "streak", letter: "C1", name: "Streak", P: 48, v: 27,
+    text: "A short light streak runs along the cable every 48 units: the C and D above." },
+  { id: "comet", letter: "C2", name: "Comet", P: 110, v: 42,
+    text: "Sparse bright heads with a tail that fades behind them: the tail tells the way at a glance." },
+  { id: "dots", letter: "C3", name: "Particles", P: 14, v: 12,
+    text: "Small light dots travel along the cable, as current in a diagram. The cheapest: a dashed stroke moved by CSS." },
+  { id: "halo", letter: "C4", name: "Travelling glow", P: 120, v: 40,
+    text: "A soft lavender glow under the cable drifts along it: B's blurred glow, moving." },
+  { id: "chevrons", letter: "C5", name: "Chevrons", P: 26, v: 20,
+    text: "Small arrows move along the cable: the plainest about the way, and the loudest." },
+  { id: "wave", letter: "C6", name: "Living cable", P: 140, v: 35,
+    text: "A slow wave of light passes along the cable itself: the quietest of the six." },
+];
+const WHITE = "#ffffff", LAV = "#9C8EE1", PALE = "#C9C0F5";
+let mode = "both", speed = 1, strength = 0.9;
+
+const on = new Set(); // the lines in service, keyed as panel.ts keys them
+let opening = [];
+const cards = [];
+
+/** A line's net flow in the opening run: its way along the drawn line (1 from its start, -1 towards it) and its TWh. */
+function flowOf(key) {
+  const b = LINES[key].border, f = FLOW[b] ?? 0, [first, second] = b.split("-");
+  return { dir: (f > 0 ? first : second) === ENDS[b][0] ? 1 : -1, twh: Math.abs(f) };
+}
+
+function geom(g) {
+  const cable = g.querySelector(".cable");
+  const [x1, y1, x2, y2] = ["x1", "y1", "x2", "y2"].map((a) => Number(cable.getAttribute(a)));
+  const len = Math.hypot(x2 - x1, y2 - y1);
+  return { cable, x1, y1, x2, y2, len, ux: (x2 - x1) / len, uy: (y2 - y1) / len, w: Number(cable.getAttribute("stroke-width")) };
+}
+
+const attrs = (el, a) => { for (const [k, x] of Object.entries(a)) el.setAttribute(k, String(x)); return el; };
+
+/** A gradient along a line, repeating every P, moved one period each `dur` seconds the line's way (`dir`). */
+function gradient(c, m, id, P, stops, dur, dir) {
+  c.defs.insertAdjacentHTML("beforeend", `<linearGradient id="${id}" gradientUnits="userSpaceOnUse" spreadMethod="repeat" x1="${m.x1}" y1="${m.y1}" x2="${m.x1 + m.ux * P}" y2="${m.y1 + m.uy * P}">`
+    + stops.map(([o, col, a]) => `<stop offset="${o}" stop-color="${col}" stop-opacity="${a}"/>`).join("")
+    + `<animateTransform attributeName="gradientTransform" type="translate" from="0 0" to="${dir * m.ux * P} ${dir * m.uy * P}" dur="${dur}s" repeatCount="indefinite"/></linearGradient>`);
+  return `url(#${id})`;
+}
+
+/** What a line's border carried each way in the year, TWh: from the line's drawn start to its end, and back. */
+function sentOf(key) {
+  const b = LINES[key].border, [ab, ba] = SENT[b] ?? [0, 0];
+  return b.split("-")[0] === ENDS[b][0] ? [ab, ba] : [ba, ab];
+}
+
+/** A line's geometry moved sideways by `off`, positive to the right of its drawn way (y runs down the map). */
+const shift = (m, off) => ({ ...m, x1: m.x1 - m.uy * off, y1: m.y1 + m.ux * off, x2: m.x2 - m.uy * off, y2: m.y2 + m.ux * off });
+
+/** One of the shimmer's six looks on a line in service: one stream as C or D has it, or a stream on each edge of the
+ * cable, the two opposite ways, each on the right of its way as on a two-way road — at one pace, or each at the pace
+ * and strength of what it carried in the year. */
+function shimmer(c, g, key) {
+  const m = geom(g), base = c.s.v * speed;
+  if (mode === "c" || mode === "d") {
+    const f = mode === "d" ? flowOf(key) : null;
+    stream(c, g, `${key}-0`, m, { dir: f ? f.dir : 1, v: base * (f ? 0.45 + f.twh / 3 : 1), k: strength, edge: 0 });
+    return;
+  }
+  const edge = Math.max(0.9, m.w * 0.38), off = Math.max(0.6, m.w / 2 - edge / 2);
+  const [fwd, back] = mode === "bothd" ? sentOf(key) : [null, null];
+  const pace = (x) => (x === null ? 1 : 0.35 + x / 2.5), bright = (x) => (x === null ? 1 : Math.min(1, 0.35 + x / 2));
+  stream(c, g, `${key}-0`, shift(m, off), { dir: 1, v: base * pace(fwd), k: strength * bright(fwd), edge });
+  stream(c, g, `${key}-1`, shift(m, -off), { dir: -1, v: base * pace(back), k: strength * bright(back), edge });
+}
+
+/** One stream of a look along `m`: `edge` the stream's width on a cable's edge, 0 for one stream down its middle. */
+function stream(c, g, key, m, { dir, v, k, edge }) {
+  const s = c.s, dur = s.P / v;
+  const line = (a) => attrs(document.createElementNS(NS, "line"), { x1: m.x1, y1: m.y1, x2: m.x2, y2: m.y2, class: "glow", ...a });
+  if (s.id === "dots") {
+    const l = line({ stroke: WHITE, "stroke-width": edge ? Math.max(1.1, edge) : Math.max(1.6, m.w * 0.55), "stroke-dasharray": "0.1 13.9", opacity: k });
+    l.style.animation = `dots ${dur}s linear ${-((performance.now() / 1000) % dur)}s infinite ${dir < 0 ? "reverse" : "normal"}`;
+    g.append(l);
+    return;
+  }
+  if (s.id === "chevrons") {
+    const n = Math.max(2, Math.round(m.len / s.P)), all = m.len / v, z = edge ? 0.7 : 1;
+    const path = dir > 0 ? `M${m.x1},${m.y1} L${m.x2},${m.y2}` : `M${m.x2},${m.y2} L${m.x1},${m.y1}`;
+    for (let i = 0; i < n; i++) {
+      const el = attrs(document.createElementNS(NS, "path"), { class: "glow", d: `M${-2.4 * z},${-2.6 * z} L${1.4 * z},0 L${-2.4 * z},${2.6 * z}`,
+        stroke: WHITE, "stroke-width": edge ? 1.1 : 1.4, "stroke-linejoin": "round", opacity: k });
+      el.innerHTML = `<animateMotion dur="${all}s" begin="${-(i * all) / n}s" repeatCount="indefinite" rotate="auto" path="${path}"/>`;
+      g.append(el);
+    }
+    return;
+  }
+  // streak, comet, travelling glow and living cable: a gradient along the cable; the comet's head leads its tail; on an
+  // edge the glow keeps out of the other way's
+  if (s.id === "halo" && edge) m = shift(m, dir * 2.5);
+  const lead = (st) => (dir > 0 ? st : st.map(([o, col, a]) => [Math.round((1 - o) * 1000) / 1000, col, a]).reverse());
+  const look = {
+    streak: { width: edge || m.w - 0.6, stops: [[0, WHITE, 0], [0.3, WHITE, 0], [0.5, WHITE, k], [0.7, WHITE, 0], [1, WHITE, 0]] },
+    comet: { width: edge || m.w - 0.4, stops: lead([[0, WHITE, 0], [0.45, WHITE, 0], [0.86, WHITE, 0.55 * k], [0.9, WHITE, k], [0.93, WHITE, 0], [1, WHITE, 0]]) },
+    halo: { width: edge ? edge + 5 : m.w + 9, under: true, blur: true, stops: [[0, LAV, 0], [0.32, LAV, 0], [0.5, LAV, k], [0.68, LAV, 0], [1, LAV, 0]] },
+    wave: { width: edge || m.w, stops: [[0, PALE, 0], [0.5, PALE, 0.85 * k], [1, PALE, 0]] },
+  }[s.id];
+  const l = line({ stroke: gradient(c, m, `st-${c.i}-${key}`, s.P, look.stops, dur, dir), "stroke-width": Math.max(edge ? 0.9 : 1.2, look.width) });
+  if (look.blur) l.setAttribute("filter", `url(#blur-${c.i})`);
+  if (look.under) g.insertBefore(l, m.cable); else g.append(l);
+}
+
+function glow(c, g, key, pulse) {
+  const cable = g.querySelector(".cable");
+  const [x1, y1, x2, y2] = ["x1", "y1", "x2", "y2"].map((a) => Number(cable.getAttribute(a)));
+  const w = Number(cable.getAttribute("stroke-width"));
+  const line = document.createElementNS(NS, "line");
+  for (const [a, x] of Object.entries({ x1, y1, x2, y2 })) line.setAttribute(a, String(x));
+  line.setAttribute("class", "glow");
+  if (c.v === "a" || c.v === "b" || c.v === "e") {
+    line.setAttribute("stroke-width", String(w + (c.v === "b" ? 9 : 6)));
+    if (c.v === "b") line.setAttribute("filter", `url(#blur-${c.i})`);
+    // in step with the bands already drawn, as a panel drawn again would need: the animation keeps the page's clock
+    if (c.v !== "e") line.style.animationDelay = `${-(performance.now() % 3000)}ms`;
+    if (pulse) { line.classList.add("pulse"); line.addEventListener("animationend", () => line.classList.remove("pulse")); }
+    g.insertBefore(line, cable);
+    return;
+  }
+  // C and D: a light gradient over the cable, repeating every PERIOD along it, moved one period a cycle
+  const len = Math.hypot(x2 - x1, y2 - y1), ux = (x2 - x1) / len, uy = (y2 - y1) / len;
+  let dir = 1, dur = 1.8;
+  if (c.v === "d") {
+    const f = flowOf(key);
+    dir = f.dir;
+    dur = Math.min(4, Math.max(0.9, 3.2 / (0.6 + f.twh / 2.5)));
+  }
+  const id = `sh-${c.i}-${key}`;
+  c.defs.insertAdjacentHTML("beforeend", `<linearGradient id="${id}" gradientUnits="userSpaceOnUse" spreadMethod="repeat" x1="${x1}" y1="${y1}" x2="${x1 + ux * PERIOD}" y2="${y1 + uy * PERIOD}">`
+    + `<stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".3" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".9"/>`
+    + `<stop offset=".7" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff" stop-opacity="0"/>`
+    + `<animateTransform attributeName="gradientTransform" type="translate" from="0 0" to="${dir * ux * PERIOD} ${dir * uy * PERIOD}" dur="${dur}s" repeatCount="indefinite"/></linearGradient>`);
+  line.setAttribute("stroke", `url(#${id})`);
+  line.setAttribute("stroke-width", String(Math.max(1.2, w - 0.6)));
+  g.append(line);
+}
+
+function paint(pulse = null) {
+  for (const c of cards) {
+    c.defs.querySelectorAll("linearGradient").forEach((x) => x.remove());
+    for (const g of c.svg.querySelectorAll("g.ln")) {
+      const key = g.dataset.switch, live = on.has(key);
+      g.classList.remove("ln-on", "ln-off", "ln-held");
+      g.classList.add(live ? "ln-on" : "ln-off");
+      g.querySelector("title").textContent = `${LINES[key].name}: ${live ? "on" : "off"}`;
+      g.querySelectorAll(".glow").forEach((x) => x.remove());
+      if (live && c.s) shimmer(c, g, key);
+      else if (live && c.v !== "today") glow(c, g, key, c.v === "e" && key === pulse);
+    }
+  }
+}
+
+function addCard(where, cls, head, text, tags) {
+  const card = document.createElement("section");
+  card.className = `card ${cls}`;
+  card.innerHTML = `<h2>${head}</h2><p>${text}</p>${MAP}${tags ? `<div class="tags">${tags.map(([t, x]) => `<span class="tag ${t}">${x}</span>`).join("")}</div>` : ""}`;
+  where.append(card);
+  const i = cards.length, svg = card.querySelector("svg.lmap"), defs = document.createElementNS(NS, "defs");
+  defs.innerHTML = `<filter id="blur-${i}" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="2.4"/></filter>`;
+  svg.prepend(defs);
+  const c = { i, svg, defs };
+  cards.push(c);
+  return c;
+}
+VARIANTS.forEach((v) => { addCard(document.getElementById("grid"), `v-${v.id}`, `<b>${v.letter}</b> ${v.name}`, v.text, v.tags).v = v.id; });
+STYLES.forEach((s) => { Object.assign(addCard(document.getElementById("styles"), `st st-${s.id}`, `<b>${s.letter}</b> ${s.name}`, s.text, null), { v: "style", s }); });
+for (const g of cards[0].svg.querySelectorAll("g.ln")) if (!g.classList.contains("ln-off")) on.add(g.dataset.switch);
+opening = [...on];
+paint();
+
+for (const b of document.querySelectorAll("[data-mode]")) b.onclick = () => {
+  mode = b.dataset.mode;
+  for (const x of document.querySelectorAll("[data-mode]")) x.setAttribute("aria-pressed", String(x === b));
+  paint();
+};
+const sp = document.getElementById("speed"), st = document.getElementById("strength");
+sp.oninput = () => { speed = Number(sp.value); document.getElementById("speed-o").textContent = `×${speed.toFixed(1)}`; paint(); };
+st.oninput = () => { strength = Number(st.value); document.getElementById("strength-o").textContent = `${Math.round(strength * 100)} %`; paint(); };
+
+document.body.addEventListener("click", (e) => {
+  const g = e.target.closest("g.ln");
+  if (!g) return;
+  const key = g.dataset.switch, was = on.has(key);
+  if (was) on.delete(key); else on.add(key);
+  paint(was ? null : key);
+});
+document.getElementById("reset").onclick = () => { on.clear(); opening.forEach((k) => on.add(k)); paint(); };
+document.getElementById("pulse").onclick = () => {
+  for (const l of cards.find((c) => c.v === "e").svg.querySelectorAll(".glow")) {
+    l.classList.remove("pulse");
+    void l.getBoundingClientRect(); // a new start for the animation
+    l.classList.add("pulse");
+  }
+};
+const rm = document.getElementById("rm");
+const motion = () => {
+  document.body.classList.toggle("rm", rm.checked);
+  for (const c of cards) if (rm.checked) c.svg.pauseAnimations(); else c.svg.unpauseAnimations();
+};
+rm.checked = matchMedia("(prefers-reduced-motion: reduce)").matches;
+rm.onchange = motion;
+motion();
+</script>
+</body>
+</html>

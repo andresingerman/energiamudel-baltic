@@ -1,0 +1,147 @@
+{
+ "origin": {
+  "repository": "https://github.com/andresingerman/energiamudel",
+  "version": "v3.4.0",
+  "commit": "77a51b06b014f4a265031cb786d964cd3e9aaa89",
+  "date": "2026-09-07",
+  "files": {
+   "scenario": "app/src/state.js lines 151-224 (SCENARIO_2035, PRESETS, per-preset overrides)",
+   "base": "app/public/data/years/2025.json (countries.*.cap, countries.*.load)",
+   "battery_hours": "app/public/data/meta.json battery.hours"
+  },
+  "note": "Fermi Energia's own 2035 scenarios, transcribed verbatim; applied as v3 applyPreset does: per country, base-2025 MW x mult, then set overrides absolute MW; techs not listed stay at base 2025."
+ },
+ "base_2025": {
+  "EE": {
+   "load_twh": 7.941838,
+   "cap_mw": {
+    "biomass": 150.3,
+    "gas": 13.5,
+    "hydro_ror": 8.0,
+    "oil_shale": 1330.0,
+    "other_renewable": 1.0,
+    "shale_gas": 78.4,
+    "solar": 1174.0,
+    "waste": 17.0,
+    "wind_onshore": 682.0
+   }
+  },
+  "LV": {
+   "load_twh": 7.201253,
+   "cap_mw": {
+    "biomass": 166.0,
+    "energy_storage": 32.7,
+    "gas": 1112.0,
+    "hydro_ror": 1588.0,
+    "solar": 450.0,
+    "wind_onshore": 136.0
+   }
+  },
+  "LT": {
+   "load_twh": 11.772585,
+   "cap_mw": {
+    "biomass": 196.0,
+    "energy_storage": 63.7,
+    "gas": 1503.0,
+    "hydro_ps": 900.0,
+    "hydro_ror": 129.0,
+    "other": 37.0,
+    "solar": 1787.0,
+    "waste": 70.0,
+    "wind_onshore": 1683.0
+   }
+  }
+ },
+ "scenario_2035": {
+  "demand": {
+   "growth": 1.3,
+   "base_consumption_mw": 100
+  },
+  "battery_mw": {
+   "EE": 1200,
+   "LV": 1100,
+   "LT": 1140
+  },
+  "battery_hours": 4,
+  "bids_eur_mwh": {
+   "gas": 170,
+   "oil_shale": 180,
+   "note": "other techs at meta.json bids_eur_per_mwh (reference/v3_meta.json)"
+  },
+  "neighbour_mult": {
+   "FI": 2.3,
+   "SE4": 1.6,
+   "PL": 1.2
+  },
+  "lines": {
+   "harmony": true
+  },
+  "countries": {
+   "EE": {
+    "mult": {
+     "wind_onshore": 1.8
+    },
+    "set": {
+     "solar": 1700,
+     "wind_offshore": 0,
+     "oil_shale": 300,
+     "shale_gas": 78
+    }
+   },
+   "LV": {
+    "set": {
+     "wind_onshore": 1000,
+     "solar": 1700,
+     "wind_offshore": 0,
+     "biomass": 166,
+     "gas": 1112
+    }
+   },
+   "LT": {
+    "set": {
+     "wind_onshore": 3000,
+     "solar": 3500,
+     "wind_offshore": 0,
+     "biomass": 196,
+     "gas": 1503
+    }
+   }
+  }
+ },
+ "presets": {
+  "nuclear2035_2u": {
+   "label": "2035 nuclear · 2 SMR",
+   "nuclear_units": 2,
+   "set": {
+    "EE": {
+     "gas": 500
+    }
+   }
+  },
+  "nuclear2035": {
+   "label": "2035 nuclear · 3 SMR",
+   "nuclear_units": 3,
+   "set": {
+    "EE": {
+     "gas": 500
+    }
+   }
+  },
+  "gas2035": {
+   "label": "2035 RES & Gas",
+   "nuclear_units": 0,
+   "set": {
+    "EE": {
+     "gas": 1400,
+     "solar": 2000
+    },
+    "LV": {
+     "solar": 2000
+    },
+    "LT": {
+     "solar": 4000
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+title: "Energiamudel v5: an hourly Baltic day-ahead market model in the browser, with every input traceable to its source"
+message: "If you use this model, its results or its data register, please cite it."
+type: software
+authors:
+  - family-names: Ingerman
+    given-names: Andres
+abstract: >-
+  An hourly day-ahead market model of Estonia, Latvia and Lithuania that runs in the
+  browser, with Finland, Sweden SE4 and Poland represented by exogenous hourly price profiles
+  and hourly transfer capacities. Built to show what a small modular nuclear plant in Estonia
+  and interconnector outages do to Baltic prices, under assumptions the user sets and can see.
+  Every input carries a provenance record naming the API call or the document page it came
+  from.
+keywords:
+  - power market model
+  - electricity price
+  - Baltic
+  - Estonia
+  - small modular reactor
+  - interconnector
+  - data provenance
+license: AGPL-3.0-or-later
+repository-code: "https://github.com/andresingerman/energiamudel-baltic"
+url: "https://energiamudel.ee"
+version: "0.1.0-dev"

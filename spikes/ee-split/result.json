@@ -1,0 +1,821 @@
+{
+ "2024 as_is": {
+  "hours": 8784,
+  "both": {
+   "share": 0.02,
+   "ee_bias": 7,
+   "ee_mae": 11.1,
+   "ee_minus_lv": {
+    "model": 19.8,
+    "observed": -4.4
+   },
+   "oil_shale_mw": {
+    "model": 335,
+    "observed": 251
+   },
+   "estlink_import_full": {
+    "model": 0.3,
+    "observed": 0.27
+   },
+   "ee_lv_flow_mw": {
+    "model": 256,
+    "observed": 256
+   },
+   "ee_mae_share": 0.02
+  },
+  "model_only": {
+   "share": 0.027,
+   "ee_bias": -20.8,
+   "ee_mae": 24.1,
+   "ee_minus_lv": {
+    "model": 14.7,
+    "observed": 0
+   },
+   "oil_shale_mw": {
+    "model": 387,
+    "observed": 295
+   },
+   "estlink_import_full": {
+    "model": 0.34,
+    "observed": 0.58
+   },
+   "ee_lv_flow_mw": {
+    "model": 168,
+    "observed": 161
+   },
+   "ee_mae_share": 0.06
+  },
+  "observed_only": {
+   "share": 0.008,
+   "ee_bias": 15.2,
+   "ee_mae": 26.7,
+   "ee_minus_lv": {
+    "model": 0,
+    "observed": -8.7
+   },
+   "oil_shale_mw": {
+    "model": 382,
+    "observed": 316
+   },
+   "estlink_import_full": {
+    "model": 0.39,
+    "observed": 0.29
+   },
+   "ee_lv_flow_mw": {
+    "model": -153,
+    "observed": -265
+   },
+   "ee_mae_share": 0.02
+  },
+  "neither": {
+   "share": 0.945,
+   "ee_bias": -4.1,
+   "ee_mae": 10.4,
+   "ee_minus_lv": {
+    "model": 0,
+    "observed": 0
+   },
+   "oil_shale_mw": {
+    "model": 232,
+    "observed": 188
+   },
+   "estlink_import_full": {
+    "model": 0.66,
+    "observed": 0.66
+   },
+   "ee_lv_flow_mw": {
+    "model": 93,
+    "observed": 108
+   },
+   "ee_mae_share": 0.9
+  }
+ },
+ "2025 as_is": {
+  "hours": 8760,
+  "both": {
+   "share": 0.165,
+   "ee_bias": -5.5,
+   "ee_mae": 11.7,
+   "ee_minus_lv": {
+    "model": -32.2,
+    "observed": -26.9
+   },
+   "oil_shale_mw": {
+    "model": 128,
+    "observed": 110
+   },
+   "estlink_import_full": {
+    "model": 0.16,
+    "observed": 0.43
+   },
+   "ee_lv_flow_mw": {
+    "model": 452,
+    "observed": 471
+   },
+   "ee_mae_share": 0.1
+  },
+  "model_only": {
+   "share": 0.143,
+   "ee_bias": -34.7,
+   "ee_mae": 40.8,
+   "ee_minus_lv": {
+    "model": -26.1,
+    "observed": 0
+   },
+   "oil_shale_mw": {
+    "model": 215,
+    "observed": 172
+   },
+   "estlink_import_full": {
+    "model": 0.37,
+    "observed": 0.76
+   },
+   "ee_lv_flow_mw": {
+    "model": 347,
+    "observed": 318
+   },
+   "ee_mae_share": 0.3
+  },
+  "observed_only": {
+   "share": 0.049,
+   "ee_bias": 19.5,
+   "ee_mae": 24.2,
+   "ee_minus_lv": {
+    "model": 0,
+    "observed": -18.4
+   },
+   "oil_shale_mw": {
+    "model": 124,
+    "observed": 135
+   },
+   "estlink_import_full": {
+    "model": 0.8,
+    "observed": 0.43
+   },
+   "ee_lv_flow_mw": {
+    "model": 341,
+    "observed": 385
+   },
+   "ee_mae_share": 0.06
+  },
+  "neither": {
+   "share": 0.643,
+   "ee_bias": 0.4,
+   "ee_mae": 16.6,
+   "ee_minus_lv": {
+    "model": 0,
+    "observed": 0
+   },
+   "oil_shale_mw": {
+    "model": 219,
+    "observed": 175
+   },
+   "estlink_import_full": {
+    "model": 0.74,
+    "observed": 0.71
+   },
+   "ee_lv_flow_mw": {
+    "model": 110,
+    "observed": 89
+   },
+   "ee_mae_share": 0.54
+  }
+ },
+ "2026 as_is": {
+  "hours": 5832,
+  "both": {
+   "share": 0.366,
+   "ee_bias": -8.3,
+   "ee_mae": 10.8,
+   "ee_minus_lv": {
+    "model": -46.1,
+    "observed": -39.1
+   },
+   "oil_shale_mw": {
+    "model": 127,
+    "observed": 80
+   },
+   "estlink_import_full": {
+    "model": 0.11,
+    "observed": 0.39
+   },
+   "ee_lv_flow_mw": {
+    "model": 408,
+    "observed": 401
+   },
+   "ee_mae_share": 0.28
+  },
+  "model_only": {
+   "share": 0.175,
+   "ee_bias": -32.5,
+   "ee_mae": 35.3,
+   "ee_minus_lv": {
+    "model": -26.4,
+    "observed": 0
+   },
+   "oil_shale_mw": {
+    "model": 283,
+    "observed": 188
+   },
+   "estlink_import_full": {
+    "model": 0.38,
+    "observed": 0.73
+   },
+   "ee_lv_flow_mw": {
+    "model": 392,
+    "observed": 340
+   },
+   "ee_mae_share": 0.44
+  },
+  "observed_only": {
+   "share": 0.063,
+   "ee_bias": 1.9,
+   "ee_mae": 10.4,
+   "ee_minus_lv": {
+    "model": 0,
+    "observed": -10.5
+   },
+   "oil_shale_mw": {
+    "model": 137,
+    "observed": 81
+   },
+   "estlink_import_full": {
+    "model": 0.35,
+    "observed": 0.35
+   },
+   "ee_lv_flow_mw": {
+    "model": 225,
+    "observed": 214
+   },
+   "ee_mae_share": 0.05
+  },
+  "neither": {
+   "share": 0.396,
+   "ee_bias": -6,
+   "ee_mae": 8.2,
+   "ee_minus_lv": {
+    "model": 0,
+    "observed": 0
+   },
+   "oil_shale_mw": {
+    "model": 261,
+    "observed": 173
+   },
+   "estlink_import_full": {
+    "model": 0.33,
+    "observed": 0.39
+   },
+   "ee_lv_flow_mw": {
+    "model": 75,
+    "observed": 93
+   },
+   "ee_mae_share": 0.23
+  }
+ },
+ "2024 floor_at_record": {
+  "hours": 8784,
+  "both": {
+   "share": 0.02,
+   "ee_bias": 9,
+   "ee_mae": 11.7,
+   "ee_minus_lv": {
+    "model": 21.7,
+    "observed": -3.8
+   },
+   "oil_shale_mw": {
+    "model": 302,
+    "observed": 246
+   },
+   "estlink_import_full": {
+    "model": 0.34,
+    "observed": 0.25
+   },
+   "ee_lv_flow_mw": {
+    "model": 218,
+    "observed": 218
+   },
+   "ee_mae_share": 0.02
+  },
+  "model_only": {
+   "share": 0.025,
+   "ee_bias": -19.3,
+   "ee_mae": 23.6,
+   "ee_minus_lv": {
+    "model": 20.1,
+    "observed": 0
+   },
+   "oil_shale_mw": {
+    "model": 394,
+    "observed": 319
+   },
+   "estlink_import_full": {
+    "model": 0.38,
+    "observed": 0.51
+   },
+   "ee_lv_flow_mw": {
+    "model": 53,
+    "observed": 60
+   },
+   "ee_mae_share": 0.05
+  },
+  "observed_only": {
+   "share": 0.008,
+   "ee_bias": 16.5,
+   "ee_mae": 26.8,
+   "ee_minus_lv": {
+    "model": 0,
+    "observed": -10.5
+   },
+   "oil_shale_mw": {
+    "model": 369,
+    "observed": 331
+   },
+   "estlink_import_full": {
+    "model": 0.44,
+    "observed": 0.34
+   },
+   "ee_lv_flow_mw": {
+    "model": -69,
+    "observed": -182
+   },
+   "ee_mae_share": 0.02
+  },
+  "neither": {
+   "share": 0.947,
+   "ee_bias": -3.4,
+   "ee_mae": 10.5,
+   "ee_minus_lv": {
+    "model": 0,
+    "observed": 0
+   },
+   "oil_shale_mw": {
+    "model": 207,
+    "observed": 188
+   },
+   "estlink_import_full": {
+    "model": 0.67,
+    "observed": 0.66
+   },
+   "ee_lv_flow_mw": {
+    "model": 82,
+    "observed": 110
+   },
+   "ee_mae_share": 0.91
+  }
+ },
+ "2025 floor_at_record": {
+  "hours": 8760,
+  "both": {
+   "share": 0.156,
+   "ee_bias": -4.4,
+   "ee_mae": 12,
+   "ee_minus_lv": {
+    "model": -31.6,
+    "observed": -27.2
+   },
+   "oil_shale_mw": {
+    "model": 103,
+    "observed": 113
+   },
+   "estlink_import_full": {
+    "model": 0.18,
+    "observed": 0.42
+   },
+   "ee_lv_flow_mw": {
+    "model": 444,
+    "observed": 465
+   },
+   "ee_mae_share": 0.1
+  },
+  "model_only": {
+   "share": 0.124,
+   "ee_bias": -34.8,
+   "ee_mae": 42,
+   "ee_minus_lv": {
+    "model": -25.1,
+    "observed": 0
+   },
+   "oil_shale_mw": {
+    "model": 212,
+    "observed": 192
+   },
+   "estlink_import_full": {
+    "model": 0.44,
+    "observed": 0.73
+   },
+   "ee_lv_flow_mw": {
+    "model": 319,
+    "observed": 297
+   },
+   "ee_mae_share": 0.27
+  },
+  "observed_only": {
+   "share": 0.058,
+   "ee_bias": 20.3,
+   "ee_mae": 24.5,
+   "ee_minus_lv": {
+    "model": 0,
+    "observed": -19
+   },
+   "oil_shale_mw": {
+    "model": 102,
+    "observed": 122
+   },
+   "estlink_import_full": {
+    "model": 0.83,
+    "observed": 0.46
+   },
+   "ee_lv_flow_mw": {
+    "model": 368,
+    "observed": 416
+   },
+   "ee_mae_share": 0.07
+  },
+  "neither": {
+   "share": 0.662,
+   "ee_bias": 0.9,
+   "ee_mae": 16.6,
+   "ee_minus_lv": {
+    "model": 0,
+    "observed": 0
+   },
+   "oil_shale_mw": {
+    "model": 199,
+    "observed": 171
+   },
+   "estlink_import_full": {
+    "model": 0.75,
+    "observed": 0.71
+   },
+   "ee_lv_flow_mw": {
+    "model": 111,
+    "observed": 99
+   },
+   "ee_mae_share": 0.56
+  }
+ },
+ "2026 floor_at_record": {
+  "hours": 5832,
+  "both": {
+   "share": 0.354,
+   "ee_bias": -6.5,
+   "ee_mae": 11,
+   "ee_minus_lv": {
+    "model": -45.1,
+    "observed": -39.8
+   },
+   "oil_shale_mw": {
+    "model": 87,
+    "observed": 82
+   },
+   "estlink_import_full": {
+    "model": 0.15,
+    "observed": 0.37
+   },
+   "ee_lv_flow_mw": {
+    "model": 399,
+    "observed": 393
+   },
+   "ee_mae_share": 0.29
+  },
+  "model_only": {
+   "share": 0.153,
+   "ee_bias": -31.1,
+   "ee_mae": 34.6,
+   "ee_minus_lv": {
+    "model": -25.9,
+    "observed": 0
+   },
+   "oil_shale_mw": {
+    "model": 271,
+    "observed": 207
+   },
+   "estlink_import_full": {
+    "model": 0.46,
+    "observed": 0.7
+   },
+   "ee_lv_flow_mw": {
+    "model": 366,
+    "observed": 324
+   },
+   "ee_mae_share": 0.39
+  },
+  "observed_only": {
+   "share": 0.074,
+   "ee_bias": 5.1,
+   "ee_mae": 11.4,
+   "ee_minus_lv": {
+    "model": 0,
+    "observed": -11.8
+   },
+   "oil_shale_mw": {
+    "model": 86,
+    "observed": 74
+   },
+   "estlink_import_full": {
+    "model": 0.49,
+    "observed": 0.41
+   },
+   "ee_lv_flow_mw": {
+    "model": 277,
+    "observed": 282
+   },
+   "ee_mae_share": 0.06
+  },
+  "neither": {
+   "share": 0.418,
+   "ee_bias": -5.4,
+   "ee_mae": 8.5,
+   "ee_minus_lv": {
+    "model": 0,
+    "observed": 0
+   },
+   "oil_shale_mw": {
+    "model": 212,
+    "observed": 166
+   },
+   "estlink_import_full": {
+    "model": 0.38,
+    "observed": 0.43
+   },
+   "ee_lv_flow_mw": {
+    "model": 86,
+    "observed": 112
+   },
+   "ee_mae_share": 0.26
+  }
+ },
+ "2024 shale_at_record": {
+  "hours": 8784,
+  "both": {
+   "share": 0.019,
+   "ee_bias": 0.6,
+   "ee_mae": 5,
+   "ee_minus_lv": {
+    "model": 24,
+    "observed": 7.9
+   },
+   "oil_shale_mw": {
+    "model": 252,
+    "observed": 252
+   },
+   "estlink_import_full": {
+    "model": 0.16,
+    "observed": 0.17
+   },
+   "ee_lv_flow_mw": {
+    "model": 124,
+    "observed": 124
+   },
+   "ee_mae_share": 0.01
+  },
+  "model_only": {
+   "share": 0.02,
+   "ee_bias": -12.9,
+   "ee_mae": 19.5,
+   "ee_minus_lv": {
+    "model": 40.4,
+    "observed": 0
+   },
+   "oil_shale_mw": {
+    "model": 334,
+    "observed": 334
+   },
+   "estlink_import_full": {
+    "model": 0.12,
+    "observed": 0.37
+   },
+   "ee_lv_flow_mw": {
+    "model": -176,
+    "observed": -114
+   },
+   "ee_mae_share": 0.04
+  },
+  "observed_only": {
+   "share": 0.009,
+   "ee_bias": 36.8,
+   "ee_mae": 41.6,
+   "ee_minus_lv": {
+    "model": 0,
+    "observed": -33.2
+   },
+   "oil_shale_mw": {
+    "model": 306,
+    "observed": 306
+   },
+   "estlink_import_full": {
+    "model": 0.66,
+    "observed": 0.48
+   },
+   "ee_lv_flow_mw": {
+    "model": 141,
+    "observed": 68
+   },
+   "ee_mae_share": 0.04
+  },
+  "neither": {
+   "share": 0.951,
+   "ee_bias": -2.1,
+   "ee_mae": 10.6,
+   "ee_minus_lv": {
+    "model": 0,
+    "observed": 0
+   },
+   "oil_shale_mw": {
+    "model": 188,
+    "observed": 188
+   },
+   "estlink_import_full": {
+    "model": 0.67,
+    "observed": 0.66
+   },
+   "ee_lv_flow_mw": {
+    "model": 70,
+    "observed": 114
+   },
+   "ee_mae_share": 0.92
+  }
+ },
+ "2025 shale_at_record": {
+  "hours": 8760,
+  "both": {
+   "share": 0.156,
+   "ee_bias": -7.7,
+   "ee_mae": 11.8,
+   "ee_minus_lv": {
+    "model": -35.4,
+    "observed": -26.4
+   },
+   "oil_shale_mw": {
+    "model": 116,
+    "observed": 116
+   },
+   "estlink_import_full": {
+    "model": 0.12,
+    "observed": 0.41
+   },
+   "ee_lv_flow_mw": {
+    "model": 439,
+    "observed": 460
+   },
+   "ee_mae_share": 0.09
+  },
+  "model_only": {
+   "share": 0.092,
+   "ee_bias": -33.7,
+   "ee_mae": 39.4,
+   "ee_minus_lv": {
+    "model": -30.6,
+    "observed": 0
+   },
+   "oil_shale_mw": {
+    "model": 180,
+    "observed": 180
+   },
+   "estlink_import_full": {
+    "model": 0.14,
+    "observed": 0.64
+   },
+   "ee_lv_flow_mw": {
+    "model": 252,
+    "observed": 264
+   },
+   "ee_mae_share": 0.18
+  },
+  "observed_only": {
+   "share": 0.058,
+   "ee_bias": 20.6,
+   "ee_mae": 25.2,
+   "ee_minus_lv": {
+    "model": 0,
+    "observed": -21
+   },
+   "oil_shale_mw": {
+    "model": 115,
+    "observed": 115
+   },
+   "estlink_import_full": {
+    "model": 0.84,
+    "observed": 0.48
+   },
+   "ee_lv_flow_mw": {
+    "model": 393,
+    "observed": 428
+   },
+   "ee_mae_share": 0.07
+  },
+  "neither": {
+   "share": 0.694,
+   "ee_bias": 3.1,
+   "ee_mae": 19.4,
+   "ee_minus_lv": {
+    "model": 0,
+    "observed": 0
+   },
+   "oil_shale_mw": {
+    "model": 173,
+    "observed": 173
+   },
+   "estlink_import_full": {
+    "model": 0.77,
+    "observed": 0.73
+   },
+   "ee_lv_flow_mw": {
+    "model": 101,
+    "observed": 113
+   },
+   "ee_mae_share": 0.66
+  }
+ },
+ "2026 shale_at_record": {
+  "hours": 5832,
+  "both": {
+   "share": 0.349,
+   "ee_bias": -6.8,
+   "ee_mae": 11,
+   "ee_minus_lv": {
+    "model": -45.6,
+    "observed": -40
+   },
+   "oil_shale_mw": {
+    "model": 81,
+    "observed": 81
+   },
+   "estlink_import_full": {
+    "model": 0.13,
+    "observed": 0.37
+   },
+   "ee_lv_flow_mw": {
+    "model": 396,
+    "observed": 391
+   },
+   "ee_mae_share": 0.29
+  },
+  "model_only": {
+   "share": 0.11,
+   "ee_bias": -29.6,
+   "ee_mae": 31.6,
+   "ee_minus_lv": {
+    "model": -25.8,
+    "observed": 0
+   },
+   "oil_shale_mw": {
+    "model": 170,
+    "observed": 170
+   },
+   "estlink_import_full": {
+    "model": 0.31,
+    "observed": 0.6
+   },
+   "ee_lv_flow_mw": {
+    "model": 283,
+    "observed": 292
+   },
+   "ee_mae_share": 0.26
+  },
+  "observed_only": {
+   "share": 0.08,
+   "ee_bias": 7.2,
+   "ee_mae": 12.8,
+   "ee_minus_lv": {
+    "model": 0,
+    "observed": -12.6
+   },
+   "oil_shale_mw": {
+    "model": 80,
+    "observed": 80
+   },
+   "estlink_import_full": {
+    "model": 0.52,
+    "observed": 0.44
+   },
+   "ee_lv_flow_mw": {
+    "model": 294,
+    "observed": 301
+   },
+   "ee_mae_share": 0.08
+  },
+  "neither": {
+   "share": 0.461,
+   "ee_bias": -3.8,
+   "ee_mae": 10.7,
+   "ee_minus_lv": {
+    "model": 0,
+    "observed": 0
+   },
+   "oil_shale_mw": {
+    "model": 179,
+    "observed": 179
+   },
+   "estlink_import_full": {
+    "model": 0.45,
+    "observed": 0.47
+   },
+   "ee_lv_flow_mw": {
+    "model": 111,
+    "observed": 140
+   },
+   "ee_mae_share": 0.37
+  }
+ }
+}

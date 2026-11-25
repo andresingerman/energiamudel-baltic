@@ -1,0 +1,218 @@
+{
+ "ea": {
+  "gas": 27,
+  "eua": 97,
+  "eeDemandTwh": 10.2
+ },
+ "eeLoadTwhBase": 11.600000000000001,
+ "demandScale": 0.8793103448275861,
+ "rows": [
+  {
+   "name": "as the site (ERAA 2025's gas 38.2, CO₂ 197.5; neighbours re-priced)",
+   "gas": {
+    "EE": 107.00707447457711,
+    "LV": 108.85897048477547,
+    "LT": 109.31130751604485,
+    "eeLoadTwh": 11.600000000000001,
+    "captureNum": 0,
+    "outputTwh": 0,
+    "cfdMeur": 0,
+    "capture": null
+   },
+   "smr2": {
+    "EE": 85.63052050752161,
+    "LV": 105.23494934191794,
+    "LT": 105.77091381844068,
+    "eeLoadTwh": 11.600000000000001,
+    "captureNum": 460.6061710586962,
+    "outputTwh": 5.30712,
+    "cfdMeur": 17.03462894130678,
+    "capture": 86.79023105916131
+   }
+  },
+  {
+   "name": "Ea's gas only",
+   "gas": {
+    "EE": 98.84708173952839,
+    "LV": 98.9356183922379,
+    "LT": 99.26975210110562,
+    "eeLoadTwh": 11.600000000000001,
+    "captureNum": 0,
+    "outputTwh": 0,
+    "cfdMeur": 0,
+    "capture": null
+   },
+   "smr2": {
+    "EE": 79.62613267738502,
+    "LV": 95.68877089231259,
+    "LT": 96.07987902598211,
+    "eeLoadTwh": 11.600000000000001,
+    "captureNum": 427.8961711665843,
+    "outputTwh": 5.30712,
+    "cfdMeur": 49.744628833418645,
+    "capture": 80.626812879035
+   }
+  },
+  {
+   "name": "Ea's CO₂ only",
+   "gas": {
+    "EE": 86.04081444654557,
+    "LV": 87.35810866928107,
+    "LT": 87.61323328690702,
+    "eeLoadTwh": 11.600000000000001,
+    "captureNum": 0,
+    "outputTwh": 0,
+    "cfdMeur": 0,
+    "capture": null
+   },
+   "smr2": {
+    "EE": 69.39250098367044,
+    "LV": 84.91569539287713,
+    "LT": 85.2057903508506,
+    "eeLoadTwh": 11.600000000000001,
+    "captureNum": 372.76371794416787,
+    "outputTwh": 5.30712,
+    "cfdMeur": 104.87708205583482,
+    "capture": 70.23841894363946
+   }
+  },
+  {
+   "name": "Ea's gas and CO₂, neighbours re-priced to them",
+   "gas": {
+    "EE": 74.89443467885113,
+    "LV": 74.61149878168877,
+    "LT": 74.77623431259153,
+    "eeLoadTwh": 11.600000000000001,
+    "captureNum": 0,
+    "outputTwh": 0,
+    "cfdMeur": 0,
+    "capture": null
+   },
+   "smr2": {
+    "EE": 60.612269753010196,
+    "LV": 72.25875852884472,
+    "LT": 72.43787193428975,
+    "eeLoadTwh": 11.600000000000001,
+    "captureNum": 325.98127453178205,
+    "outputTwh": 5.30712,
+    "cfdMeur": 151.65952546821921,
+    "capture": 61.4233849115494
+   }
+  },
+  {
+   "name": "neighbours as TYNDP published them",
+   "gas": {
+    "EE": 89.1449470087347,
+    "LV": 86.54175999301813,
+    "LT": 86.59729380709662,
+    "eeLoadTwh": 11.600000000000001,
+    "captureNum": 0,
+    "outputTwh": 0,
+    "cfdMeur": 0,
+    "capture": null
+   },
+   "smr2": {
+    "EE": 70.47138016880284,
+    "LV": 82.3001869205948,
+    "LT": 82.38476480698046,
+    "eeLoadTwh": 11.600000000000001,
+    "captureNum": 379.4297372462934,
+    "outputTwh": 5.30712,
+    "cfdMeur": 98.21106275370914,
+    "capture": 71.49447105893468
+   }
+  },
+  {
+   "name": "Ea's gas and CO₂, neighbours as published",
+   "gas": {
+    "EE": 79.37513160882298,
+    "LV": 80.68048543711438,
+    "LT": 80.96709480660914,
+    "eeLoadTwh": 11.600000000000001,
+    "captureNum": 0,
+    "outputTwh": 0,
+    "cfdMeur": 0,
+    "capture": null
+   },
+   "smr2": {
+    "EE": 64.88581654544849,
+    "LV": 78.49727220161176,
+    "LT": 78.80164972787213,
+    "eeLoadTwh": 11.600000000000001,
+    "captureNum": 348.62010482024493,
+    "outputTwh": 5.30712,
+    "cfdMeur": 129.02069517975747,
+    "capture": 65.68913173627973
+   }
+  },
+  {
+   "name": "Ea's gas and CO₂ and Estonia's demand, neighbours re-priced",
+   "gas": {
+    "EE": 72.0546019765742,
+    "LV": 73.82799346087083,
+    "LT": 73.99591527523623,
+    "eeLoadTwh": 10.199999999999985,
+    "captureNum": 0,
+    "outputTwh": 0,
+    "cfdMeur": 0,
+    "capture": null
+   },
+   "smr2": {
+    "EE": 56.798243390308784,
+    "LV": 71.93700391238517,
+    "LT": 72.11594297550849,
+    "eeLoadTwh": 10.199999999999985,
+    "captureNum": 305.50327559035156,
+    "outputTwh": 5.30712,
+    "cfdMeur": 172.13752440965047,
+    "capture": 57.564795141310455
+   }
+  },
+  {
+   "name": "the neighbours at ×1, without the owner's levels",
+   "gas": {
+    "EE": 81.97903112942342,
+    "LV": 79.38036368111233,
+    "LT": 79.4174146961548,
+    "eeLoadTwh": 11.600000000000001,
+    "captureNum": 0,
+    "outputTwh": 0,
+    "cfdMeur": 0,
+    "capture": null
+   },
+   "smr2": {
+    "EE": 63.478055371717176,
+    "LV": 74.74842179566375,
+    "LT": 74.80689048037993,
+    "eeLoadTwh": 11.600000000000001,
+    "captureNum": 341.960836994998,
+    "outputTwh": 5.30712,
+    "cfdMeur": 135.67996300500405,
+    "capture": 64.43435177553889
+   }
+  },
+  {
+   "name": "Ea's gas and CO₂ and Estonia's demand, neighbours re-priced at ×1",
+   "gas": {
+    "EE": 54.236509120092606,
+    "LV": 53.19017857017506,
+    "LT": 53.20084710838547,
+    "eeLoadTwh": 10.199999999999985,
+    "captureNum": 0,
+    "outputTwh": 0,
+    "cfdMeur": 0,
+    "capture": null
+   },
+   "smr2": {
+    "EE": 40.91540645806066,
+    "LV": 50.264079003317136,
+    "LT": 50.27581534567736,
+    "eeLoadTwh": 10.199999999999985,
+    "captureNum": 220.40144104866243,
+    "outputTwh": 5.30712,
+    "cfdMeur": 257.2393589513367,
+    "capture": 41.52938713438973
+   }
+  }
+ ]
+}

@@ -1,0 +1,481 @@
+{
+ "scenarios2035": {
+  "asIs": {
+   "gas": {
+    "EE": 83.6261242913318,
+    "LV": 79.84834190699445,
+    "LT": 79.88485468373932,
+    "eeTop5": 192.62113434304712,
+    "capture": null,
+    "cfdMeur": null,
+    "waterValue": 90.23862275340323,
+    "lowWeeks": 0.05909433962264152
+   },
+   "smr1": {
+    "EE": 75.1118172968816,
+    "LV": 77.02318534502388,
+    "LT": 77.06311431292988,
+    "eeTop5": 185.5104113528108,
+    "capture": 76.43085126246218,
+    "cfdMeur": 34.2919526895069,
+    "waterValue": 86.66780827296807,
+    "lowWeeks": 0.05909433962264152
+   },
+   "smr2": {
+    "EE": 66.24875628867348,
+    "LV": 75.16060114848136,
+    "LT": 75.21906752545435,
+    "eeTop5": 182.40492978737888,
+    "capture": 67.25612693104055,
+    "cfdMeur": 114.95663203975006,
+    "waterValue": 83.6413574579021,
+    "lowWeeks": 0.0660188679245283
+   },
+   "smr3": {
+    "EE": 56.16053557062284,
+    "LV": 74.05660740441976,
+    "LT": 74.11510578979832,
+    "eeTop5": 166.50688895336134,
+    "capture": 56.92547198397646,
+    "cfdMeur": 250.7578416062844,
+    "waterValue": 82.5906929322064,
+    "lowWeeks": 0.0660188679245283
+   }
+  },
+  "half": {
+   "gas": {
+    "EE": 83.94994830531513,
+    "LV": 80.21677995950738,
+    "LT": 80.24766559699626,
+    "eeTop5": 193.47451917200652,
+    "capture": null,
+    "cfdMeur": null,
+    "waterValue": null,
+    "lowWeeks": null
+   },
+   "smr1": {
+    "EE": 75.23891156697387,
+    "LV": 77.2765267835592,
+    "LT": 77.30909714548365,
+    "eeTop5": 185.5391086788439,
+    "capture": 76.56253208641463,
+    "cfdMeur": 33.95916891121428,
+    "waterValue": null,
+    "lowWeeks": null
+   },
+   "smr2": {
+    "EE": 66.3041810561317,
+    "LV": 75.39003269043047,
+    "LT": 75.44270699961372,
+    "eeTop5": 182.4721380763642,
+    "capture": 67.311172549064,
+    "cfdMeur": 114.67840946801232,
+    "waterValue": null,
+    "lowWeeks": null
+   },
+   "smr3": {
+    "EE": 56.204343777222995,
+    "LV": 74.25938586085124,
+    "LT": 74.31593444516972,
+    "eeTop5": 166.52077764646975,
+    "capture": 56.96716925134862,
+    "cfdMeur": 250.4417096039757,
+    "waterValue": null,
+    "lowWeeks": null
+   }
+  },
+  "flat": {
+   "gas": {
+    "EE": 84.57105852111609,
+    "LV": 80.87048662634938,
+    "LT": 80.87549668154419,
+    "eeTop5": 195.22924162257644,
+    "capture": null,
+    "cfdMeur": null,
+    "waterValue": null,
+    "lowWeeks": null
+   },
+   "smr1": {
+    "EE": 75.61408524343534,
+    "LV": 77.84638988694391,
+    "LT": 77.8514000091707,
+    "eeTop5": 185.72466673794403,
+    "capture": 76.92898589610779,
+    "cfdMeur": 33.03306684335765,
+    "waterValue": null,
+    "lowWeeks": null
+   },
+   "smr2": {
+    "EE": 66.60156055925901,
+    "LV": 76.06583256726637,
+    "LT": 76.07085073754283,
+    "eeTop5": 183.29982353447343,
+    "capture": 67.592927555631,
+    "cfdMeur": 113.25430696282012,
+    "waterValue": null,
+    "lowWeeks": null
+   },
+   "smr3": {
+    "EE": 56.206279253319245,
+    "LV": 74.95413335825583,
+    "LT": 74.95915155003914,
+    "eeTop5": 166.58065767939667,
+    "capture": 56.96387119195071,
+    "cfdMeur": 250.46671417110684,
+    "waterValue": null,
+    "lowWeeks": null
+   }
+  }
+ },
+ "replays": {
+  "2023": {
+   "asIs": {
+    "zones": {
+     "EE": {
+      "mae": 9.221471347004213,
+      "rmse": 3.8107897691515538,
+      "share150": 0.11974885844748859
+     },
+     "LV": {
+      "mae": 9.061055144322909,
+      "rmse": 4.237216586582239,
+      "share150": 0.11735159817351598
+     },
+     "LT": {
+      "mae": 8.604343818868287,
+      "rmse": 3.9778439399609677,
+      "share150": 0.12214611872146118
+     }
+    },
+    "breaches": 7,
+    "failures": [
+     "EE biomass 0.56 vs 0.49 TWh",
+     "LV biomass 0.34 vs 0.22 TWh",
+     "LT hydro_ps 0.15 vs 0.53 TWh",
+     "EE-LV net flow 2.78 vs 3.78 TWh",
+     "LV-LT net flow 2.05 vs 2.83 TWh",
+     "LT-SE4 rev congested 16 pp",
+     "LT-PL net flow 0.08 vs 0.47 TWh"
+    ],
+    "capZoneHours": 0,
+    "shaping": {
+     "dearQuarterMw": 589.3823604747371,
+     "cheapQuarterMw": 285.4569765114978,
+     "ratio": 2.0646976916712267,
+     "weeks": 52
+    }
+   },
+   "half": {
+    "zones": {
+     "EE": {
+      "mae": 9.428278477883268,
+      "rmse": 4.3169905908174755,
+      "share150": 0.12111872146118721
+     },
+     "LV": {
+      "mae": 9.324817860037296,
+      "rmse": 4.657436618156887,
+      "share150": 0.11894977168949772
+     },
+     "LT": {
+      "mae": 8.878794211776485,
+      "rmse": 4.440953793006824,
+      "share150": 0.12363013698630138
+     }
+    },
+    "breaches": 8,
+    "failures": [
+     "EE biomass 0.56 vs 0.49 TWh",
+     "LV biomass 0.34 vs 0.22 TWh",
+     "LV hydro_ror 1.86 vs 3.71 TWh",
+     "LT hydro_ps 0.16 vs 0.53 TWh",
+     "EE-LV net flow 2.77 vs 3.78 TWh",
+     "LV-LT net flow 2.05 vs 2.83 TWh",
+     "LT-SE4 rev congested 16 pp",
+     "LT-PL net flow 0.07 vs 0.47 TWh"
+    ],
+    "capZoneHours": 0,
+    "shaping": {
+     "dearQuarterMw": 564.3462496811054,
+     "cheapQuarterMw": 312.8625548667074,
+     "ratio": 1.8038152565798122,
+     "weeks": 52
+    }
+   },
+   "flat": {
+    "zones": {
+     "EE": {
+      "mae": 10.2945211983189,
+      "rmse": 4.885014405818555,
+      "share150": 0.13767123287671232
+     },
+     "LV": {
+      "mae": 10.141295644066414,
+      "rmse": 5.141151629966542,
+      "share150": 0.1365296803652968
+     },
+     "LT": {
+      "mae": 9.66571690789524,
+      "rmse": 4.884807333701372,
+      "share150": 0.13858447488584474
+     }
+    },
+    "breaches": 7,
+    "failures": [
+     "EE biomass 0.56 vs 0.49 TWh",
+     "LV biomass 0.34 vs 0.22 TWh",
+     "LT hydro_ps 0.19 vs 0.53 TWh",
+     "EE-LV net flow 2.72 vs 3.78 TWh",
+     "LV-LT net flow 2.02 vs 2.83 TWh",
+     "LT-SE4 rev congested 15 pp",
+     "LT-PL net flow 0.01 vs 0.47 TWh"
+    ],
+    "capZoneHours": 0,
+    "shaping": null
+   }
+  },
+  "2024": {
+   "asIs": {
+    "zones": {
+     "EE": {
+      "mae": 10.458438275703653,
+      "rmse": 7.9896356727934235,
+      "share150": 0.0860655737704918
+     },
+     "LV": {
+      "mae": 12.077889522087819,
+      "rmse": 10.901740111729298,
+      "share150": 0.08048724954462659
+     },
+     "LT": {
+      "mae": 12.006387837058044,
+      "rmse": 10.704119150175595,
+      "share150": 0.07980418943533697
+     }
+    },
+    "breaches": 8,
+    "failures": [
+     "EE biomass 0.48 vs 0.43 TWh",
+     "LV duration RMSE 10.9 > 10",
+     "LV hours ≥ 150 -3.4 pp",
+     "LT duration RMSE 10.7 > 10",
+     "LT hours ≥ 150 -3.3 pp",
+     "LT hydro_ps 0.18 vs 0.57 TWh",
+     "EE-LV net flow 0.50 vs 0.96 TWh",
+     "LV-LT net flow -0.65 vs -0.38 TWh"
+    ],
+    "capZoneHours": 0,
+    "shaping": {
+     "dearQuarterMw": 551.5632885808042,
+     "cheapQuarterMw": 200.0628803204402,
+     "ratio": 2.7569496535157683,
+     "weeks": 52
+    }
+   },
+   "half": {
+    "zones": {
+     "EE": {
+      "mae": 10.563065251045892,
+      "rmse": 8.17869614520228,
+      "share150": 0.08788706739526411
+     },
+     "LV": {
+      "mae": 12.173025896700661,
+      "rmse": 11.67793057810792,
+      "share150": 0.08321948998178506
+     },
+     "LT": {
+      "mae": 12.045334277217634,
+      "rmse": 10.59156424684069,
+      "share150": 0.08253642987249545
+     }
+    },
+    "breaches": 9,
+    "failures": [
+     "EE biomass 0.49 vs 0.43 TWh",
+     "LV duration RMSE 11.7 > 10",
+     "LV hours ≥ 150 -3.1 pp",
+     "LV hydro_ror 1.60 vs 3.19 TWh",
+     "LT duration RMSE 10.6 > 10",
+     "LT hours ≥ 150 -3.0 pp",
+     "LT hydro_ps 0.19 vs 0.57 TWh",
+     "EE-LV net flow 0.48 vs 0.96 TWh",
+     "LV-LT net flow -0.65 vs -0.38 TWh"
+    ],
+    "capZoneHours": 0,
+    "shaping": {
+     "dearQuarterMw": 523.2710349298093,
+     "cheapQuarterMw": 241.22070170467757,
+     "ratio": 2.1692625518121624,
+     "weeks": 52
+    }
+   },
+   "flat": {
+    "zones": {
+     "EE": {
+      "mae": 13.354399348677362,
+      "rmse": 4.149786627256157,
+      "share150": 0.1029143897996357
+     },
+     "LV": {
+      "mae": 14.669678323773025,
+      "rmse": 5.699839051603075,
+      "share150": 0.09904371584699453
+     },
+     "LT": {
+      "mae": 14.658993860681496,
+      "rmse": 5.681112430036863,
+      "share150": 0.09813296903460837
+     }
+    },
+    "breaches": 4,
+    "failures": [
+     "EE biomass 0.49 vs 0.43 TWh",
+     "LT hydro_ps 0.23 vs 0.57 TWh",
+     "EE-LV net flow 0.46 vs 0.96 TWh",
+     "LV-LT net flow -0.64 vs -0.38 TWh"
+    ],
+    "capZoneHours": 15,
+    "shaping": null
+   }
+  },
+  "2025": {
+   "asIs": {
+    "zones": {
+     "EE": {
+      "mae": 17.81533328758699,
+      "rmse": 14.430991767374277,
+      "share150": 0.11015981735159817
+     },
+     "LV": {
+      "mae": 16.89786198378225,
+      "rmse": 15.619364799435338,
+      "share150": 0.11426940639269406
+     },
+     "LT": {
+      "mae": 16.77361780636883,
+      "rmse": 15.78049234930045,
+      "share150": 0.11426940639269406
+     }
+    },
+    "breaches": 11,
+    "failures": [
+     "EE MAE 17.8 > 15",
+     "EE duration RMSE 14.4 > 10",
+     "EE biomass 0.49 vs 0.43 TWh",
+     "LV MAE 16.9 > 15",
+     "LV duration RMSE 15.6 > 10",
+     "LT MAE 16.8 > 15",
+     "LT duration RMSE 15.8 > 10",
+     "LT gas 1.15 vs 1.44 TWh",
+     "LT hydro_ps 0.18 vs 0.48 TWh",
+     "LV-LT net flow 0.17 vs 0.29 TWh",
+     "LT-PL net flow 0.29 vs 0.35 TWh"
+    ],
+    "capZoneHours": 0,
+    "shaping": {
+     "dearQuarterMw": 519.8112412907902,
+     "cheapQuarterMw": 168.75786041108492,
+     "ratio": 3.0802194340729283,
+     "weeks": 52
+    }
+   },
+   "half": {
+    "zones": {
+     "EE": {
+      "mae": 17.81219315017819,
+      "rmse": 15.88489796590245,
+      "share150": 0.10924657534246575
+     },
+     "LV": {
+      "mae": 16.815791887959605,
+      "rmse": 15.316855921970358,
+      "share150": 0.11552511415525114
+     },
+     "LT": {
+      "mae": 16.65206746534076,
+      "rmse": 15.489439127388275,
+      "share150": 0.1156392694063927
+     }
+    },
+    "breaches": 13,
+    "failures": [
+     "EE MAE 17.8 > 15",
+     "EE duration RMSE 15.9 > 10",
+     "EE hours ≥ 150 -3.1 pp",
+     "EE biomass 0.49 vs 0.43 TWh",
+     "LV MAE 16.8 > 15",
+     "LV duration RMSE 15.3 > 10",
+     "LV hydro_ror 1.47 vs 2.94 TWh",
+     "LT MAE 16.7 > 15",
+     "LT duration RMSE 15.5 > 10",
+     "LT gas 1.17 vs 1.44 TWh",
+     "LT hydro_ps 0.19 vs 0.48 TWh",
+     "LV-LT net flow 0.17 vs 0.29 TWh",
+     "LT-PL net flow 0.29 vs 0.35 TWh"
+    ],
+    "capZoneHours": 0,
+    "shaping": {
+     "dearQuarterMw": 507.1527748174871,
+     "cheapQuarterMw": 195.01401792758296,
+     "ratio": 2.600596512020047,
+     "weeks": 52
+    }
+   },
+   "flat": {
+    "zones": {
+     "EE": {
+      "mae": 31.08374853670115,
+      "rmse": 7.251159966231347,
+      "share150": 0.1291095890410959
+     },
+     "LV": {
+      "mae": 45.00554721254802,
+      "rmse": 361.35274769558157,
+      "share150": 0.1428082191780822
+     },
+     "LT": {
+      "mae": 41.66889579639225,
+      "rmse": 360.9800143913746,
+      "share150": 0.14098173515981735
+     }
+    },
+    "breaches": 10,
+    "failures": [
+     "EE MAE 31.1 > 15",
+     "EE biomass 0.49 vs 0.43 TWh",
+     "LV MAE 45.0 > 15",
+     "LV duration RMSE 361.4 > 10",
+     "LT MAE 41.7 > 15",
+     "LT duration RMSE 361.0 > 10",
+     "LT gas 1.22 vs 1.44 TWh",
+     "LT hydro_ps 0.25 vs 0.48 TWh",
+     "LV-LT net flow 0.20 vs 0.29 TWh",
+     "LT-PL net flow 0.23 vs 0.35 TWh"
+    ],
+    "capZoneHours": 124,
+    "shaping": null
+   }
+  }
+ },
+ "record": {
+  "2023": {
+   "dearQuarterMw": 507.56730769230774,
+   "cheapQuarterMw": 349.0366300366301,
+   "ratio": 1.4541949583888674,
+   "weeks": 52
+  },
+  "2024": {
+   "dearQuarterMw": 480.70283882783883,
+   "cheapQuarterMw": 272.24038461538464,
+   "ratio": 1.7657293553524966,
+   "weeks": 52
+  },
+  "2025": {
+   "dearQuarterMw": 457.8937728937729,
+   "cheapQuarterMw": 232.98122710622712,
+   "ratio": 1.9653676761046397,
+   "weeks": 52
+  }
+ }
+}

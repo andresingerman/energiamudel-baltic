@@ -1,0 +1,41 @@
+Documentation and derived data licence
+======================================
+
+Copyright (c) 2026 Andres Ingerman.
+
+Everything in this repository that is not source code — the documents in `docs/`, the
+READMEs, the documentary CSVs in `data/documentary/` and the derived data in `data/export/` —
+is licensed under the
+
+    Creative Commons Attribution 4.0 International (CC BY 4.0)
+
+    Human-readable summary: https://creativecommons.org/licenses/by/4.0/
+    Legal code:             https://creativecommons.org/licenses/by/4.0/legalcode
+
+You may share and adapt this material, including commercially, provided you give
+appropriate credit to Andres Ingerman, link to the licence, and state whether changes were
+made. Section 4 of the licence extends this to the sui generis database rights in the
+assembled dataset: a substantial extraction from it requires the same attribution.
+
+How to attribute
+----------------
+
+    "Energiamudel v5" by Andres Ingerman (https://github.com/andresingerman/energiamudel-baltic),
+    licensed under CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/). Changes were made.
+
+Drop the last sentence if you changed nothing. Where a hyperlink is impossible — print, a
+talk — name the author, the work and the licence in words.
+
+Source code is licensed separately under the GNU Affero General Public License v3.0; see
+`LICENSE`.
+
+Third-party data are not covered by either licence
+--------------------------------------------------
+
+Data fetched from public APIs and values read from published documents remain the property
+of their publishers and carry their own terms, recorded per source in
+`docs/SOURCE_REGISTER.md` and per dataset in the lineage record `data/lineage/<dataset>.json`.
+The raw cache (`data/raw/`) and the published documents it contains are not distributed with
+this repository; `make history` refetches them from the original publishers. Nord Pool
+aggregated bidding curves are never included, in any form; only parameters derived from them
+are, with the date they were read (SPECIFICATION.md R-DATA-10).

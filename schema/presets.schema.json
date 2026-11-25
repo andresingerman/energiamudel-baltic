@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://energiamudel.ee/schema/presets.schema.json",
+  "title": "Presets",
+  "description": "Every documentary value the panel offers, each with the lineage ids behind it (SPECIFICATION R-UI-6, R-PROV-1): fleets mapped to the classes of R-SUP-1, demand, DSR bands, fuel paths, technology parameters, scalar parameters, and the values derived from them (delivery caps R-SUP-9, HVDC loss shares R-BND-4, the Polish slow-build factor R-BND-5, the demand behind every boundary profile R-BND-8, weights R-TIME-3, reserve need and shares R-STO-6, hydro units R-ENG-5).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["contract", "classes", "class_rules", "tech", "fleets", "demand", "dsr", "electrolyser_efficiency", "fuel_paths", "parameters", "delivery", "loss_share", "boundary", "weights", "climate_years", "statistics", "reserve", "hydro", "oil_shale", "fitted", "sensitivity", "links", "adequacy"],
+  "properties": {
+    "contract": {"const": 1},
+    "classes": {"type": "object", "additionalProperties": {"type": "object", "additionalProperties": false, "required": ["label", "params"], "properties": {"label": {"type": "string"}, "params": {"type": ["string", "null"]}}}},
+    "class_rules": {"type": "object", "additionalProperties": {"type": "object", "additionalProperties": false, "required": ["target", "why", "params"], "properties": {"target": {"type": "string"}, "why": {"type": "string"}, "params": {"type": ["string", "null"]}}}},
+    "tech": {"type": "object", "additionalProperties": {"type": "object", "additionalProperties": {"$ref": "#/$defs/value"}}},
+    "fleets": {"type": "object", "additionalProperties": {"$ref": "#/$defs/by_zone_year", "description": "scenario -> zone -> year -> fleet"}},
+    "demand": {"type": "object", "additionalProperties": {"type": "object", "additionalProperties": {"type": "object", "additionalProperties": {"type": "object", "additionalProperties": {"$ref": "#/$defs/value"}}}}},
+    "dsr": {"type": "object", "additionalProperties": {"type": "object", "additionalProperties": {"type": "object", "additionalProperties": {"type": "array", "items": {
+      "type": "object", "additionalProperties": false, "required": ["price", "mw", "hours", "src"],
+      "properties": {"price": {"type": "number"}, "mw": {"type": "number", "minimum": 0}, "hours": {"type": "integer", "minimum": 1, "maximum": 24}, "src": {"$ref": "#/$defs/src"}}}}}}},
+    "electrolyser_efficiency": {"type": "object", "additionalProperties": {"type": "object", "additionalProperties": {"type": "object", "additionalProperties": {"$ref": "#/$defs/value"}}}},
+    "fuel_paths": {"type": "object", "additionalProperties": {"type": "object", "additionalProperties": {"type": "object", "additionalProperties": {"$ref": "#/$defs/value"}}}},
+    "parameters": {"type": "object", "additionalProperties": {"$ref": "#/$defs/value"}},
+    "delivery": {"type": "object"},
+    "loss_share": {"type": "object", "additionalProperties": {"type": "object", "additionalProperties": {"$ref": "#/$defs/value"}}},
+    "boundary": {"type": "object", "properties": {
+      "mean_price": {"description": "D-047: per boundary profile and boundary zone, the profile's average price weighted over its weather years as the runs weight them (R-TIME-3), before any level factor; named beside each profile of the panel's \"Other\" list", "type": "array", "items": {
+        "type": "object", "additionalProperties": false, "required": ["family", "scenario", "target_year", "zone", "value", "unit", "src"],
+        "properties": {"family": {"enum": ["tyndp2024", "tyndp2026", "observed", "research"]}, "scenario": {"enum": ["NT", "DE", "GA", "NTplus", "REAL", "TIGHT", "TIGHTJ"]}, "target_year": {"type": "integer"},
+          "zone": {"enum": ["FI", "SE4", "PL"]}, "value": {"type": "number"}, "unit": {"const": "EUR/MWh"}, "src": {"$ref": "#/$defs/src"}}}},
+      "generation": {"description": "R-BND-8, D-040, D-043: per boundary profile and boundary zone, the market model's annual generation by category (its loads marked '(load)' or '(pump)'), the net export and the dumped energy, TWh summed over the zone's nodes (the electric cars apart, their labels prefixed 'EV: ', D-041) — TYNDP 2024's 'Yearly Outputs' rows per climate year, and the TYNDP 2026 NT+ hourly dashboards summed over the year per weather scenario, under the same labels; shown on the import-price page, not read by the engine", "type": "array", "items": {
+        "type": "object", "additionalProperties": false, "required": ["family", "scenario", "target_year", "weather", "zone", "output", "twh", "src"],
+        "properties": {"family": {"enum": ["tyndp2024", "tyndp2026"]}, "scenario": {"enum": ["NT", "DE", "GA", "NTplus"]}, "target_year": {"type": "integer"}, "weather": {"type": "string"},
+          "zone": {"enum": ["FI", "SE4", "PL"]}, "output": {"type": "string"}, "twh": {"type": "number"}, "src": {"$ref": "#/$defs/src"}}}},
+      "capacity": {"description": "D-041, D-043: per boundary profile and boundary zone, the market model's installed capacity by category, MW summed over the zone's nodes (TYNDP 2024: 'Installed Capacities [MW]', the electric cars' nodes apart, their labels prefixed 'EV: '; TYNDP 2026 NT+: the dashboards' 'Installed Capacity' sheet, which gives the cars no capacity); shown on the import-price page, not read by the engine", "type": "array", "items": {
+        "type": "object", "additionalProperties": false, "required": ["family", "scenario", "target_year", "weather", "zone", "output", "mw", "src"],
+        "properties": {"family": {"enum": ["tyndp2024", "tyndp2026"]}, "scenario": {"enum": ["NT", "DE", "GA", "NTplus"]}, "target_year": {"type": "integer"}, "weather": {"type": "string"},
+          "zone": {"enum": ["FI", "SE4", "PL"]}, "output": {"type": "string"}, "mw": {"type": "number"}, "src": {"$ref": "#/$defs/src"}}}},
+      "fleet": {"description": "D-256: per boundary zone, the observed installed capacity by ENTSO-E production type (A68, the pipeline's technology codes), MW on 1 January of `year` — the fleet at the end of the year before; a type the document does not list has no row. Shown beside the market model's capacity on the import-price page, not read by the engine", "type": "array", "items": {
+        "type": "object", "additionalProperties": false, "required": ["zone", "tech", "year", "mw", "src"],
+        "properties": {"zone": {"enum": ["FI", "SE4", "PL"]}, "tech": {"type": "string"}, "year": {"type": "integer"}, "mw": {"type": "number"}, "src": {"$ref": "#/$defs/src"}}}}}},
+    "weights": {"type": "object"},
+    "statistics": {"description": "R-APP-14 (D-087), the Statistics page: the last ten years of the monthly TTF gas price in euros per MWh thermal (World Bank Pink Sheet at the ECB rate) and of the monthly average EU ETS auction price (EEX, from 2017), and the year-end onshore wind, offshore wind and solar capacity of EE, LV, LT, FI, SE and PL, 2015-2025 (IRENASTAT)", "type": "object", "required": ["window", "gas", "eua", "capacity"]},
+    "climate_years": {"description": "R-APP-13 (D-084), the Weather page: every PECD climate year's capacity factors, demand peak and energy and hydro inflow for the three core zones, the three years TYNDP 2024 selected with their weights, the documentary rows on the selection and the Dunkelflaute ranking, and the ERA5 temperature of the three years", "type": "object"},
+    "reserve": {"type": "object"},
+    "hydro": {"type": "object"},
+    "fitted": {"description": "M3's fitted parameters (R-VAL-2, R-PROV-4): data/derived/fitted_parameters.json with each fit's derived lineage record as its source; empty before the first fit", "type": "object"},
+    "sensitivity": {"description": "the prices of 2026 that R-APP-11's sensitivities (d) and (e) took until revision 2.44 (D-183) and the engine's gas floor and the talk's CO₂ slide still read: the highest monthly TTF price of 2026 (World Bank Pink Sheet), with its month and its value in euros per MWh thermal at that month's ECB rate; the EU allowance's average price in 2026's EEX auctions to the last day the export holds (revision 2.20)", "type": "object", "required": ["gas_shock", "co2_2026"], "properties": {"gas_shock": {"type": "object", "additionalProperties": false, "required": ["month", "usd_mmbtu", "eur_mwh_th"], "properties": {"month": {"type": "string"}, "usd_mmbtu": {"$ref": "#/$defs/value"}, "eur_mwh_th": {"$ref": "#/$defs/value"}}}, "co2_2026": {"type": "object", "additionalProperties": false, "required": ["through", "eur_t"], "properties": {"through": {"type": "string"}, "eur_t": {"$ref": "#/$defs/value"}}}}},
+    "adequacy": {"description": "R-LINK-7 (M5): the adequacy sampler's inputs — unit-exponential quantiles (1 024, so that the browser needs no logarithm), each cable's short trips and length, the long failures per km of cable with the repair times, ERAA's default for a line without history, and per zone each sampled class's unit size, forced-outage rate and repair time", "type": "object", "additionalProperties": false, "required": ["exp_quantiles", "cables", "long_failure", "hvdc_default", "units"], "properties": {
+      "exp_quantiles": {"type": "array", "minItems": 1024, "maxItems": 1024, "items": {"type": "number", "minimum": 0}},
+      "cables": {"type": "object", "additionalProperties": {"type": "object", "additionalProperties": false, "required": ["trips_per_year", "trip_hours", "cable_km", "disturbance_share"], "properties": {"trips_per_year": {"$ref": "#/$defs/value"}, "trip_hours": {"$ref": "#/$defs/value"}, "cable_km": {"$ref": "#/$defs/value"}, "disturbance_share": {"$ref": "#/$defs/value"}}}},
+      "long_failure": {"type": "object", "additionalProperties": false, "required": ["per_km_year", "per_year", "repair_days"], "properties": {"per_km_year": {"$ref": "#/$defs/value"}, "per_year": {"type": "object", "additionalProperties": false, "required": ["low", "high"], "properties": {"low": {"$ref": "#/$defs/value"}, "high": {"$ref": "#/$defs/value"}}}, "repair_days": {"type": "object", "additionalProperties": {"$ref": "#/$defs/value"}}}},
+      "hvdc_default": {"type": "object", "additionalProperties": false, "required": ["forced_outage_rate", "repair_days"], "properties": {"forced_outage_rate": {"$ref": "#/$defs/value"}, "repair_days": {"$ref": "#/$defs/value"}}},
+      "units": {"type": "object", "additionalProperties": {"type": "object", "additionalProperties": {"type": "object", "additionalProperties": false, "required": ["unit_mw", "forced_outage_rate", "repair_days"], "properties": {"unit_mw": {"$ref": "#/$defs/value"}, "forced_outage_rate": {"$ref": "#/$defs/value"}, "repair_days": {"$ref": "#/$defs/value"}}}}}}},
+    "links": {"description": "R-LINK-1, R-LINK-3, R-LINK-5: the lines behind each border (an HVDC cable each, the AC lines already in service as one group per border) with their capacity, typical availability and, for a planned line, ERAA 2025's first target year with it and its TSO's date; the 2025 average balancing allocation on the AC borders", "type": "object", "additionalProperties": false, "required": ["lines", "reserve_2025"], "properties": {
+      "lines": {"type": "object", "additionalProperties": {"type": "object", "additionalProperties": false, "required": ["border", "name", "kind"], "properties": {
+        "border": {"enum": ["EE-FI", "EE-LV", "LV-LT", "LT-SE4", "LT-PL"]}, "name": {"type": "string"}, "kind": {"enum": ["hvdc", "ac"]},
+        "src": {"type": "array", "items": {"type": "string"}}, "mw": {"$ref": "#/$defs/value"}, "availability": {"$ref": "#/$defs/value"}, "planned_share": {"$ref": "#/$defs/value"},
+        "planned": {"type": "object", "additionalProperties": false, "required": ["eraa_year", "eraa_before", "tso", "src"], "properties": {
+          "eraa_year": {"type": "integer"}, "eraa_before": {"type": "integer"}, "src": {"type": "array", "items": {"type": "string"}},
+          "tso": {"type": "object", "additionalProperties": false, "required": ["year", "src"], "properties": {"year": {"type": "integer"}, "src": {"type": "array", "items": {"type": "string"}}}}}}}}},
+      "reserve_2025": {"type": "object", "additionalProperties": false, "required": ["EE-LV", "LV-LT"], "properties": {"EE-LV": {"$ref": "#/$defs/value"}, "LV-LT": {"$ref": "#/$defs/value"}}}}},
+    "oil_shale": {"description": "R-SUP-4: the 2024 average EUA price the market-entry prices hold at, and each oil-shale class's constant premium over its short-run cost at that price (EUR/MWh)", "type": "object", "additionalProperties": {"$ref": "#/$defs/value"}}
+  },
+  "$defs": {
+    "src": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+    "value": {"type": "object", "required": ["value", "unit", "src"], "properties": {"value": {"type": "number"}, "unit": {"type": "string"}, "src": {"$ref": "#/$defs/src"}}},
+    "by_zone_year": {"type": "object", "additionalProperties": {"type": "object", "additionalProperties": {"$ref": "#/$defs/fleet"}}},
+    "fleet": {
+      "type": "object", "additionalProperties": false, "required": ["classes", "battery_mwh", "flex", "notes", "rows"],
+      "properties": {
+        "classes": {"type": "object", "additionalProperties": {"type": "object", "additionalProperties": false, "required": ["mw", "src"], "properties": {"mw": {"type": "number", "minimum": 0}, "src": {"$ref": "#/$defs/src"}}}},
+        "battery_mwh": {"oneOf": [{"type": "null"}, {"type": "object", "additionalProperties": false, "required": ["mwh", "src"], "properties": {"mwh": {"type": "number", "minimum": 0}, "src": {"$ref": "#/$defs/src"}}}]},
+        "flex": {"type": "object", "additionalProperties": {"type": "object", "additionalProperties": false, "required": ["mw", "src"], "properties": {"mw": {"type": "number", "minimum": 0}, "src": {"$ref": "#/$defs/src"}}}},
+        "notes": {"type": "array", "items": {"type": "string"}},
+        "rows": {"description": "D-055: the source's own capacity rows before the class map folds them (the key of scenarios.csv without 'capacity.'), MW or MWh as the source gives them; shown in the panel, not read by the engine", "type": "object", "additionalProperties": {"type": "object", "additionalProperties": false, "required": ["value", "src", "cls"], "properties": {"value": {"type": "number", "minimum": 0}, "src": {"$ref": "#/$defs/src"}, "cls": {"description": "D-059: the class the row is folded into alone or with other rows; null where it is split over classes, is flexibility or is a note", "type": ["string", "null"]}}}}
+      }
+    }
+  }
+}

@@ -1,0 +1,446 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://energiamudel.ee/schema/year.schema.json",
+  "title": "Year",
+  "description": "One year of engine input (SPECIFICATION R-DATA-8, R-NFR-7): an observed year, a TYNDP 2024 climate year or a TYNDP 2026 weather scenario. Array lengths equal meta.hours (hourly), 53 (weekly) or 12 (monthly); export/check.py and the engine's guards enforce the lengths. No observed price of EE, LV or LT is ever present (R-BND-3).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "contract",
+    "meta",
+    "zones",
+    "boundary",
+    "borders"
+  ],
+  "properties": {
+    "contract": {
+      "const": 1
+    },
+    "meta": {
+      "$ref": "#/$defs/meta"
+    },
+    "zones": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "EE",
+        "LV",
+        "LT"
+      ],
+      "properties": {
+        "EE": {
+          "$ref": "#/$defs/zone"
+        },
+        "LV": {
+          "$ref": "#/$defs/zone"
+        },
+        "LT": {
+          "$ref": "#/$defs/zone"
+        }
+      }
+    },
+    "boundary": {
+      "description": "Hourly price profiles of the boundary zones, keyed by profile: 'observed' (observed years: the zone's day-ahead price, and from the Nordic flow-based go-live of 2024-10-29 the price at the virtual hub at the Nordic end of the zone's cable, SE4_NB or FI_EL, D-075; Poland's since the Core flow-based go-live of 2022-06-09 less the shadow price of Poland's allocation constraint, D-076), 'DE_2035' … 'GA_2050', 'NT_2030', 'NT_2040' (climate years), 'NTplus_2035' (weather scenarios), 'REAL_2025' (climate years: the zone's observed day-ahead prices of 2025, hour by hour of that year, D-051), 'TIGHT_2035' and 'TIGHTJ_2035' (climate years: the neighbours tight, each on its own or all at once, from energiamudel's research on Finland, Sweden and Poland, frozen at the fuels they were computed with, D-121).",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "FI",
+        "SE4",
+        "PL"
+      ],
+      "properties": {
+        "FI": {
+          "$ref": "#/$defs/profiles"
+        },
+        "SE4": {
+          "$ref": "#/$defs/profiles"
+        },
+        "PL": {
+          "$ref": "#/$defs/profiles"
+        }
+      }
+    },
+    "borders": {
+      "description": "Observed years only (empty otherwise): offered day-ahead capacity per direction (ENTSO-E A31) and, on the AC borders, the capacity allocated to balancing (BTD).",
+      "type": "object",
+      "additionalProperties": false,
+      "patternProperties": {
+        "^(EE-FI|EE-LV|LV-LT|LT-SE4|LT-PL)$": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "ntc_fwd",
+            "ntc_rev"
+          ],
+          "properties": {
+            "ntc_fwd": {
+              "$ref": "#/$defs/hourly_mw"
+            },
+            "ntc_rev": {
+              "$ref": "#/$defs/hourly_mw"
+            },
+            "reserved_fwd": {
+              "$ref": "#/$defs/hourly_mw"
+            },
+            "reserved_rev": {
+              "$ref": "#/$defs/hourly_mw"
+            }
+          }
+        }
+      }
+    },
+    "fuel": {
+      "description": "Observed years only: monthly averages in euros (the Pink Sheet's dollar gas price converted at the ECB monthly rate, OPEN-13); one value per month the year file covers.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "gas_eur_mwh_th",
+        "eua_eur_t",
+        "usd_per_eur"
+      ],
+      "properties": {
+        "gas_eur_mwh_th": {
+          "$ref": "#/$defs/monthly"
+        },
+        "eua_eur_t": {
+          "$ref": "#/$defs/monthly"
+        },
+        "usd_per_eur": {
+          "$ref": "#/$defs/monthly"
+        }
+      }
+    }
+  },
+  "$defs": {
+    "meta": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "key",
+        "kind",
+        "family",
+        "year",
+        "hours",
+        "complete",
+        "weight",
+        "target_year",
+        "weather",
+        "climate_model",
+        "labels",
+        "filled"
+      ],
+      "properties": {
+        "key": {
+          "type": "string",
+          "pattern": "^(20[0-9]{2}|cy[0-9]{4}|ws[0-9]{3})$"
+        },
+        "kind": {
+          "enum": [
+            "observed",
+            "climate",
+            "weather"
+          ]
+        },
+        "family": {
+          "enum": [
+            "observed",
+            "tyndp2024",
+            "tyndp2026"
+          ]
+        },
+        "year": {
+          "type": "integer",
+          "description": "calendar year, climate year, or the modelled year of a weather scenario"
+        },
+        "hours": {
+          "type": "integer",
+          "minimum": 24,
+          "maximum": 8784
+        },
+        "complete": {
+          "type": "boolean",
+          "description": "false for the current, partial year (replay only)"
+        },
+        "start_utc": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "weight": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 1
+        },
+        "target_year": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "description": "weather scenarios: the NT+ target year they belong to"
+        },
+        "weather": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "climate_model": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "reserve_start_hour": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "description": "first hour of the Baltic balancing capacity market (2025-02-04) in an observed year; reserve arrays are 0 before it"
+        },
+        "labels": {
+          "type": "object",
+          "description": "rank labels of R-TIME-4"
+        },
+        "filled": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "series",
+              "rule",
+              "count",
+              "first",
+              "last"
+            ],
+            "properties": {
+              "series": {
+                "type": "string"
+              },
+              "rule": {
+                "type": "string"
+              },
+              "count": {
+                "type": "integer"
+              },
+              "first": {
+                "type": "integer"
+              },
+              "last": {
+                "type": "integer"
+              }
+            }
+          }
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "series left out and why (e.g. a technology ENTSO-E reports for too few hours)"
+        }
+      }
+    },
+    "zone": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "load": {
+          "$ref": "#/$defs/hourly_mw",
+          "description": "observed: ENTSO-E A65"
+        },
+        "demand": {
+          "description": "scenario years: hourly demand components keyed by component, then by target year ('nt_profile' of TYNDP 2024; 'market', 'prosumer', 'ev_market', 'ev_prosumer' of NT+)",
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/by_target_mw"
+          }
+        },
+        "gen": {
+          "description": "observed: ENTSO-E A75 per technology",
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/hourly_mw"
+          }
+        },
+        "capacity": {
+          "description": "observed: ENTSO-E A68 per technology, MW (the reference the generation was measured against)",
+          "type": "object",
+          "additionalProperties": {
+            "type": "number",
+            "minimum": 0
+          }
+        },
+        "cf": {
+          "description": "scenario years: capacity factors per class, keyed by target year",
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/by_target_cf"
+          }
+        },
+        "temperature_c": {
+          "$ref": "#/$defs/hourly"
+        },
+        "reserve": {
+          "description": "observed: procured balancing capacity, MW (BTD), 0 before reserve_start_hour",
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "FCR_sym": {
+              "$ref": "#/$defs/hourly_mw"
+            },
+            "aFRR_up": {
+              "$ref": "#/$defs/hourly_mw"
+            },
+            "aFRR_down": {
+              "$ref": "#/$defs/hourly_mw"
+            },
+            "mFRR_up": {
+              "$ref": "#/$defs/hourly_mw"
+            },
+            "mFRR_down": {
+              "$ref": "#/$defs/hourly_mw"
+            }
+          }
+        },
+        "thermal_weekly_max_mw": {
+          "description": "observed years: the weekly maximum output (ENTSO-E A75) of each fuel-burning technology, its availability in the replay (R-SUP-6, D-022)",
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/weekly"
+          }
+        },
+        "thermal_weekly_p10_mw": {
+          "description": "observed years: the 10th percentile of each fuel-burning technology's hourly output (ENTSO-E A75) in each week, the least a replay runs it where the fitted floor is lower (R-SUP-5, D-073)",
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/weekly"
+          }
+        },
+        "hydro_weekly_min_mw": {
+          "description": "observed years: the weekly minimum output of the Daugava cascade, its minimum flow in the replay (R-ENG-5, D-022)",
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/weekly"
+          }
+        },
+        "hydro_weekly_p10_mw": {
+          "description": "observed years: the 10th percentile of the Daugava cascade's hourly output in each week, the least a replay releases (D-044)",
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/weekly"
+          }
+        },
+        "hydro_weekly_p90_mw": {
+          "description": "observed years: the 90th percentile of the Daugava cascade's hourly output in each week, the most a replay releases (D-044)",
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/weekly"
+          }
+        },
+        "hydro_weekly_mwh": {
+          "description": "weekly energy per hydro unit: observed generation (observed years) or inflow keyed by target year (scenario years)",
+          "type": "object",
+          "additionalProperties": {
+            "oneOf": [
+              {
+                "$ref": "#/$defs/weekly"
+              },
+              {
+                "type": "object",
+                "additionalProperties": {
+                  "$ref": "#/$defs/weekly"
+                }
+              }
+            ]
+          }
+        },
+        "hydro_weekly_max_mw": {
+          "description": "weekly maximum generation per hydro unit, MW: the Daugava cascade's observed weekly maximum output, its turbine limit in the replay (observed years, D-042), Kruonis's observed weekly maximum output, the power a replay gives it that week (observed years, D-073), or PEMMDB's MAX_TURB keyed by target year (climate years)",
+          "type": "object",
+          "additionalProperties": {
+            "oneOf": [
+              {
+                "$ref": "#/$defs/weekly"
+              },
+              {
+                "type": "object",
+                "additionalProperties": {
+                  "$ref": "#/$defs/weekly"
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "profiles": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "$ref": "#/$defs/hourly"
+      }
+    },
+    "by_target_mw": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "$ref": "#/$defs/hourly_mw"
+      }
+    },
+    "by_target_cf": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "$ref": "#/$defs/hourly_cf"
+      }
+    },
+    "hourly": {
+      "type": "array",
+      "minItems": 24,
+      "maxItems": 8784,
+      "items": {
+        "type": "number"
+      }
+    },
+    "hourly_mw": {
+      "type": "array",
+      "minItems": 24,
+      "maxItems": 8784,
+      "items": {
+        "type": "number"
+      }
+    },
+    "hourly_cf": {
+      "type": "array",
+      "minItems": 24,
+      "maxItems": 8784,
+      "items": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 1
+      }
+    },
+    "weekly": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 53,
+      "items": {
+        "type": "number",
+        "minimum": 0
+      }
+    },
+    "monthly": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 12,
+      "items": {
+        "type": "number"
+      }
+    }
+  }
+}

@@ -1,0 +1,70 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "energiamudel-v5"
+version = "0.1.0.dev0"
+description = "Baltic hourly day-ahead market model: data pipeline, database and export (build time)."
+requires-python = ">=3.12"   # constraints.txt's numpy 2.5 needs it
+readme = "README.md"
+dependencies = [
+  "requests>=2.31",
+  "pandas>=2.2",
+  "pyarrow>=15",
+  "duckdb>=1.1",
+  "python-dotenv>=1.0",
+  "openpyxl>=3.1",
+  "pyxlsb>=1.0.10",        # TYNDP 2024 DE/GA market-model workbooks are .xlsb (R-BND-5)
+  "xlrd>=2.0",             # EEX's auction reports of 2017-2019 are .xls (D-087)
+  "numpy>=1.26",           # the export's arrays (imported directly, not only through pandas)
+  "jsonschema>=4.20",      # the year files, presets, links and manifest against schema/ (R-NFR-7)
+]
+
+[project.optional-dependencies]
+dev = [
+  "mypy>=1.18",
+  "pytest>=8",
+  "ruff>=0.5",
+]
+reference = [
+  "highspy>=1.7",
+]
+
+[tool.setuptools]
+packages = ["pipeline", "pipeline.sources", "db", "validate", "export", "reference"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"  # requires-python
+exclude = ["spikes"]      # prototypes are disposable and not held to the standards (AGENTS.md §3)
+# the Nord Pool fetch runs from launchd on macOS's own Python 3.9 (D-108)
+per-file-target-version = {"pipeline/sources/nordpool_fetch.py" = "py39"}
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "PLE", "PIE"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = "-q"
+
+[tool.mypy]
+# `make lint` (and so `make ci`): every function's body checked, annotated or not; the libraries
+# without types (pandas, openpyxl, jsonschema, pyxlsb) read as Any
+python_version = "3.12"
+files = ["pipeline", "db", "export", "validate", "reference", "tests"]
+check_untyped_defs = true
+warn_unused_configs = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+strict_equality = true
+enable_error_code = ["ignore-without-code"]
+
+[[tool.mypy.overrides]]
+module = ["pandas", "openpyxl", "openpyxl.*", "jsonschema", "pyxlsb"]
+ignore_missing_imports = true
+
+[tool.ruff.lint.per-file-ignores]
+# the re-extraction checks print cell references and archive paths in full
+"validate/documentary_*.py" = ["E501"]

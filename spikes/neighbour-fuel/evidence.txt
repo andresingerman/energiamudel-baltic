@@ -1,0 +1,36 @@
+== DE 2035: gas blend 9.180 EUR/GJ, fossil share 0.757, CO2 130.2 EUR/t
+1. reformer cost computed 73.5 EUR/MWh H2; EE zone 1 marginal cost: mode 73 in 8736 of 8736 hours
+2. synthetic-fuel parity computed 94.5 EUR/MWh H2; FI zone 2 within 3 of it in 2316 hours
+3. FI: Z1: price = 0.706 x H2 -5.03 (6560 h); Z2: price = 0.684 x H2 -3.15 (5680 h); input efficiency 0.700
+4. FI: 6781 of 7644 hours above 5 EUR/MWh sit on the electrolyser relation; 1092 hours at or below 5
+3. SE4: Z1: price = 0.717 x H2 -5.24 (3959 h); Z2: price = 0.756 x H2 -8.63 (4108 h); input efficiency 0.700
+4. SE4: 4590 of 7562 hours above 5 EUR/MWh sit on the electrolyser relation; 1174 hours at or below 5
+3. PL: Z1: price = 0.787 x H2 -10.38 (1382 h); Z2: price = 0.711 x H2 -5.11 (2435 h); input efficiency 0.700
+4. PL: 2757 of 7566 hours above 5 EUR/MWh sit on the electrolyser relation; 1170 hours at or below 5
+== GA 2035: gas blend 8.642 EUR/GJ, fossil share 0.793, CO2 130.2 EUR/t
+1. reformer cost computed 72.2 EUR/MWh H2; EE zone 1 marginal cost: mode 72 in 8736 of 8736 hours
+2. synthetic-fuel parity computed 94.5 EUR/MWh H2; FI zone 2 within 3 of it in 1211 hours
+3. FI: Z1: price = 0.692 x H2 -4.08 (6997 h); Z2: price = 0.688 x H2 -3.39 (5456 h); input efficiency 0.700
+4. FI: 7077 of 7876 hours above 5 EUR/MWh sit on the electrolyser relation; 860 hours at or below 5
+3. SE4: Z1: price = 0.707 x H2 -4.40 (3813 h); Z2: price = 0.713 x H2 -5.17 (4258 h); input efficiency 0.700
+4. SE4: 4799 of 7399 hours above 5 EUR/MWh sit on the electrolyser relation; 1337 hours at or below 5
+3. PL: Z1: price = 0.720 x H2 -5.62 (2563 h); Z2: price = 0.690 x H2 -3.33 (2592 h); input efficiency 0.700
+4. PL: 3570 of 7198 hours above 5 EUR/MWh sit on the electrolyser relation; 1538 hours at or below 5
+== DE 2040: gas blend 10.863 EUR/GJ, fossil share 0.610, CO2 147.0 EUR/t
+1. reformer cost computed 79.1 EUR/MWh H2; EE zone 1 marginal cost: mode 79 in 2665 of 8736 hours
+2. synthetic-fuel parity computed 89.8 EUR/MWh H2; FI zone 2 within 3 of it in 2481 hours
+3. FI: Z1: price = 0.721 x H2 -6.26 (5963 h); Z2: price = 0.690 x H2 -3.14 (6219 h); input efficiency 0.710
+4. FI: 6782 of 7738 hours above 5 EUR/MWh sit on the electrolyser relation; 998 hours at or below 5
+3. SE4: Z1: price = 0.725 x H2 -5.76 (4838 h); Z2: price = 0.738 x H2 -6.58 (5047 h); input efficiency 0.710
+4. SE4: 5402 of 7536 hours above 5 EUR/MWh sit on the electrolyser relation; 1200 hours at or below 5
+3. PL: Z1: price = 0.758 x H2 -8.26 (2837 h); Z2: price = 0.733 x H2 -6.04 (3953 h); input efficiency 0.710
+4. PL: 4388 of 7607 hours above 5 EUR/MWh sit on the electrolyser relation; 1129 hours at or below 5
+== DE 2050: gas blend 17.931 EUR/GJ, fossil share 0.046, CO2 168.0 EUR/t
+1. reformer cost computed 90.5 EUR/MWh H2; EE zone 1 marginal cost: mode 77 in 516 of 8736 hours
+2. synthetic-fuel parity computed 75.0 EUR/MWh H2; FI zone 2 within 3 of it in 2758 hours
+3. FI: Z1: price = 0.705 x H2 -3.21 (5406 h); Z2: price = 0.715 x H2 -3.00 (6165 h); input efficiency 0.740
+4. FI: 6788 of 7480 hours above 5 EUR/MWh sit on the electrolyser relation; 1256 hours at or below 5
+3. SE4: Z1: price = 0.739 x H2 -4.85 (5160 h); Z2: price = 0.755 x H2 -5.98 (5137 h); input efficiency 0.740
+4. SE4: 5684 of 7479 hours above 5 EUR/MWh sit on the electrolyser relation; 1257 hours at or below 5
+3. PL: Z1: price = 0.697 x H2 -2.06 (4787 h); Z2: price = 0.755 x H2 -5.77 (3968 h); input efficiency 0.740
+4. PL: 5192 of 7547 hours above 5 EUR/MWh sit on the electrolyser relation; 1189 hours at or below 5

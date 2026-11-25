@@ -1,0 +1,111 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://energiamudel.ee/v5/schema/results.schema.json",
+  "title": "Results",
+  "description": "SPECIFICATION.md R-APP-10: a run's scenario and results as the application exports them, with the code version, the data manifest's hash and the lineage of the inputs, so that every figure can be traced to its sources and reproduced. The hourly prices are the CSV export's.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["format", "version", "gate", "code", "data", "scenario", "runs", "weighted", "scenarios", "sensitivities"],
+  "properties": {
+    "format": {"const": "energiamudel-v5 results"},
+    "version": {"const": 1, "description": "version of this contract"},
+    "gate": {"type": "string", "description": "the gate status the page carries (R-PUB-4)"},
+    "code": {
+      "type": "object", "additionalProperties": false, "required": ["version", "commit"],
+      "properties": {
+        "version": {"type": "string", "description": "app/package.json"},
+        "commit": {"type": "string", "description": "git describe --always --dirty of the build"}
+      }
+    },
+    "data": {
+      "type": "object", "additionalProperties": false, "required": ["manifest", "presets", "years"],
+      "properties": {
+        "manifest": {"type": "string", "description": "the export's own hash in manifest.json (R-DATA-8)"},
+        "presets": {"type": "string", "description": "SHA-256 of presets.json, which holds every preset value with its lineage ids"},
+        "years": {
+          "type": "array",
+          "items": {
+            "type": "object", "additionalProperties": false, "required": ["key", "sha256", "lineage"],
+            "properties": {
+              "key": {"type": "string"},
+              "sha256": {"type": "string"},
+              "lineage": {"type": "object", "additionalProperties": {"type": "array", "items": {"type": "string"}}, "description": "per series of the year file, its lineage ids"}
+            }
+          }
+        }
+      }
+    },
+    "scenario": {
+      "type": "object", "additionalProperties": false, "required": ["text", "sources"],
+      "properties": {
+        "text": {"type": "string", "description": "the canonical scenario text (schema/scenario.schema.json)"},
+        "sources": {"type": "array", "items": {"type": "string"}, "description": "lineage ids of the fleet and demand presets the scenario takes"}
+      }
+    },
+    "runs": {"type": "array", "items": {"$ref": "#/$defs/run"}, "description": "each year of the set shown"},
+    "weighted": {"type": "array", "items": {"$ref": "#/$defs/zone"}, "description": "per core zone, the set's figures weighted (R-TIME-3)"},
+    "scenarios": {
+      "type": ["object", "null"],
+      "description": "the scenario view's four scenarios, each weighted over the set (D-036, D-058); a scenario still computing when the file was saved is left out (D-127); null in a validation run",
+      "additionalProperties": {"type": "array", "items": {"$ref": "#/$defs/zone"}}
+    },
+    "sensitivities": {
+      "type": ["array", "null"],
+      "description": "the four standard sensitivities, the owner's price pairs of LNG and CO₂ (R-APP-11; revision 2.44, D-183): the weighted average price per core zone in the scenario shown, and with the plant the same pair in 0 SMR (R-SMR-5); a figure still computing when the file was saved is null; null in a validation run",
+      "items": {"$ref": "#/$defs/sensitivity"}
+    }
+  },
+  "$defs": {
+    "sensitivity": {
+      "type": "object", "additionalProperties": false, "required": ["id", "label", "meanEurMwh", "gasMeanEurMwh", "error"],
+      "properties": {
+        "id": {"enum": ["1", "2", "3", "4"]},
+        "label": {"type": "string"},
+        "meanEurMwh": {"type": ["array", "null"], "items": {"type": "number"}, "description": "EE, LV, LT"},
+        "gasMeanEurMwh": {"type": ["array", "null"], "items": {"type": "number"}, "description": "the same pair in 0 SMR, with the plant only"},
+        "error": {"type": ["string", "null"]}
+      }
+    },
+    "zone": {
+      "type": "object", "additionalProperties": false,
+      "required": ["zone", "meanEurMwh", "importTwh", "exportTwh", "co2Mt", "curtailTwh", "unservedMwh"],
+      "properties": {
+        "zone": {"enum": ["EE", "LV", "LT"]},
+        "meanEurMwh": {"type": "number"},
+        "medianEurMwh": {"type": "number", "description": "a run's; absent from weighted figures"},
+        "importTwh": {"type": "number"},
+        "exportTwh": {"type": "number"},
+        "importMeur": {"type": "number"},
+        "exportMeur": {"type": "number"},
+        "co2Mt": {"type": "number"},
+        "curtailTwh": {"type": "number"},
+        "unservedMwh": {"type": "number"},
+        "fossilPriceShare": {"type": ["number", "null"], "description": "share of hours with a fossil price (R-SMR-5, D-037); null in a validation run"}
+      }
+    },
+    "run": {
+      "type": "object", "additionalProperties": false, "required": ["key", "label", "weight", "hours", "zones", "borders", "plantTwh"],
+      "properties": {
+        "key": {"type": "string"},
+        "label": {"type": "string"},
+        "weight": {"type": "number"},
+        "hours": {"type": "integer"},
+        "zones": {"type": "array", "items": {"$ref": "#/$defs/zone"}},
+        "borders": {
+          "type": "array",
+          "items": {
+            "type": "object", "additionalProperties": false, "required": ["border", "flowTwh", "rentMeur", "congestedFwd", "congestedRev"],
+            "properties": {
+              "border": {"type": "string"},
+              "flowTwh": {"type": "number", "description": "net, + along the border's code"},
+              "rentMeur": {"type": "number"},
+              "congestedFwd": {"type": "number", "description": "share of hours at the limit along the code"},
+              "congestedRev": {"type": "number"}
+            }
+          }
+        },
+        "plantTwh": {"type": ["number", "null"], "description": "the nuclear plant's output; null without it"}
+      }
+    }
+  }
+}

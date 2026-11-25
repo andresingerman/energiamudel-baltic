@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1280"><!-- desktop only (D-149): a phone shows the desktop page, zoomed out -->
+<title>energiamudel v5 — Baltic day-ahead price model</title>
+<meta name="description" content="An hourly model of the Estonian, Latvian and Lithuanian day-ahead prices, run in the browser.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+</head>
+<body>
+<a class="skip" href="#results" data-t>Skip to the results</a>
+<header class="top">
+  <h1><svg class="wordmark" viewBox="0 0 10050 700" role="img" aria-label="energiamudel v5"><path fill="currentColor" d="M70 700V0H619V153H266V271H577V419H266V547H632V700ZM772 700V0H935L1244 373V0H1438V700H1275L966 327V700ZM1608 700V0H2157V153H1804V271H2115V419H1804V547H2170V700ZM2310 700V0H2623Q2777 0 2859.0 69.5Q2941 139 2941 259Q2941 336 2905.0 392.5Q2869 449 2803 480L2955 700H2743L2616 514H2508V700ZM2508 361H2618Q2680 361 2710.5 334.0Q2741 307 2741 259Q2741 210 2710.5 183.0Q2680 156 2618 156H2508ZM3430 714Q3347 714 3276.5 687.0Q3206 660 3154.0 611.5Q3102 563 3073.0 496.5Q3044 430 3044 350Q3044 270 3073.0 203.5Q3102 137 3154.5 88.5Q3207 40 3278.0 13.0Q3349 -14 3434 -14Q3532 -14 3610.5 19.0Q3689 52 3740 114L3614 228Q3543 150 3444 150Q3384 150 3339.0 174.5Q3294 199 3269.0 244.0Q3244 289 3244 350Q3244 409 3269.0 454.5Q3294 500 3338.5 525.0Q3383 550 3442 550Q3469 550 3495.5 545.0Q3522 540 3549 527V335H3724V625Q3664 669 3585.0 691.5Q3506 714 3430 714ZM3880 700V0H4078V700ZM4165 700 4474 0H4669L4979 700H4773L4718 564H4422L4367 700ZM4480 418H4660L4570 194ZM5065 700V0H5228L5474 405L5714 0H5877L5879 700H5697L5695 329L5515 631H5427L5248 339V700ZM6372 714Q6217 714 6130.0 629.5Q6043 545 6043 388V0H6241V382Q6241 472 6276.5 511.0Q6312 550 6374 550Q6436 550 6471.0 511.0Q6506 472 6506 382V0H6701V388Q6701 545 6614.0 629.5Q6527 714 6372 714ZM6865 700V0H7196Q7312 0 7400.0 43.0Q7488 86 7537.5 164.5Q7587 243 7587 350Q7587 457 7537.5 535.5Q7488 614 7400.0 657.0Q7312 700 7196 700ZM7063 542H7188Q7277 542 7332.0 491.0Q7387 440 7387 350Q7387 260 7332.0 209.0Q7277 158 7188 158H7063ZM7721 700V0H8270V153H7917V271H8228V419H7917V547H8283V700ZM8423 700V0H8621V543H8955V700Z"/><rect x="9147" y="0" width="903" height="700" fill="#15C75D"/><path fill="currentColor" d="M9422.54 507.78000000000003 9285.0 185.78000000000003H9383.44L9470.84 395.54L9560.08 185.78000000000003H9650.24L9512.24 507.78000000000003ZM9772.140000000001 514.22Q9738.560000000001 514.22 9705.210000000001 505.94000000000005Q9671.86 497.66 9647.480000000001 482.48L9680.140000000001 413.94000000000005Q9699.920000000002 426.82000000000005 9723.150000000001 433.72Q9746.380000000001 440.62 9769.380000000001 440.62Q9792.380000000001 440.62 9806.640000000001 431.65Q9820.900000000001 422.68 9820.900000000001 406.58000000000004Q9820.900000000001 391.86 9808.02 382.89Q9795.140000000001 373.92 9758.340000000002 373.92H9670.94L9687.04 185.78000000000003H9892.2V256.16H9762.480000000001L9758.340000000002 303.08000000000004H9779.960000000001Q9827.800000000001 303.08000000000004 9856.78 316.65000000000003Q9885.76 330.22 9899.1 352.99Q9912.44 375.76 9912.44 404.28000000000003Q9912.44 432.8 9897.720000000001 457.87Q9883.000000000002 482.94000000000005 9851.95 498.58000000000004Q9820.900000000001 514.22 9772.140000000001 514.22Z"/></svg></h1><!-- the wordmark (D-197): Montserrat ExtraBold's outlines, the tile in Fermi's green -->
+  <div class="tabs views" role="group" aria-label="View" data-t-label><button type="button" class="seg" data-view="model" aria-pressed="true" data-t>Model</button><button type="button" class="seg" data-view="deck" aria-pressed="false" data-t>Presentation</button><button type="button" class="seg" data-view="calibration" aria-pressed="false" data-t>Calibration</button><button type="button" class="seg" data-view="import" aria-pressed="false" data-t>Import price</button><button type="button" class="seg" data-view="weather" aria-pressed="false" data-t>Weather</button><button type="button" class="seg" data-view="statistics" aria-pressed="false" data-t>Statistics</button><button type="button" class="seg" data-view="docs" aria-pressed="false" data-t>Documentation</button></div>
+  <span class="run" id="run" role="status"></span>
+  <span class="spacer"></span>
+  <button type="button" class="tgl mini" id="lang" role="switch" aria-checked="false" aria-label="eesti keel" lang="et"><span lang="en"><svg class="fl" viewBox="0 0 60 30" preserveAspectRatio="none" aria-hidden="true"><clipPath id="gb-x"><path d="M30 15h30v15zv15H0zH0V0zV0h30z"/></clipPath><path d="M0 0h60v30H0z" fill="#012169"/><path d="M0 0l60 30M60 0L0 30" stroke="#fff" stroke-width="6"/><path d="M0 0l60 30M60 0L0 30" clip-path="url(#gb-x)" stroke="#C8102E" stroke-width="4"/><path d="M30 0v30M0 15h60" stroke="#fff" stroke-width="10"/><path d="M30 0v30M0 15h60" stroke="#C8102E" stroke-width="6"/></svg>EN</span><span><span class="fl fl-EE" aria-hidden="true"></span>ET</span></button>
+</header>
+<!-- while the headline run computes, a line under the header and a chip over the results (D-054, D-209) -->
+<div class="busyline" id="busyline" aria-hidden="true" hidden></div>
+<div class="app">
+  <aside class="panel" id="panel" aria-label="Scenario controls" data-t-label></aside>
+  <main class="results" id="results" tabindex="-1">
+    <p class="computing" id="computing" role="status" aria-live="polite" hidden></p>
+    <p class="status" id="status" role="status" data-t>loading the data…</p>
+    <p class="notice" id="notice" role="alert" hidden></p>
+    <div id="cards"></div>
+    <div id="sens"></div>
+    <div id="charts"></div>
+    <div id="capex"></div>
+    <div id="calibration" hidden></div>
+    <div id="import" hidden></div>
+    <div id="weather" hidden></div>
+    <div id="statistics" hidden></div>
+    <div id="docs" hidden></div>
+    <div id="deck" hidden></div>
+  </main>
+</div>
+<script type="module" src="/src/main.ts"></script>
+</body>
+</html>

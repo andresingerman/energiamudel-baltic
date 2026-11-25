@@ -1,0 +1,205 @@
+{
+ "battery_delta": {
+  "EE": {
+   "adopted": true,
+   "eur_mwh": 71.5,
+   "fits": [
+    {
+     "eur_mwh": 0,
+     "mfrr_share": 0.5,
+     "model_mwh": 18445,
+     "observed_mwh": 31015,
+     "residual_share": -0.4053,
+     "window_from_hour": 1680,
+     "window_to_hour": 6552,
+     "year": 2026,
+     "zone": "EE"
+    },
+    {
+     "eur_mwh": 37.5,
+     "mfrr_share": 0.25,
+     "model_mwh": 31206,
+     "observed_mwh": 31015,
+     "residual_share": 0.0061,
+     "window_from_hour": 1680,
+     "window_to_hour": 6552,
+     "year": 2026,
+     "zone": "EE"
+    },
+    {
+     "eur_mwh": 71.5,
+     "mfrr_share": 0,
+     "model_mwh": 31241,
+     "observed_mwh": 31015,
+     "residual_share": 0.0073,
+     "window_from_hour": 1680,
+     "window_to_hour": 6552,
+     "year": 2026,
+     "zone": "EE"
+    }
+   ],
+   "lineage_id": "pipeline.battery_delta.EE.2026",
+   "method": "bisection on the cycling cost until the engine of record's Estonian batteries discharge what A75 reports from the week of its first report; per mFRR share",
+   "mfrr_share": 0.0,
+   "why": "OPEN-3 decided by the owner (D-025): the batteries hold no mFRR, and their cycling cost is the fit at that share; it applies to every zone's batteries"
+  }
+ },
+ "chp_floor": {
+  "EE": {
+   "biomass": {
+    "a_mw": 33.52,
+    "b_mw_per_k": 1.561,
+    "bins": 32,
+    "hours": 8930,
+    "hours_all": 17544,
+    "lineage_id": "pipeline.chp_floor.EE.biomass.2023-2024",
+    "method": "average hourly A75 generation, per 1 °C bin (bins of ≥ 50 h), of the fit years' hours whose observed zone price was below the technology's cheapest bid in the engine (before the floor and the markup); least-squares line on the bins' average heating degree-hours weighted by their hours, a, b ≥ 0; T_ref of {8, 10, 12, 15} °C with the least squared error",
+    "share_above_floor": 0.627,
+    "t_ref_c": 15,
+    "years": [
+     2023,
+     2024
+    ]
+   }
+  },
+  "LT": {
+   "biomass": {
+    "a_mw": 29.61,
+    "b_mw_per_k": 0.157,
+    "bins": 33,
+    "hours": 8540,
+    "hours_all": 17544,
+    "lineage_id": "pipeline.chp_floor.LT.biomass.2023-2024",
+    "method": "average hourly A75 generation, per 1 °C bin (bins of ≥ 50 h), of the fit years' hours whose observed zone price was below the technology's cheapest bid in the engine (before the floor and the markup); least-squares line on the bins' average heating degree-hours weighted by their hours, a, b ≥ 0; T_ref of {8, 10, 12, 15} °C with the least squared error",
+    "share_above_floor": 0.7966,
+    "t_ref_c": 8,
+    "years": [
+     2023,
+     2024
+    ]
+   },
+   "gas": {
+    "a_mw": 47.08,
+    "b_mw_per_k": 0.251,
+    "bins": 35,
+    "hours": 10914,
+    "hours_all": 17544,
+    "lineage_id": "pipeline.chp_floor.LT.gas.2023-2024",
+    "method": "average hourly A75 generation, per 1 °C bin (bins of ≥ 50 h), of the fit years' hours whose observed zone price was below the technology's cheapest bid in the engine (before the floor and the markup); least-squares line on the bins' average heating degree-hours weighted by their hours, a, b ≥ 0; T_ref of {8, 10, 12, 15} °C with the least squared error",
+    "share_above_floor": 0.2776,
+    "t_ref_c": 15,
+    "years": [
+     2023,
+     2024
+    ]
+   }
+  },
+  "LV": {
+   "biomass": {
+    "a_mw": 28.85,
+    "b_mw_per_k": 1.32,
+    "bins": 30,
+    "hours": 8558,
+    "hours_all": 17544,
+    "lineage_id": "pipeline.chp_floor.LV.biomass.2023-2024",
+    "method": "average hourly A75 generation, per 1 °C bin (bins of ≥ 50 h), of the fit years' hours whose observed zone price was below the technology's cheapest bid in the engine (before the floor and the markup); least-squares line on the bins' average heating degree-hours weighted by their hours, a, b ≥ 0; T_ref of {8, 10, 12, 15} °C with the least squared error",
+    "share_above_floor": 0.4941,
+    "t_ref_c": 12,
+    "years": [
+     2023,
+     2024
+    ]
+   },
+   "gas": {
+    "a_mw": 50.52,
+    "b_mw_per_k": 21.131,
+    "bins": 32,
+    "hours": 10515,
+    "hours_all": 17544,
+    "lineage_id": "pipeline.chp_floor.LV.gas.2023-2024",
+    "method": "average hourly A75 generation, per 1 °C bin (bins of ≥ 50 h), of the fit years' hours whose observed zone price was below the technology's cheapest bid in the engine (before the floor and the markup); least-squares line on the bins' average heating degree-hours weighted by their hours, a, b ≥ 0; T_ref of {8, 10, 12, 15} °C with the least squared error",
+    "share_above_floor": 0.4574,
+    "t_ref_c": 8,
+    "years": [
+     2023,
+     2024
+    ]
+   }
+  }
+ },
+ "contract": 1,
+ "gas_bid": {
+  "eur_mwh": 42.5,
+  "folds": [
+   {
+    "eur_mwh": 42.5,
+    "mae_sum_fitted": 26.89,
+    "mae_sum_left_out": 34.54,
+    "year": 2023
+   },
+   {
+    "eur_mwh": 42.5,
+    "mae_sum_fitted": 34.54,
+    "mae_sum_left_out": 26.89,
+    "year": 2024
+   }
+  ],
+  "lineage_id": "pipeline.gas_bid.2023-2024",
+  "mae_sum_after": 61.43,
+  "mae_sum_before": 69.78,
+  "mae_sum_left_out": 61.43,
+  "method": "one bid for every gas offer of Estonia, Latvia and Lithuania, a combined-cycle plant's cost (gas_ccgt) plus one adder: the average of the adders each fit year gives alone on a grid of 10 EUR/MWh from 0 to 150 and of 2.5 EUR/MWh around its best, objective sum of the three zones' hourly price MAE of that year; engine of record; at Kruonis's step 60 EUR/MWh, the step of the grid whose register fits the two years best (D-115, D-164; the grid: step 0: 45, 64.56; step 15: 43.75, 62.97; step 30: 42.5, 62; step 45: 42.5, 61.51; step 60: 42.5, 61.43; step 90: 42.5, 61.59); 2023 alone 42.5 (26.89 on it, 34.54 on the other); 2024 alone 42.5 (34.54 on it, 26.89 on the other); left-out sum 61.43",
+  "reference": "gas_ccgt",
+  "years": [
+   2023,
+   2024
+  ],
+  "zones": [
+   "EE",
+   "LV",
+   "LT"
+  ]
+ },
+ "kruonis_output": {
+  "grid": [
+   {
+    "eur_mwh": 45,
+    "mae_sum": 64.56,
+    "step": 0
+   },
+   {
+    "eur_mwh": 43.75,
+    "mae_sum": 62.97,
+    "step": 15
+   },
+   {
+    "eur_mwh": 42.5,
+    "mae_sum": 62,
+    "step": 30
+   },
+   {
+    "eur_mwh": 42.5,
+    "mae_sum": 61.51,
+    "step": 45
+   },
+   {
+    "eur_mwh": 42.5,
+    "mae_sum": 61.43,
+    "step": 60
+   },
+   {
+    "eur_mwh": 42.5,
+    "mae_sum": 61.59,
+    "step": 90
+   }
+  ],
+  "lineage_id": "pipeline.gas_bid.2023-2024",
+  "method": "one bid for every gas offer of Estonia, Latvia and Lithuania, a combined-cycle plant's cost (gas_ccgt) plus one adder: the average of the adders each fit year gives alone on a grid of 10 EUR/MWh from 0 to 150 and of 2.5 EUR/MWh around its best, objective sum of the three zones' hourly price MAE of that year; engine of record; at Kruonis's step 60 EUR/MWh, the step of the grid whose register fits the two years best (D-115, D-164; the grid: step 0: 45, 64.56; step 15: 43.75, 62.97; step 30: 42.5, 62; step 45: 42.5, 61.51; step 60: 42.5, 61.43; step 90: 42.5, 61.59); 2023 alone 42.5 (26.89 on it, 34.54 on the other); 2024 alone 42.5 (34.54 on it, 26.89 on the other); left-out sum 61.43",
+  "segments": 4,
+  "step_eur_mwh": 60,
+  "years": [
+   2023,
+   2024
+  ]
+ }
+}

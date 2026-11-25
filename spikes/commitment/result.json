@@ -1,0 +1,1721 @@
+{
+ "commit_v1": {
+  "commit, no start cost": [
+   {
+    "year": 2023,
+    "mae": [
+     9.39,
+     9.25,
+     8.77
+    ],
+    "bias": [
+     -0.8,
+     -1,
+     -0.8
+    ],
+    "maeSum": 27.41,
+    "dear250": {
+     "hours": 99,
+     "bias": [
+      -54.7,
+      -80.7,
+      -79.6
+     ]
+    },
+    "dear150": {
+     "hours": 1062,
+     "bias": [
+      -6.3,
+      -7.6,
+      -7
+     ]
+    },
+    "apart": {
+     "model": 0.071,
+     "record": 0.07,
+     "modelOnly": 0.024
+    },
+    "kruonis": {
+     "twh": 0.325,
+     "hours": 1060,
+     "recordTwh": 0.535,
+     "recordHours": 3014
+    },
+    "batteryTwh": 0,
+    "oilShale": {
+     "model": 1.88,
+     "record": 2
+    },
+    "breaches": 10
+   },
+   {
+    "year": 2024,
+    "mae": [
+     10.92,
+     12.02,
+     11.96
+    ],
+    "bias": [
+     -3.3,
+     -4.4,
+     -4.4
+    ],
+    "maeSum": 34.9,
+    "dear250": {
+     "hours": 211,
+     "bias": [
+      -51,
+      -103.4,
+      -104.1
+     ]
+    },
+    "dear150": {
+     "hours": 775,
+     "bias": [
+      -19.2,
+      -22.2,
+      -22.3
+     ]
+    },
+    "apart": {
+     "model": 0.046,
+     "record": 0.028,
+     "modelOnly": 0.026
+    },
+    "kruonis": {
+     "twh": 0.379,
+     "hours": 1114,
+     "recordTwh": 0.571,
+     "recordHours": 3163
+    },
+    "batteryTwh": 0,
+    "oilShale": {
+     "model": 1.8,
+     "record": 1.7
+    },
+    "breaches": 8
+   },
+   {
+    "year": 2025,
+    "mae": [
+     19.2,
+     17.82,
+     17.62
+    ],
+    "bias": [
+     -2.3,
+     0.2,
+     0
+    ],
+    "maeSum": 54.64,
+    "dear250": {
+     "hours": 247,
+     "bias": [
+      -118.2,
+      -113.7,
+      -114.5
+     ]
+    },
+    "dear150": {
+     "hours": 1005,
+     "bias": [
+      -17.2,
+      -12.8,
+      -13.1
+     ]
+    },
+    "apart": {
+     "model": 0.262,
+     "record": 0.214,
+     "modelOnly": 0.112
+    },
+    "kruonis": {
+     "twh": 0.38,
+     "hours": 1417,
+     "recordTwh": 0.48,
+     "recordHours": 2564
+    },
+    "batteryTwh": 0,
+    "oilShale": {
+     "model": 1.47,
+     "record": 1.42
+    },
+    "breaches": 14
+   },
+   {
+    "year": 2026,
+    "mae": [
+     13.36,
+     10.72,
+     10.05
+    ],
+    "bias": [
+     -7.1,
+     -4.3,
+     -4.3
+    ],
+    "maeSum": 34.13,
+    "dear250": {
+     "hours": 255,
+     "bias": [
+      -74.6,
+      -66.1,
+      -66.3
+     ]
+    },
+    "dear150": {
+     "hours": 1008,
+     "bias": [
+      -22.1,
+      -13.5,
+      -12.5
+     ]
+    },
+    "apart": {
+     "model": 0.491,
+     "record": 0.447,
+     "modelOnly": 0.14
+    },
+    "kruonis": {
+     "twh": 0.386,
+     "hours": 984,
+     "recordTwh": 0.434,
+     "recordHours": 2021
+    },
+    "batteryTwh": 0.169,
+    "oilShale": {
+     "model": 0.99,
+     "record": 0.89
+    },
+    "breaches": 0
+   }
+  ],
+  "commit + warm start": [
+   {
+    "year": 2023,
+    "mae": [
+     9.48,
+     9.27,
+     8.79
+    ],
+    "bias": [
+     -0.5,
+     -0.8,
+     -0.6
+    ],
+    "maeSum": 27.54,
+    "dear250": {
+     "hours": 99,
+     "bias": [
+      -54.3,
+      -80.7,
+      -79.6
+     ]
+    },
+    "dear150": {
+     "hours": 1062,
+     "bias": [
+      -6.2,
+      -7.5,
+      -6.8
+     ]
+    },
+    "apart": {
+     "model": 0.069,
+     "record": 0.07,
+     "modelOnly": 0.023
+    },
+    "kruonis": {
+     "twh": 0.325,
+     "hours": 1066,
+     "recordTwh": 0.535,
+     "recordHours": 3014
+    },
+    "batteryTwh": 0,
+    "oilShale": {
+     "model": 1.85,
+     "record": 2
+    },
+    "breaches": 10
+   },
+   {
+    "year": 2024,
+    "mae": [
+     10.65,
+     11.82,
+     11.75
+    ],
+    "bias": [
+     -2.5,
+     -3.8,
+     -3.8
+    ],
+    "maeSum": 34.22,
+    "dear250": {
+     "hours": 211,
+     "bias": [
+      -44.3,
+      -99.9,
+      -100.7
+     ]
+    },
+    "dear150": {
+     "hours": 775,
+     "bias": [
+      -18.4,
+      -21.4,
+      -21.5
+     ]
+    },
+    "apart": {
+     "model": 0.046,
+     "record": 0.028,
+     "modelOnly": 0.027
+    },
+    "kruonis": {
+     "twh": 0.381,
+     "hours": 1125,
+     "recordTwh": 0.571,
+     "recordHours": 3163
+    },
+    "batteryTwh": 0,
+    "oilShale": {
+     "model": 1.75,
+     "record": 1.7
+    },
+    "breaches": 8
+   },
+   {
+    "year": 2025,
+    "mae": [
+     19.07,
+     18.03,
+     17.77
+    ],
+    "bias": [
+     -0.8,
+     1.1,
+     0.8
+    ],
+    "maeSum": 54.87,
+    "dear250": {
+     "hours": 247,
+     "bias": [
+      -113.6,
+      -112.5,
+      -113.4
+     ]
+    },
+    "dear150": {
+     "hours": 1005,
+     "bias": [
+      -13.1,
+      -10.8,
+      -11.2
+     ]
+    },
+    "apart": {
+     "model": 0.245,
+     "record": 0.214,
+     "modelOnly": 0.098
+    },
+    "kruonis": {
+     "twh": 0.383,
+     "hours": 1444,
+     "recordTwh": 0.48,
+     "recordHours": 2564
+    },
+    "batteryTwh": 0,
+    "oilShale": {
+     "model": 1.4,
+     "record": 1.42
+    },
+    "breaches": 12
+   },
+   {
+    "year": 2026,
+    "mae": [
+     13.31,
+     10.74,
+     10.09
+    ],
+    "bias": [
+     -6.4,
+     -4.1,
+     -4.2
+    ],
+    "maeSum": 34.14,
+    "dear250": {
+     "hours": 255,
+     "bias": [
+      -73.9,
+      -66,
+      -66.2
+     ]
+    },
+    "dear150": {
+     "hours": 1008,
+     "bias": [
+      -20.8,
+      -13.4,
+      -12.4
+     ]
+    },
+    "apart": {
+     "model": 0.479,
+     "record": 0.447,
+     "modelOnly": 0.132
+    },
+    "kruonis": {
+     "twh": 0.385,
+     "hours": 982,
+     "recordTwh": 0.434,
+     "recordHours": 2021
+    },
+    "batteryTwh": 0.17,
+    "oilShale": {
+     "model": 0.95,
+     "record": 0.89
+    },
+    "breaches": 0
+   }
+  ]
+ },
+ "commit_v2": {
+  "profit rule": [
+   {
+    "year": 2023,
+    "mae": [
+     9.67,
+     9.45,
+     9.01
+    ],
+    "bias": [
+     0.4,
+     0.1,
+     0.1
+    ],
+    "maeSum": 28.13,
+    "dear250": {
+     "hours": 99,
+     "bias": [
+      -53.3,
+      -80.3,
+      -79.2
+     ]
+    },
+    "dear150": {
+     "hours": 1062,
+     "bias": [
+      -4.5,
+      -5.8,
+      -6.1
+     ]
+    },
+    "apart": {
+     "model": 0.067,
+     "record": 0.07,
+     "modelOnly": 0.022
+    },
+    "kruonis": {
+     "twh": 0.324,
+     "hours": 1079,
+     "recordTwh": 0.535,
+     "recordHours": 3014
+    },
+    "batteryTwh": 0,
+    "oilShale": {
+     "model": 1.7,
+     "record": 2
+    },
+    "breaches": 11
+   },
+   {
+    "year": 2024,
+    "mae": [
+     10.82,
+     11.86,
+     11.8
+    ],
+    "bias": [
+     -1.6,
+     -3.1,
+     -3.1
+    ],
+    "maeSum": 34.48,
+    "dear250": {
+     "hours": 211,
+     "bias": [
+      -35.9,
+      -96.5,
+      -97.3
+     ]
+    },
+    "dear150": {
+     "hours": 775,
+     "bias": [
+      -16.3,
+      -20,
+      -20.1
+     ]
+    },
+    "apart": {
+     "model": 0.044,
+     "record": 0.028,
+     "modelOnly": 0.026
+    },
+    "kruonis": {
+     "twh": 0.384,
+     "hours": 1137,
+     "recordTwh": 0.571,
+     "recordHours": 3163
+    },
+    "batteryTwh": 0,
+    "oilShale": {
+     "model": 1.66,
+     "record": 1.7
+    },
+    "breaches": 6
+   },
+   {
+    "year": 2025,
+    "mae": [
+     21.81,
+     18.83,
+     18.57
+    ],
+    "bias": [
+     4,
+     3,
+     2.6
+    ],
+    "maeSum": 59.21,
+    "dear250": {
+     "hours": 247,
+     "bias": [
+      -101.1,
+      -106.9,
+      -107.7
+     ]
+    },
+    "dear150": {
+     "hours": 1005,
+     "bias": [
+      -7.9,
+      -8.7,
+      -9.1
+     ]
+    },
+    "apart": {
+     "model": 0.224,
+     "record": 0.214,
+     "modelOnly": 0.084
+    },
+    "kruonis": {
+     "twh": 0.387,
+     "hours": 1474,
+     "recordTwh": 0.48,
+     "recordHours": 2564
+    },
+    "batteryTwh": 0,
+    "oilShale": {
+     "model": 1.27,
+     "record": 1.42
+    },
+    "breaches": 12
+   },
+   {
+    "year": 2026,
+    "mae": [
+     13.06,
+     10.66,
+     10.05
+    ],
+    "bias": [
+     -5.3,
+     -3.8,
+     -4
+    ],
+    "maeSum": 33.77,
+    "dear250": {
+     "hours": 255,
+     "bias": [
+      -72.5,
+      -65.7,
+      -65.8
+     ]
+    },
+    "dear150": {
+     "hours": 1008,
+     "bias": [
+      -17.5,
+      -12.6,
+      -12.1
+     ]
+    },
+    "apart": {
+     "model": 0.463,
+     "record": 0.447,
+     "modelOnly": 0.122
+    },
+    "kruonis": {
+     "twh": 0.385,
+     "hours": 984,
+     "recordTwh": 0.434,
+     "recordHours": 2021
+    },
+    "batteryTwh": 0.171,
+    "oilShale": {
+     "model": 0.89,
+     "record": 0.89
+    },
+    "breaches": 0
+   }
+  ],
+  "min-on + warm start": [
+   {
+    "year": 2023,
+    "mae": [
+     9.48,
+     9.27,
+     8.79
+    ],
+    "bias": [
+     -0.5,
+     -0.8,
+     -0.6
+    ],
+    "maeSum": 27.54,
+    "dear250": {
+     "hours": 99,
+     "bias": [
+      -54.3,
+      -80.7,
+      -79.6
+     ]
+    },
+    "dear150": {
+     "hours": 1062,
+     "bias": [
+      -6.2,
+      -7.5,
+      -6.8
+     ]
+    },
+    "apart": {
+     "model": 0.069,
+     "record": 0.07,
+     "modelOnly": 0.023
+    },
+    "kruonis": {
+     "twh": 0.325,
+     "hours": 1066,
+     "recordTwh": 0.535,
+     "recordHours": 3014
+    },
+    "batteryTwh": 0,
+    "oilShale": {
+     "model": 1.85,
+     "record": 2
+    },
+    "breaches": 10
+   },
+   {
+    "year": 2024,
+    "mae": [
+     10.65,
+     11.82,
+     11.75
+    ],
+    "bias": [
+     -2.5,
+     -3.8,
+     -3.8
+    ],
+    "maeSum": 34.22,
+    "dear250": {
+     "hours": 211,
+     "bias": [
+      -44.3,
+      -99.9,
+      -100.7
+     ]
+    },
+    "dear150": {
+     "hours": 775,
+     "bias": [
+      -18.4,
+      -21.4,
+      -21.5
+     ]
+    },
+    "apart": {
+     "model": 0.046,
+     "record": 0.028,
+     "modelOnly": 0.027
+    },
+    "kruonis": {
+     "twh": 0.381,
+     "hours": 1125,
+     "recordTwh": 0.571,
+     "recordHours": 3163
+    },
+    "batteryTwh": 0,
+    "oilShale": {
+     "model": 1.75,
+     "record": 1.7
+    },
+    "breaches": 8
+   },
+   {
+    "year": 2025,
+    "mae": [
+     19.07,
+     18.03,
+     17.77
+    ],
+    "bias": [
+     -0.8,
+     1.1,
+     0.8
+    ],
+    "maeSum": 54.87,
+    "dear250": {
+     "hours": 247,
+     "bias": [
+      -113.6,
+      -112.5,
+      -113.4
+     ]
+    },
+    "dear150": {
+     "hours": 1005,
+     "bias": [
+      -13.1,
+      -10.8,
+      -11.2
+     ]
+    },
+    "apart": {
+     "model": 0.245,
+     "record": 0.214,
+     "modelOnly": 0.098
+    },
+    "kruonis": {
+     "twh": 0.383,
+     "hours": 1444,
+     "recordTwh": 0.48,
+     "recordHours": 2564
+    },
+    "batteryTwh": 0,
+    "oilShale": {
+     "model": 1.4,
+     "record": 1.42
+    },
+    "breaches": 12
+   },
+   {
+    "year": 2026,
+    "mae": [
+     13.31,
+     10.74,
+     10.09
+    ],
+    "bias": [
+     -6.4,
+     -4.1,
+     -4.2
+    ],
+    "maeSum": 34.14,
+    "dear250": {
+     "hours": 255,
+     "bias": [
+      -73.9,
+      -66,
+      -66.2
+     ]
+    },
+    "dear150": {
+     "hours": 1008,
+     "bias": [
+      -20.8,
+      -13.4,
+      -12.4
+     ]
+    },
+    "apart": {
+     "model": 0.479,
+     "record": 0.447,
+     "modelOnly": 0.132
+    },
+    "kruonis": {
+     "twh": 0.385,
+     "hours": 982,
+     "recordTwh": 0.434,
+     "recordHours": 2021
+    },
+    "batteryTwh": 0.17,
+    "oilShale": {
+     "model": 0.95,
+     "record": 0.89
+    },
+    "breaches": 0
+   }
+  ]
+ },
+ "commit_v3": {
+  "stay while ≥1 h": [
+   {
+    "year": 2023,
+    "mae": [
+     9.61,
+     9.37,
+     8.88
+    ],
+    "bias": [
+     -1.2,
+     -1.3,
+     -1.1
+    ],
+    "maeSum": 27.86,
+    "dear250": {
+     "hours": 99,
+     "bias": [
+      -54.3,
+      -80.8,
+      -79.6
+     ]
+    },
+    "dear150": {
+     "hours": 1062,
+     "bias": [
+      -6.7,
+      -7.8,
+      -7.1
+     ]
+    },
+    "apart": {
+     "model": 0.072,
+     "record": 0.07,
+     "modelOnly": 0.025
+    },
+    "kruonis": {
+     "twh": 0.326,
+     "hours": 1060,
+     "recordTwh": 0.535,
+     "recordHours": 3014
+    },
+    "batteryTwh": 0,
+    "oilShale": {
+     "model": 1.96,
+     "record": 2
+    },
+    "breaches": 9
+   },
+   {
+    "year": 2024,
+    "mae": [
+     10.85,
+     11.92,
+     11.86
+    ],
+    "bias": [
+     -3.4,
+     -4.5,
+     -4.5
+    ],
+    "maeSum": 34.63,
+    "dear250": {
+     "hours": 211,
+     "bias": [
+      -45.8,
+      -100.7,
+      -101.4
+     ]
+    },
+    "dear150": {
+     "hours": 775,
+     "bias": [
+      -20.2,
+      -22.5,
+      -22.6
+     ]
+    },
+    "apart": {
+     "model": 0.052,
+     "record": 0.028,
+     "modelOnly": 0.032
+    },
+    "kruonis": {
+     "twh": 0.379,
+     "hours": 1111,
+     "recordTwh": 0.571,
+     "recordHours": 3163
+    },
+    "batteryTwh": 0,
+    "oilShale": {
+     "model": 1.9,
+     "record": 1.7
+    },
+    "breaches": 9
+   },
+   {
+    "year": 2025,
+    "mae": [
+     19.03,
+     17.8,
+     17.58
+    ],
+    "bias": [
+     -2.3,
+     -0.1,
+     -0.3
+    ],
+    "maeSum": 54.41,
+    "dear250": {
+     "hours": 247,
+     "bias": [
+      -115.2,
+      -112.8,
+      -113.7
+     ]
+    },
+    "dear150": {
+     "hours": 1005,
+     "bias": [
+      -14.4,
+      -11.9,
+      -12.3
+     ]
+    },
+    "apart": {
+     "model": 0.256,
+     "record": 0.214,
+     "modelOnly": 0.107
+    },
+    "kruonis": {
+     "twh": 0.38,
+     "hours": 1419,
+     "recordTwh": 0.48,
+     "recordHours": 2564
+    },
+    "batteryTwh": 0,
+    "oilShale": {
+     "model": 1.52,
+     "record": 1.42
+    },
+    "breaches": 13
+   },
+   {
+    "year": 2026,
+    "mae": [
+     13.4,
+     10.75,
+     10.04
+    ],
+    "bias": [
+     -7.5,
+     -4.3,
+     -4.3
+    ],
+    "maeSum": 34.19,
+    "dear250": {
+     "hours": 255,
+     "bias": [
+      -76.6,
+      -66.2,
+      -66.3
+     ]
+    },
+    "dear150": {
+     "hours": 1008,
+     "bias": [
+      -22.1,
+      -13.4,
+      -12.4
+     ]
+    },
+    "apart": {
+     "model": 0.496,
+     "record": 0.447,
+     "modelOnly": 0.144
+    },
+    "kruonis": {
+     "twh": 0.385,
+     "hours": 988,
+     "recordTwh": 0.434,
+     "recordHours": 2021
+    },
+    "batteryTwh": 0.167,
+    "oilShale": {
+     "model": 1.01,
+     "record": 0.89
+    },
+    "breaches": 0
+   }
+  ],
+  "stay while ≥4 h": [
+   {
+    "year": 2023,
+    "mae": [
+     9.5,
+     9.26,
+     8.77
+    ],
+    "bias": [
+     -0.9,
+     -1.1,
+     -0.9
+    ],
+    "maeSum": 27.53,
+    "dear250": {
+     "hours": 99,
+     "bias": [
+      -54.3,
+      -80.7,
+      -79.6
+     ]
+    },
+    "dear150": {
+     "hours": 1062,
+     "bias": [
+      -6.5,
+      -7.7,
+      -7
+     ]
+    },
+    "apart": {
+     "model": 0.072,
+     "record": 0.07,
+     "modelOnly": 0.025
+    },
+    "kruonis": {
+     "twh": 0.325,
+     "hours": 1057,
+     "recordTwh": 0.535,
+     "recordHours": 3014
+    },
+    "batteryTwh": 0,
+    "oilShale": {
+     "model": 1.91,
+     "record": 2
+    },
+    "breaches": 9
+   },
+   {
+    "year": 2024,
+    "mae": [
+     10.77,
+     11.91,
+     11.84
+    ],
+    "bias": [
+     -3.2,
+     -4.3,
+     -4.3
+    ],
+    "maeSum": 34.52,
+    "dear250": {
+     "hours": 211,
+     "bias": [
+      -44.9,
+      -100.5,
+      -101.2
+     ]
+    },
+    "dear150": {
+     "hours": 775,
+     "bias": [
+      -19.8,
+      -22.3,
+      -22.4
+     ]
+    },
+    "apart": {
+     "model": 0.049,
+     "record": 0.028,
+     "modelOnly": 0.029
+    },
+    "kruonis": {
+     "twh": 0.379,
+     "hours": 1110,
+     "recordTwh": 0.571,
+     "recordHours": 3163
+    },
+    "batteryTwh": 0,
+    "oilShale": {
+     "model": 1.85,
+     "record": 1.7
+    },
+    "breaches": 8
+   },
+   {
+    "year": 2025,
+    "mae": [
+     19.01,
+     17.85,
+     17.65
+    ],
+    "bias": [
+     -1.8,
+     0.3,
+     0.1
+    ],
+    "maeSum": 54.51,
+    "dear250": {
+     "hours": 247,
+     "bias": [
+      -115.2,
+      -112.9,
+      -113.7
+     ]
+    },
+    "dear150": {
+     "hours": 1005,
+     "bias": [
+      -14.2,
+      -11.8,
+      -12.2
+     ]
+    },
+    "apart": {
+     "model": 0.248,
+     "record": 0.214,
+     "modelOnly": 0.1
+    },
+    "kruonis": {
+     "twh": 0.381,
+     "hours": 1426,
+     "recordTwh": 0.48,
+     "recordHours": 2564
+    },
+    "batteryTwh": 0,
+    "oilShale": {
+     "model": 1.48,
+     "record": 1.42
+    },
+    "breaches": 13
+   },
+   {
+    "year": 2026,
+    "mae": [
+     13.38,
+     10.76,
+     10.05
+    ],
+    "bias": [
+     -7.1,
+     -4.3,
+     -4.2
+    ],
+    "maeSum": 34.19,
+    "dear250": {
+     "hours": 255,
+     "bias": [
+      -76.5,
+      -66.2,
+      -66.3
+     ]
+    },
+    "dear150": {
+     "hours": 1008,
+     "bias": [
+      -21.6,
+      -13.4,
+      -12.4
+     ]
+    },
+    "apart": {
+     "model": 0.491,
+     "record": 0.447,
+     "modelOnly": 0.142
+    },
+    "kruonis": {
+     "twh": 0.385,
+     "hours": 985,
+     "recordTwh": 0.434,
+     "recordHours": 2021
+    },
+    "batteryTwh": 0.168,
+    "oilShale": {
+     "model": 1,
+     "record": 0.89
+    },
+    "breaches": 0
+   }
+  ]
+ },
+ "e141": "2026-10-11: every rule re-scored on D-111's register after ERRATA E-141 (rescore.ts; the committed minimum load had been left out of the results' generation); no price moved, the sums of MAE are as before",
+ "rounds": {
+  "one round": [
+   {
+    "year": 2023,
+    "mae": [
+     9.61,
+     9.33,
+     8.88
+    ],
+    "bias": [
+     -0.8,
+     -1.1,
+     -0.9
+    ],
+    "maeSum": 27.82,
+    "dear250": {
+     "hours": 99,
+     "bias": [
+      -53.2,
+      -77.6,
+      -76.3
+     ]
+    },
+    "dear150": {
+     "hours": 1062,
+     "bias": [
+      -3.9,
+      -5,
+      -4.6
+     ]
+    },
+    "apart": {
+     "model": 0.071,
+     "record": 0.07,
+     "modelOnly": 0.024
+    },
+    "kruonis": {
+     "twh": 0.258,
+     "hours": 900,
+     "recordTwh": 0.535,
+     "recordHours": 3014
+    },
+    "batteryTwh": 0,
+    "oilShale": {
+     "model": 1.87,
+     "record": 2
+    },
+    "breaches": 8
+   },
+   {
+    "year": 2024,
+    "mae": [
+     10.93,
+     11.94,
+     11.88
+    ],
+    "bias": [
+     -3.2,
+     -4.4,
+     -4.4
+    ],
+    "maeSum": 34.75,
+    "dear250": {
+     "hours": 211,
+     "bias": [
+      -52.6,
+      -104.8,
+      -104.6
+     ]
+    },
+    "dear150": {
+     "hours": 775,
+     "bias": [
+      -18,
+      -20.7,
+      -20.8
+     ]
+    },
+    "apart": {
+     "model": 0.046,
+     "record": 0.028,
+     "modelOnly": 0.026
+    },
+    "kruonis": {
+     "twh": 0.327,
+     "hours": 1012,
+     "recordTwh": 0.571,
+     "recordHours": 3163
+    },
+    "batteryTwh": 0,
+    "oilShale": {
+     "model": 1.75,
+     "record": 1.7
+    },
+    "breaches": 5
+   },
+   {
+    "year": 2025,
+    "mae": [
+     18.97,
+     18.21,
+     18.01
+    ],
+    "bias": [
+     -1.5,
+     0.9,
+     0.7
+    ],
+    "maeSum": 55.19,
+    "dear250": {
+     "hours": 247,
+     "bias": [
+      -114.3,
+      -109.1,
+      -110
+     ]
+    },
+    "dear150": {
+     "hours": 1005,
+     "bias": [
+      -12.4,
+      -7.6,
+      -7.9
+     ]
+    },
+    "apart": {
+     "model": 0.242,
+     "record": 0.214,
+     "modelOnly": 0.095
+    },
+    "kruonis": {
+     "twh": 0.33,
+     "hours": 1308,
+     "recordTwh": 0.48,
+     "recordHours": 2564
+    },
+    "batteryTwh": 0,
+    "oilShale": {
+     "model": 1.39,
+     "record": 1.42
+    },
+    "breaches": 9
+   },
+   {
+    "year": 2026,
+    "mae": [
+     13.31,
+     10.89,
+     10.17
+    ],
+    "bias": [
+     -5.9,
+     -3.4,
+     -3.6
+    ],
+    "maeSum": 34.37,
+    "dear250": {
+     "hours": 255,
+     "bias": [
+      -69.6,
+      -63.5,
+      -63.6
+     ]
+    },
+    "dear150": {
+     "hours": 1008,
+     "bias": [
+      -19.6,
+      -11.8,
+      -10.9
+     ]
+    },
+    "apart": {
+     "model": 0.476,
+     "record": 0.447,
+     "modelOnly": 0.128
+    },
+    "kruonis": {
+     "twh": 0.326,
+     "hours": 856,
+     "recordTwh": 0.434,
+     "recordHours": 2021
+    },
+    "batteryTwh": 0.15,
+    "oilShale": {
+     "model": 0.94,
+     "record": 0.89
+    },
+    "breaches": 0
+   }
+  ],
+  "two rounds": [
+   {
+    "year": 2023,
+    "mae": [
+     9.66,
+     9.46,
+     9.02
+    ],
+    "bias": [
+     -0.6,
+     -0.8,
+     -0.7
+    ],
+    "maeSum": 28.14,
+    "dear250": {
+     "hours": 99,
+     "bias": [
+      -53.1,
+      -77.2,
+      -75.9
+     ]
+    },
+    "dear150": {
+     "hours": 1062,
+     "bias": [
+      -3.3,
+      -4.4,
+      -4
+     ]
+    },
+    "apart": {
+     "model": 0.071,
+     "record": 0.07,
+     "modelOnly": 0.024
+    },
+    "kruonis": {
+     "twh": 0.258,
+     "hours": 901,
+     "recordTwh": 0.535,
+     "recordHours": 3014
+    },
+    "batteryTwh": 0,
+    "oilShale": {
+     "model": 1.85,
+     "record": 2
+    },
+    "breaches": 8
+   },
+   {
+    "year": 2024,
+    "mae": [
+     10.85,
+     11.85,
+     11.78
+    ],
+    "bias": [
+     -3.5,
+     -4.7,
+     -4.7
+    ],
+    "maeSum": 34.48,
+    "dear250": {
+     "hours": 211,
+     "bias": [
+      -52.4,
+      -104.6,
+      -104.4
+     ]
+    },
+    "dear150": {
+     "hours": 775,
+     "bias": [
+      -17.6,
+      -20.4,
+      -20.5
+     ]
+    },
+    "apart": {
+     "model": 0.047,
+     "record": 0.028,
+     "modelOnly": 0.027
+    },
+    "kruonis": {
+     "twh": 0.327,
+     "hours": 1017,
+     "recordTwh": 0.571,
+     "recordHours": 3163
+    },
+    "batteryTwh": 0,
+    "oilShale": {
+     "model": 1.76,
+     "record": 1.7
+    },
+    "breaches": 5
+   },
+   {
+    "year": 2025,
+    "mae": [
+     19.29,
+     18.22,
+     18.08
+    ],
+    "bias": [
+     -2.5,
+     0.6,
+     0.4
+    ],
+    "maeSum": 55.59,
+    "dear250": {
+     "hours": 247,
+     "bias": [
+      -118.7,
+      -109.8,
+      -110.6
+     ]
+    },
+    "dear150": {
+     "hours": 1005,
+     "bias": [
+      -17.7,
+      -10.3,
+      -10.6
+     ]
+    },
+    "apart": {
+     "model": 0.255,
+     "record": 0.214,
+     "modelOnly": 0.107
+    },
+    "kruonis": {
+     "twh": 0.329,
+     "hours": 1302,
+     "recordTwh": 0.48,
+     "recordHours": 2564
+    },
+    "batteryTwh": 0,
+    "oilShale": {
+     "model": 1.42,
+     "record": 1.42
+    },
+    "breaches": 10
+   },
+   {
+    "year": 2026,
+    "mae": [
+     13.25,
+     10.82,
+     10.16
+    ],
+    "bias": [
+     -6,
+     -3.6,
+     -3.9
+    ],
+    "maeSum": 34.23,
+    "dear250": {
+     "hours": 255,
+     "bias": [
+      -71.4,
+      -65.6,
+      -65.7
+     ]
+    },
+    "dear150": {
+     "hours": 1008,
+     "bias": [
+      -19.3,
+      -11.8,
+      -11.4
+     ]
+    },
+    "apart": {
+     "model": 0.476,
+     "record": 0.447,
+     "modelOnly": 0.131
+    },
+    "kruonis": {
+     "twh": 0.328,
+     "hours": 862,
+     "recordTwh": 0.434,
+     "recordHours": 2021
+    },
+    "batteryTwh": 0.15,
+    "oilShale": {
+     "model": 0.93,
+     "record": 0.89
+    },
+    "breaches": 0
+   }
+  ],
+  "dispatch at cost": [
+   {
+    "year": 2023,
+    "mae": [
+     9.55,
+     9.28,
+     8.83
+    ],
+    "bias": [
+     -1,
+     -1.2,
+     -1
+    ],
+    "maeSum": 27.66,
+    "dear250": {
+     "hours": 99,
+     "bias": [
+      -53.2,
+      -77.6,
+      -76.3
+     ]
+    },
+    "dear150": {
+     "hours": 1062,
+     "bias": [
+      -4.3,
+      -5.3,
+      -4.7
+     ]
+    },
+    "apart": {
+     "model": 0.072,
+     "record": 0.07,
+     "modelOnly": 0.025
+    },
+    "kruonis": {
+     "twh": 0.258,
+     "hours": 901,
+     "recordTwh": 0.535,
+     "recordHours": 3014
+    },
+    "batteryTwh": 0,
+    "oilShale": {
+     "model": 1.89,
+     "record": 2
+    },
+    "breaches": 8
+   },
+   {
+    "year": 2024,
+    "mae": [
+     10.95,
+     11.91,
+     11.85
+    ],
+    "bias": [
+     -3.4,
+     -4.4,
+     -4.4
+    ],
+    "maeSum": 34.71,
+    "dear250": {
+     "hours": 211,
+     "bias": [
+      -57.4,
+      -103.9,
+      -103.7
+     ]
+    },
+    "dear150": {
+     "hours": 775,
+     "bias": [
+      -18.5,
+      -20.8,
+      -20.9
+     ]
+    },
+    "apart": {
+     "model": 0.047,
+     "record": 0.028,
+     "modelOnly": 0.027
+    },
+    "kruonis": {
+     "twh": 0.326,
+     "hours": 1011,
+     "recordTwh": 0.571,
+     "recordHours": 3163
+    },
+    "batteryTwh": 0,
+    "oilShale": {
+     "model": 1.78,
+     "record": 1.7
+    },
+    "breaches": 7
+   },
+   {
+    "year": 2025,
+    "mae": [
+     19.01,
+     18.2,
+     18.01
+    ],
+    "bias": [
+     -1.7,
+     0.8,
+     0.6
+    ],
+    "maeSum": 55.22,
+    "dear250": {
+     "hours": 247,
+     "bias": [
+      -115.2,
+      -109.1,
+      -110
+     ]
+    },
+    "dear150": {
+     "hours": 1005,
+     "bias": [
+      -12.8,
+      -7.7,
+      -8
+     ]
+    },
+    "apart": {
+     "model": 0.243,
+     "record": 0.214,
+     "modelOnly": 0.097
+    },
+    "kruonis": {
+     "twh": 0.329,
+     "hours": 1308,
+     "recordTwh": 0.48,
+     "recordHours": 2564
+    },
+    "batteryTwh": 0,
+    "oilShale": {
+     "model": 1.4,
+     "record": 1.42
+    },
+    "breaches": 9
+   },
+   {
+    "year": 2026,
+    "mae": [
+     13.33,
+     10.88,
+     10.16
+    ],
+    "bias": [
+     -6.1,
+     -3.4,
+     -3.6
+    ],
+    "maeSum": 34.37,
+    "dear250": {
+     "hours": 255,
+     "bias": [
+      -70.5,
+      -63.5,
+      -63.7
+     ]
+    },
+    "dear150": {
+     "hours": 1008,
+     "bias": [
+      -20,
+      -11.8,
+      -11
+     ]
+    },
+    "apart": {
+     "model": 0.482,
+     "record": 0.447,
+     "modelOnly": 0.134
+    },
+    "kruonis": {
+     "twh": 0.326,
+     "hours": 855,
+     "recordTwh": 0.434,
+     "recordHours": 2021
+    },
+    "batteryTwh": 0.15,
+    "oilShale": {
+     "model": 0.96,
+     "record": 0.89
+    },
+    "breaches": 0
+   }
+  ]
+ }
+}

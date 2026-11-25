@@ -1,0 +1,94 @@
+{
+ "2024": {
+  "outage_hours": 5486,
+  "ee_price_outage": {
+   "model": 78.861,
+   "counterfactual": 59.757,
+   "observed": 83.02,
+   "fi": 35.727
+  },
+  "effect_eur_mwh": 19.104,
+  "effect_by_full_month": {
+   "02": 10.299,
+   "03": 3.991,
+   "04": 5.006,
+   "05": 16.242,
+   "06": 21.068,
+   "07": 32.617,
+   "08": 38.315
+  },
+  "fi_to_ee_congested_outage": {
+   "model": 0.716,
+   "counterfactual": 0.492,
+   "observed": 0.704
+  },
+  "fi_to_ee_congested_year": {
+   "model": 0.65,
+   "counterfactual": 0.51,
+   "observed": 0.645
+  },
+  "estlink_loading_fi_to_ee_outage": 0.758,
+  "ee_fi_spread_year": {
+   "model": 37.959,
+   "observed": 41.662
+  }
+ },
+ "2025": {
+  "outage_hours": 4065,
+  "ee_price_outage": {
+   "model": 86.366,
+   "counterfactual": 51.327,
+   "observed": 90.144,
+   "fi": 40.46
+  },
+  "effect_eur_mwh": 35.04,
+  "effect_by_full_month": {
+   "01": 26.698,
+   "02": 59.411,
+   "03": 33.445,
+   "04": 23.371,
+   "05": 34.882
+  },
+  "fi_to_ee_congested_outage": {
+   "model": 0.737,
+   "counterfactual": 0.241,
+   "observed": 0.708
+  },
+  "fi_to_ee_congested_year": {
+   "model": 0.63,
+   "counterfactual": 0.4,
+   "observed": 0.655
+  },
+  "estlink_loading_fi_to_ee_outage": 0.785,
+  "ee_fi_spread_year": {
+   "model": 35.831,
+   "observed": 39.888
+  },
+  "feb_weekly_spread": {
+   "w4": {
+    "model": 72.213,
+    "observed": 71.51
+   },
+   "w5": {
+    "model": 83.047,
+    "observed": 96.49
+   },
+   "w6": {
+    "model": 66.155,
+    "observed": 98.648
+   },
+   "w7": {
+    "model": 98.989,
+    "observed": 114.34
+   },
+   "w8": {
+    "model": 93.746,
+    "observed": 83.263
+   }
+  }
+ },
+ "gate": {
+  "rule": "R-VAL-6: 2024 EE average price over the outage higher by 15-30 EUR/MWh than with EstLink 2 in service; FI exogenous (never symmetric)",
+  "pass": true
+ }
+}

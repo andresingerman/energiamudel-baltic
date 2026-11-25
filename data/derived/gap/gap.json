@@ -1,0 +1,510 @@
+{
+ "gate": {
+  "price_mae_eur_mwh": 0.1,
+  "storage_share": 0.01,
+  "objective_rel": 1e-06,
+  "applies_to": "record"
+ },
+ "passed": true,
+ "highs": "1.15.1",
+ "options": {
+  "solver": "choose",
+  "presolve": "off",
+  "run_crossover": "on",
+  "threads": 1,
+  "random_seed": 0,
+  "primal_feasibility_tolerance": 1e-07,
+  "dual_feasibility_tolerance": 1e-07,
+  "output_flag": false
+ },
+ "weeks": [
+  {
+   "case": "2023_w03",
+   "record": {
+    "price_mae": {
+     "EE": 0.894,
+     "LV": 0.894,
+     "LT": 0.65
+    },
+    "hours_apart": [
+     144,
+     151,
+     152,
+     153,
+     154,
+     155,
+     156,
+     158,
+     159,
+     160,
+     161
+    ],
+    "price_mae_rest": {
+     "EE": 0.0,
+     "LV": 0.0,
+     "LT": 0.0
+    },
+    "objective_rel": 2.3730558582227346e-14,
+    "storage": {
+     "engine_mwh": 7365.2,
+     "lp_mwh": 7365.2,
+     "share": 0.0,
+     "units": {
+      "kruonis": {
+       "engine_mwh": 7365.2,
+       "lp_mwh": 7365.2
+      }
+     }
+    },
+    "hydro_mwh": {
+     "engine": 150702.0,
+     "lp": 150702.0
+    },
+    "rent_eur": {
+     "EE-LV": {
+      "engine": 1346,
+      "lp": 1346
+     },
+     "LV-LT": {
+      "engine": 3065113,
+      "lp": 3017988
+     },
+     "EE-FI": {
+      "engine": 7637945,
+      "lp": 7790470
+     },
+     "LT-SE4": {
+      "engine": 695114,
+      "lp": 771540
+     },
+     "LT-PL": {
+      "engine": 2272487,
+      "lp": 2234274
+     }
+    }
+   },
+   "pass": true,
+   "failures": [],
+   "same_optimum": {
+    "hours": 11,
+    "primal_as_engine": 11
+   }
+  },
+  {
+   "case": "2023_w28",
+   "record": {
+    "price_mae": {
+     "EE": 0.0,
+     "LV": 0.0,
+     "LT": 0.0
+    },
+    "hours_apart": [],
+    "price_mae_rest": {
+     "EE": 0.0,
+     "LV": 0.0,
+     "LT": 0.0
+    },
+    "objective_rel": 5.391474914587897e-15,
+    "storage": {
+     "engine_mwh": 6048.6,
+     "lp_mwh": 6048.6,
+     "share": 0.0,
+     "units": {
+      "kruonis": {
+       "engine_mwh": 6048.6,
+       "lp_mwh": 6048.6
+      }
+     }
+    },
+    "hydro_mwh": {
+     "engine": 11960,
+     "lp": 11960.0
+    },
+    "rent_eur": {
+     "EE-LV": {
+      "engine": 1104325,
+      "lp": 1104325
+     },
+     "LV-LT": {
+      "engine": 0,
+      "lp": 0
+     },
+     "EE-FI": {
+      "engine": 9351574,
+      "lp": 9351574
+     },
+     "LT-SE4": {
+      "engine": 7491177,
+      "lp": 7491177
+     },
+     "LT-PL": {
+      "engine": 1187431,
+      "lp": 1187431
+     }
+    }
+   },
+   "pass": true,
+   "failures": []
+  },
+  {
+   "case": "2024_w03",
+   "record": {
+    "price_mae": {
+     "EE": 0.0,
+     "LV": 0.0,
+     "LT": 0.0
+    },
+    "hours_apart": [],
+    "price_mae_rest": {
+     "EE": 0.0,
+     "LV": 0.0,
+     "LT": 0.0
+    },
+    "objective_rel": 1.7705478616993992e-15,
+    "storage": {
+     "engine_mwh": 654.1,
+     "lp_mwh": 654.1,
+     "share": 0.0,
+     "units": {
+      "kruonis": {
+       "engine_mwh": 654.1,
+       "lp_mwh": 654.1
+      }
+     }
+    },
+    "hydro_mwh": {
+     "engine": 67753,
+     "lp": 67753.0
+    },
+    "rent_eur": {
+     "EE-LV": {
+      "engine": 0,
+      "lp": 0
+     },
+     "LV-LT": {
+      "engine": 1,
+      "lp": 1
+     },
+     "EE-FI": {
+      "engine": 3183643,
+      "lp": 3183643
+     },
+     "LT-SE4": {
+      "engine": 4693359,
+      "lp": 4693359
+     },
+     "LT-PL": {
+      "engine": 726788,
+      "lp": 726788
+     }
+    }
+   },
+   "pass": true,
+   "failures": []
+  },
+  {
+   "case": "2024_w28",
+   "record": {
+    "price_mae": {
+     "EE": 0.0,
+     "LV": 0.0,
+     "LT": 0.0
+    },
+    "hours_apart": [],
+    "price_mae_rest": {
+     "EE": 0.0,
+     "LV": 0.0,
+     "LT": 0.0
+    },
+    "objective_rel": 2.189809641961318e-15,
+    "storage": {
+     "engine_mwh": 2967.7,
+     "lp_mwh": 2967.7,
+     "share": 0.0,
+     "units": {
+      "kruonis": {
+       "engine_mwh": 2967.7,
+       "lp_mwh": 2967.7
+      }
+     }
+    },
+    "hydro_mwh": {
+     "engine": 20971,
+     "lp": 20971.0
+    },
+    "rent_eur": {
+     "EE-LV": {
+      "engine": 158184,
+      "lp": 158184
+     },
+     "LV-LT": {
+      "engine": 0,
+      "lp": 0
+     },
+     "EE-FI": {
+      "engine": 4371778,
+      "lp": 4371778
+     },
+     "LT-SE4": {
+      "engine": 6266501,
+      "lp": 6266501
+     },
+     "LT-PL": {
+      "engine": 1832941,
+      "lp": 1832941
+     }
+    }
+   },
+   "pass": true,
+   "failures": []
+  },
+  {
+   "case": "2025_w03",
+   "record": {
+    "price_mae": {
+     "EE": 0.0,
+     "LV": 0.0,
+     "LT": 0.0
+    },
+    "hours_apart": [],
+    "price_mae_rest": {
+     "EE": 0.0,
+     "LV": 0.0,
+     "LT": 0.0
+    },
+    "objective_rel": 1.2146603650249172e-15,
+    "storage": {
+     "engine_mwh": 3666.0,
+     "lp_mwh": 3666.0,
+     "share": -0.0,
+     "units": {
+      "kruonis": {
+       "engine_mwh": 3666.0,
+       "lp_mwh": 3666.0
+      }
+     }
+    },
+    "hydro_mwh": {
+     "engine": 88783,
+     "lp": 88783.0
+    },
+    "rent_eur": {
+     "EE-LV": {
+      "engine": 0,
+      "lp": 0
+     },
+     "LV-LT": {
+      "engine": 12623,
+      "lp": 12623
+     },
+     "EE-FI": {
+      "engine": 2385509,
+      "lp": 2385509
+     },
+     "LT-SE4": {
+      "engine": 3856868,
+      "lp": 3856868
+     },
+     "LT-PL": {
+      "engine": 287132,
+      "lp": 287132
+     }
+    }
+   },
+   "pass": true,
+   "failures": []
+  },
+  {
+   "case": "2025_w28",
+   "record": {
+    "price_mae": {
+     "EE": 0.0,
+     "LV": 0.0,
+     "LT": 0.0
+    },
+    "hours_apart": [],
+    "price_mae_rest": {
+     "EE": 0.0,
+     "LV": 0.0,
+     "LT": 0.0
+    },
+    "objective_rel": 2.8648148715077936e-15,
+    "storage": {
+     "engine_mwh": 1450.3,
+     "lp_mwh": 1450.3,
+     "share": 0.0,
+     "units": {
+      "kruonis": {
+       "engine_mwh": 1450.3,
+       "lp_mwh": 1450.3
+      }
+     }
+    },
+    "hydro_mwh": {
+     "engine": 54872.0,
+     "lp": 54872.0
+    },
+    "rent_eur": {
+     "EE-LV": {
+      "engine": 919925,
+      "lp": 919925
+     },
+     "LV-LT": {
+      "engine": 27284,
+      "lp": 27284
+     },
+     "EE-FI": {
+      "engine": 3984090,
+      "lp": 3984090
+     },
+     "LT-SE4": {
+      "engine": 1705360,
+      "lp": 1705360
+     },
+     "LT-PL": {
+      "engine": 1303843,
+      "lp": 1303843
+     }
+    }
+   },
+   "pass": true,
+   "failures": []
+  },
+  {
+   "case": "cy2009_w03",
+   "record": {
+    "price_mae": {
+     "EE": 0.0,
+     "LV": 0.0,
+     "LT": 0.0
+    },
+    "hours_apart": [],
+    "price_mae_rest": {
+     "EE": 0.0,
+     "LV": 0.0,
+     "LT": 0.0
+    },
+    "objective_rel": 3.110564384348008e-15,
+    "storage": {
+     "engine_mwh": 11191.0,
+     "lp_mwh": 11191.0,
+     "share": 0.0,
+     "units": {
+      "battery:EE": {
+       "engine_mwh": 2517.5,
+       "lp_mwh": 2517.5
+      },
+      "battery:LV": {
+       "engine_mwh": 611.6,
+       "lp_mwh": 611.6
+      },
+      "battery:LT": {
+       "engine_mwh": 4776.0,
+       "lp_mwh": 4776.0
+      },
+      "kruonis": {
+       "engine_mwh": 3285.9,
+       "lp_mwh": 3285.9
+      }
+     }
+    },
+    "hydro_mwh": {
+     "engine": 28435,
+     "lp": 28435.0
+    },
+    "rent_eur": {
+     "EE-LV": {
+      "engine": 301168,
+      "lp": 301168
+     },
+     "LV-LT": {
+      "engine": 0,
+      "lp": 0
+     },
+     "EE-FI": {
+      "engine": 19085636,
+      "lp": 19085636
+     },
+     "LT-SE4": {
+      "engine": 5943813,
+      "lp": 5943813
+     },
+     "LT-PL": {
+      "engine": 5235391,
+      "lp": 5235391
+     }
+    }
+   },
+   "pass": true,
+   "failures": []
+  },
+  {
+   "case": "cy2009_w28",
+   "record": {
+    "price_mae": {
+     "EE": 0.0,
+     "LV": 0.0,
+     "LT": 0.0
+    },
+    "hours_apart": [],
+    "price_mae_rest": {
+     "EE": 0.0,
+     "LV": 0.0,
+     "LT": 0.0
+    },
+    "objective_rel": 2.0135132120824915e-15,
+    "storage": {
+     "engine_mwh": 2104.8,
+     "lp_mwh": 2104.8,
+     "share": 0.0,
+     "units": {
+      "battery:EE": {
+       "engine_mwh": 0.0,
+       "lp_mwh": 0.0
+      },
+      "battery:LV": {
+       "engine_mwh": -0.0,
+       "lp_mwh": -0.0
+      },
+      "battery:LT": {
+       "engine_mwh": 1063.6,
+       "lp_mwh": 1063.6
+      },
+      "kruonis": {
+       "engine_mwh": 1041.2,
+       "lp_mwh": 1041.2
+      }
+     }
+    },
+    "hydro_mwh": {
+     "engine": 22863.0,
+     "lp": 22863.0
+    },
+    "rent_eur": {
+     "EE-LV": {
+      "engine": 812600,
+      "lp": 812600
+     },
+     "LV-LT": {
+      "engine": 0,
+      "lp": 0
+     },
+     "EE-FI": {
+      "engine": 1828275,
+      "lp": 1828275
+     },
+     "LT-SE4": {
+      "engine": 728322,
+      "lp": 728322
+     },
+     "LT-PL": {
+      "engine": 817893,
+      "lp": 817893
+     }
+    }
+   },
+   "pass": true,
+   "failures": []
+  }
+ ]
+}

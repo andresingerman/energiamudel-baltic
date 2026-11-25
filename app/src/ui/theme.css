@@ -1,0 +1,758 @@
+/* R-UI-1 … R-UI-5 (D12): one theme on custom properties, the light one since D-196, print the same on white; the
+   look of Fermi's projects since D-197 — indigo accent, navy headings, white cards on a pale ground, the
+   validation's state on an amber plate — and Montserrat for text and numbers, tabular figures for the numbers,
+   self-hosted (R-UI-2). Colour carries state and sign, and the identity of a generation group (R-UI-4).
+   test/theme.test.ts holds every text colour to 4.5:1 (R-UI-5). */
+
+/* Montserrat 9.000 as Google Fonts serves it, latin and latin-ext (Estonian's õ, š, ž) for each weight used */
+@font-face { font-family: "Montserrat"; src: url("/fonts/montserrat-400-latin.woff2") format("woff2"); font-weight: 400; font-display: swap; unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Montserrat"; src: url("/fonts/montserrat-400-latin-ext.woff2") format("woff2"); font-weight: 400; font-display: swap; unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: "Montserrat"; src: url("/fonts/montserrat-500-latin.woff2") format("woff2"); font-weight: 500; font-display: swap; unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Montserrat"; src: url("/fonts/montserrat-500-latin-ext.woff2") format("woff2"); font-weight: 500; font-display: swap; unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: "Montserrat"; src: url("/fonts/montserrat-600-latin.woff2") format("woff2"); font-weight: 600; font-display: swap; unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Montserrat"; src: url("/fonts/montserrat-600-latin-ext.woff2") format("woff2"); font-weight: 600; font-display: swap; unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: "Montserrat"; src: url("/fonts/montserrat-700-latin.woff2") format("woff2"); font-weight: 700; font-display: swap; unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Montserrat"; src: url("/fonts/montserrat-700-latin-ext.woff2") format("woff2"); font-weight: 700; font-display: swap; unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: "Montserrat"; src: url("/fonts/montserrat-800-latin.woff2") format("woff2"); font-weight: 800; font-display: swap; unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Montserrat"; src: url("/fonts/montserrat-800-latin-ext.woff2") format("woff2"); font-weight: 800; font-display: swap; unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+
+:root {
+  --bg: #F6F7F9; --surface: #FFFFFF; --surface2: #EFEEF7; --line: #DEDCEA;
+  --ink: #1C1B29; --muted: #5A5870; --navy: #03084C; --accent: #2303BD; --tint: #F0EDFA; --amber: #8A5700; --green: #0B6E35; --red: #C8102E;
+  --on-accent: #FFFFFF;
+  /* a sign's light fill under its colour: green and red figures */
+  --ok-bg: #E3F7EC; --bad-bg: #FDE8E8;
+  /* generation groups (D-029, D-053, D-197): stack order in app/src/worker/view.ts GROUPS; checked with the dataviz
+     palette validator on white (CVD 9.1, normal vision 19.6; the four under 3:1 carry legends and labels) */
+  --g-oil_shale: #9A5B2E; --g-nuclear: #6250D6; --g-bio_waste: #6AA84F; --g-wind: #2A78D6; --g-gas: #EB6834; --g-hydro: #1BAF7A; --g-solar: #EDA100; --g-storage: #E87BA4; --g-other: #A9ABBA;
+  /* the four scenarios on the presentation page: one indigo ramp, the more of the plant the darker; checked as an
+     ordinal ramp against the surface */
+  --sc-0: #A99CF4; --sc-1: #7A66EC; --sc-2: #4C2FDC; --sc-3: #2303BD;
+  /* the three climate years, a colour each wherever they are series (D-197), checked on white as categories; Finland's
+     offshore wind beside its onshore on the import-price page */
+  --y-1995: #0E9F6E; --y-2008: #D9600B; --y-2009: #4C2FDC; --g-wind_off: #7DB3F0;
+  --radius: 8px; --radius-card: 12px;
+  --text: "Montserrat", "Helvetica Neue", Arial, sans-serif;
+  --num: "Montserrat", "Helvetica Neue", Arial, sans-serif;
+  --mono: ui-monospace, SFMono-Regular, Menlo, monospace; /* code and the scenario's text */
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--bg); color: var(--ink); font: 14px/1.45 var(--text); }
+.num, input[type="number"], output, td.n, th.n { font-family: var(--num); font-variant-numeric: tabular-nums; }
+a { color: var(--accent); }
+button, input, select, textarea { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+/* number boxes without the browser's arrows (the owner asked, 2026-10-21); the keyboard's arrows still step them */
+input[type="number"] { appearance: textfield; -moz-appearance: textfield; }
+input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+/* flags (the owner's request, D-029): CSS only, marked aria-hidden where the code is written out */
+.fl { display: inline-block; width: 15px; height: 10px; flex: none; vertical-align: -1px; box-shadow: inset 0 0 0 .5px rgb(0 0 0 / .45); margin-right: 5px; }
+.fl-EE { background: linear-gradient(#0072CE 33.3%, #000 0 66.6%, #fff 0); }
+.fl-LV { background: linear-gradient(#9E3039 40%, #fff 0 60%, #9E3039 0); }
+.fl-LT { background: linear-gradient(#FDB913 33.3%, #006A44 0 66.6%, #C1272D 0); }
+.fl-PL { background: linear-gradient(#fff 50%, #DC143C 0); }
+.fl.end { margin: 0 0 0 5px; }
+.fl-FI { background: linear-gradient(90deg, transparent 26.7%, #002F6C 0 43.3%, transparent 0), linear-gradient(transparent 37.5%, #002F6C 0 62.5%, transparent 0), #fff; }
+.fl-SE4 { background: linear-gradient(90deg, transparent 30%, #FECC02 0 43.3%, transparent 0), linear-gradient(transparent 40%, #FECC02 0 60%, transparent 0), #006AA7; }
+
+/* layout: desktop, usable from 960 px (R-UI-3) */
+/* the header on white over a rule of the accent: the wordmark (D-197, Montserrat ExtraBold's outlines, the tile in
+   Fermi's green), the views as pills, the active one on the accent's tint */
+header.top { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; padding: 12px 24px; background: var(--surface); border-bottom: 2px solid var(--accent); }
+header.top h1 { margin: 0; line-height: 0; color: var(--accent); }
+header.top h1 .wordmark { display: block; height: 15px; width: auto; }
+header.top .run { color: var(--muted); font-size: 12px; min-width: 0; flex: 1 1 120px; } /* the scenario's line gives way first: the title and the views stay one line */
+header .views { flex-wrap: nowrap; gap: 2px; }
+/* nine views since D-220: 7 px a side and 12 px between the header's parts keep it one line at 1 440 px, in English
+   too, a scroll bar beside it */
+header .views .seg { border: 0; background: none; color: var(--ink); font-weight: 600; padding: 7px; }
+header .views .seg:hover { background: var(--surface2); }
+header .views .seg[aria-pressed="true"] { background: var(--tint); color: var(--accent); font-weight: 700; }
+header.top .spacer { flex: 1; }
+.app { display: grid; grid-template-columns: clamp(360px, 40vw, 540px) minmax(0, 1fr); /* the panel 540 px from 1 350 px of window, narrower below so the results keep room */ min-height: calc(100vh - 90px); }
+aside.panel { padding: 16px 8px 16px 24px; overflow-y: auto; max-height: calc(100vh - 90px); position: sticky; top: 0; }
+main.results { padding: 16px 24px 32px 16px; min-width: 0; }
+
+/* panel: each box a white card on the page's ground */
+.box { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-card); padding: 14px 16px; margin-bottom: 14px; }
+.box > h2 { font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--navy); margin: 0 0 10px; font-weight: 700; }
+.segs { display: flex; flex-wrap: wrap; gap: 4px; }
+/* a box's choices across its width (the owner's design notes, 2026-10-19) */
+.segs.wide .seg, .segs.wide .chip { flex: 1; justify-content: center; text-align: center; padding: 6px 4px; }
+.row.chk { grid-template-columns: 1fr auto; margin: 10px 0 4px; }
+.row.chk label { align-items: center; }
+.seg, .chip { border: 1px solid var(--line); background: var(--surface); border-radius: var(--radius); padding: 5px 10px; cursor: pointer; }
+.seg[aria-pressed="true"], .chip[aria-pressed="true"] { background: var(--accent); color: var(--on-accent); border-color: var(--accent); font-weight: 700; }
+.row.stack { grid-template-columns: 1fr; }
+.row.stack select { width: 100%; min-width: 0; }
+/* the neighbours' list (D-225): closed, a short line over the select's transparent text; open, the options' full lines */
+.sel-over { position: relative; }
+.sel-over select { color: transparent; }
+.sel-over option { color: var(--ink); }
+.sel-over::after { content: ""; position: absolute; right: 9px; top: 50%; width: 6px; height: 6px; margin-top: -5px; border-right: 2px solid var(--ink); border-bottom: 2px solid var(--ink); transform: rotate(45deg); pointer-events: none; } /* the arrow, which the transparent text took with it */
+.sel-short { position: absolute; left: 5px; right: 26px; top: 50%; transform: translateY(-50%); overflow: hidden; white-space: nowrap; text-overflow: ellipsis; pointer-events: none; color: var(--ink); }
+.row { display: grid; grid-template-columns: 1fr auto; gap: 2px 8px; align-items: center; margin: 6px 0; }
+.row label { display: flex; gap: 6px; align-items: baseline; }
+.row .val { text-align: right; white-space: nowrap; }
+.row .val.changed, .changed { color: var(--amber); }
+.row .hint { grid-column: 1 / -1; color: var(--muted); font-size: 12px; }
+.rng { grid-column: 1 / -1; position: relative; }
+/* the sliders thin, a round knob on them (the owner, 2026-11-02, after the canvas; until then fill bars, design F of
+   spikes/slider-designs, 2026-10-21): the track filled in the accent up to the knob, which hides where the fill ends;
+   the preset, where a pointer snaps, a red dashed line across the track */
+.rng input[type="range"] { -webkit-appearance: none; appearance: none; display: block; width: 100%; height: 20px; margin: 0; background: transparent; cursor: pointer; --fill: var(--accent); }
+.rng input[type="range"]::-webkit-slider-runnable-track { height: 6px; border-radius: 3px;
+  background: linear-gradient(to right, var(--fill) var(--p, 0%), var(--line) var(--p, 0%)); }
+.rng input[type="range"]::-moz-range-track { height: 6px; border-radius: 3px;
+  background: linear-gradient(to right, var(--fill) var(--p, 0%), var(--line) var(--p, 0%)); }
+.rng input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; box-sizing: border-box; width: 18px; height: 18px; margin-top: -6px; border: 2px solid var(--surface); border-radius: 50%; background: var(--fill); box-shadow: 0 1px 3px rgb(3 8 76 / .35); }
+.rng input[type="range"]::-moz-range-thumb { width: 14px; height: 14px; border: 2px solid var(--surface); border-radius: 50%; background: var(--fill); box-shadow: 0 1px 3px rgb(3 8 76 / .35); }
+.rng input[type="range"]:disabled { --fill: var(--muted); cursor: default; }
+/* a slider's number box (D-056); demand's sliders in the ink of the charts' consumption line, apart from generation's */
+.nbox { width: 7ch; text-align: right; font: inherit; color: var(--ink); background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 1px 4px; }
+.nbox.changed { color: var(--amber); }
+/* the two prices of the scenario, side by side (D-064) */
+.fuels { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.fuel { position: relative; display: flex; flex-direction: column; gap: 3px; padding: 8px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface2); }
+.fuel label { font-weight: 600; display: flex; gap: 6px; align-items: baseline; }
+.fuel .nbox { width: 8ch; font-size: 16px; }
+.fuel .big { position: absolute; top: 7px; right: 8px; line-height: 0; } /* in the corner, so the box and its unit keep the tile's width */
+.fuel .big .ico { margin: 0; }
+.fuel > .link { align-self: flex-start; font-size: 12px; }
+.fuels .fuel.wide { grid-column: 1 / -1; } /* the gas plants' one bid under the two prices (D-164) */
+button.link { border: 0; background: none; padding: 0; color: var(--accent); text-decoration: underline; cursor: pointer; font: inherit; }
+/* a source's glyph (D-060): small in a table; in a slider's row large, as tall as the label and the track, which start after it */
+.ico { flex: none; vertical-align: -3px; margin-right: 5px; }
+/* a source's row (the owner, 2026-11-02, after the canvas): its name and change from the reference year, under them its
+   number and its bid in boxes with their units beside them, as low as the neighbours' price boxes (D-203), the number's
+   as wide as a typed bid's so that its unit clears a bid in words (E-178), the slider under the two the row's width;
+   the glyph left of all three (D-060) */
+.row.ic { grid-template-columns: 38px minmax(0, 1fr) auto; grid-template-areas: "ico lbl lbl" "ico val bid" "ico rng rng" "ico hint hint"; gap: 6px 10px; padding: 4px 0; }
+.row.ic .big { grid-area: ico; align-self: start; padding-top: 2px; line-height: 0; }
+.row.ic .big .ico { margin: 0; }
+.row.ic .lbl-line, .row.ic > .lbl { grid-area: lbl; }
+.row.ic .val { grid-area: val; justify-self: start; }
+.row.ic .rng { grid-area: rng; }
+.row.ic .val.tile { display: flex; align-items: center; gap: 8px; }
+.row.ic .val.tile .nbox, .row.ic .val.tile b { width: 72px; height: 26px; padding: 0 8px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); font: 700 15px/24px var(--num); text-align: right; }
+.row.ic .val.tile b { display: inline-block; }
+.row.ic .val.tile .u { font-size: 13px; color: var(--muted); }
+.row.ic .val.tile .nbox.changed { border-color: var(--amber); }
+.row.ic .lbl-line { display: flex; justify-content: space-between; align-items: baseline; gap: 6px; min-width: 0; }
+.row.ic .lbl-line .gr { margin: 0; }
+.row.ic .hint { grid-area: hint; }
+/* a source's bid, a box at the row's end with its unit beside it (D-065) */
+.row.ic .bid { grid-area: bid; justify-self: end; display: flex; align-items: center; gap: 8px; cursor: help; }
+.row.ic .bid b { min-width: 64px; height: 26px; padding: 0 12px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); font: 700 15px/24px var(--num); text-align: right; }
+.row.ic .bid span { font-size: 13px; color: var(--muted); }
+.row.ic .rng .segs { margin: 2px 0; display: flex; gap: 6px; }
+.row.ic .rng .segs .chip { flex: 1; text-align: center; margin: 0; } /* the plant's units across the row (D-063) */
+/* the glyphs of generation in one colour, the sliders' accent; demand's stay in its ink (D-063) */
+.row.ic:not(.dem) .big .ico { color: var(--accent) !important; }
+.hint.sum { margin: 0 0 6px 46px; color: var(--muted); font-size: 12px; }
+/* Estonia's oil shale and gas under a line each, closed until opened (D-204, as the canvas drew it): a chevron, the
+   group's name and how many rows it holds, its change and its megawatts at the right; gas's bid under the name */
+.sfold-head { display: flex; align-items: center; gap: 6px; width: 100%; min-height: 34px; padding: 4px 0; border: 0; background: none; color: var(--ink); font: 400 14px var(--text); text-align: left; white-space: nowrap; cursor: pointer; }
+.sfold-head .chev { position: relative; flex: none; width: 16px; height: 16px; }
+.sfold-head .chev::before { content: ""; position: absolute; left: 4px; top: 5px; width: 6px; height: 6px; border-right: 2px solid var(--muted); border-bottom: 2px solid var(--muted); transform: rotate(-45deg); }
+.sfold.open > .sfold-head .chev::before { left: 5px; top: 3px; transform: rotate(45deg); }
+.sfold-name { font-size: 13.5px; font-weight: 600; }
+.sfold-n { min-width: 0; overflow: hidden; text-overflow: ellipsis; font-size: 12px; color: var(--muted); } /* the first to give way */
+.sfold-head:hover .sfold-name { text-decoration: underline; }
+.sfold-head .gr { margin: 0 0 0 auto; }
+.sfold-head b { font-weight: 700; }
+.sfold > .hint.sum { margin: -4px 0 6px 22px; }
+/* the change from the reference year, left of the box (D-057) */
+.gr { font-size: 11px; margin-right: 6px; color: var(--muted); white-space: nowrap; }
+.gr.up { color: var(--green); }
+.gr.down { color: var(--red); }
+.nbox:disabled { color: var(--muted); }
+.row.dem .rng input[type="range"] { --fill: var(--ink); }
+.box h3.sub { margin: 10px 0 2px; font-size: 12px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: .04em; }
+.rng .tick { position: absolute; top: 0; height: 20px; width: 0; border-left: 2px dashed var(--red); pointer-events: none; }
+.src { border: 1px solid var(--line); background: none; border-radius: 50%; width: 20px; height: 20px; padding: 0; color: var(--muted); cursor: help; font-size: 11px; line-height: 18px; }
+.pop { position: absolute; z-index: 20; max-width: min(380px, calc(100vw - 16px)); background: var(--surface2); border: 1px solid var(--ink); border-radius: var(--radius); padding: 8px 10px; font-size: 12px; box-shadow: 0 4px 16px rgb(0 0 0 / .35); }
+.pop ul { margin: 4px 0 0; padding-left: 16px; }
+.note { color: var(--muted); font-size: 12px; margin: 4px 0; }
+h3.sub { font-size: 12px; font-weight: 400; color: var(--muted); margin: 10px 0 4px; }
+/* the lines as v4 drew them (D-046 … D-049, the B4 artboard): map, capacity, a switch per line */
+.lk { margin-bottom: 10px; }
+.lmap { width: 100%; height: auto; display: block; margin-bottom: 8px; }
+.lmap .ln { cursor: pointer; }
+.lmap .ln .hit { stroke: transparent; stroke-width: 12; }
+.lmap .ln-on .cable { stroke: var(--accent); }
+.lmap .ln-off .cable { stroke: var(--red); stroke-dasharray: 4 3; }
+.lmap .ln-held .cable { stroke: var(--amber); stroke-dasharray: 6 2; }
+.lmap .ln:hover .cable { stroke-width: 5; }
+/* a line in service's streaks, both ways along its edges (D-208): the pointer goes through them to the line */
+.lmap .streak { pointer-events: none; }
+.lmap .node { fill: var(--surface); stroke: var(--ink); stroke-width: 1.5; }
+/* the land under the lines (Natural Earth 1:110m), the modelled zones a shade stronger; the sea is the box */
+.lmap .land { fill: var(--surface2); stroke: var(--line); stroke-width: .6; stroke-linejoin: round; }
+/* the three modelled zones with their borders drawn, between them too (the owner, 2026-11-03; D-207) */
+.lmap .land.home { fill: color-mix(in srgb, var(--accent) 10%, var(--surface2)); stroke: color-mix(in srgb, var(--accent) 45%, var(--surface)); stroke-width: .8; }
+.lmap .edge { fill: none; stroke: rgb(0 0 0 / .45); stroke-width: .6; }
+.lmap .code { font: 11px var(--num); fill: var(--ink); }
+.lmap .price { font-size: 15px; font-weight: 800; fill: var(--accent); }
+.lmap .unit { font-size: 9px; font-weight: 600; fill: var(--muted); }
+.lmap .pbox { fill: #fff; stroke: var(--accent); stroke-width: 1; }
+.grp { display: flex; align-items: center; gap: 6px; margin: 10px 0 2px; color: var(--muted); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; }
+.grp:first-child { margin-top: 0; }
+.lr { display: grid; grid-template-columns: minmax(0, 1fr) 76px; gap: 2px 8px; align-items: center; padding: 4px 0; border-bottom: 1px solid var(--line); }
+/* a pair's lines in one row, each a small card: the switch and the name, the MW and notes under them */
+.lrow { display: flex; flex-wrap: wrap; gap: 6px; }
+.lrow .lr { flex: 1 1 0; min-width: 140px; display: flex; flex-direction: column; align-items: flex-start; gap: 2px; padding: 6px 8px; border: 1px solid var(--line); border-radius: var(--radius); }
+.lrow .lr.changed { border-color: var(--amber); }
+.lrow .lmeta { display: flex; align-items: center; gap: 6px; padding-left: 56px; }
+.lrow .lmw { text-align: left; }
+/* a box heading with a button at its right */
+.box > h2.h2-act { display: flex; justify-content: space-between; align-items: baseline; }
+.box > h2.h2-act .link { font: 400 12px var(--text); letter-spacing: 0; text-transform: none; }
+.lrow .lnote { padding-left: 56px; }
+.swb { display: flex; gap: 8px; align-items: center; min-height: 24px; padding: 0; border: 0; background: none; color: var(--ink); font: inherit; text-align: left; cursor: pointer; }
+.swb:hover .lname { text-decoration: underline; }
+.chart-switch { margin: 0 0 4px; font-size: 12px; }
+.lr.changed .lname { color: var(--amber); }
+.sw { position: relative; flex: none; width: 48px; height: 22px; border-radius: 11px; color: var(--on-accent); font: 700 10px/22px var(--text); letter-spacing: .06em; }
+.sw::after { content: ""; position: absolute; top: 4px; left: 4px; width: 14px; height: 14px; border-radius: 50%; background: var(--on-accent); transition: left .15s; }
+.sw.on { background: var(--green); }
+.sw.on::after { left: 30px; }
+.sw.on::before { content: "ON"; position: absolute; left: 8px; }
+.sw.off { background: var(--red); }
+.sw.off::before { content: "OFF"; position: absolute; right: 6px; }
+/* scenario or validation: one switch the box's width, the two sides named inside, the side in force
+   on the sliding knob */
+.tgl { position: relative; display: grid; grid-template-columns: 1fr 1fr; width: 100%; padding: 3px; border: 0; border-radius: 18px; background: var(--surface2); font: inherit; cursor: pointer; }
+.tgl::before { content: ""; position: absolute; top: 3px; bottom: 3px; left: 3px; width: calc(50% - 3px); border-radius: 15px; background: var(--accent); transition: transform .15s; }
+.tgl[aria-checked="true"]::before { transform: translateX(100%); }
+.tgl > span { position: relative; padding: 5px 0; text-align: center; color: var(--muted); }
+.tgl > span.on { color: var(--on-accent); font-weight: 700; }
+/* the header's language and theme switches, small (the owner asked, 2026-10-20) */
+.tgl.mini { width: auto; flex: none; padding: 2px; border-radius: 14px; font-size: 12px; }
+.tgl.mini::before { top: 2px; bottom: 2px; left: 2px; width: calc(50% - 2px); border-radius: 12px; }
+.tgl.mini > span { display: flex; align-items: center; justify-content: center; min-width: 30px; height: 22px; padding: 0 8px; line-height: 1; font-weight: 700; }
+/* the language's knob white on the track, as Fermi's switches, the language in force in navy */
+.tgl.mini::before { background: var(--surface); box-shadow: 0 1px 2px rgb(3 8 76 / .14); }
+.tgl.mini > span.on { color: var(--navy); }
+/* the run box's scenarios across its width */
+.box.run h3.sub { margin: 12px 0 6px; }
+.box.run .segs .chip { flex: 1; text-align: center; padding: 6px 4px; }
+@media (prefers-reduced-motion: reduce) { .sw::after, .tgl::before { transition: none; } }
+.lmw { text-align: right; font: 12px var(--num); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.lmw.off { color: var(--red); text-decoration: line-through; }
+.lmw .abs { margin-left: 3px; }
+.lnote { grid-column: 1 / -1; padding-left: 56px; color: var(--muted); font-size: 11px; line-height: 1.4; }
+.lnote .held { color: var(--amber); }
+.borders { margin-top: 16px; }
+header .views { flex: none; }
+.buttons button:disabled { opacity: .5; cursor: default; }
+.borders .card { margin: 6px 0; max-width: 640px; }
+.events { margin: 4px 0; padding-left: 18px; font-size: 12px; }
+.events li { margin: 2px 0; }
+/* a line limited by dates: the fields across the box, labels over them, the button its width */
+.wi { margin-top: 12px; }
+.wi h3.sub { margin: 0 0 6px; }
+.wi-f { display: flex; flex-direction: column; gap: 2px; min-width: 0; font-size: 12px; color: var(--muted); }
+.wi-f select, .wi-f input { width: 100%; min-width: 0; padding: 4px 6px; color: var(--ink); font-size: 14px; }
+.wi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 6px; margin: 6px 0; }
+.wi-add { width: 100%; padding: 6px; border: 1px solid var(--accent); border-radius: var(--radius); background: var(--accent); color: var(--on-accent); font-weight: 700; cursor: pointer; }
+.wi .note:empty { display: none; }
+.whatifs { list-style: none; margin: 6px 0 0; padding: 0; font-size: 12px; display: flex; flex-direction: column; gap: 4px; }
+.whatifs li { display: flex; gap: 6px; align-items: center; justify-content: space-between; padding: 4px 8px; border: 1px solid var(--amber); border-radius: var(--radius); }
+.whatifs button { border: 1px solid var(--line); background: none; color: var(--muted); border-radius: var(--radius); cursor: pointer; }
+textarea.text { width: 100%; min-height: 160px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); font: 12px/1.35 var(--mono); padding: 6px; }
+select, input[type="number"], input[type="date"] { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 2px 4px; }
+.buttons { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+.buttons button { border: 1px solid var(--line); background: var(--surface2); border-radius: var(--radius); padding: 4px 10px; cursor: pointer; }
+
+/* results */
+.status { color: var(--muted); font-size: 12px; margin: 0 0 10px; min-height: 1.4em; }
+/* the results' headings as the panel's boxes' (the owner's design direction, 2026-10-20) */
+.rh { font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--navy); margin: 16px 0 8px; font-weight: 700; }
+.card > .rh:first-child { margin-top: 0; }
+caption.rh { text-align: left; margin: 0; padding: 0 0 6px; }
+.trio-card { margin-bottom: 12px; overflow-x: auto; } /* a narrow column scrolls the table, not the page */
+.trio-card .trio { margin-bottom: 14px; }
+/* the headline run in flight (D-054; the owner's B of spikes/busy-banner since D-209): a line sliding under the header,
+   kept in view, and a chip in the status line's place over the results, which are dimmed while they are the previous
+   settings' */
+@keyframes busy-slide { from { transform: translateX(-100%); } to { transform: translateX(250%); } }
+@keyframes spin { to { transform: rotate(360deg); } }
+.busyline { position: sticky; top: 0; z-index: 20; height: 3px; overflow: hidden; background: var(--surface2); }
+.busyline::after { content: ""; position: absolute; inset: 0; width: 40%; background: linear-gradient(90deg, transparent, var(--accent), transparent); animation: busy-slide 1.3s ease-in-out infinite; }
+.computing { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 0 8px; max-width: 100%; margin: 0 0 8px; padding: 3px 12px; border-radius: 14px; background: var(--tint); color: var(--accent); font-size: 12px; font-weight: 600; }
+.computing > span { white-space: nowrap; } /* a narrow column takes the note to a line of its own, whole */
+.computing[hidden], .status.busy { display: none; }
+.computing::before { content: ""; flex: none; width: 12px; height: 12px; border: 2px solid currentColor; border-right-color: transparent; border-radius: 50%; animation: spin .9s linear infinite; }
+.computing .sub { color: var(--muted); font-weight: 400; }
+@media (prefers-reduced-motion: reduce) { .busyline::after { left: 30%; animation: none; } .computing::before { border-right-color: currentColor; animation: none; } }
+/* the statistics page waits for no run: its red dots are the panel's already (D-216) */
+.results.stale > :not(.status):not(.notice):not(.computing):not(#statistics) { opacity: .45; transition: opacity .15s; }
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; margin-bottom: 12px; }
+/* a replay's cards carry the actual year beside the model: their table needs 254–260 px at the least,
+   so a card narrower than 290 px would push the actual column out of it; they wrap to the next row */
+.cards.paired { grid-template-columns: repeat(auto-fit, minmax(min(100%, 290px), 1fr)); }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-card); padding: 14px 16px; }
+.card h3 { margin: 0 0 6px; font-size: 14px; color: var(--navy); }
+.card table { width: 100%; border-collapse: collapse; font-size: 12px; margin-top: 4px; }
+.card td, .card th { padding: 1px 0; }
+.card th { color: var(--muted); font-weight: 400; text-align: right; font-size: 11px; }
+.card td.n { text-align: right; white-space: nowrap; padding-left: 8px; }
+.card td.obs { color: var(--muted); }
+.card tr.big td.n { font: 700 22px/1.2 var(--num); }
+.card tr.big td.obs { font-weight: 400; }
+/* the standard sensitivities as one table, the owner's design (D-195): the price pairs on a band of the accent, each
+   scenario's rows a group whose first row stands on the surface, the gas plants' share muted, the consumers' net gain
+   tinted by its sign; the units as large as their figures */
+/* the table in a white card with the design's rounded corners, as the canvas drew it (the owner, 2026-11-02; D-200): the
+   wrapper clips the indigo head's corners, also as it scrolls a narrow window */
+.sens-tab { overflow-x: auto; margin: 0 0 12px; border: 1px solid var(--line); border-radius: var(--radius-card); background: var(--surface); }
+.sens-tab table { width: 100%; border-collapse: separate; border-spacing: 0; font-size: 13px; }
+.sens-tab th, .sens-tab td { padding: 6px 10px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+.sens-tab th[scope="row"] { text-align: left; font-weight: 400; }
+.sens-tab .n { text-align: right; }
+.sens-tab .u { color: inherit; font: inherit; font-family: var(--text); }
+.sens-tab thead th, .sens-tab thead th[scope="row"] { background: var(--accent); color: var(--on-accent); font-weight: 700; border-bottom-color: color-mix(in srgb, var(--on-accent) 25%, transparent); }
+.sens-tab tbody > tr:first-child > * { border-top: 14px solid var(--surface); } /* the gap between the groups, white space in the card */
+.sens-tab tbody:last-child > tr:last-child > * { border-bottom: 0; }
+.sens-tab tr.lead > *, .sens-tab tr.lead > th[scope="row"] { background: var(--surface); font-weight: 700; }
+.sens-tab tr.share > * { color: var(--muted); }
+.sens-tab tr.net > *, .sens-tab tr.net > th[scope="row"] { font-weight: 700; }
+.sens-tab tr.net td.good { color: var(--green); background: var(--ok-bg); }
+.sens-tab tr.net td.bad { color: var(--red); background: var(--bad-bg); }
+.up { color: var(--red); } .down { color: var(--green); }
+.tabs { display: flex; gap: 4px; margin: 6px 0; flex-wrap: wrap; }
+.charts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.chart.wide { grid-column: 1 / -1; }
+/* Chart.js sizes the canvas to its own container: a forced canvas height put its clicks off by
+   a row (the legend toggled the entry above the one clicked) */
+.plot { position: relative; height: 240px; }
+.chart.wide .plot { height: 320px; }
+/* a border's two directions on its chart (dirLabels in charts.ts places them on the plot area) */
+.dir { position: absolute; left: 50px; display: flex; align-items: center; gap: 2px; padding: 1px 6px; border-radius: 3px;
+  font: 600 12px var(--text); color: var(--ink); background: color-mix(in srgb, var(--surface) 85%, transparent); pointer-events: none; }
+.dir.up { top: 8px; }
+.dir.down { bottom: 30px; }
+.dir .fl { margin-right: 3px; }
+.chart { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-card); padding: 12px 14px; min-height: 260px; }
+.chart h3 { margin: 0 0 4px; font-size: 13px; color: var(--muted); font-weight: 400; }
+/* a title with a switch at its right (the monthly price's average or median, D-202): the switch kept to the title's
+   height so that the plot lines up with its neighbour's; under the title where the card is narrow */
+.chart-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 4px 12px; margin: 0 0 4px; }
+.chart-head h3 { margin: 0; }
+.chart-head .tgl { margin: -4px 0; }
+/* the mix's three bars, one per zone, the results' width (D-197) */
+.chart.wide .plot.mixh { height: 190px; }
+.chart:has(.plot.mixh) { min-height: 0; }
+.pos { color: var(--green); } .neg { color: var(--red); }
+.cards-bar { display: flex; justify-content: flex-end; gap: 6px; margin: 0 0 6px; }
+/* the four scenarios as one table: a column pair per scenario, its button at the head (D-082);
+   the width of the results, a units column, differences coloured by their sign, and the row and
+   column under the pointer lit as a crosshair (the owner, 2026-10-06) */
+.trio { border-collapse: collapse; font-size: 12px; margin: 0 0 12px; width: 100%; table-layout: auto; }
+.trio th { padding: 0 0 4px 14px; text-align: left; }
+.trio th .seg { font-weight: 700; }
+.trio td { padding: 2px 0; }
+.trio .u, .card .u { color: var(--muted); font: 400 11px var(--text); }
+.trio td.n { text-align: right; white-space: nowrap; padding-left: 14px; }
+.trio td.d { color: var(--muted); padding-left: 6px; padding-right: 8px; }
+/* Estonia's rows in bold: its name and its figures, the differences as they are (the owner, 2026-11-02; D-199) */
+.trio tr.ee > td:first-child, .trio tr.ee > td.n:not(.d) { font-weight: 700; }
+.trio tr.ee > td.n:not(.d) .u { font-weight: 400; }
+/* a difference a chip, as the canvas drew it (the owner, 2026-11-02; D-205, the cell filled until then): its sign as its
+   colour on its light fill, without the unit, which stands beside the figure */
+.trio .dchip { display: inline-block; min-width: 52px; padding: 2px 6px; border-radius: 6px; font-weight: 600; text-align: right; }
+.trio td.d.good .dchip { color: var(--green); background: var(--ok-bg); }
+.trio td.d.bad .dchip { color: var(--red); background: var(--bad-bg); }
+/* a scenario still computing while the one shown is in (D-127) */
+.trio td.pending, .by-year td.pending { color: var(--muted); font-style: italic; }
+/* the four scenarios' pairs are wider than the results column of a 960 px window (R-UI-3): the table
+   scrolls on its own, not the page (the release audit, 2026-10-18) */
+#trio-box { overflow-x: auto; container-type: inline-size; }
+.trio .ru { display: none; color: var(--muted); font: 400 11px var(--text); }
+/* narrower than the table with a unit in every cell (a window under about 1 100 px): the unit once
+   per row and tighter columns, so that the four pairs fit (the release audit of 2026-10-18, F2) */
+@container (max-width: 760px) {
+  .trio td .u { display: none; }
+  .trio .ru { display: inline; }
+  .trio th { padding-left: 8px; }
+  .trio td.n { padding-left: 8px; }
+  .trio td.d { padding-left: 5px; padding-right: 0; }
+  .trio .dchip { min-width: 0; }
+}
+.trio td.sel { background: var(--surface2); }
+/* the selected scenario's value cell (not its difference) opens the pair with the accent (E-079) */
+.trio tr td.n.sel:not(.d) { border-left: 2px solid var(--accent); }
+.trio tbody tr:hover td { background: color-mix(in srgb, var(--accent) 14%, transparent); }
+.trio:has(tbody td:nth-child(1):hover) tbody td:nth-child(1) { background: color-mix(in srgb, var(--accent) 14%, transparent); }
+.trio:has(tbody td:nth-child(2):hover) tbody td:nth-child(2) { background: color-mix(in srgb, var(--accent) 14%, transparent); }
+.trio:has(tbody td:nth-child(3):hover) tbody td:nth-child(3) { background: color-mix(in srgb, var(--accent) 14%, transparent); }
+.trio:has(tbody td:nth-child(4):hover) tbody td:nth-child(4) { background: color-mix(in srgb, var(--accent) 14%, transparent); }
+.trio:has(tbody td:nth-child(5):hover) tbody td:nth-child(5) { background: color-mix(in srgb, var(--accent) 14%, transparent); }
+.trio:has(tbody td:nth-child(6):hover) tbody td:nth-child(6) { background: color-mix(in srgb, var(--accent) 14%, transparent); }
+.trio:has(tbody td:nth-child(7):hover) tbody td:nth-child(7) { background: color-mix(in srgb, var(--accent) 14%, transparent); }
+.trio:has(tbody td:nth-child(8):hover) tbody td:nth-child(8) { background: color-mix(in srgb, var(--accent) 14%, transparent); }
+.trio:has(tbody td:nth-child(9):hover) tbody td:nth-child(9) { background: color-mix(in srgb, var(--accent) 14%, transparent); }
+/* the cell under the pointer lit most: above the row's and the column's light, which are more specific (E-079) */
+.trio tbody td:hover { background: color-mix(in srgb, var(--accent) 42%, transparent) !important; outline: 1px solid var(--accent); outline-offset: -1px; }
+.by-year { border-collapse: collapse; font-size: 12px; margin: 0; }
+.by-year caption { text-align: left; caption-side: top; }
+.by-year th { color: var(--muted); font-weight: 400; font-size: 11px; padding: 1px 0 1px 14px; }
+.by-year td { padding: 1px 0; }
+.by-year .n { text-align: right; white-space: nowrap; padding-left: 14px; }
+/* the weighted column in bold, the figure the scenarios' table above shows (D-212) */
+.by-year .w { font-weight: 700; }
+/* the calibration page (R-APP-7): a failure carries a ✗ as well as its colour */
+.calibration h3 { font-size: 13px; margin: 16px 0 4px; }
+.calibration .why { max-width: 90ch; margin: 2px 0 6px; line-height: 1.5; }
+.calib { border-collapse: collapse; font-size: 12px; margin: 4px 0 10px; width: 100%; }
+.calib th { color: var(--muted); font-weight: 400; font-size: 11px; text-align: right; padding: 2px 0 2px 12px; vertical-align: bottom; }
+.calib td { padding: 1px 0 1px 12px; text-align: right; white-space: nowrap; font-family: var(--num); }
+.calib th:first-child, .calib td:first-child, .calib th:nth-child(2), .calib td:nth-child(2), .calib .l { text-align: left; }
+.calib td:first-child, .calib th:first-child { padding-left: 0; }
+.calib td.l { white-space: normal; font-family: var(--text); }
+.calibration { overflow-x: auto; }
+.calib tr.first td { border-top: 1px solid var(--line); padding-top: 3px; }
+.calib .fail, .gates .fail { color: var(--red); font-weight: 700; }
+.gates { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; margin: 8px 0 6px; }
+.gates .pass { color: var(--green); }
+/* the import-price page (D-040): SVG figures on the theme's tokens; one line per year told apart by
+   its dash and its label, not by colour (R-UI-4); the mix in the generation groups' hues */
+.ip { overflow-x: auto; }
+.ip h2 { font-size: 15px; margin: 4px 0 6px; }
+.ip h3 { font-size: 13px; margin: 18px 0 4px; }
+.ip .note { color: var(--muted); font-size: 12px; margin: 2px 0 6px; max-width: 110ch; }
+.ip .ip-level { max-width: 520px; }
+.ip-controls { max-width: 560px; } /* the zone and its level in a box, as the panel's */
+.ip-controls .ip-level { margin-bottom: 0; }
+/* the views: a page's title, its sections' headings as the panel's boxes' (the owner's design direction, 2026-10-20) */
+.calibration > h2, .ip > h2 { font-size: 16px; font-weight: 700; margin: 4px 0 8px; }
+.calibration > h3, .ip > h3, .st-pane > h3 { font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); font-weight: 700; margin: 22px 0 8px; }
+.ip-year { margin: 8px 0 14px; }
+.ip-year figcaption, .ip-hour figcaption { font-size: 12px; font-family: var(--num); }
+.ip-fig { width: 100%; height: auto; display: block; font-family: var(--num); }
+.ip-fig .grid { stroke: var(--line); stroke-width: .6; }
+.ip-fig .grid.strong { stroke: var(--muted); stroke-width: 1; }
+.ip-fig .tick { fill: var(--muted); font-size: 11px; }
+.ip-fig .lab { fill: var(--ink); font-size: 12px; font-weight: 700; }
+.ip-fig .in { fill: #fff; font-size: 11px; font-weight: 700; }
+.ip-fig .series, .ip-legend .series { fill: none; stroke: var(--accent); stroke-width: 1; }
+.ip-fig .series.thick, .ip-legend .series.thick { stroke-width: 2; }
+.ip-fig .series.dash { stroke-dasharray: 5 3; }
+.ip-fig .series.base { stroke: var(--muted); stroke-width: 1; opacity: .6; }
+.ip-fig .band90 { fill: var(--accent); opacity: .16; }
+/* the Weather page (R-APP-13): one bar per climate year, the three selected years in the accent */
+.wx-fig .bar { fill: var(--muted); opacity: .45; }
+.wx-fig .bar.sel { fill: var(--accent); opacity: 1; }
+/* each picked year in its own colour (D-197), its figure and rank in the line above the chart */
+.wx-fig .bar.sel.y1995, .wx-picks .y1995 { fill: var(--y-1995); background: var(--y-1995); }
+.wx-fig .bar.sel.y2008, .wx-picks .y2008 { fill: var(--y-2008); background: var(--y-2008); }
+.wx-fig .bar.sel.y2009, .wx-picks .y2009 { fill: var(--y-2009); background: var(--y-2009); }
+.wx-picks { display: flex; flex-wrap: wrap; gap: 2px 14px; margin: 4px 0 0; padding: 0; list-style: none; font-size: 12px; }
+.wx-picks li { display: inline-flex; align-items: center; gap: 5px; white-space: nowrap; }
+.wx-picks i { width: 8px; height: 8px; border-radius: 2px; }
+.wx-picks b { color: var(--navy); }
+.wx-picks .rank { color: var(--muted); }
+.wx-fig .tick.strong { fill: var(--ink); font-weight: 700; }
+.wx-table { border-collapse: collapse; font-size: 12px; margin: 4px 0 10px; max-width: 110ch; }
+.wx-table th { color: var(--muted); font-weight: 400; font-size: 11px; text-align: left; padding: 2px 14px 2px 0; }
+.wx-table th.n { white-space: nowrap; }
+.wx-table td { padding: 2px 14px 2px 0; vertical-align: top; }
+.wx-table td.n { text-align: right; white-space: nowrap; font-family: var(--num); }
+.wx-table tr.wx-zone td { padding-top: 8px; font-weight: 700; }
+.wx-rank { color: var(--muted); font-size: 11px; }
+.wx-src { color: var(--muted); font-size: 11px; font-family: var(--num); }
+.wx-src a { color: var(--muted); }
+.ip-fig .band50 { fill: var(--accent); opacity: .32; }
+/* the Statistics page (R-APP-14, D-087): the months solid, least squares dashed, Theil–Sen dotted,
+   the future shaded, the scenarios' assumptions hollow diamonds; the countries' small figures in a grid */
+.st-fig .future { fill: var(--line); opacity: .22; }
+.st-fig .trend { fill: none; stroke: var(--ink); stroke-width: 1.4; stroke-dasharray: 6 4; }
+.st-fig .trend.ts { stroke: var(--amber); stroke-dasharray: 2 3; stroke-width: 1.8; }
+.st-fig .pt { fill: var(--ink); }
+.st-fig .pt.ts { fill: var(--amber); }
+.st-fig .lab.ts { fill: var(--amber); }
+.st-fig .lab.sm { font-size: 11px; font-weight: 400; }
+.st-fig .assume { fill: none; stroke: var(--green); stroke-width: 1.6; }
+/* a diamond's tip names its scenario (D-215): the hollow inside takes the pointer too, the diamond fills under it, and
+   a reading's figure written over it leaves it the pointer */
+.st-fig .assume[data-tip] { pointer-events: all; }
+.st-fig .assume[data-tip]:hover { fill: var(--green); }
+.st-fig text { pointer-events: none; }
+/* the value the panel sets now (D-216): a red dot, its tip in the same box */
+.st-fig .set { fill: var(--red); stroke: var(--surface); stroke-width: 1; }
+.st-fig .bar { fill: var(--accent); }
+.st-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 4px 18px; margin: 4px 0 6px; }
+.st-cell { margin: 0; }
+/* wind's two figures of a country side by side, a country to a row, one above the other where the column has no room
+   for two (D-218) */
+.st-grid.st-pairs { grid-template-columns: repeat(auto-fill, minmax(max(280px, 40%), 1fr)); }
+.st-scroll { overflow-x: auto; max-width: 100%; }
+.st-cell figcaption { font-size: 12px; font-family: var(--num); }
+.st-table td:first-child { max-width: 46ch; }
+.st-table tbody td:first-child:has(.fl) { white-space: nowrap; }
+.st-key > span { white-space: nowrap; } /* a key with its line, the four apart where narrow */
+.st-key i { display: inline-block; width: 18px; height: 0; margin: 0 4px 3px 10px; vertical-align: middle; border-top: 2px solid var(--accent); }
+.st-key i.k-trend { border-top: 1.5px dashed var(--ink); }
+.st-key i.k-ts { border-top: 2px dotted var(--amber); }
+.st-key i.k-assume { width: 8px; height: 8px; border: 1.6px solid var(--green); transform: rotate(45deg); margin-bottom: 0; }
+.st-key i.k-set { width: 8px; height: 8px; border-radius: 50%; border-top: 0; background: var(--red); margin-bottom: 0; }
+.st-key i.k-bar { width: 7px; height: 10px; border-top: 0; background: var(--accent); margin-bottom: 0; }
+/* the duration curve and the hour-of-day profiles side by side, one above the other when narrow */
+.ip-top { display: grid; grid-template-columns: repeat(auto-fit, minmax(420px, 1fr)); gap: 0 24px; align-items: start; }
+.ip-hours { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.ip-hour { margin: 0; }
+.ip-legend { display: flex; flex-wrap: wrap; gap: 4px 16px; font-size: 12px; margin: 4px 0; }
+.ip-legend .key { display: inline-flex; align-items: center; gap: 6px; }
+.ip-legend .sw { width: 12px; height: 12px; display: inline-block; }
+.ip .g.nuclear { fill: var(--g-nuclear); background: var(--g-nuclear); }
+.ip .g.hydro { fill: var(--g-hydro); background: var(--g-hydro); }
+.ip .g.wind { fill: var(--g-wind); background: var(--g-wind); }
+.ip .g.wind.off { fill: var(--g-wind_off); background: var(--g-wind_off); }
+/* the duration curves of the three climate years, a colour each (D-197); another year keeps the accent */
+.ip-fig .series.y1995, .ip-legend .series.y1995 { stroke: var(--y-1995); }
+.ip-fig .series.y2008, .ip-legend .series.y2008 { stroke: var(--y-2008); }
+.ip-fig .series.y2009, .ip-legend .series.y2009 { stroke: var(--y-2009); }
+.ip .g.solar { fill: var(--g-solar); background: var(--g-solar); }
+.ip .g.bio_waste { fill: var(--g-bio_waste); background: var(--g-bio_waste); }
+.ip .g.storage { fill: var(--g-storage); background: var(--g-storage); }
+.ip .g.storage.ev { opacity: .55; }
+.ip-cap td:first-child { display: flex; align-items: center; gap: 6px; }
+.ip-cap .sw { width: 10px; height: 10px; display: inline-block; flex: none; }
+.ip .g.gas { fill: var(--g-gas); background: var(--g-gas); }
+.ip .g.oil_shale { fill: var(--g-oil_shale); background: var(--g-oil_shale); }
+.ip .g.other { fill: var(--g-other); background: var(--g-other); }
+.ip .g.other.dsr { opacity: .5; }
+.ip-table th:nth-child(2), .ip-table td:nth-child(2) { text-align: right; }
+/* the monthly table under an hourly figure: its columns are the figure's months, left-aligned as the
+   figure's month labels are */
+.ip-months { width: 100%; table-layout: fixed; border-collapse: separate; border-spacing: 0 1px; font-family: var(--num); font-size: 11px; }
+.ip-months th, .ip-months td { text-align: left; padding: 1px 3px; white-space: nowrap; overflow: hidden; }
+.ip-months th { color: var(--muted); font-weight: 400; }
+.ip-months tbody th, .ip-months thead th:first-child { text-align: right; padding-right: 6px; }
+.ip-months tbody th, .ip-months thead th:first-child { overflow: visible; } /* "average" is wider than the plot's margin it aligns with (ERRATA E-166) */
+.ip-table tbody th { text-align: left; padding-left: 0; }
+/* the documentation (R-APP-9): the methodology, the questions and answers, the sources. Since D-197 the documents as
+   pills on a track, the text in a white card, a contents rail beside the long texts, the lead on a plate, square
+   bullets, a check's status as a chip; the Sources' documents by letter with a search box. The Statistics page's
+   parts on the same track (D-213) */
+#docs > .tabs, .st > .tabs { display: inline-flex; flex-wrap: wrap; gap: 4px; margin: 0 0 16px; padding: 4px; border-radius: 22px; background: var(--surface2); } /* half the track's height: a pill on one line, a rounded box where a narrow window wraps it (D-214) */
+#docs > .tabs .seg, .st > .tabs .seg { border: 0; border-radius: 999px; background: none; padding: 8px 16px; color: var(--muted); font-weight: 600; }
+#docs > .tabs .seg[aria-pressed="true"], .st > .tabs .seg[aria-pressed="true"] { background: var(--surface); color: var(--navy); font-weight: 700; box-shadow: 0 1px 2px rgb(3 8 76 / .14); }
+.doc-card { display: flex; align-items: flex-start; gap: 32px 48px; padding: 32px 40px 40px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-card); }
+.doc-toc { flex: 0 0 220px; position: sticky; top: 16px; max-height: calc(100vh - 32px); overflow-y: auto; }
+.doc-toc-h { margin: 0 0 10px; font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--navy); }
+.doc-toc ol { list-style: none; margin: 0; padding: 0; border-left: 1px solid var(--line); }
+.toc-link { display: block; width: 100%; padding: 5px 0 5px 14px; border: 0; background: none; color: var(--muted); font: 500 13px/1.4 var(--text); text-align: left; cursor: pointer; }
+.toc-link:hover { color: var(--accent); }
+.doc-toc .l3 .toc-link { padding-left: 26px; font-size: 12px; }
+.doc { flex: 1 1 0; min-width: 0; max-width: 760px; font-size: 15px; line-height: 1.7; }
+.doc.wide { max-width: none; }
+.doc h1 { margin: 0 0 16px; font-size: 32px; font-weight: 800; line-height: 1.15; letter-spacing: -.01em; color: var(--navy); }
+.doc h2 { margin: 28px 0 12px; padding-top: 28px; border-top: 1px solid var(--line); font-size: 20px; font-weight: 800; line-height: 1.3; color: var(--navy); }
+.doc h3 { margin: 20px 0 8px; font-size: 16px; font-weight: 700; color: var(--navy); }
+.doc p, .doc ul, .doc ol { margin: 0 0 14px; }
+.doc h1 + p { padding: 14px 18px; border: 1px solid var(--line); border-radius: var(--radius-card); background: var(--surface2); font-size: 13.5px; line-height: 1.6; }
+.doc ul { list-style: none; padding-left: 0; }
+.doc ul > li { position: relative; margin: 0 0 8px; padding-left: 18px; }
+.doc ul > li::before { content: ""; position: absolute; left: 2px; top: .72em; width: 6px; height: 6px; background: var(--accent); }
+.doc .st { display: inline-block; margin-right: 4px; padding: 0 8px; border-radius: 999px; font-size: 12px; font-weight: 700; line-height: 22px; white-space: nowrap; }
+.doc .st.ok { background: var(--ok-bg); color: var(--green); }
+.doc .st.bad { background: var(--bad-bg); color: var(--red); }
+.doc code { font: 12px var(--mono); background: var(--surface2); color: var(--navy); padding: 1px 4px; border-radius: 4px; }
+.doc a { color: var(--accent); }
+table.md { border-collapse: collapse; font-size: 13px; line-height: 1.5; margin: 6px 0 14px; }
+.doc:not(.wide) table.md { display: block; max-width: 100%; overflow-x: auto; } /* a table wider than the text's column scrolls in its own box, not the page (ERRATA E-188) */
+table.md th, table.md td { border-bottom: 1px solid var(--line); padding: 7px 14px 7px 0; text-align: left; vertical-align: top; }
+table.md th { color: var(--muted); font-weight: 600; font-size: 12px; }
+table.md tr.hit td { background: var(--tint); outline: 2px solid var(--accent); outline-offset: -2px; }
+.src-pills { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0 0; }
+.toc-pill { display: inline-flex; align-items: center; gap: 8px; height: 32px; padding: 0 6px 0 12px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); color: var(--navy); font: 600 13px var(--text); cursor: pointer; }
+.toc-pill span { padding: 0 7px; border-radius: 999px; background: var(--surface2); color: var(--muted); font-size: 11.5px; font-weight: 700; line-height: 20px; }
+table.md.src3 { width: 100%; }
+table.md.src3 a { font-weight: 700; text-decoration: none; }
+.src-access { display: block; width: fit-content; margin-top: 6px; padding: 2px 8px; border-radius: 6px; background: var(--surface2); color: var(--navy); font-size: 11.5px; font-weight: 600; line-height: 1.4; }
+.src-vals code { display: inline-block; margin: 2px 0; }
+.src-find { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 20px; margin: 4px 0 8px; }
+#src-find { flex: 1 1 260px; max-width: 400px; height: 40px; padding: 0 12px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); font-size: 13.5px; }
+.src-letters { display: flex; flex-wrap: wrap; gap: 2px; }
+.toc-letter { min-width: 26px; height: 26px; padding: 0 4px; border: 0; border-radius: 6px; background: none; color: var(--accent); font: 700 12.5px var(--text); cursor: pointer; }
+.toc-letter:hover { background: var(--surface2); }
+table.md.src-docs { width: 100%; }
+table.md.src-docs a { text-decoration: none; }
+table.md tr.src-letter th { padding: 18px 0 6px; color: var(--navy); font-size: 17px; font-weight: 800; }
+table.md tr.src-letter th span { margin-left: 10px; color: var(--muted); font-size: 12px; font-weight: 500; }
+/* a page's long introduction folded under its title (the owner's design direction) */
+details.about { margin: 0 0 12px; }
+details.about > summary { cursor: pointer; color: var(--accent); font-size: 12px; padding: 2px 0; }
+details.about[open] > summary { margin-bottom: 4px; }
+details.fold { margin-bottom: 12px; }
+details.fold > summary { cursor: pointer; color: var(--muted); font-size: 12px; padding: 4px 0; }
+.cards.folded tr.extra { display: none; }
+/* a "?" whose explanation shows on hover and on keyboard focus (D-029) */
+.q { display: inline-flex; align-items: center; justify-content: center; width: 11px; height: 11px; margin: 0 4px 0 0; padding: 0;
+  border: 1px solid var(--line); border-radius: 50%; background: none; color: var(--muted); font: 8px/1 var(--num); cursor: help; vertical-align: 1px; }
+.q:hover, .q:focus-visible { color: var(--ink); border-color: var(--ink); }
+.q.open { color: var(--ink); border-color: var(--ink); }
+/* a "?"'s or a bid's tip: one box over the page beside its mark, inside the window (main.ts placeTip; E-181) */
+.tipbox { position: fixed; z-index: 60; width: min(298px, calc(100vw - 16px)); white-space: normal; text-align: left;
+  background: var(--surface2); color: var(--ink); border: 1px solid var(--ink); border-radius: var(--radius);
+  padding: 6px 8px; font: 12px/1.35 var(--text); box-shadow: 0 4px 16px rgb(0 0 0 / .3); }
+.tipbox.bid { width: max-content; max-width: min(398px, calc(100vw - 16px)); white-space: pre-line; font: 12px/1.4 var(--num); }
+/* the first stop of the keyboard: past the panel to the results */
+.skip { position: absolute; left: -9999px; top: 0; z-index: 50; background: var(--surface2); color: var(--ink); padding: 6px 10px; border: 1px solid var(--ink); }
+.skip:focus { left: 8px; top: 8px; }
+.notice { color: var(--red); margin: 0 0 10px; }
+.error { color: var(--red); }
+
+@media (max-width: 1100px) { .charts { grid-template-columns: 1fr; } }
+/* the scenarios' labels stay in view while a narrow window scrolls the table under them */
+.trio tr > :first-child, .by-year tr > :first-child { position: sticky; left: 0; z-index: 1; background: var(--surface); }
+
+/* the presentation page (the owner asked, 2026-10-21): the panel folded away, the summary the window's
+   width — the inputs, the neighbours' prices and Estonia's figures in a row, the three charts under them */
+.app.full { grid-template-columns: minmax(0, 1fr); }
+.app.full > .panel { display: none; }
+/* nor the run's status line, its timing (the owner asked, 2026-10-22); an error still shows */
+.app.full .status:not(:has(.error)) { display: none; }
+/* the deck (D-220): the Fermi deck's frame, a white 1920×1080 stage scaled to the column's width (main.ts fitDeck),
+   or in full screen to the screen on black; its slides' own styles inline, as v3 drew them */
+.deck { display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; max-width: min(100%, calc((100vh - 170px) * 16 / 9)); margin-inline: auto; } /* the whole slide in the window; the column's width, whatever the bar's */
+.deck-bar { display: flex; align-items: center; gap: 8px; }
+.deck-bar .seg { flex: none; min-width: 40px; font-size: 18px; line-height: 1; padding: 6px 12px; } /* the sentence gives way, never a button's label */
+.deck-bar [data-deck="full"] { font-size: 14px; margin-left: auto; }
+.deck-n { min-width: 5ch; text-align: center; color: var(--muted); font-variant-numeric: tabular-nums; }
+.deck-note { color: var(--muted); font-size: 12.5px; margin-left: 8px; }
+.deck-wrap { position: relative; width: 100%; aspect-ratio: 16 / 9; overflow: hidden; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); touch-action: pan-y; } /* a sideways swipe pages (D-221) */
+.deck-wrap:fullscreen { display: flex; align-items: center; justify-content: center; border: 0; border-radius: 0; background: #000; }
+.deck-stage { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; transform-origin: 0 0; overflow: hidden; background: #fff; color: #03084C; font-family: "Montserrat", system-ui, sans-serif; cursor: pointer; user-select: none; }
+.deck-wrap:fullscreen .deck-stage { position: relative; flex: none; transform-origin: center; }
+.deck-stage * { box-sizing: border-box; margin: 0; }
+.deck-stage svg text { font-family: "Montserrat", system-ui, sans-serif; }
+.deck-stage .fl { width: 33px; height: 22px; margin-right: 8px; vertical-align: -3px; box-shadow: inset 0 0 0 1px rgb(3 8 76 / .35); }
+.deck-fs { display: none; }
+.deck-wrap:fullscreen .deck-fs { display: block; position: absolute; right: 24px; bottom: 16px; padding: 5px 14px; border-radius: 999px; background: rgb(3 8 76 / .55); color: #fff; font: 500 15px/1.4 "Montserrat", system-ui, sans-serif; letter-spacing: .06em; }
+.ps-head { position: absolute; left: 96px; right: 96px; top: 48px; height: 160px; overflow: hidden; }
+.ps-head h1 { font-size: 72px; font-weight: 700; line-height: 1.08; letter-spacing: -.01em; color: #2303BD; }
+.ps-head p { font-size: 36px; font-weight: 500; line-height: 1.25; color: #6B7280; margin-top: 14px; }
+.ps-body { position: absolute; left: 80px; top: 220px; width: 1760px; height: 740px; }
+.ps-foot { position: absolute; left: 96px; right: 96px; bottom: 32px; display: flex; justify-content: space-between; align-items: center; }
+.ps-public { font-size: 24px; font-weight: 500; letter-spacing: .1em; color: #9CA3AF; }
+.ps-brand { font-size: 24px; font-weight: 700; letter-spacing: .14em; color: #2303BD; }
+.ps-pending { font-size: 36px; font-weight: 600; color: #6B7280; padding-top: 40px; }
+
+/* read from the back of the room (the design pass of 2026-10-22): a larger base, the finding in one line under
+   the title, the main figures and the charts' titles in ink */
+.pres { font-size: 15px; }
+.pres-title { margin: 0 0 12px; font-size: 24px; text-wrap: balance; }
+.pres .rh { font-size: 13px; }
+.pres .chart h3 { font-size: 14px; color: var(--ink); }
+/* the inputs once above the blocks, the same under every profile (D-197); a block's name with its neighbours'
+   price levels beside it, its figures under them */
+.pres-inputs-card { margin-bottom: 16px; }
+.pres-inputs-card > .rh { margin: 0; }
+.pres-inputs-card > .pres-note { margin: 2px 0 10px; }
+.pres-scroll { overflow-x: auto; }
+.pres-t.pres-zones { width: auto; }
+.pres-block-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 24px; margin: 0 0 12px; }
+.pres-block-head .pres-block-title { margin: 0; }
+.pres-nb { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 18px; margin: 0; padding: 0; list-style: none; font-size: 13px; }
+.pres-nb b { color: var(--navy); font-variant-numeric: tabular-nums; }
+.pres-block > .card { margin-bottom: 12px; overflow-x: auto; }
+.pres-zones th.zc { text-align: center; color: var(--ink); font-weight: 700; }
+.pres-note { margin: 4px 0 0; font-size: 12px; color: var(--muted); max-width: 60ch; }
+.pres-t .gr { margin: 0; }
+.pres-block > .card > .rh:first-child { margin-top: 0; }
+.pres-t { width: 100%; border-collapse: collapse; font-size: 14px; }
+.pres-zones td.bid { color: var(--muted); } /* the bid beside the capacity, secondary to it */
+.pres-t th { color: var(--muted); font-weight: 400; text-align: right; font-size: 12px; padding: 0 0 4px 10px; white-space: nowrap; }
+.pres-t td { padding: 3px 0; border-top: 1px solid var(--line); vertical-align: top; }
+.pres-t td.n { text-align: right; padding-left: 10px; white-space: nowrap; }
+.pres-t .ico { vertical-align: -3px; margin-right: 6px; }
+.pres-t .u { color: var(--muted); font: 400 11px var(--text); }
+.pres-fig td { padding: 4px 0; vertical-align: middle; }
+.pres-fig td.n { padding-left: 10px; }
+.pres-fig td.n b { font: 700 20px/1.2 var(--num); }
+.pres-fig .u { font-size: 10px; }
+/* a difference to 0 SMR in its own column: green where the figure falls, red where it rises */
+.pres-fig td.d { padding: 4px 8px 4px 5px; font: 600 12px var(--num); color: var(--muted); }
+/* a rule before each scenario, so that a figure's difference is not read as the next scenario's (2026-10-22) */
+.pres-fig td.n.g, .pres-fig th.g, .pres-zones td.g, .pres-zones th.g, .pres-capex td.g, .pres-capex th.g { border-left: 1px solid var(--line); padding-left: 12px; }
+/* the capital cost of the energy mix (2026-10-22): the window's width, the totals in bold */
+/* the Model view's capital cost by source (D-160): a narrow column scrolls it, not the page */
+.capex-card { margin: 12px 0; overflow-x: auto; }
+.pres-t.pres-capex { width: auto; }
+.pres-capex th.zc { text-align: center; color: var(--ink); font-weight: 700; }
+.pres-capex td.n b { font-weight: 700; }
+.pres-capex tr.sum td { border-top: 2px solid var(--line); font-weight: 700; }
+.pres-fig td.d.good { color: var(--green); background: var(--ok-bg); } .pres-fig td.d.bad { color: var(--red); background: var(--bad-bg); }
+.pres-fig td.d .u { color: inherit; }
+.pres-fig td.pending { color: var(--muted); font-style: italic; }
+/* the impact's rows in the columns of Estonia's figures, under a heading of their own (2026-10-22) */
+.pres-fig tr.sec th { text-align: left; padding: 16px 0 4px; border-left: 0; }
+.pres-fig tr.sec .rh { margin: 0; }
+.pres-fig th { color: var(--ink); font-weight: 700; font-size: 13px; text-align: center; padding-left: 10px; }
+.pres-sw { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 5px; vertical-align: -1px; }
+.pres-charts { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 5fr) minmax(0, 4fr); gap: 12px; }
+.pres-charts .plot { height: 300px; }
+/* the foot: the capital cost's totals beside the assumptions and sources of the page's figures */
+.pres-foot { margin-top: 12px; }
+/* the capital cost at the top, the same under every neighbours' profile, then a block for each (the owner, 2026-10-26; D-177) */
+.pres-top { display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-start; margin-bottom: 12px; }
+.pres-top > .card { max-width: 100%; overflow-x: auto; }
+/* the neighbours' price level over the whole page (D-180) */
+.pres-lv { min-width: 320px; }
+.pres-lv-row { display: grid; grid-template-columns: 108px minmax(150px, 1fr) 52px; gap: 10px; align-items: center; padding: 5px 0; }
+.pres-lv-row.fuel { grid-template-columns: 76px minmax(150px, 1fr) max-content; }
+.pres-lv-row .ico { vertical-align: -3px; margin-right: 6px; }
+.pres-lv-row .rng { grid-column: auto; } /* the panel's slider in the row's middle column (D-210) */
+.pres-lv-v { text-align: right; font-variant-numeric: tabular-nums; color: var(--muted); }
+.pres-block + .pres-block { margin-top: 28px; padding-top: 16px; border-top: 2px solid var(--line); }
+.pres-block-title { margin: 0 0 10px; font-size: 18px; text-wrap: balance; }
+.pres-notes { padding: 10px 4px 0; }
+.pres-notes .rh { margin: 0 0 6px; }
+.pres-notes ul { margin: 0; padding-left: 18px; max-width: 90ch; font-size: 13px; line-height: 1.5; color: var(--muted); }
+.pres-notes li + li { margin-top: 6px; }
+@media (max-width: 1100px) { .pres-charts { grid-template-columns: minmax(0, 1fr); } }
+
+/* off the Model view the panel's boxes fold to their headings, the run's box open (D-197): the heading or its chevron
+   opens a box */
+.panel.folded > .box:not(.run):not(.open) > :not(h2) { display: none; }
+.panel.folded > .box:not(.run):not(.open) { padding-top: 10px; padding-bottom: 10px; margin-bottom: 8px; }
+.panel.folded > .box:not(.run) > h2 { display: flex; align-items: center; gap: 6px; cursor: pointer; }
+.panel.folded > .box:not(.run):not(.open) > h2 { margin: 0; }
+.fold-btn { position: relative; flex: none; margin-left: auto; width: 26px; height: 26px; padding: 0; border: 0; border-radius: var(--radius); background: none; cursor: pointer; }
+.fold-btn:hover { background: var(--surface2); }
+.fold-btn::before { content: ""; position: absolute; left: 9px; top: 7px; width: 6px; height: 6px; border-right: 2px solid var(--muted); border-bottom: 2px solid var(--muted); transform: rotate(45deg); }
+.box.open > h2 > .fold-btn::before { top: 10px; transform: rotate(-135deg); }
+/* the capital cost's Latvia and Lithuania folded to a column with a button until opened (D-197) */
+.pres-capex th.fold, .pres-capex td.fold { width: 52px; text-align: center; background: var(--surface2); }
+.fold-zone { margin-left: 6px; width: 22px; height: 22px; padding: 0; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); color: var(--accent); font: 700 12px/1 var(--text); cursor: pointer; vertical-align: 1px; }
+/* a trade balance's sign on its light fill (the owner, 2026-11-02), a calibration's breach on red, its pass on green */
+.card td .pos, .card td .neg { display: inline-block; padding: 0 6px; border-radius: 999px; }
+.card td .pos { background: var(--ok-bg); } .card td .neg { background: var(--bad-bg); }
+.calib td.fail { background: var(--bad-bg); }
+.gates .pass, .gates .fail { display: inline-block; padding: 1px 8px; border-radius: 999px; }
+.gates .pass { background: var(--ok-bg); } .gates .fail { background: var(--bad-bg); }
+.calib.gen td.l > span { display: inline-block; margin: 1px 0; padding: 0 7px; border-radius: 999px; background: var(--surface2); white-space: nowrap; }
+.calib.gen td.l > span.fail { background: var(--bad-bg); }
+
+@media print {
+  :root { --bg: #FFFFFF; --surface: #FFFFFF; --surface2: #EFEEF7; --line: #DEDCEA; --ink: #1C1B29; --muted: #5A5870; --accent: #2303BD; --amber: #8A5700; --green: #0B6E35; --red: #C8102E; color-scheme: light; }
+  aside.panel { display: none; }
+  .app { grid-template-columns: 1fr; }
+  /* the page as a document (D13: the print stylesheet serves for a PDF): no controls, nothing split */
+  header .views, .cards-bar, .status, .tabs, .q, .src, .pop, .tipbox, .fold-zone { display: none !important; }
+  .card, .chart, .gates, .by-year, table, tr { break-inside: avoid; }
+  .trio th .seg { border: 0; padding: 0; background: none; color: var(--ink); }
+  a { color: inherit; text-decoration: none; }
+}
+
+/* a bid tag's tip (D-089): the bid taken apart, on hover and on focus, in the page's tip box (E-181) */
+.bid[data-tip] { cursor: help; }
+/* a thermal bid a scenario may move by hand (D-090): the box looks like the tag's figure; moved, it is marked */
+.row.ic .bid .bid-in { width: 72px; height: 26px; padding: 0 12px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); color: var(--ink); font: 700 15px var(--num); text-align: right; cursor: text; }
+.row.ic .bid.changed .bid-in { border-color: var(--amber); }
+.row.ic .bid.changed .bid-in { color: var(--amber); }

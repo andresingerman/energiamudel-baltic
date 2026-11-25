@@ -1,0 +1,719 @@
+source,tech_class,parameter,value,unit,doc_source,url,page,notes,lineage_id
+eraa2025_common,nuclear,efficiency,0.33,fraction,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,nuclear,co2_factor,0.0,kg/GJ,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,nuclear,vom,9.0,EUR/MWh,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,nuclear,min_time_on,12.0,h,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,nuclear,min_time_off,12.0,h,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,nuclear,startup_fuel_warm,14.0,GJ/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,nuclear,startup_cost_warm,21.0,EUR/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,nuclear,efficiency_min,0.3,fraction,,,,"efficiency range, NCV",eraa2025.common_data
+eraa2025_common,nuclear,efficiency_max,0.35,fraction,,,,"efficiency range, NCV",eraa2025.common_data
+eraa2025_common,hard_coal_old_1,efficiency,0.35,fraction,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,hard_coal_old_1,co2_factor,94.0,kg/GJ,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,hard_coal_old_1,vom,3.3,EUR/MWh,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,hard_coal_old_1,min_time_on,8.0,h,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,hard_coal_old_1,min_time_off,8.0,h,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,hard_coal_old_1,startup_fuel_warm,18.0,GJ/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,hard_coal_old_1,startup_cost_warm,69.69,EUR/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,hard_coal_old_1,startup_fuel_cold,21.0,GJ/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,hard_coal_old_1,startup_cost_cold,93.97,EUR/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,hard_coal_old_1,startup_fuel_hot,10.5,GJ/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,hard_coal_old_1,startup_cost_hot,49.33,EUR/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,hard_coal_old_1,efficiency_min,0.3,fraction,,,,"efficiency range, NCV",eraa2025.common_data
+eraa2025_common,hard_coal_old_1,efficiency_max,0.37,fraction,,,,"efficiency range, NCV",eraa2025.common_data
+eraa2025_common,hard_coal_old_2,efficiency,0.4,fraction,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,hard_coal_old_2,co2_factor,94.0,kg/GJ,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,hard_coal_old_2,vom,3.3,EUR/MWh,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,hard_coal_old_2,min_time_on,6.0,h,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,hard_coal_old_2,min_time_off,6.0,h,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,hard_coal_old_2,startup_fuel_warm,18.0,GJ/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,hard_coal_old_2,startup_cost_warm,50.12,EUR/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,hard_coal_old_2,startup_fuel_cold,21.0,GJ/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,hard_coal_old_2,startup_cost_cold,81.44,EUR/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,hard_coal_old_2,startup_fuel_hot,10.5,GJ/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,hard_coal_old_2,startup_cost_hot,42.29,EUR/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,hard_coal_old_2,efficiency_min,0.38,fraction,,,,"efficiency range, NCV",eraa2025.common_data
+eraa2025_common,hard_coal_old_2,efficiency_max,0.43,fraction,,,,"efficiency range, NCV",eraa2025.common_data
+eraa2025_common,hard_coal_new,efficiency,0.46,fraction,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,hard_coal_new,co2_factor,94.0,kg/GJ,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,hard_coal_new,vom,3.3,EUR/MWh,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,hard_coal_new,min_time_on,5.0,h,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,hard_coal_new,min_time_off,5.0,h,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,hard_coal_new,startup_fuel_warm,18.0,GJ/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,hard_coal_new,startup_cost_warm,42.29,EUR/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,hard_coal_new,startup_fuel_cold,21.0,GJ/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,hard_coal_new,startup_cost_cold,57.17,EUR/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,hard_coal_new,startup_fuel_hot,10.5,GJ/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,hard_coal_new,startup_cost_hot,30.54,EUR/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,hard_coal_new,efficiency_min,0.44,fraction,,,,"efficiency range, NCV",eraa2025.common_data
+eraa2025_common,hard_coal_new,efficiency_max,0.46,fraction,,,,"efficiency range, NCV",eraa2025.common_data
+eraa2025_common,hard_coal_ccs,efficiency,0.38,fraction,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,hard_coal_ccs,co2_factor,9.4,kg/GJ,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,hard_coal_ccs,vom,6.6,EUR/MWh,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,hard_coal_ccs,min_time_on,7.0,h,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,hard_coal_ccs,min_time_off,7.0,h,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,hard_coal_ccs,startup_fuel_warm,18.0,GJ/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,hard_coal_ccs,startup_cost_warm,50.12,EUR/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,hard_coal_ccs,startup_fuel_cold,21.0,GJ/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,hard_coal_ccs,startup_cost_cold,81.44,EUR/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,hard_coal_ccs,startup_fuel_hot,10.5,GJ/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,hard_coal_ccs,startup_cost_hot,42.29,EUR/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,hard_coal_ccs,efficiency_min,0.3,fraction,,,,"efficiency range, NCV",eraa2025.common_data
+eraa2025_common,hard_coal_ccs,efficiency_max,0.4,fraction,,,,"efficiency range, NCV",eraa2025.common_data
+eraa2025_common,lignite_old_1,efficiency,0.35,fraction,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,lignite_old_1,co2_factor,101.0,kg/GJ,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,lignite_old_1,vom,3.3,EUR/MWh,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,lignite_old_1,min_time_on,11.0,h,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,lignite_old_1,min_time_off,11.0,h,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,lignite_old_1,startup_fuel_warm,18.0,GJ/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,lignite_old_1,startup_cost_warm,69.69,EUR/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,lignite_old_1,startup_fuel_cold,21.0,GJ/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,lignite_old_1,startup_cost_cold,93.97,EUR/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,lignite_old_1,startup_fuel_hot,10.5,GJ/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,lignite_old_1,startup_cost_hot,49.33,EUR/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,lignite_old_1,efficiency_min,0.3,fraction,,,,"efficiency range, NCV",eraa2025.common_data
+eraa2025_common,lignite_old_1,efficiency_max,0.37,fraction,,,,"efficiency range, NCV",eraa2025.common_data
+eraa2025_common,lignite_old_2,efficiency,0.4,fraction,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,lignite_old_2,co2_factor,101.0,kg/GJ,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,lignite_old_2,vom,3.3,EUR/MWh,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,lignite_old_2,min_time_on,9.0,h,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,lignite_old_2,min_time_off,9.0,h,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,lignite_old_2,startup_fuel_warm,18.0,GJ/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,lignite_old_2,startup_cost_warm,50.12,EUR/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,lignite_old_2,startup_fuel_cold,21.0,GJ/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,lignite_old_2,startup_cost_cold,81.44,EUR/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,lignite_old_2,startup_fuel_hot,10.5,GJ/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,lignite_old_2,startup_cost_hot,42.29,EUR/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,lignite_old_2,efficiency_min,0.38,fraction,,,,"efficiency range, NCV",eraa2025.common_data
+eraa2025_common,lignite_old_2,efficiency_max,0.43,fraction,,,,"efficiency range, NCV",eraa2025.common_data
+eraa2025_common,lignite_new,efficiency,0.46,fraction,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,lignite_new,co2_factor,101.0,kg/GJ,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,lignite_new,vom,3.3,EUR/MWh,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,lignite_new,min_time_on,8.0,h,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,lignite_new,min_time_off,8.0,h,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,lignite_new,startup_fuel_warm,18.0,GJ/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,lignite_new,startup_cost_warm,42.29,EUR/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,lignite_new,startup_fuel_cold,21.0,GJ/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,lignite_new,startup_cost_cold,57.17,EUR/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,lignite_new,startup_fuel_hot,10.5,GJ/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,lignite_new,startup_cost_hot,30.54,EUR/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,lignite_new,efficiency_min,0.44,fraction,,,,"efficiency range, NCV",eraa2025.common_data
+eraa2025_common,lignite_new,efficiency_max,0.46,fraction,,,,"efficiency range, NCV",eraa2025.common_data
+eraa2025_common,lignite_ccs,efficiency,0.38,fraction,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,lignite_ccs,co2_factor,10.1,kg/GJ,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,lignite_ccs,vom,6.6,EUR/MWh,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,lignite_ccs,min_time_on,10.0,h,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,lignite_ccs,min_time_off,10.0,h,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,lignite_ccs,startup_fuel_warm,18.0,GJ/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,lignite_ccs,startup_cost_warm,50.12,EUR/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,lignite_ccs,startup_fuel_cold,21.0,GJ/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,lignite_ccs,startup_cost_cold,81.44,EUR/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,lignite_ccs,startup_fuel_hot,10.5,GJ/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,lignite_ccs,startup_cost_hot,42.29,EUR/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,lignite_ccs,efficiency_min,0.3,fraction,,,,"efficiency range, NCV",eraa2025.common_data
+eraa2025_common,lignite_ccs,efficiency_max,0.4,fraction,,,,"efficiency range, NCV",eraa2025.common_data
+eraa2025_common,gas_conventional_old_1,efficiency,0.36,fraction,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_conventional_old_1,co2_factor,57.0,kg/GJ,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_conventional_old_1,vom,1.1,EUR/MWh,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_conventional_old_1,min_time_on,5.0,h,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_conventional_old_1,min_time_off,5.0,h,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_conventional_old_1,startup_fuel_warm,7.6,GJ/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_conventional_old_1,startup_cost_warm,68.13,EUR/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_conventional_old_1,startup_fuel_cold,9.7,GJ/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_conventional_old_1,startup_cost_cold,69.69,EUR/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_conventional_old_1,startup_fuel_hot,4.1,GJ/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_conventional_old_1,startup_cost_hot,32.89,EUR/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_conventional_old_1,efficiency_min,0.25,fraction,,,,"efficiency range, NCV",eraa2025.common_data
+eraa2025_common,gas_conventional_old_1,efficiency_max,0.38,fraction,,,,"efficiency range, NCV",eraa2025.common_data
+eraa2025_common,gas_conventional_old_2,efficiency,0.41,fraction,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_conventional_old_2,co2_factor,57.0,kg/GJ,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_conventional_old_2,vom,1.1,EUR/MWh,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_conventional_old_2,min_time_on,5.0,h,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_conventional_old_2,min_time_off,5.0,h,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_conventional_old_2,startup_fuel_warm,7.6,GJ/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_conventional_old_2,startup_cost_warm,45.42,EUR/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_conventional_old_2,startup_fuel_cold,9.7,GJ/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_conventional_old_2,startup_cost_cold,58.73,EUR/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_conventional_old_2,startup_fuel_hot,4.1,GJ/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_conventional_old_2,startup_cost_hot,28.19,EUR/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_conventional_old_2,efficiency_min,0.39,fraction,,,,"efficiency range, NCV",eraa2025.common_data
+eraa2025_common,gas_conventional_old_2,efficiency_max,0.42,fraction,,,,"efficiency range, NCV",eraa2025.common_data
+eraa2025_common,gas_ccgt_old_1,efficiency,0.4,fraction,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_ccgt_old_1,co2_factor,57.0,kg/GJ,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_ccgt_old_1,vom,1.6,EUR/MWh,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_ccgt_old_1,min_time_on,3.0,h,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_ccgt_old_1,min_time_off,3.0,h,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_ccgt_old_1,startup_fuel_warm,7.6,GJ/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_ccgt_old_1,startup_cost_warm,72.83,EUR/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_ccgt_old_1,startup_fuel_cold,9.7,GJ/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_ccgt_old_1,startup_cost_cold,79.09,EUR/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_ccgt_old_1,startup_fuel_hot,4.1,GJ/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_ccgt_old_1,startup_cost_hot,43.85,EUR/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_ccgt_old_1,efficiency_min,0.33,fraction,,,,"efficiency range, NCV",eraa2025.common_data
+eraa2025_common,gas_ccgt_old_1,efficiency_max,0.44,fraction,,,,"efficiency range, NCV",eraa2025.common_data
+eraa2025_common,gas_ccgt_old_2,efficiency,0.48,fraction,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_ccgt_old_2,co2_factor,57.0,kg/GJ,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_ccgt_old_2,vom,1.6,EUR/MWh,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_ccgt_old_2,min_time_on,3.0,h,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_ccgt_old_2,min_time_off,3.0,h,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_ccgt_old_2,startup_fuel_warm,7.6,GJ/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_ccgt_old_2,startup_cost_warm,43.07,EUR/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_ccgt_old_2,startup_fuel_cold,9.7,GJ/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_ccgt_old_2,startup_cost_cold,61.86,EUR/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_ccgt_old_2,startup_fuel_hot,4.1,GJ/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_ccgt_old_2,startup_cost_hot,27.41,EUR/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_ccgt_old_2,efficiency_min,0.45,fraction,,,,"efficiency range, NCV",eraa2025.common_data
+eraa2025_common,gas_ccgt_old_2,efficiency_max,0.52,fraction,,,,"efficiency range, NCV",eraa2025.common_data
+eraa2025_common,gas_ccgt_present_1,efficiency,0.56,fraction,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_ccgt_present_1,co2_factor,57.0,kg/GJ,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_ccgt_present_1,vom,1.6,EUR/MWh,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_ccgt_present_1,min_time_on,2.0,h,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_ccgt_present_1,min_time_off,2.0,h,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_ccgt_present_1,startup_fuel_warm,7.6,GJ/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_ccgt_present_1,startup_cost_warm,25.06,EUR/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_ccgt_present_1,startup_fuel_cold,9.7,GJ/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_ccgt_present_1,startup_cost_cold,36.02,EUR/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_ccgt_present_1,startup_fuel_hot,4.1,GJ/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_ccgt_present_1,startup_cost_hot,21.93,EUR/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_ccgt_present_1,efficiency_min,0.53,fraction,,,,"efficiency range, NCV",eraa2025.common_data
+eraa2025_common,gas_ccgt_present_1,efficiency_max,0.6,fraction,,,,"efficiency range, NCV",eraa2025.common_data
+eraa2025_common,gas_ccgt_present_2,efficiency,0.58,fraction,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_ccgt_present_2,co2_factor,57.0,kg/GJ,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_ccgt_present_2,vom,1.6,EUR/MWh,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_ccgt_present_2,min_time_on,2.0,h,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_ccgt_present_2,min_time_off,2.0,h,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_ccgt_present_2,startup_fuel_warm,7.6,GJ/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_ccgt_present_2,startup_cost_warm,25.06,EUR/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_ccgt_present_2,startup_fuel_cold,9.7,GJ/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_ccgt_present_2,startup_cost_cold,36.02,EUR/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_ccgt_present_2,startup_fuel_hot,4.1,GJ/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_ccgt_present_2,startup_cost_hot,21.93,EUR/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_ccgt_present_2,efficiency_min,0.53,fraction,,,,"efficiency range, NCV",eraa2025.common_data
+eraa2025_common,gas_ccgt_present_2,efficiency_max,0.6,fraction,,,,"efficiency range, NCV",eraa2025.common_data
+eraa2025_common,gas_ccgt_new,efficiency,0.6,fraction,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_ccgt_new,co2_factor,57.0,kg/GJ,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_ccgt_new,vom,1.6,EUR/MWh,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_ccgt_new,min_time_on,2.0,h,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_ccgt_new,min_time_off,2.0,h,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_ccgt_new,startup_fuel_warm,7.6,GJ/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_ccgt_new,startup_cost_warm,25.06,EUR/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_ccgt_new,startup_fuel_cold,9.7,GJ/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_ccgt_new,startup_cost_cold,36.02,EUR/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_ccgt_new,startup_fuel_hot,4.1,GJ/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_ccgt_new,startup_cost_hot,21.93,EUR/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_ccgt_new,efficiency_min,0.53,fraction,,,,"efficiency range, NCV",eraa2025.common_data
+eraa2025_common,gas_ccgt_new,efficiency_max,0.6,fraction,,,,"efficiency range, NCV",eraa2025.common_data
+eraa2025_common,gas_ccgt_ccs,efficiency,0.51,fraction,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_ccgt_ccs,co2_factor,5.7,kg/GJ,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_ccgt_ccs,vom,3.2,EUR/MWh,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_ccgt_ccs,min_time_on,4.0,h,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_ccgt_ccs,min_time_off,4.0,h,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_ccgt_ccs,startup_fuel_warm,7.6,GJ/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_ccgt_ccs,startup_cost_warm,43.07,EUR/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_ccgt_ccs,startup_fuel_cold,9.7,GJ/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_ccgt_ccs,startup_cost_cold,61.86,EUR/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_ccgt_ccs,startup_fuel_hot,4.1,GJ/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_ccgt_ccs,startup_cost_hot,27.41,EUR/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_ccgt_ccs,efficiency_min,0.43,fraction,,,,"efficiency range, NCV",eraa2025.common_data
+eraa2025_common,gas_ccgt_ccs,efficiency_max,0.52,fraction,,,,"efficiency range, NCV",eraa2025.common_data
+eraa2025_common,gas_ocgt_old,efficiency,0.35,fraction,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_ocgt_old,co2_factor,57.0,kg/GJ,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_ocgt_old,vom,1.6,EUR/MWh,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_ocgt_old,min_time_on,1.0,h,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_ocgt_old,min_time_off,1.0,h,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_ocgt_old,startup_fuel_warm,0.21,GJ/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_ocgt_old,startup_cost_warm,52.47,EUR/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_ocgt_old,startup_fuel_cold,0.25,GJ/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_ocgt_old,startup_cost_cold,52.47,EUR/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_ocgt_old,startup_fuel_hot,0.2,GJ/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_ocgt_old,startup_cost_hot,30.54,EUR/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_ocgt_old,efficiency_min,0.35,fraction,,,,"efficiency range, NCV",eraa2025.common_data
+eraa2025_common,gas_ocgt_old,efficiency_max,0.38,fraction,,,,"efficiency range, NCV",eraa2025.common_data
+eraa2025_common,gas_ocgt_new,efficiency,0.42,fraction,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_ocgt_new,co2_factor,57.0,kg/GJ,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_ocgt_new,vom,1.6,EUR/MWh,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_ocgt_new,min_time_on,1.0,h,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_ocgt_new,min_time_off,1.0,h,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_ocgt_new,startup_fuel_warm,0.21,GJ/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_ocgt_new,startup_cost_warm,20.36,EUR/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_ocgt_new,startup_fuel_cold,0.25,GJ/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_ocgt_new,startup_cost_cold,24.28,EUR/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_ocgt_new,startup_fuel_hot,0.2,GJ/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_ocgt_new,startup_cost_hot,17.23,EUR/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,gas_ocgt_new,efficiency_min,0.39,fraction,,,,"efficiency range, NCV",eraa2025.common_data
+eraa2025_common,gas_ocgt_new,efficiency_max,0.44,fraction,,,,"efficiency range, NCV",eraa2025.common_data
+eraa2025_common,light_oil,efficiency,0.35,fraction,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,light_oil,co2_factor,78.0,kg/GJ,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,light_oil,vom,1.1,EUR/MWh,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,light_oil,min_time_on,1.0,h,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,light_oil,min_time_off,1.0,h,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,light_oil,startup_fuel_warm,0.21,GJ/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,light_oil,startup_cost_warm,36.0,EUR/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,light_oil,startup_fuel_cold,0.25,GJ/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,light_oil,startup_cost_cold,38.4,EUR/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,light_oil,startup_fuel_hot,0.2,GJ/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,light_oil,startup_cost_hot,24.0,EUR/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,light_oil,efficiency_min,0.32,fraction,,,,"efficiency range, NCV",eraa2025.common_data
+eraa2025_common,light_oil,efficiency_max,0.38,fraction,,,,"efficiency range, NCV",eraa2025.common_data
+eraa2025_common,heavy_oil_old_1,efficiency,0.35,fraction,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,heavy_oil_old_1,co2_factor,78.0,kg/GJ,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,heavy_oil_old_1,vom,3.3,EUR/MWh,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,heavy_oil_old_1,min_time_on,3.0,h,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,heavy_oil_old_1,min_time_off,3.0,h,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,heavy_oil_old_1,startup_fuel_warm,7.6,GJ/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,heavy_oil_old_1,startup_cost_warm,70.0,EUR/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,heavy_oil_old_1,startup_fuel_cold,9.7,GJ/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,heavy_oil_old_1,startup_cost_cold,93.97,EUR/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,heavy_oil_old_1,startup_fuel_hot,4.1,GJ/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,heavy_oil_old_1,startup_cost_hot,49.33,EUR/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,heavy_oil_old_1,efficiency_min,0.25,fraction,,,,"efficiency range, NCV",eraa2025.common_data
+eraa2025_common,heavy_oil_old_1,efficiency_max,0.37,fraction,,,,"efficiency range, NCV",eraa2025.common_data
+eraa2025_common,heavy_oil_old_2,efficiency,0.4,fraction,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,heavy_oil_old_2,co2_factor,78.0,kg/GJ,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,heavy_oil_old_2,vom,3.3,EUR/MWh,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,heavy_oil_old_2,min_time_on,3.0,h,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,heavy_oil_old_2,min_time_off,3.0,h,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,heavy_oil_old_2,startup_fuel_warm,7.6,GJ/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,heavy_oil_old_2,startup_cost_warm,50.0,EUR/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,heavy_oil_old_2,startup_fuel_cold,9.7,GJ/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,heavy_oil_old_2,startup_cost_cold,81.44,EUR/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,heavy_oil_old_2,startup_fuel_hot,4.1,GJ/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,heavy_oil_old_2,startup_cost_hot,42.29,EUR/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,heavy_oil_old_2,efficiency_min,0.38,fraction,,,,"efficiency range, NCV",eraa2025.common_data
+eraa2025_common,heavy_oil_old_2,efficiency_max,0.43,fraction,,,,"efficiency range, NCV",eraa2025.common_data
+eraa2025_common,oil_shale_old,efficiency,0.29,fraction,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,oil_shale_old,co2_factor,100.0,kg/GJ,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,oil_shale_old,vom,3.3,EUR/MWh,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,oil_shale_old,min_time_on,11.0,h,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,oil_shale_old,min_time_off,11.0,h,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,oil_shale_old,startup_fuel_warm,18.0,GJ/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,oil_shale_old,startup_cost_warm,60.0,EUR/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,oil_shale_old,startup_fuel_cold,21.0,GJ/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,oil_shale_old,startup_cost_cold,88.0,EUR/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,oil_shale_old,startup_fuel_hot,10.5,GJ/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,oil_shale_old,startup_cost_hot,46.0,EUR/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,oil_shale_old,efficiency_min,0.28,fraction,,,,"efficiency range, NCV",eraa2025.common_data
+eraa2025_common,oil_shale_old,efficiency_max,0.33,fraction,,,,"efficiency range, NCV",eraa2025.common_data
+eraa2025_common,oil_shale_new,efficiency,0.39,fraction,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,oil_shale_new,co2_factor,100.0,kg/GJ,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,oil_shale_new,vom,3.3,EUR/MWh,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,oil_shale_new,min_time_on,8.0,h,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,oil_shale_new,min_time_off,8.0,h,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,oil_shale_new,startup_fuel_warm,18.0,GJ/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,oil_shale_new,startup_cost_warm,42.0,EUR/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,oil_shale_new,startup_fuel_cold,21.0,GJ/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,oil_shale_new,startup_cost_cold,57.17,EUR/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,oil_shale_new,startup_fuel_hot,10.5,GJ/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,oil_shale_new,startup_cost_hot,31.0,EUR/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,oil_shale_new,efficiency_min,0.34,fraction,,,,"efficiency range, NCV",eraa2025.common_data
+eraa2025_common,oil_shale_new,efficiency_max,0.39,fraction,,,,"efficiency range, NCV",eraa2025.common_data
+eraa2025_common,hydrogen_ccgt,efficiency,0.6,fraction,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,hydrogen_ccgt,co2_factor,0.0,kg/GJ,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,hydrogen_ccgt,vom,1.6,EUR/MWh,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,hydrogen_ccgt,min_time_on,2.0,h,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,hydrogen_ccgt,min_time_off,2.0,h,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,hydrogen_ccgt,startup_fuel_warm,7.6,GJ/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,hydrogen_ccgt,startup_cost_warm,25.06,EUR/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,hydrogen_ccgt,startup_fuel_cold,9.7,GJ/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,hydrogen_ccgt,startup_cost_cold,36.02,EUR/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,hydrogen_ccgt,startup_fuel_hot,4.1,GJ/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,hydrogen_ccgt,startup_cost_hot,21.93,EUR/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,hydrogen_ccgt,efficiency_min,0.53,fraction,,,,"efficiency range, NCV",eraa2025.common_data
+eraa2025_common,hydrogen_ccgt,efficiency_max,0.6,fraction,,,,"efficiency range, NCV",eraa2025.common_data
+eraa2025_common,hydrogen_ocgt,efficiency,0.42,fraction,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,hydrogen_ocgt,co2_factor,0.0,kg/GJ,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,hydrogen_ocgt,vom,1.6,EUR/MWh,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,hydrogen_ocgt,min_time_on,1.0,h,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,hydrogen_ocgt,min_time_off,1.0,h,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,hydrogen_ocgt,startup_fuel_warm,0.21,GJ/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,hydrogen_ocgt,startup_cost_warm,20.36,EUR/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,hydrogen_ocgt,startup_fuel_cold,0.25,GJ/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,hydrogen_ocgt,startup_cost_cold,24.28,EUR/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,hydrogen_ocgt,startup_fuel_hot,0.2,GJ/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,hydrogen_ocgt,startup_cost_hot,17.23,EUR/MW,,,,"Common Data.xlsx, 'Standard thermal characteristics', NCV",eraa2025.common_data
+eraa2025_common,hydrogen_ocgt,efficiency_min,0.39,fraction,,,,"efficiency range, NCV",eraa2025.common_data
+eraa2025_common,hydrogen_ocgt,efficiency_max,0.44,fraction,,,,"efficiency range, NCV",eraa2025.common_data
+eraa2025_common,nuclear,forced_outage_rate,0.05,fraction,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,nuclear,mean_time_to_repair,7.0,days,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,nuclear,planned_outage_days,54.0,days,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,nuclear,planned_outage_winter_share,0.15,fraction,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,nuclear,min_stable_generation,0.4,fraction,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,hard_coal_old_1,forced_outage_rate,0.1,fraction,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,hard_coal_old_1,mean_time_to_repair,1.0,days,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,hard_coal_old_1,planned_outage_days,27.0,days,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,hard_coal_old_1,planned_outage_winter_share,0.15,fraction,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,hard_coal_old_1,min_stable_generation,0.4,fraction,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,hard_coal_old_2,forced_outage_rate,0.1,fraction,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,hard_coal_old_2,mean_time_to_repair,1.0,days,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,hard_coal_old_2,planned_outage_days,27.0,days,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,hard_coal_old_2,planned_outage_winter_share,0.15,fraction,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,hard_coal_old_2,min_stable_generation,0.4,fraction,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,hard_coal_new,forced_outage_rate,0.075,fraction,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,hard_coal_new,mean_time_to_repair,1.0,days,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,hard_coal_new,planned_outage_days,27.0,days,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,hard_coal_new,planned_outage_winter_share,0.15,fraction,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,hard_coal_new,min_stable_generation,0.25,fraction,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,hard_coal_ccs,forced_outage_rate,0.075,fraction,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,hard_coal_ccs,mean_time_to_repair,1.0,days,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,hard_coal_ccs,planned_outage_days,27.0,days,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,hard_coal_ccs,planned_outage_winter_share,0.15,fraction,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,hard_coal_ccs,min_stable_generation,0.25,fraction,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,lignite_old_1,forced_outage_rate,0.1,fraction,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,lignite_old_1,mean_time_to_repair,1.0,days,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,lignite_old_1,planned_outage_days,27.0,days,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,lignite_old_1,planned_outage_winter_share,0.15,fraction,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,lignite_old_1,min_stable_generation,0.5,fraction,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,lignite_old_2,forced_outage_rate,0.1,fraction,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,lignite_old_2,mean_time_to_repair,1.0,days,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,lignite_old_2,planned_outage_days,27.0,days,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,lignite_old_2,planned_outage_winter_share,0.15,fraction,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,lignite_old_2,min_stable_generation,0.5,fraction,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,lignite_new,forced_outage_rate,0.075,fraction,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,lignite_new,mean_time_to_repair,1.0,days,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,lignite_new,planned_outage_days,27.0,days,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,lignite_new,planned_outage_winter_share,0.15,fraction,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,lignite_new,min_stable_generation,0.5,fraction,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,lignite_ccs,forced_outage_rate,0.075,fraction,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,lignite_ccs,mean_time_to_repair,1.0,days,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,lignite_ccs,planned_outage_days,27.0,days,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,lignite_ccs,planned_outage_winter_share,0.15,fraction,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,lignite_ccs,min_stable_generation,0.5,fraction,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,gas_conventional_old_1,forced_outage_rate,0.08,fraction,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,gas_conventional_old_1,mean_time_to_repair,1.0,days,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,gas_conventional_old_1,planned_outage_days,27.0,days,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,gas_conventional_old_1,planned_outage_winter_share,0.15,fraction,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,gas_conventional_old_1,min_stable_generation,0.2,fraction,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,gas_conventional_old_2,forced_outage_rate,0.08,fraction,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,gas_conventional_old_2,mean_time_to_repair,1.0,days,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,gas_conventional_old_2,planned_outage_days,27.0,days,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,gas_conventional_old_2,planned_outage_winter_share,0.15,fraction,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,gas_conventional_old_2,min_stable_generation,0.2,fraction,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,gas_ccgt_old_1,forced_outage_rate,0.08,fraction,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,gas_ccgt_old_1,mean_time_to_repair,1.0,days,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,gas_ccgt_old_1,planned_outage_days,27.0,days,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,gas_ccgt_old_1,planned_outage_winter_share,0.15,fraction,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,gas_ccgt_old_1,min_stable_generation,0.5,fraction,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,gas_ccgt_old_2,forced_outage_rate,0.08,fraction,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,gas_ccgt_old_2,mean_time_to_repair,1.0,days,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,gas_ccgt_old_2,planned_outage_days,27.0,days,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,gas_ccgt_old_2,planned_outage_winter_share,0.15,fraction,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,gas_ccgt_old_2,min_stable_generation,0.5,fraction,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,gas_ccgt_present_1,forced_outage_rate,0.05,fraction,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,gas_ccgt_present_1,mean_time_to_repair,1.0,days,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,gas_ccgt_present_1,planned_outage_days,27.0,days,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,gas_ccgt_present_1,planned_outage_winter_share,0.15,fraction,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,gas_ccgt_present_1,min_stable_generation,0.4,fraction,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,gas_ccgt_present_2,forced_outage_rate,0.05,fraction,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,gas_ccgt_present_2,mean_time_to_repair,1.0,days,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,gas_ccgt_present_2,planned_outage_days,27.0,days,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,gas_ccgt_present_2,planned_outage_winter_share,0.15,fraction,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,gas_ccgt_present_2,min_stable_generation,0.4,fraction,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,gas_ccgt_new,forced_outage_rate,0.05,fraction,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,gas_ccgt_new,mean_time_to_repair,1.0,days,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,gas_ccgt_new,planned_outage_days,27.0,days,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,gas_ccgt_new,planned_outage_winter_share,0.15,fraction,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,gas_ccgt_new,min_stable_generation,0.4,fraction,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,gas_ccgt_ccs,forced_outage_rate,0.05,fraction,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,gas_ccgt_ccs,mean_time_to_repair,1.0,days,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,gas_ccgt_ccs,planned_outage_days,27.0,days,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,gas_ccgt_ccs,planned_outage_winter_share,0.15,fraction,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,gas_ccgt_ccs,min_stable_generation,0.4,fraction,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,gas_ocgt_old,forced_outage_rate,0.08,fraction,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,gas_ocgt_old,mean_time_to_repair,1.0,days,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,gas_ocgt_old,planned_outage_days,13.0,days,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,gas_ocgt_old,planned_outage_winter_share,0.15,fraction,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,gas_ocgt_old,min_stable_generation,0.5,fraction,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,gas_ocgt_new,forced_outage_rate,0.05,fraction,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,gas_ocgt_new,mean_time_to_repair,1.0,days,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,gas_ocgt_new,planned_outage_days,13.0,days,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,gas_ocgt_new,planned_outage_winter_share,0.15,fraction,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,gas_ocgt_new,min_stable_generation,0.4,fraction,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,light_oil,forced_outage_rate,0.08,fraction,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,light_oil,mean_time_to_repair,1.0,days,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,light_oil,planned_outage_days,13.0,days,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,light_oil,planned_outage_winter_share,0.15,fraction,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,light_oil,min_stable_generation,0.5,fraction,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,heavy_oil_old_1,forced_outage_rate,0.1,fraction,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,heavy_oil_old_1,mean_time_to_repair,1.0,days,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,heavy_oil_old_1,planned_outage_days,27.0,days,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,heavy_oil_old_1,planned_outage_winter_share,0.15,fraction,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,heavy_oil_old_1,min_stable_generation,0.5,fraction,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,heavy_oil_old_2,forced_outage_rate,0.1,fraction,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,heavy_oil_old_2,mean_time_to_repair,1.0,days,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,heavy_oil_old_2,planned_outage_days,27.0,days,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,heavy_oil_old_2,planned_outage_winter_share,0.15,fraction,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,heavy_oil_old_2,min_stable_generation,0.5,fraction,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,oil_shale_old,forced_outage_rate,0.1,fraction,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,oil_shale_old,mean_time_to_repair,1.0,days,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,oil_shale_old,planned_outage_days,27.0,days,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,oil_shale_old,planned_outage_winter_share,0.15,fraction,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,oil_shale_old,min_stable_generation,0.5,fraction,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,oil_shale_new,forced_outage_rate,0.075,fraction,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,oil_shale_new,mean_time_to_repair,1.0,days,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,oil_shale_new,planned_outage_days,27.0,days,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,oil_shale_new,planned_outage_winter_share,0.15,fraction,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,oil_shale_new,min_stable_generation,0.5,fraction,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,hydrogen_ccgt,forced_outage_rate,0.05,fraction,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,hydrogen_ccgt,mean_time_to_repair,1.0,days,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,hydrogen_ccgt,planned_outage_days,27.0,days,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,hydrogen_ccgt,planned_outage_winter_share,0.15,fraction,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,hydrogen_ccgt,min_stable_generation,0.4,fraction,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,hydrogen_ocgt,forced_outage_rate,0.05,fraction,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,hydrogen_ocgt,mean_time_to_repair,1.0,days,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,hydrogen_ocgt,planned_outage_days,13.0,days,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,hydrogen_ocgt,planned_outage_winter_share,0.15,fraction,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+eraa2025_common,hydrogen_ocgt,min_stable_generation,0.4,fraction,,,,"Common Data.xlsx, 'Default thermal characteristics' (TSOs may override per node)",eraa2025.common_data
+tyndp2024_co2,1_nuclear,co2_factor_nt2030,0.0,kg/GJ,,,,TYNDP 2024 CO2 factors v2; NT columns reflect the biomethane blend,tyndp2024.CO2-emission-factors-in-TYNDP2024-v2-xlsx
+tyndp2024_co2,1_nuclear,co2_factor_nt2040,0.0,kg/GJ,,,,TYNDP 2024 CO2 factors v2; NT columns reflect the biomethane blend,tyndp2024.CO2-emission-factors-in-TYNDP2024-v2-xlsx
+tyndp2024_co2,2_hard_coal,co2_factor_nt2030,94.0,kg/GJ,,,,TYNDP 2024 CO2 factors v2; NT columns reflect the biomethane blend,tyndp2024.CO2-emission-factors-in-TYNDP2024-v2-xlsx
+tyndp2024_co2,2_hard_coal,co2_factor_nt2040,94.0,kg/GJ,,,,TYNDP 2024 CO2 factors v2; NT columns reflect the biomethane blend,tyndp2024.CO2-emission-factors-in-TYNDP2024-v2-xlsx
+tyndp2024_co2,3_hard_coal,co2_factor_nt2030,94.0,kg/GJ,,,,TYNDP 2024 CO2 factors v2; NT columns reflect the biomethane blend,tyndp2024.CO2-emission-factors-in-TYNDP2024-v2-xlsx
+tyndp2024_co2,3_hard_coal,co2_factor_nt2040,94.0,kg/GJ,,,,TYNDP 2024 CO2 factors v2; NT columns reflect the biomethane blend,tyndp2024.CO2-emission-factors-in-TYNDP2024-v2-xlsx
+tyndp2024_co2,4_hard_coal,co2_factor_nt2030,94.0,kg/GJ,,,,TYNDP 2024 CO2 factors v2; NT columns reflect the biomethane blend,tyndp2024.CO2-emission-factors-in-TYNDP2024-v2-xlsx
+tyndp2024_co2,4_hard_coal,co2_factor_nt2040,94.0,kg/GJ,,,,TYNDP 2024 CO2 factors v2; NT columns reflect the biomethane blend,tyndp2024.CO2-emission-factors-in-TYNDP2024-v2-xlsx
+tyndp2024_co2,5_hard_coal,co2_factor_nt2030,9.4,kg/GJ,,,,TYNDP 2024 CO2 factors v2; NT columns reflect the biomethane blend,tyndp2024.CO2-emission-factors-in-TYNDP2024-v2-xlsx
+tyndp2024_co2,5_hard_coal,co2_factor_nt2040,9.4,kg/GJ,,,,TYNDP 2024 CO2 factors v2; NT columns reflect the biomethane blend,tyndp2024.CO2-emission-factors-in-TYNDP2024-v2-xlsx
+tyndp2024_co2,6_lignite,co2_factor_nt2030,101.0,kg/GJ,,,,TYNDP 2024 CO2 factors v2; NT columns reflect the biomethane blend,tyndp2024.CO2-emission-factors-in-TYNDP2024-v2-xlsx
+tyndp2024_co2,6_lignite,co2_factor_nt2040,101.0,kg/GJ,,,,TYNDP 2024 CO2 factors v2; NT columns reflect the biomethane blend,tyndp2024.CO2-emission-factors-in-TYNDP2024-v2-xlsx
+tyndp2024_co2,7_lignite,co2_factor_nt2030,101.0,kg/GJ,,,,TYNDP 2024 CO2 factors v2; NT columns reflect the biomethane blend,tyndp2024.CO2-emission-factors-in-TYNDP2024-v2-xlsx
+tyndp2024_co2,7_lignite,co2_factor_nt2040,101.0,kg/GJ,,,,TYNDP 2024 CO2 factors v2; NT columns reflect the biomethane blend,tyndp2024.CO2-emission-factors-in-TYNDP2024-v2-xlsx
+tyndp2024_co2,8_lignite,co2_factor_nt2030,101.0,kg/GJ,,,,TYNDP 2024 CO2 factors v2; NT columns reflect the biomethane blend,tyndp2024.CO2-emission-factors-in-TYNDP2024-v2-xlsx
+tyndp2024_co2,8_lignite,co2_factor_nt2040,101.0,kg/GJ,,,,TYNDP 2024 CO2 factors v2; NT columns reflect the biomethane blend,tyndp2024.CO2-emission-factors-in-TYNDP2024-v2-xlsx
+tyndp2024_co2,9_lignite,co2_factor_nt2030,10.1,kg/GJ,,,,TYNDP 2024 CO2 factors v2; NT columns reflect the biomethane blend,tyndp2024.CO2-emission-factors-in-TYNDP2024-v2-xlsx
+tyndp2024_co2,9_lignite,co2_factor_nt2040,10.1,kg/GJ,,,,TYNDP 2024 CO2 factors v2; NT columns reflect the biomethane blend,tyndp2024.CO2-emission-factors-in-TYNDP2024-v2-xlsx
+tyndp2024_co2,10_gas,co2_factor_nt2030,51.574,kg/GJ,,,,TYNDP 2024 CO2 factors v2; NT columns reflect the biomethane blend,tyndp2024.CO2-emission-factors-in-TYNDP2024-v2-xlsx
+tyndp2024_co2,10_gas,co2_factor_nt2040,43.040,kg/GJ,,,,TYNDP 2024 CO2 factors v2; NT columns reflect the biomethane blend,tyndp2024.CO2-emission-factors-in-TYNDP2024-v2-xlsx
+tyndp2024_co2,11_gas,co2_factor_nt2030,51.574,kg/GJ,,,,TYNDP 2024 CO2 factors v2; NT columns reflect the biomethane blend,tyndp2024.CO2-emission-factors-in-TYNDP2024-v2-xlsx
+tyndp2024_co2,11_gas,co2_factor_nt2040,43.040,kg/GJ,,,,TYNDP 2024 CO2 factors v2; NT columns reflect the biomethane blend,tyndp2024.CO2-emission-factors-in-TYNDP2024-v2-xlsx
+tyndp2024_co2,12_gas,co2_factor_nt2030,51.574,kg/GJ,,,,TYNDP 2024 CO2 factors v2; NT columns reflect the biomethane blend,tyndp2024.CO2-emission-factors-in-TYNDP2024-v2-xlsx
+tyndp2024_co2,12_gas,co2_factor_nt2040,43.040,kg/GJ,,,,TYNDP 2024 CO2 factors v2; NT columns reflect the biomethane blend,tyndp2024.CO2-emission-factors-in-TYNDP2024-v2-xlsx
+tyndp2024_co2,13_gas,co2_factor_nt2030,51.574,kg/GJ,,,,TYNDP 2024 CO2 factors v2; NT columns reflect the biomethane blend,tyndp2024.CO2-emission-factors-in-TYNDP2024-v2-xlsx
+tyndp2024_co2,13_gas,co2_factor_nt2040,43.040,kg/GJ,,,,TYNDP 2024 CO2 factors v2; NT columns reflect the biomethane blend,tyndp2024.CO2-emission-factors-in-TYNDP2024-v2-xlsx
+tyndp2024_co2,14_gas,co2_factor_nt2030,51.574,kg/GJ,,,,TYNDP 2024 CO2 factors v2; NT columns reflect the biomethane blend,tyndp2024.CO2-emission-factors-in-TYNDP2024-v2-xlsx
+tyndp2024_co2,14_gas,co2_factor_nt2040,43.040,kg/GJ,,,,TYNDP 2024 CO2 factors v2; NT columns reflect the biomethane blend,tyndp2024.CO2-emission-factors-in-TYNDP2024-v2-xlsx
+tyndp2024_co2,15_gas,co2_factor_nt2030,51.574,kg/GJ,,,,TYNDP 2024 CO2 factors v2; NT columns reflect the biomethane blend,tyndp2024.CO2-emission-factors-in-TYNDP2024-v2-xlsx
+tyndp2024_co2,15_gas,co2_factor_nt2040,43.040,kg/GJ,,,,TYNDP 2024 CO2 factors v2; NT columns reflect the biomethane blend,tyndp2024.CO2-emission-factors-in-TYNDP2024-v2-xlsx
+tyndp2024_co2,16_gas,co2_factor_nt2030,51.574,kg/GJ,,,,TYNDP 2024 CO2 factors v2; NT columns reflect the biomethane blend,tyndp2024.CO2-emission-factors-in-TYNDP2024-v2-xlsx
+tyndp2024_co2,16_gas,co2_factor_nt2040,43.040,kg/GJ,,,,TYNDP 2024 CO2 factors v2; NT columns reflect the biomethane blend,tyndp2024.CO2-emission-factors-in-TYNDP2024-v2-xlsx
+tyndp2024_co2,17_gas,co2_factor_nt2030,5.157,kg/GJ,,,,TYNDP 2024 CO2 factors v2; NT columns reflect the biomethane blend,tyndp2024.CO2-emission-factors-in-TYNDP2024-v2-xlsx
+tyndp2024_co2,17_gas,co2_factor_nt2040,4.304,kg/GJ,,,,TYNDP 2024 CO2 factors v2; NT columns reflect the biomethane blend,tyndp2024.CO2-emission-factors-in-TYNDP2024-v2-xlsx
+tyndp2024_co2,18_gas,co2_factor_nt2030,51.574,kg/GJ,,,,TYNDP 2024 CO2 factors v2; NT columns reflect the biomethane blend,tyndp2024.CO2-emission-factors-in-TYNDP2024-v2-xlsx
+tyndp2024_co2,18_gas,co2_factor_nt2040,43.040,kg/GJ,,,,TYNDP 2024 CO2 factors v2; NT columns reflect the biomethane blend,tyndp2024.CO2-emission-factors-in-TYNDP2024-v2-xlsx
+tyndp2024_co2,19_gas,co2_factor_nt2030,51.574,kg/GJ,,,,TYNDP 2024 CO2 factors v2; NT columns reflect the biomethane blend,tyndp2024.CO2-emission-factors-in-TYNDP2024-v2-xlsx
+tyndp2024_co2,19_gas,co2_factor_nt2040,43.040,kg/GJ,,,,TYNDP 2024 CO2 factors v2; NT columns reflect the biomethane blend,tyndp2024.CO2-emission-factors-in-TYNDP2024-v2-xlsx
+tyndp2024_co2,20_light_oil,co2_factor_nt2030,78.0,kg/GJ,,,,TYNDP 2024 CO2 factors v2; NT columns reflect the biomethane blend,tyndp2024.CO2-emission-factors-in-TYNDP2024-v2-xlsx
+tyndp2024_co2,20_light_oil,co2_factor_nt2040,78.0,kg/GJ,,,,TYNDP 2024 CO2 factors v2; NT columns reflect the biomethane blend,tyndp2024.CO2-emission-factors-in-TYNDP2024-v2-xlsx
+tyndp2024_co2,21_heavy_oil,co2_factor_nt2030,78.0,kg/GJ,,,,TYNDP 2024 CO2 factors v2; NT columns reflect the biomethane blend,tyndp2024.CO2-emission-factors-in-TYNDP2024-v2-xlsx
+tyndp2024_co2,21_heavy_oil,co2_factor_nt2040,78.0,kg/GJ,,,,TYNDP 2024 CO2 factors v2; NT columns reflect the biomethane blend,tyndp2024.CO2-emission-factors-in-TYNDP2024-v2-xlsx
+tyndp2024_co2,22_heavy_oil,co2_factor_nt2030,78.0,kg/GJ,,,,TYNDP 2024 CO2 factors v2; NT columns reflect the biomethane blend,tyndp2024.CO2-emission-factors-in-TYNDP2024-v2-xlsx
+tyndp2024_co2,22_heavy_oil,co2_factor_nt2040,78.0,kg/GJ,,,,TYNDP 2024 CO2 factors v2; NT columns reflect the biomethane blend,tyndp2024.CO2-emission-factors-in-TYNDP2024-v2-xlsx
+tyndp2024_co2,23_oil_shale,co2_factor_nt2030,100.0,kg/GJ,,,,TYNDP 2024 CO2 factors v2; NT columns reflect the biomethane blend,tyndp2024.CO2-emission-factors-in-TYNDP2024-v2-xlsx
+tyndp2024_co2,23_oil_shale,co2_factor_nt2040,100.0,kg/GJ,,,,TYNDP 2024 CO2 factors v2; NT columns reflect the biomethane blend,tyndp2024.CO2-emission-factors-in-TYNDP2024-v2-xlsx
+tyndp2024_co2,24_oil_shale,co2_factor_nt2030,100.0,kg/GJ,,,,TYNDP 2024 CO2 factors v2; NT columns reflect the biomethane blend,tyndp2024.CO2-emission-factors-in-TYNDP2024-v2-xlsx
+tyndp2024_co2,24_oil_shale,co2_factor_nt2040,100.0,kg/GJ,,,,TYNDP 2024 CO2 factors v2; NT columns reflect the biomethane blend,tyndp2024.CO2-emission-factors-in-TYNDP2024-v2-xlsx
+tyndp2024_co2,25_hydrogen,co2_factor_nt2030,0.0,kg/GJ,,,,TYNDP 2024 CO2 factors v2; NT columns reflect the biomethane blend,tyndp2024.CO2-emission-factors-in-TYNDP2024-v2-xlsx
+tyndp2024_co2,25_hydrogen,co2_factor_nt2040,0.0,kg/GJ,,,,TYNDP 2024 CO2 factors v2; NT columns reflect the biomethane blend,tyndp2024.CO2-emission-factors-in-TYNDP2024-v2-xlsx
+tyndp2024_co2,26_hydrogen,co2_factor_nt2030,0.0,kg/GJ,,,,TYNDP 2024 CO2 factors v2; NT columns reflect the biomethane blend,tyndp2024.CO2-emission-factors-in-TYNDP2024-v2-xlsx
+tyndp2024_co2,26_hydrogen,co2_factor_nt2040,0.0,kg/GJ,,,,TYNDP 2024 CO2 factors v2; NT columns reflect the biomethane blend,tyndp2024.CO2-emission-factors-in-TYNDP2024-v2-xlsx
+dea_2025,coal_chp_extraction,efficiency_nameplate,0.52,fraction,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '01 Coal CHP', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,coal_chp_extraction,cb,1.01,ratio,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '01 Coal CHP', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,coal_chp_extraction,vom,3.2114,EUR/MWh,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '01 Coal CHP', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,coal_chp_extraction,fom,34324.4022,EUR/MW/y,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '01 Coal CHP', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,coal_chp_extraction,min_stable_generation,0.15,fraction,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '01 Coal CHP', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,coal_chp_extraction,lifetime,25.0,years,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '01 Coal CHP', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,gas_ccgt_chp_backpressure,efficiency,0.5,fraction,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '05 Gas turb. CC, Back-pressure', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,gas_ccgt_chp_backpressure,efficiency_nameplate,0.53,fraction,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '05 Gas turb. CC, Back-pressure', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,gas_ccgt_chp_backpressure,cb,1.4,ratio,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '05 Gas turb. CC, Back-pressure', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,gas_ccgt_chp_backpressure,vom,4.4662,EUR/MWh,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '05 Gas turb. CC, Back-pressure', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,gas_ccgt_chp_backpressure,fom,29561.7616,EUR/MW/y,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '05 Gas turb. CC, Back-pressure', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,gas_ccgt_chp_backpressure,min_stable_generation,0.4,fraction,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '05 Gas turb. CC, Back-pressure', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,gas_ccgt_chp_backpressure,lifetime,25.0,years,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '05 Gas turb. CC, Back-pressure', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,gas_ccgt_chp_backpressure,startup_time_warm,1.0,h,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '05 Gas turb. CC, Back-pressure', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,gas_ccgt_chp_backpressure,startup_time_cold,2.5,h,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '05 Gas turb. CC, Back-pressure', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,gas_ccgt_chp_backpressure,forced_outage_rate,0.03,fraction,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '05 Gas turb. CC, Back-pressure', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,gas_ccgt_chp_backpressure,planned_outage_weeks,2.0,weeks,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '05 Gas turb. CC, Back-pressure', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,gas_ccgt_chp_backpressure,efficiency_2050,0.52,fraction,,,,"DEA sheet '05 Gas turb. CC, Back-pressure', year 2050",catalogue.dea_el_dh_2025
+dea_2025,gas_ccgt_chp_extraction,efficiency,0.58,fraction,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '05 Gas turb. CC, steam extract.', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,gas_ccgt_chp_extraction,efficiency_nameplate,0.61,fraction,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '05 Gas turb. CC, steam extract.', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,gas_ccgt_chp_extraction,cb,2.0,ratio,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '05 Gas turb. CC, steam extract.', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,gas_ccgt_chp_extraction,vom,4.4662,EUR/MWh,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '05 Gas turb. CC, steam extract.', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,gas_ccgt_chp_extraction,fom,29561.7616,EUR/MW/y,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '05 Gas turb. CC, steam extract.', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,gas_ccgt_chp_extraction,min_stable_generation,0.4,fraction,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '05 Gas turb. CC, steam extract.', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,gas_ccgt_chp_extraction,lifetime,25.0,years,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '05 Gas turb. CC, steam extract.', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,gas_ccgt_chp_extraction,startup_time_warm,1.0,h,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '05 Gas turb. CC, steam extract.', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,gas_ccgt_chp_extraction,startup_time_cold,2.5,h,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '05 Gas turb. CC, steam extract.', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,gas_ccgt_chp_extraction,forced_outage_rate,0.03,fraction,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '05 Gas turb. CC, steam extract.', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,gas_ccgt_chp_extraction,planned_outage_weeks,2.0,weeks,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '05 Gas turb. CC, steam extract.', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,gas_ccgt_chp_extraction,efficiency_2050,0.6,fraction,,,,"DEA sheet '05 Gas turb. CC, steam extract.', year 2050",catalogue.dea_el_dh_2025
+dea_2025,gas_engine_chp,efficiency,0.47,fraction,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '06 Gas engines, natural gas', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,gas_engine_chp,efficiency_nameplate,0.48,fraction,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '06 Gas engines, natural gas', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,gas_engine_chp,cb,0.99,ratio,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '06 Gas engines, natural gas', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,gas_engine_chp,vom,5.4232,EUR/MWh,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '06 Gas engines, natural gas', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,gas_engine_chp,fom,9889.3663,EUR/MW/y,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '06 Gas engines, natural gas', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,gas_engine_chp,min_stable_generation,0.5,fraction,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '06 Gas engines, natural gas', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,gas_engine_chp,lifetime,25.0,years,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '06 Gas engines, natural gas', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,gas_engine_chp,startup_time_warm,0.05,h,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '06 Gas engines, natural gas', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,gas_engine_chp,startup_time_cold,0.3,h,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '06 Gas engines, natural gas', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,gas_engine_chp,forced_outage_rate,0.03,fraction,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '06 Gas engines, natural gas', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,gas_engine_chp,planned_outage_weeks,0.8,weeks,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '06 Gas engines, natural gas', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,gas_engine_chp,efficiency_2050,0.48,fraction,,,,"DEA sheet '06 Gas engines, natural gas', year 2050",catalogue.dea_el_dh_2025
+dea_2025,waste_chp_large,efficiency,0.2289,fraction,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '08 WtE CHP, Large, 40 degree', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,waste_chp_large,efficiency_nameplate,0.2409,fraction,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '08 WtE CHP, Large, 40 degree', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,waste_chp_large,heat_efficiency,0.7989,fraction,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '08 WtE CHP, Large, 40 degree', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,waste_chp_large,cb,0.31,ratio,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '08 WtE CHP, Large, 40 degree', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,waste_chp_large,vom,25.9782,EUR/MWh,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '08 WtE CHP, Large, 40 degree', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,waste_chp_large,fom,185026.8529,EUR/MW/y,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '08 WtE CHP, Large, 40 degree', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,waste_chp_large,min_stable_generation,0.2,fraction,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '08 WtE CHP, Large, 40 degree', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,waste_chp_large,lifetime,25.0,years,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '08 WtE CHP, Large, 40 degree', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,waste_chp_large,startup_time_warm,0.5,h,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '08 WtE CHP, Large, 40 degree', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,waste_chp_large,startup_time_cold,2.0,h,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '08 WtE CHP, Large, 40 degree', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,waste_chp_large,forced_outage_rate,0.01,fraction,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '08 WtE CHP, Large, 40 degree', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,waste_chp_large,planned_outage_weeks,2.15,weeks,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '08 WtE CHP, Large, 40 degree', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,waste_chp_large,efficiency_2050,0.2371,fraction,,,,"DEA sheet '08 WtE CHP, Large, 40 degree', year 2050",catalogue.dea_el_dh_2025
+dea_2025,waste_chp_medium,efficiency,0.226,fraction,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '08 WtE CHP, Medium', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,waste_chp_medium,efficiency_nameplate,0.2379,fraction,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '08 WtE CHP, Medium', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,waste_chp_medium,heat_efficiency,0.7971,fraction,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '08 WtE CHP, Medium', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,waste_chp_medium,cb,0.3,ratio,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '08 WtE CHP, Medium', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,waste_chp_medium,vom,26.3078,EUR/MWh,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '08 WtE CHP, Medium', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,waste_chp_medium,fom,260526.3159,EUR/MW/y,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '08 WtE CHP, Medium', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,waste_chp_medium,min_stable_generation,0.2,fraction,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '08 WtE CHP, Medium', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,waste_chp_medium,lifetime,25.0,years,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '08 WtE CHP, Medium', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,waste_chp_medium,startup_time_warm,0.5,h,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '08 WtE CHP, Medium', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,waste_chp_medium,startup_time_cold,2.0,h,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '08 WtE CHP, Medium', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,waste_chp_medium,forced_outage_rate,0.01,fraction,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '08 WtE CHP, Medium', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,waste_chp_medium,planned_outage_weeks,2.58,weeks,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '08 WtE CHP, Medium', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,waste_chp_medium,efficiency_2050,0.2338,fraction,,,,"DEA sheet '08 WtE CHP, Medium', year 2050",catalogue.dea_el_dh_2025
+dea_2025,wood_chips_chp_large,efficiency,0.2902,fraction,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '09a Wood Chips, Large 40 degree', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,wood_chips_chp_large,efficiency_nameplate,0.3055,fraction,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '09a Wood Chips, Large 40 degree', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,wood_chips_chp_large,heat_efficiency,0.8296,fraction,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '09a Wood Chips, Large 40 degree', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,wood_chips_chp_large,cb,0.38,ratio,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '09a Wood Chips, Large 40 degree', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,wood_chips_chp_large,vom,4.6469,EUR/MWh,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '09a Wood Chips, Large 40 degree', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,wood_chips_chp_large,fom,94640.1719,EUR/MW/y,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '09a Wood Chips, Large 40 degree', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,wood_chips_chp_large,min_stable_generation,0.45,fraction,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '09a Wood Chips, Large 40 degree', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,wood_chips_chp_large,lifetime,25.0,years,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '09a Wood Chips, Large 40 degree', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,wood_chips_chp_large,startup_time_warm,2.0,h,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '09a Wood Chips, Large 40 degree', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,wood_chips_chp_large,startup_time_cold,12.0,h,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '09a Wood Chips, Large 40 degree', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,wood_chips_chp_large,forced_outage_rate,0.03,fraction,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '09a Wood Chips, Large 40 degree', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,wood_chips_chp_large,planned_outage_weeks,3.0,weeks,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '09a Wood Chips, Large 40 degree', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,wood_chips_chp_large,efficiency_2050,0.2851,fraction,,,,"DEA sheet '09a Wood Chips, Large 40 degree', year 2050",catalogue.dea_el_dh_2025
+dea_2025,wood_chips_chp_medium,efficiency,0.2833,fraction,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '09a Wood Chips, Medium', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,wood_chips_chp_medium,efficiency_nameplate,0.2983,fraction,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '09a Wood Chips, Medium', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,wood_chips_chp_medium,heat_efficiency,0.8261,fraction,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '09a Wood Chips, Medium', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,wood_chips_chp_medium,cb,0.37,ratio,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '09a Wood Chips, Medium', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,wood_chips_chp_medium,vom,4.7533,EUR/MWh,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '09a Wood Chips, Medium', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,wood_chips_chp_medium,fom,148872.1805,EUR/MW/y,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '09a Wood Chips, Medium', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,wood_chips_chp_medium,min_stable_generation,0.2,fraction,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '09a Wood Chips, Medium', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,wood_chips_chp_medium,lifetime,25.0,years,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '09a Wood Chips, Medium', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,wood_chips_chp_medium,startup_time_warm,2.0,h,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '09a Wood Chips, Medium', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,wood_chips_chp_medium,startup_time_cold,8.0,h,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '09a Wood Chips, Medium', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,wood_chips_chp_medium,forced_outage_rate,0.03,fraction,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '09a Wood Chips, Medium', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,wood_chips_chp_medium,planned_outage_weeks,3.0,weeks,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '09a Wood Chips, Medium', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,wood_chips_chp_medium,efficiency_2050,0.2782,fraction,,,,"DEA sheet '09a Wood Chips, Medium', year 2050",catalogue.dea_el_dh_2025
+dea_2025,wood_pellets_chp_large,efficiency,0.3192,fraction,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '09b Wood Pellets, Large 40 degr', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,wood_pellets_chp_large,efficiency_nameplate,0.336,fraction,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '09b Wood Pellets, Large 40 degr', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,wood_pellets_chp_large,heat_efficiency,0.6685,fraction,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '09b Wood Pellets, Large 40 degr', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,wood_pellets_chp_large,cb,0.52,ratio,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '09b Wood Pellets, Large 40 degr', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,wood_pellets_chp_large,vom,1.8184,EUR/MWh,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '09b Wood Pellets, Large 40 degr', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,wood_pellets_chp_large,fom,62738.9904,EUR/MW/y,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '09b Wood Pellets, Large 40 degr', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,wood_pellets_chp_large,min_stable_generation,0.15,fraction,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '09b Wood Pellets, Large 40 degr', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,wood_pellets_chp_large,lifetime,25.0,years,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '09b Wood Pellets, Large 40 degr', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,wood_pellets_chp_large,startup_time_warm,2.0,h,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '09b Wood Pellets, Large 40 degr', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,wood_pellets_chp_large,startup_time_cold,12.0,h,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '09b Wood Pellets, Large 40 degr', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,wood_pellets_chp_large,forced_outage_rate,0.03,fraction,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '09b Wood Pellets, Large 40 degr', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,wood_pellets_chp_large,planned_outage_weeks,3.0,weeks,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '09b Wood Pellets, Large 40 degr', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,wood_pellets_chp_large,efficiency_2050,0.3192,fraction,,,,"DEA sheet '09b Wood Pellets, Large 40 degr', year 2050",catalogue.dea_el_dh_2025
+dea_2025,straw_chp_large,efficiency,0.3003,fraction,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '09c Straw, Large, 40 degree', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,straw_chp_large,efficiency_nameplate,0.3161,fraction,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '09c Straw, Large, 40 degree', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,straw_chp_large,heat_efficiency,0.7083,fraction,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '09c Straw, Large, 40 degree', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,straw_chp_large,cb,0.46,ratio,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '09c Straw, Large, 40 degree', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,straw_chp_large,vom,2.2331,EUR/MWh,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '09c Straw, Large, 40 degree', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,straw_chp_large,fom,122287.8626,EUR/MW/y,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '09c Straw, Large, 40 degree', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,straw_chp_large,min_stable_generation,0.4,fraction,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '09c Straw, Large, 40 degree', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,straw_chp_large,lifetime,25.0,years,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '09c Straw, Large, 40 degree', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,straw_chp_large,startup_time_warm,2.0,h,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '09c Straw, Large, 40 degree', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,straw_chp_large,startup_time_cold,8.0,h,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '09c Straw, Large, 40 degree', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,straw_chp_large,forced_outage_rate,0.03,fraction,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '09c Straw, Large, 40 degree', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,straw_chp_large,planned_outage_weeks,3.0,weeks,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '09c Straw, Large, 40 degree', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,straw_chp_large,efficiency_2050,0.3003,fraction,,,,"DEA sheet '09c Straw, Large, 40 degree', year 2050",catalogue.dea_el_dh_2025
+dea_2025,gas_ocgt_dea,efficiency,0.41,fraction,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '52 OCGT - Natural gas', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,gas_ocgt_dea,efficiency_nameplate,0.43,fraction,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '52 OCGT - Natural gas', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,gas_ocgt_dea,vom,4.7852,EUR/MWh,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '52 OCGT - Natural gas', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,gas_ocgt_dea,fom,8236.1194,EUR/MW/y,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '52 OCGT - Natural gas', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,gas_ocgt_dea,min_stable_generation,0.2,fraction,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '52 OCGT - Natural gas', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,gas_ocgt_dea,lifetime,25.0,years,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '52 OCGT - Natural gas', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,gas_ocgt_dea,startup_time_warm,0.08,h,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '52 OCGT - Natural gas', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,gas_ocgt_dea,startup_time_cold,0.17,h,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '52 OCGT - Natural gas', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,gas_ocgt_dea,startup_cost_warm,45.725,EUR/MW,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '52 OCGT - Natural gas', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,gas_ocgt_dea,forced_outage_rate,0.0137,fraction,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '52 OCGT - Natural gas', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,gas_ocgt_dea,planned_outage_weeks,0.11,weeks,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '52 OCGT - Natural gas', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,gas_ocgt_dea,efficiency_2050,0.43,fraction,,,,"DEA sheet '52 OCGT - Natural gas', year 2050",catalogue.dea_el_dh_2025
+dea_2025,light_oil_ocgt_dea,efficiency,0.4,fraction,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '52 OCGT - Light fuel oil', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,light_oil_ocgt_dea,efficiency_nameplate,0.42,fraction,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '52 OCGT - Light fuel oil', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,light_oil_ocgt_dea,vom,0.0,EUR/MWh,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '52 OCGT - Light fuel oil', central estimate, year 2030; 2020 EUR; 0 in the source with no reference: read as not estimated, not as zero cost",catalogue.dea_el_dh_2025
+dea_2025,light_oil_ocgt_dea,fom,0.0,EUR/MW/y,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '52 OCGT - Light fuel oil', central estimate, year 2030; 2020 EUR; 0 in the source with no reference: read as not estimated, not as zero cost",catalogue.dea_el_dh_2025
+dea_2025,light_oil_ocgt_dea,startup_time_warm,0.09,h,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '52 OCGT - Light fuel oil', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,light_oil_ocgt_dea,startup_time_cold,0.18,h,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '52 OCGT - Light fuel oil', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,light_oil_ocgt_dea,startup_cost_warm,0.0,EUR/MW,,,,"DEA data sheet, version 0019 (cited sheets unchanged since 2023-08-23), sheet '52 OCGT - Light fuel oil', central estimate, year 2030; 2020 EUR; 0 in the source with no reference: read as not estimated, not as zero cost",catalogue.dea_el_dh_2025
+dea_2025,light_oil_ocgt_dea,efficiency_2050,0.42,fraction,,,,"DEA sheet '52 OCGT - Light fuel oil', year 2050",catalogue.dea_el_dh_2025
+statfi_2025,light_fuel_oil,co2_factor,68.0,kg/GJ,,,,"fossil CO2 default factor, code 11.30.50 (gasoil, low sulphur; the Finnish blend carries 5 t/TJ biogenic), NCV basis (t/TJ)",catalogue.statfi_fuels_2025
+statfi_2025,light_fuel_oil,co2_factor_total,73.0,kg/GJ,,,,"combined fossil + biogenic, code 11.30.50: the factor of unblended fossil gasoil",catalogue.statfi_fuels_2025
+statfi_2025,heavy_fuel_oil,co2_factor,77.0,kg/GJ,,,,"fossil CO2 default factor, code 11.40.20, NCV basis (t/TJ)",catalogue.statfi_fuels_2025
+statfi_2025,hard_coal,co2_factor,93.1,kg/GJ,,,,"fossil CO2 default factor, code 12.10.20, NCV basis (t/TJ)",catalogue.statfi_fuels_2025
+statfi_2025,natural_gas,co2_factor,55.81,kg/GJ,,,,"fossil CO2 default factor, code 13.10.10, NCV basis (t/TJ)",catalogue.statfi_fuels_2025
+statfi_2025,peat_milled,co2_factor,107.6,kg/GJ,,,,"fossil CO2 default factor, code 14.10.10, NCV basis (t/TJ)",catalogue.statfi_fuels_2025
+statfi_2025,peat_sod,co2_factor,103.2,kg/GJ,,,,"fossil CO2 default factor, code 14.10.20, NCV basis (t/TJ)",catalogue.statfi_fuels_2025
+statfi_2025,wood_chips_roundwood,co2_factor_biogenic,112.0,kg/GJ,,,,"biogenic CO2, code 21.10.20; zero-rated in the EU ETS",catalogue.statfi_fuels_2025
+statfi_2025,wood_chips,co2_factor_biogenic,112.0,kg/GJ,,,,"biogenic CO2, code 21.10.30; zero-rated in the EU ETS",catalogue.statfi_fuels_2025
+statfi_2025,bark,co2_factor_biogenic,112.0,kg/GJ,,,,"biogenic CO2, code 21.20.10; zero-rated in the EU ETS",catalogue.statfi_fuels_2025
+statfi_2025,sawdust,co2_factor_biogenic,112.0,kg/GJ,,,,"biogenic CO2, code 21.20.20; zero-rated in the EU ETS",catalogue.statfi_fuels_2025
+statfi_2025,black_liquor,co2_factor_biogenic,95.3,kg/GJ,,,,"biogenic CO2, code 21.30.10; zero-rated in the EU ETS",catalogue.statfi_fuels_2025
+statfi_2025,wood_pellets,co2_factor_biogenic,112.0,kg/GJ,,,,"biogenic CO2, code 21.60.10; zero-rated in the EU ETS",catalogue.statfi_fuels_2025
+statfi_2025,recovered_fuel_srf,co2_factor,31.8,kg/GJ,,,,"fossil CO2 default factor, code 31.10.10, NCV basis (t/TJ)",catalogue.statfi_fuels_2025
+statfi_2025,recovered_fuel_srf,co2_factor_biogenic,68.2,kg/GJ,,,,"biogenic CO2, code 31.10.10; zero-rated in the EU ETS",catalogue.statfi_fuels_2025
+statfi_2025,recovered_fuel_srf,co2_factor_total,100.0,kg/GJ,,,,"combined fossil + biogenic, code 31.10.10",catalogue.statfi_fuels_2025
+statfi_2025,municipal_waste,co2_factor,40.0,kg/GJ,,,,"fossil CO2 default factor, code 31.20.10, NCV basis (t/TJ)",catalogue.statfi_fuels_2025
+statfi_2025,municipal_waste,co2_factor_biogenic,70.0,kg/GJ,,,,"biogenic CO2, code 31.20.10; zero-rated in the EU ETS",catalogue.statfi_fuels_2025
+statfi_2025,municipal_waste,co2_factor_total,110.0,kg/GJ,,,,"combined fossil + biogenic, code 31.20.10",catalogue.statfi_fuels_2025
+entsoe_p1009,hydro_ps_kruonis,efficiency_round_trip,0.74,fraction,entsoe_tyndp2016_p1009,https://eepublicdownloads.entsoe.eu/clean-documents/tyndp-documents/TYNDP%202016/projects/P1009.pdf,p. 1,"cycle efficiency of the four existing units, read from the fifth unit's 'up to 78% (increase by 4%)'",
+entsoe_p1009,hydro_ps_kruonis,storage_capacity,10.8,GWh,entsoe_tyndp2016_p1009,https://eepublicdownloads.entsoe.eu/clean-documents/tyndp-documents/TYNDP%202016/projects/P1009.pdf,p. 1,"Storage Analysis: Storage Capacity (GWh); 12 h at the 4 x 225 MW installed",
+oil_shale_classes,oil_shale_auvere,market_entry_price,90,EUR/MWh,eesti_energia_err_2025,https://news.err.ee/1609638418/analysis-estonia-s-oil-shale-plants-kept-price-of-electricity-17-lower-in-2024,"ERR 2025-03-20, section 'Only Auvere plant makes the cut when market price below €100'","day-ahead price at which the Auvere circulating-fluidised-bed unit enters the market; fuel alone 30-40 EUR/MWh, CO2 more than half of the cost (D-062)",
+oil_shale_classes,oil_shale_cfb,market_entry_price,110,EUR/MWh,eesti_energia_err_2025,https://news.err.ee/1609638418/analysis-estonia-s-oil-shale-plants-kept-price-of-electricity-17-lower-in-2024,"ERR 2025-03-20, section 'Only Auvere plant makes the cut when market price below €100'","the other circulating-fluidised-bed units enter at 110 EUR/MWh; the article names no unit, the two are Eesti 8 and Balti 11 (eesti_energia_balti11_cfb) (D-062)",
+oil_shale_classes,oil_shale_pf,market_entry_price,200,EUR/MWh,eesti_energia_err_2025,https://news.err.ee/1609638418/analysis-estonia-s-oil-shale-plants-kept-price-of-electricity-17-lower-in-2024,"ERR 2025-03-20, section 'Only Auvere plant makes the cut when market price below €100'","the pulverised-firing units need at least 200 EUR/MWh and run 60-80 hours a year; start-up costs make the real threshold higher (D-062)",
+oil_shale_classes,oil_shale_auvere,mw,270,MW,enefit_power_2026,https://industry.enefit.com/et/elekter-ja-soojus,"Elekter ja soojus, plant list","Auvere elektrijaam 270 MW net (D-062)",
+oil_shale_classes,oil_shale_cfb,mw,386,MW,,,,"nominal power of Balti Elektrijaam TG11 (192 MW) plus Eesti Elektrijaam TG8 (194 MW) in ENTSO-E's production and generation units (A95), the same on 1 January of every year 2020-2026; these are the two units renovated with circulating fluidised-bed boilers in 2003-2004 (eesti_energia_balti11_cfb, Eesti Energia 2004-09-15); the pulverised-firing units are the rest of the installed capacity (D-062)",entsoe.A95.EE.2026
+oil_shale_classes,oil_shale_auvere,efficiency,0.39,fraction,,,,"ERAA 2025 common data, oil_shale_new (Common Data.xlsx, 'Standard thermal characteristics', NCV); Auvere burns retort gas and biomass beside oil shale, which its entry price carries",eraa2025.common_data
+oil_shale_classes,oil_shale_cfb,efficiency,0.34,fraction,,,,"ERAA 2025 common data, oil_shale_new efficiency_min (the older fluidised-bed units)",eraa2025.common_data
+oil_shale_classes,oil_shale_pf,efficiency,0.29,fraction,,,,"ERAA 2025 common data, oil_shale_old",eraa2025.common_data
+oil_shale_classes,oil_shale_auvere,co2_factor,100.0,kg/GJ,,,,"ERAA 2025 common data, oil shale",eraa2025.common_data
+oil_shale_classes,oil_shale_cfb,co2_factor,100.0,kg/GJ,,,,"ERAA 2025 common data, oil shale",eraa2025.common_data
+oil_shale_classes,oil_shale_pf,co2_factor,100.0,kg/GJ,,,,"ERAA 2025 common data, oil shale",eraa2025.common_data
+oil_shale_classes,oil_shale_auvere,vom,3.3,EUR/MWh,,,,"ERAA 2025 common data, oil shale",eraa2025.common_data
+oil_shale_classes,oil_shale_cfb,vom,3.3,EUR/MWh,,,,"ERAA 2025 common data, oil shale",eraa2025.common_data
+oil_shale_classes,oil_shale_pf,vom,3.3,EUR/MWh,,,,"ERAA 2025 common data, oil shale",eraa2025.common_data
+retort_gas,retort_gas,co2_factor,61.0,kg/GJ,keskkonnauuringute_keskus_2013,https://energiatalgud.ee/sites/default/files/images_sala/7/78/Keskkonnauuringute_Keskus._Kasvuhoonegaaside_riigispetsiifiliste_eriheitetegurite_v%C3%A4ljat%C3%B6%C3%B6tamine_energeetika_sektoris_I.pdf,"p. 23, §3.3 Eesti Energia Narva õlitehas","semi-coke gas of the solid-heat-carrier retort: 16.63 tC/TJ x 44/12 (D-063)",
+retort_gas,retort_gas,efficiency,0.34,fraction,,,,"burnt in Eesti unit 8, a circulating-fluidised-bed boiler: ERAA oil_shale_new efficiency_min (D-063)",eraa2025.common_data
+retort_gas,retort_gas,vom,3.3,EUR/MWh,,,,"ERAA 2025 common data, oil shale (the boiler that burns it)",eraa2025.common_data
+dea_2025,wood_chips_hop_large,heat_efficiency,1.1492,fraction,,,,"DEA data sheet, version 0019, sheet '09a Wood Chips HOP, large', central estimate, year 2030; the heat source power-to-heat displaces (R-DEM-5)",catalogue.dea_el_dh_2025
+dea_2025,electric_boiler_large,heat_efficiency,0.99,fraction,,,,"DEA data sheet, version 0019, sheet '41 Electric boiler, large', central estimate, year 2030; power-to-heat (R-DEM-5)",catalogue.dea_el_dh_2025
+dea_2025,wind_onshore_dea,investment,1.1466,MEUR/MW,,,,"DEA data sheet (the file fetched 2026-09-14), sheet '20 Onshore turbines', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,wind_offshore_dea,investment,2.3931,MEUR/MW,,,,"DEA data sheet (the file fetched 2026-09-14), sheet '21 Offshore Wind AC Fixed', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,solar_pv_utility_dea,investment,0.5562,MEUR/MW,,,,"DEA data sheet (the file fetched 2026-09-14), sheet '22 Utility-scale PV', central estimate, year 2030; 2020 EUR (the Intro names 2025 EURO for sheets 22x; the sheet's note N and alldata_long give 2020 EUR)",catalogue.dea_el_dh_2025
+dea_2025,gas_ocgt_dea,investment,0.4679,MEUR/MW,,,,"DEA data sheet (the file fetched 2026-09-14), sheet '52 OCGT - Natural gas', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,gas_ccgt_chp_extraction,investment,0.8826,MEUR/MW,,,,"DEA data sheet (the file fetched 2026-09-14), sheet '05 Gas turb. CC, steam extract.', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,wood_chips_chp_large,investment,3.3177,MEUR/MW,,,,"DEA data sheet (the file fetched 2026-09-14), sheet '09a Wood Chips, Large 40 degree', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_storage_2025,battery_li_ion_dea,investment_energy,0.065,MEUR/MWh,,,,"DEA energy storage data sheet (the file fetched 2026-10-22), sheet '180 Lithium Ion Battery', central estimate, year 2030; 2020 EUR",catalogue.dea_storage_2025
+dea_storage_2025,battery_li_ion_dea,investment_power,0.084,MEUR/MW,,,,"DEA energy storage data sheet (the file fetched 2026-10-22), sheet '180 Lithium Ion Battery', central estimate, year 2030; 2020 EUR",catalogue.dea_storage_2025
+dea_storage_2025,battery_li_ion_dea,investment_other,0.13,MEUR/MWh,,,,"DEA energy storage data sheet (the file fetched 2026-10-22), sheet '180 Lithium Ion Battery', central estimate, year 2030; 2020 EUR",catalogue.dea_storage_2025
+dea_2025,wind_onshore_dea,lifetime,30.0,years,,,,"DEA data sheet (the file fetched 2026-09-14), sheet '20 Onshore turbines', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,wind_onshore_dea,investment_2050,1.0903,MEUR/MW,,,,"DEA data sheet (the file fetched 2026-09-14), sheet '20 Onshore turbines', central estimate, year 2050; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,wind_offshore_dea,lifetime,30.0,years,,,,"DEA data sheet (the file fetched 2026-09-14), sheet '21 Offshore Wind AC Fixed', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,wind_offshore_dea,investment_2050,1.9857,MEUR/MW,,,,"DEA data sheet (the file fetched 2026-09-14), sheet '21 Offshore Wind AC Fixed', central estimate, year 2050; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,solar_pv_utility_dea,lifetime,40.0,years,,,,"DEA data sheet (the file fetched 2026-09-14), sheet '22 Utility-scale PV', central estimate, year 2030; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,solar_pv_utility_dea,investment_2050,0.4611,MEUR/MW,,,,"DEA data sheet (the file fetched 2026-09-14), sheet '22 Utility-scale PV', central estimate, year 2050; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,gas_ocgt_dea,investment_2050,0.436,MEUR/MW,,,,"DEA data sheet (the file fetched 2026-09-14), sheet '52 OCGT - Natural gas', central estimate, year 2050; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,gas_ccgt_chp_extraction,investment_2050,0.8507,MEUR/MW,,,,"DEA data sheet (the file fetched 2026-09-14), sheet '05 Gas turb. CC, steam extract.', central estimate, year 2050; 2020 EUR",catalogue.dea_el_dh_2025
+dea_2025,wood_chips_chp_large,investment_2050,3.1263,MEUR/MW,,,,"DEA data sheet (the file fetched 2026-09-14), sheet '09a Wood Chips, Large 40 degree', central estimate, year 2050; 2020 EUR",catalogue.dea_el_dh_2025
+dea_storage_2025,battery_li_ion_dea,investment_energy_2050,0.054,MEUR/MWh,,,,"DEA energy storage data sheet (the file fetched 2026-10-22), sheet '180 Lithium Ion Battery', central estimate, year 2050; 2020 EUR",catalogue.dea_storage_2025
+dea_storage_2025,battery_li_ion_dea,investment_power_2050,0.072,MEUR/MW,,,,"DEA energy storage data sheet (the file fetched 2026-10-22), sheet '180 Lithium Ion Battery', central estimate, year 2050; 2020 EUR",catalogue.dea_storage_2025
+dea_storage_2025,battery_li_ion_dea,investment_other_2050,0.12,MEUR/MWh,,,,"DEA energy storage data sheet (the file fetched 2026-10-22), sheet '180 Lithium Ion Battery', central estimate, year 2050; 2020 EUR",catalogue.dea_storage_2025
+dea_storage_2025,battery_li_ion_dea,lifetime,20.0,years,,,,"DEA energy storage data sheet (the file fetched 2026-10-22), sheet '180 Lithium Ion Battery', central estimate, year 2030; 2020 EUR",catalogue.dea_storage_2025

@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Computing banner</title>
+<!-- A separate bench of designs for the banner the Model view shows while the model computes (the owner asked,
+     2026-11-03): nothing here is in the application. Each frame is a sketch of the view's top — the header, the
+     panel's edge, the results — in the site's tokens and font on design/fermi-style; only the banner differs. The
+     texts are the site's Estonian ones (ui/et.ts). Served from the repository's root so that the application's fonts
+     load: see README.md beside this file. -->
+<style>
+@font-face { font-family: "Montserrat"; font-weight: 400; src: url("../../app/public/fonts/montserrat-400-latin.woff2") format("woff2"); }
+@font-face { font-family: "Montserrat"; font-weight: 600; src: url("../../app/public/fonts/montserrat-600-latin.woff2") format("woff2"); }
+@font-face { font-family: "Montserrat"; font-weight: 700; src: url("../../app/public/fonts/montserrat-700-latin.woff2") format("woff2"); }
+@font-face { font-family: "Montserrat"; font-weight: 800; src: url("../../app/public/fonts/montserrat-800-latin.woff2") format("woff2"); }
+@font-face { font-family: "Montserrat"; font-weight: 400; src: url("../../app/public/fonts/montserrat-400-latin-ext.woff2") format("woff2"); unicode-range: U+0100-024F; }
+@font-face { font-family: "Montserrat"; font-weight: 600; src: url("../../app/public/fonts/montserrat-600-latin-ext.woff2") format("woff2"); unicode-range: U+0100-024F; }
+@font-face { font-family: "Montserrat"; font-weight: 700; src: url("../../app/public/fonts/montserrat-700-latin-ext.woff2") format("woff2"); unicode-range: U+0100-024F; }
+:root {
+  --bg: #F6F7F9; --surface: #FFFFFF; --surface2: #EFEEF7; --line: #DEDCEA; --ink: #1C1B29; --muted: #5A5870;
+  --navy: #03084C; --accent: #2303BD; --tint: #F0EDFA; --amber: #8A5700; --green: #0B6E35; --red: #C8102E;
+  --ok-bg: #E3F7EC; --bad-bg: #FDE8E8; --lav: #C9C0F5;
+  --text: "Montserrat", "Helvetica Neue", Arial, sans-serif;
+}
+* { box-sizing: border-box; }
+body { margin: 0; padding: 24px; background: #E9EAF0; color: var(--ink); font: 14px/1.45 var(--text); }
+h1 { margin: 0 0 4px; font-size: 20px; color: var(--navy); }
+.lead { margin: 0 0 14px; max-width: 980px; color: var(--muted); }
+.bar { position: sticky; top: 0; z-index: 50; display: flex; flex-wrap: wrap; gap: 10px 14px; align-items: center; margin: 0 -24px 18px; padding: 10px 24px; background: #E9EAF0; border-bottom: 1px solid var(--line); }
+.bar button { height: 32px; padding: 0 14px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); color: var(--ink); font: 600 13px var(--text); cursor: pointer; }
+.bar button[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: #fff; }
+.bar .play { background: var(--navy); border-color: var(--navy); color: #fff; }
+.bar label { display: flex; gap: 8px; align-items: center; cursor: pointer; }
+.bar .now { color: var(--muted); font-size: 13px; }
+section.v { max-width: 1120px; margin: 0 0 26px; }
+section.v h2 { margin: 0 0 2px; font-size: 16px; color: var(--navy); }
+section.v h2 b { display: inline-block; min-width: 24px; color: var(--accent); }
+section.v > p { margin: 0 0 8px; max-width: 980px; color: var(--muted); font-size: 13px; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0 0; }
+.tag { padding: 2px 8px; border-radius: 6px; background: var(--surface2); font-size: 11.5px; font-weight: 600; }
+.tag.ok { background: var(--ok-bg); color: var(--green); }
+.tag.no { background: var(--bad-bg); color: var(--red); }
+
+/* ---------- the sketch of the Model view's top ---------- */
+.frame { position: relative; height: 330px; overflow: hidden; border: 1px solid var(--line); border-radius: 12px; background: var(--bg); box-shadow: 0 1px 2px rgb(0 0 0 / .06); }
+.top { position: relative; display: flex; align-items: center; gap: 16px; height: 56px; padding: 0 18px; background: var(--surface); border-bottom: 2px solid var(--accent); }
+.wm { font-weight: 800; font-size: 17px; letter-spacing: .06em; color: var(--accent); white-space: nowrap; }
+.wm i { display: inline-block; margin-left: 6px; padding: 1px 6px; border-radius: 4px; background: #15C75D; color: var(--accent); font-style: normal; font-size: 13px; }
+.nav { display: flex; gap: 4px; }
+.nav span { padding: 6px 10px; border-radius: 999px; font-size: 12.5px; font-weight: 600; color: var(--ink); }
+.nav span:first-child { background: var(--accent); color: #fff; }
+.run { flex: 1; min-width: 0; overflow: hidden; color: var(--muted); font-size: 12px; white-space: nowrap; text-overflow: ellipsis; }
+.body { display: flex; gap: 16px; padding: 14px 18px; }
+.panel { flex: none; width: 250px; display: flex; flex-direction: column; gap: 10px; }
+.panel div { height: 74px; border-radius: 12px; background: var(--surface); border: 1px solid var(--line); }
+.panel div:first-child { height: 96px; }
+.results { position: relative; flex: 1; min-width: 0; }
+.status { min-height: 1.4em; margin: 0 0 8px; color: var(--muted); font-size: 12px; }
+.card { padding: 12px 14px; margin: 0 0 10px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
+.rh { margin: 0 0 8px; font-size: 11.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--navy); }
+.trio { width: 100%; border-collapse: collapse; font-size: 12px; }
+.trio td { padding: 3px 0 3px 10px; text-align: right; white-space: nowrap; }
+.trio td:first-child { padding-left: 0; text-align: left; }
+.trio .chip { display: inline-block; min-width: 46px; padding: 1px 6px; border-radius: 6px; background: var(--ok-bg); color: var(--green); font-weight: 600; }
+.trio .pend { display: none; color: var(--muted); font-style: italic; }
+.cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.cards .card { margin: 0; }
+.cards b { font-size: 20px; }
+.cards small { color: var(--muted); font-size: 11px; }
+/* the results while the scenario shown computes: the previous settings', dimmed (D-054); while the others compute,
+   their columns say so (D-127) */
+.frame[data-state="stale"] .results > :not(.status):not(.bchip) { opacity: .45; transition: opacity .15s; }
+.frame[data-state="others"] .trio .val { display: none; }
+.frame[data-state="others"] .trio .pend { display: inline; }
+.ind { display: none; }
+.frame[data-state="stale"] .ind, .frame[data-state="others"] .ind { display: flex; }
+
+/* the spinning ring, the variants' one sign of motion besides B's line and E's shimmer */
+@keyframes spin { to { transform: rotate(360deg); } }
+.spin { flex: none; width: 14px; height: 14px; border: 2px solid currentColor; border-right-color: transparent; border-radius: 50%; animation: spin .9s linear infinite; }
+
+/* 0 · today: theme.css's .computing */
+.v0 .ind { margin: 0; padding: 14px 16px; background: var(--amber); color: #fff; font-size: 20px; font-weight: 700; text-align: center; }
+.v0[data-state="stale"] .ind, .v0[data-state="others"] .ind { display: block; } /* a paragraph, as the site's */
+.v0 .ind::before { content: "⟳ "; }
+
+/* A · an indigo bar */
+.vA .ind { align-items: center; gap: 10px; height: 38px; padding: 0 18px; background: var(--navy); color: #fff; font-size: 13.5px; }
+.vA .ind b { font-weight: 700; }
+.vA .ind .sub { color: var(--lav); font-size: 12.5px; }
+
+/* B · a line across the top and a chip over the results */
+@keyframes slide { from { transform: translateX(-100%); } to { transform: translateX(250%); } }
+.vB .line { position: absolute; left: 0; right: 0; top: 56px; height: 3px; overflow: hidden; background: var(--surface2); }
+.vB .line::after { content: ""; position: absolute; inset: 0; width: 40%; background: linear-gradient(90deg, transparent, var(--accent), transparent); animation: slide 1.3s ease-in-out infinite; }
+/* the chip takes the status line's place while the run goes on */
+.vB .bchip { position: absolute; z-index: 2; top: -4px; left: 0; align-items: center; gap: 8px; padding: 3px 12px; border-radius: 999px; background: var(--tint); color: var(--accent); font-size: 12px; font-weight: 600; white-space: nowrap; }
+.vB .bchip .sub { color: var(--muted); font-weight: 400; }
+.vB[data-state="stale"] .status, .vB[data-state="others"] .status { visibility: hidden; }
+
+/* C · a bar that fills as the years finish */
+.vC .ind { align-items: center; gap: 12px; height: 44px; padding: 0 18px; background: var(--surface); border-bottom: 1px solid var(--line); font-size: 13px; }
+.vC .ind b { font-weight: 700; color: var(--navy); white-space: nowrap; }
+.vC .track { position: relative; flex: 1; min-width: 120px; height: 8px; border-radius: 4px; background: var(--surface2); overflow: hidden; }
+.vC .fill { position: absolute; inset: 0 auto 0 0; width: 0; border-radius: 4px; background: var(--accent); transition: width .25s; }
+.vC .mark { position: absolute; top: -3px; bottom: -3px; width: 2px; background: var(--navy); opacity: .5; }
+.vC .count { font-weight: 700; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.vC .time { color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.vC .sub { color: var(--muted); font-size: 12px; white-space: nowrap; }
+
+/* D · a card floating over the page */
+.vD .ind { position: absolute; z-index: 5; right: 18px; bottom: 18px; align-items: center; gap: 12px; width: 330px; padding: 12px 14px; border-radius: 12px; background: var(--surface); border: 1px solid var(--line); box-shadow: 0 8px 24px rgb(0 0 0 / .14); color: var(--accent); }
+.vD .ind .spin { width: 22px; height: 22px; border-width: 3px; }
+.vD .ind div { display: flex; flex-direction: column; min-width: 0; color: var(--ink); }
+.vD .ind b { font-size: 13.5px; }
+.vD .ind .sub { color: var(--muted); font-size: 12px; }
+
+/* E · a pill in the header, a shimmer over the dimmed figures */
+.vE .ind { align-items: center; gap: 8px; flex: none; padding: 5px 12px; border-radius: 999px; background: var(--tint); color: var(--accent); font-size: 12.5px; font-weight: 700; }
+@keyframes sweep { from { background-position: 150% 0; } to { background-position: -50% 0; } }
+.vE[data-state="stale"] .results::after { content: ""; position: absolute; inset: 22px 0 0; border-radius: 12px; pointer-events: none;
+  background: linear-gradient(100deg, transparent 30%, rgb(255 255 255 / .75) 50%, transparent 70%) 0 0 / 200% 100%; animation: sweep 1.6s linear infinite; }
+
+/* F · the run's two stages as steps (D-127) */
+.vF .ind { align-items: center; gap: 12px; height: 42px; padding: 0 18px; background: var(--tint); border-bottom: 1px solid var(--line); font-size: 13px; }
+.vF .step { display: flex; align-items: center; gap: 8px; color: var(--muted); font-weight: 600; white-space: nowrap; }
+.vF .step i { display: inline-grid; place-items: center; width: 20px; height: 20px; border-radius: 50%; border: 2px solid var(--line); font-style: normal; font-size: 11px; font-weight: 700; color: var(--muted); }
+.vF .step.now { color: var(--accent); }
+.vF .step.now i { border-color: var(--accent); border-right-color: transparent; animation: spin .9s linear infinite; }
+.vF .step.now i span { display: none; }
+.vF .step.done { color: var(--green); }
+.vF .step.done i { border-color: var(--green); background: var(--green); color: #fff; }
+.vF .sep { width: 34px; height: 2px; background: var(--line); }
+.vF .sub { margin-left: auto; color: var(--muted); font-size: 12px; white-space: nowrap; }
+
+/* a reader who asked for less motion: no ring turns, no line slides, no shimmer */
+.rm .spin, .rm .vF .step.now i { animation: none; border-right-color: currentColor; }
+.rm .vB .line::after { animation: none; left: 30%; }
+.rm .vE .results::after { display: none; }
+</style>
+</head>
+<body>
+<h1>Computing banner: a separate bench</h1>
+<p class="lead">Seven ways to say that the model is computing and that the figures under the banner are the previous
+  settings' (D-054), each on a sketch of the Model view's top in the site's tokens. The run plays as the site's does:
+  the scenario shown first, its three years with the results dimmed, then the other three scenarios, nine years, the
+  results already this run's (D-127). Nothing here is in the application.</p>
+<div class="bar">
+  <button type="button" class="play" id="play">▶ Play a run</button>
+  <button type="button" data-state="stale" aria-pressed="true">Computing</button>
+  <button type="button" data-state="others" aria-pressed="false">The others</button>
+  <button type="button" data-state="idle" aria-pressed="false">Done</button>
+  <label><input type="checkbox" id="rm"> Reduced motion</label>
+  <span class="now" id="now"></span>
+</div>
+<div id="list"></div>
+
+<template id="sketch">
+  <div class="frame">
+    <header class="top"><span class="wm">ENERGIAMUDEL<i>V5</i></span><span class="nav"><span>Mudel</span><span>Esitlus</span><span>Varustuskindlus</span><span>Kalibreerimine</span></span><span class="run">Stsenaarium 2035: 0 SMR — naabrid: TYNDP 2024 Distributed Energy</span></header>
+    <div class="body">
+      <aside class="panel"><div></div><div></div><div></div></aside>
+      <main class="results">
+        <p class="status"></p>
+        <section class="card"><p class="rh">Stsenaariumid, 2035</p>
+          <table class="trio"><tbody>
+            <tr><td>EE keskmine hind, €/MWh</td><td><b>108,1</b></td><td><span class="val">96,2 <span class="chip">−11,9</span></span><span class="pend">arvutatakse…</span></td><td><span class="val">86,0 <span class="chip">−22,1</span></span><span class="pend">arvutatakse…</span></td><td><span class="val">75,0 <span class="chip">−33,1</span></span><span class="pend">arvutatakse…</span></td></tr>
+            <tr><td>EE netoimport, TWh</td><td><b>4,64</b></td><td><span class="val">2,39 <span class="chip">−2,25</span></span><span class="pend">arvutatakse…</span></td><td><span class="val">0,12 <span class="chip">−4,52</span></span><span class="pend">arvutatakse…</span></td><td><span class="val">−2,21 <span class="chip">−6,85</span></span><span class="pend">arvutatakse…</span></td></tr>
+          </tbody></table></section>
+        <div class="cards"><section class="card">Eesti<br><b>108,1</b> <small>€/MWh</small></section><section class="card">Läti<br><b>109,5</b> <small>€/MWh</small></section><section class="card">Leedu<br><b>109,9</b> <small>€/MWh</small></section></div>
+      </main>
+    </div>
+  </div>
+</template>
+
+<script>
+const N = 12, SHOWN = 3; // a run of the four scenarios over three weather years: the shown one's three first (D-127)
+const ET = {
+  stale: (n) => `Arvutatakse ${n} aastat…`,
+  prev: "Allolevad tulemused on eelmiste seadete omad ega ole lõplikud.",
+  others: (n) => `Arvutatakse teisi stsenaariume, ${n} aastat…`,
+  status: { stale: (n) => `mudeli arvutusmootor arvutab ${n} aastat…`, others: () => "näidatud stsenaarium on valmis; mudeli arvutusmootor arvutab teisi stsenaariume…", idle: (s, f) => `${N} aastat ${s} s-ga; näidatud stsenaarium 0 SMR ${f} s-ga` },
+};
+const comma = (x) => x.toFixed(1).replace(".", ",");
+
+const VARIANTS = [
+  { id: "v0", letter: "0", name: "Today",
+    text: "theme.css's .computing: a sticky amber bar the page's width, 20 px bold white, a still ⟳. Plain and loud; amber is elsewhere the colour of a value changed from its preset, and the bar pushes the page down while it shows.",
+    tags: [["ok", "D-054: big and plain"], ["no", "amber means 'changed' elsewhere"], ["no", "moves the page 50 px"]],
+    html: `<p class="ind"><span class="main"></span>&nbsp;<span class="sub"></span></p>` },
+  { id: "vA", letter: "A", name: "Indigo bar",
+    text: "The same place and message in the header's navy, 13.5 px, a turning ring; the note that the figures are the previous settings' in a lighter second voice. 38 px where today's is 50.",
+    tags: [["ok", "D-054: plain"], ["ok", "the design's navy"], ["", "about 1 h"]],
+    html: `<div class="ind"><span class="spin"></span><b class="main"></b><span class="sub"></span></div>` },
+  { id: "vB", letter: "B", name: "A line and a chip",
+    text: "A 3 px line slides under the header and a chip takes the status line's place over the results; nothing moves on the page. Quiet: the dimmed figures carry 'not final', the chip says why.",
+    tags: [["ok", "the page does not move"], ["no", "quiet for D-054's 'big'"], ["", "about 1 h"]],
+    html: `<div class="line ind"></div>`, results: `<span class="bchip ind"><span class="spin"></span><span class="main"></span><span class="sub"></span></span>` },
+  { id: "vC", letter: "C", name: "A bar that fills",
+    text: "The bar fills as the years finish, the scenario shown's three before the mark, then the others; the count and the seconds beside. Tells how far and how long; the page would count finished years, a few lines.",
+    tags: [["ok", "how far, how long"], ["", "counts finished years"], ["", "about 2 h"]],
+    html: `<div class="ind"><b class="main"></b><span class="track"><span class="fill"></span><span class="mark" style="left:${(100 * SHOWN) / N}%"></span></span><span class="count"></span><span class="time"></span><span class="sub"></span></div>` },
+  { id: "vD", letter: "D", name: "A floating card",
+    text: "A white card at the bottom right, a turning ring, what is computed and that the figures are the previous settings'. Over the page, nothing moves; on a wide screen it sits far from the header.",
+    tags: [["ok", "the page does not move"], ["no", "far from the eye on a wide screen"], ["", "about 1 h"]],
+    html: `<div class="ind"><span class="spin"></span><div><b class="main"></b><span class="sub"></span></div></div>` },
+  { id: "vE", letter: "E", name: "In the header, a shimmer on the figures",
+    text: "A pill in the header beside the run's name; a light shimmer passes over the dimmed figures while they are the previous settings'. The smallest sign, at the two places the eye goes.",
+    tags: [["ok", "'being redone' where the figures are"], ["no", "quiet for D-054's 'big'"], ["", "about 1–2 h"]],
+    header: `<span class="ind"><span class="spin"></span><span class="main"></span></span>` },
+  { id: "vF", letter: "F", name: "The two stages as steps",
+    text: "The run's two stages, the scenario shown and then the other three (D-127), as steps: the first ticks when its figures are in, the note about the previous settings at the right.",
+    tags: [["ok", "says what is computed and in which order"], ["", "more words"], ["", "about 2 h"]],
+    html: `<div class="ind"><span class="step s1"><i><span>1</span></i>Näidatud stsenaarium</span><span class="sep"></span><span class="step s2"><i><span>2</span></i>Teised kolm stsenaariumi</span><span class="sub"></span></div>` },
+];
+
+const list = document.getElementById("list"), tpl = document.getElementById("sketch");
+const frames = VARIANTS.map((v) => {
+  const sec = document.createElement("section");
+  sec.className = "v";
+  sec.innerHTML = `<h2><b>${v.letter}</b> ${v.name}</h2><p>${v.text}</p>`;
+  const frame = tpl.content.firstElementChild.cloneNode(true);
+  frame.classList.add(v.id);
+  if (v.html) frame.querySelector(".top").insertAdjacentHTML("afterend", v.html);
+  if (v.results) frame.querySelector(".results").insertAdjacentHTML("afterbegin", v.results);
+  if (v.header) frame.querySelector(".run").insertAdjacentHTML("afterend", v.header);
+  sec.append(frame);
+  sec.insertAdjacentHTML("beforeend", `<div class="tags">${v.tags.map(([t, x]) => `<span class="tag ${t}">${x}</span>`).join("")}</div>`);
+  list.append(sec);
+  return frame;
+});
+
+let state = "stale", done = 0, t0 = performance.now(), last = { s: "5,4", f: "2,4" }, timer = null;
+
+function paint() {
+  const secs = comma((performance.now() - t0) / 1000), left = state === "stale" ? N : N - done;
+  for (const f of frames) {
+    f.dataset.state = state;
+    const v = f.classList[1];
+    const main = state === "stale" ? ET.stale(N) : ET.others(left);
+    const sub = state === "stale" ? ET.prev : "";
+    f.querySelectorAll(".main").forEach((x) => {
+      x.textContent = v === "vE" ? (state === "stale" ? `Arvutab… ${N} a` : `Arvutab teisi, ${left} a`)
+        : v === "vC" ? (state === "stale" ? "Näidatud stsenaarium" : "Teised stsenaariumid") : main;
+    });
+    f.querySelectorAll(".sub").forEach((x) => {
+      x.textContent = v === "vB" || v === "vC" || v === "vF" ? (state === "stale" ? "eelmiste seadete tulemused" : "tulemused on selle arvutuse omad") : sub;
+    });
+    const fill = f.querySelector(".fill");
+    if (fill) { fill.style.width = `${(100 * done) / N}%`; f.querySelector(".count").textContent = `${done} / ${N} aastat`; f.querySelector(".time").textContent = `${secs} s`; }
+    const s1 = f.querySelector(".s1"), s2 = f.querySelector(".s2");
+    if (s1) { s1.className = `step s1 ${state === "stale" ? "now" : "done"}`; s2.className = `step s2 ${state === "others" ? "now" : ""}`; s1.querySelector("span").textContent = state === "stale" ? "1" : "✓"; }
+    f.querySelector(".status").textContent = state === "idle" ? ET.status.idle(last.s, last.f) : ET.status[state](N);
+  }
+  document.getElementById("now").textContent = state === "idle" ? "" : state === "stale" ? `${done} / ${N} years · ${secs} s` : `${done} / ${N} years · ${secs} s`;
+  for (const b of document.querySelectorAll(".bar [data-state]")) b.setAttribute("aria-pressed", String(b.dataset.state === state));
+}
+
+function hold(s) {
+  clearInterval(timer);
+  timer = null;
+  state = s;
+  done = s === "stale" ? 0 : s === "others" ? SHOWN + 2 : N;
+  t0 = performance.now() - (s === "others" ? 3000 : 0);
+  paint();
+}
+
+// a run as the site's: the shown scenario's three years in about 2.4 s with the figures dimmed, then the other nine
+// in about 3 s, the figures this run's
+document.getElementById("play").onclick = () => {
+  clearInterval(timer);
+  state = "stale"; done = 0; t0 = performance.now();
+  timer = setInterval(() => {
+    const t = (performance.now() - t0) / 1000;
+    done = t < 2.4 ? Math.floor(t / 0.8) : Math.min(N, SHOWN + Math.floor((t - 2.4) / 0.33));
+    state = t < 2.4 ? "stale" : done < N ? "others" : "idle";
+    if (state === "idle") { clearInterval(timer); timer = null; last = { s: comma(t), f: "2,4" }; }
+    paint();
+  }, 100);
+};
+for (const b of document.querySelectorAll(".bar [data-state]")) b.onclick = () => hold(b.dataset.state);
+const rm = document.getElementById("rm");
+rm.checked = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const motion = () => document.body.classList.toggle("rm", rm.checked);
+rm.onchange = motion;
+motion();
+paint();
+</script>
+</body>
+</html>
