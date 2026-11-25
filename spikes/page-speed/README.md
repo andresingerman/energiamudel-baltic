@@ -35,8 +35,7 @@ nothing in the page had changed. A step whose own times are off beside its neigh
 site in Chromium and WebKit with a store that never answers, the store's round trip and every view of the header
 (the Presentation page's charts until the page went, D-249) (its docstring has the list). `make browser-check PLAYWRIGHT_PYTHON=<a Python with
 Playwright>` builds the site with its sets and runs it; `make ci` cannot, having no browser (ERRATA E-191). Given the
-site's address in place of a directory, it checks the deployed site through the way in without the password, the token
-in `DEPLOY_SSO`: `make live-check` runs it so after a deploy.
+site's address in place of a directory, it checks the deployed site: `make live-check` runs it so after a deploy.
 
 **Result.** `docs/research/2026-11-10_page_speed.md`.
 

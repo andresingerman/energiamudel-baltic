@@ -22,8 +22,9 @@ def test_the_deployed_manifest_must_be_the_builds(tmp_path):
     assert not ok and " != build " in line
 
 
-def test_the_way_in_without_the_password_goes_as_its_cookie(monkeypatch):
-    """E-175: `make deploy` checks through D-179's cookie when the password is not at hand."""
+def test_a_fetch_sends_the_password_where_given_and_no_cookie(monkeypatch):
+    """The open site is fetched as any reader fetches it; DEPLOY_AUTH logs in where a site is
+    shut (D-331)."""
     sent = []
 
     class Served:
@@ -41,21 +42,19 @@ def test_the_way_in_without_the_password_goes_as_its_cookie(monkeypatch):
         return Served()
 
     monkeypatch.setattr(deployed, "urlopen", urlopen)
-    monkeypatch.setenv("DEPLOY_SSO", "ab" * 32)
     deployed.fetch("https://v5.example/data/manifest.json", None)
-    assert sent[0] == {"Cookie": "energiamudel_sso=" + "ab" * 32}
-    monkeypatch.delenv("DEPLOY_SSO")
+    assert sent[0] == {}  # no cookie since the way in without the password went (D-331)
     deployed.fetch("https://v5.example/data/manifest.json", "u:p")
     assert "Cookie" not in sent[1] and sent[1]["Authorization"].startswith("Basic ")
 
 
 def test_every_file_of_the_build_is_served_as_built(tmp_path):
-    """The build's files fetched one by one: .htaccess (the token on the server, E-177) and
-    sso.php (run by the server) left out, a file served otherwise or not at all named."""
+    """The build's files fetched one by one: .htaccess, which the server does not serve, left
+    out, a file served otherwise or not at all named."""
     from urllib.error import HTTPError
 
     built = {"index.html": b"page", "data/a.json": b"a", "data/b.json": b"b", "gone.js": b"g",
-             ".htaccess": b"rules", "sso.php": b"<?php"}
+             ".htaccess": b"rules"}
     for name, body in built.items():
         (tmp_path / name).parent.mkdir(exist_ok=True)
         (tmp_path / name).write_bytes(body)
@@ -69,3 +68,30 @@ def test_every_file_of_the_build_is_served_as_built(tmp_path):
 
     n, bad = deployed.differing("https://v5.example/", None, tmp_path, get)
     assert (n, bad) == (4, ["data/b.json", "gone.js"])
+
+
+def test_the_site_must_send_its_security_headers():
+    """D-331: the status a reader gets, and the headers of .htaccess the page comes without."""
+
+    class Page:
+        status = 200
+
+        def __init__(self, headers):
+            self.headers = headers
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *a):
+            return False
+
+    def served(headers):
+        return lambda site, timeout: Page(headers)
+
+    full = {"Strict-Transport-Security": "max-age=31536000", "X-Content-Type-Options": "nosniff",
+            "X-Frame-Options": "DENY", "Referrer-Policy": "strict-origin-when-cross-origin"}
+    assert deployed.answer("https://v5.example", served(full)) == (200, [])
+    assert deployed.answer("https://v5.example", served({})) == (200, list(deployed.HEADERS))
+    # a header with another value is as good as none: frame options that allow the site's own
+    other = {**full, "X-Frame-Options": "SAMEORIGIN"}
+    assert deployed.answer("https://v5.example", served(other)) == (200, ["X-Frame-Options"])

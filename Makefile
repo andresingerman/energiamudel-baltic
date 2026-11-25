@@ -4,7 +4,7 @@ PY ?= python3
 VENV ?= .venv
 BIN = $(VENV)/bin
 
-.PHONY: public helpsetup lock test lint smoke history prices-to-date register nordpool nordpool-schedule db export check gap fit validate ci browser-check freeze deploy deploy-ready live-check offline migrate-v4 clean
+.PHONY: public help setup lock test lint smoke history prices-to-date register nordpool nordpool-schedule db export check gap fit validate ci browser-check freeze deploy deploy-ready live-check offline migrate-v4 clean
 
 help:
 	@echo "setup      create $(VENV) and install the project with the dev extra, at the versions of constraints.txt"
@@ -27,7 +27,7 @@ help:
 	@echo "browser-check  the built site with its sets in Chromium and WebKit: the page's store, a store that does not answer, the Presentation page's charts (needs a Python with Playwright: PLAYWRIGHT_PYTHON)"
 	@echo "freeze     from a clean commit on 3 November: October's data in, every check, the sets against the live site's (mirrored over ssh: DEPLOY_TARGET, RSYNC_RSH), the deck's figures (FETCH=0: no fetch)"
 	@echo "deploy     from a clean commit: the gate of R-DEP-2, the opening view and the presentation's states computed, the live site kept for a rollback and its sets compared, then app/dist to DEPLOY_TARGET, every file checked through the way in without the password, the offline copy made (DRY_RUN=1: nothing sent)"
-	@echo "live-check after a deploy: the live site against app/dist, then its pages in Chromium and WebKit through the way in without the password (PLAYWRIGHT_PYTHON as for browser-check)"
+	@echo "live-check after a deploy: the live site against app/dist, then its pages in Chromium and WebKit (PLAYWRIGHT_PYTHON as for browser-check)"
 	@echo "public     main's tree as one snapshot commit on the local branch public, for the public repository (D-324); pushes nothing"
 	@echo "offline    after a deploy: the site as deployed, with a double-click server, in data/derived/offline/ (no network needed)"
 	@echo "migrate-v4 one-off: clone the lineage-bearing v4 raw cache into data/raw (R-DATA-9)"
@@ -118,9 +118,9 @@ browser-check:
 # Every file goes up readable to all, whatever the mask of the shell that built it (ERRATA E-169; the Mac's openrsync
 # has no --chmod, and rsync gives a file new to the server its source's mode).
 # Before the copy, the site as it stands is kept for a rollback in data/raw-aside/live-<the commit of its opening
-# view>/, .htaccess left out, for the server's holds the token (ERRATA E-177), and its sets are compared with the
+# view>/, .htaccess left out, and its sets are compared with the
 # build's: compare_sets lists what the deploy changes, a dry run's too. After it, every file of the build as the site
-# serves it and the site open to a reader without the password or the cookie (validate.deployed, D-318), and the offline
+# serves it, the site open to a reader and its security headers (validate.deployed, D-318, D-331), and the offline
 # copy made of what went up. A rollback sends a kept copy back the same way: `chmod -R a+rX` it, then
 # `rsync -rvm --delete --exclude .htaccess data/raw-aside/live-<commit>/ <DEPLOY_TARGET>`. The copies stay until the
 # owner has them removed.
@@ -129,7 +129,7 @@ deploy: deploy-ready ci
 	$(BIN)/python -m db.check --fast
 	cd app && node --no-maglev scripts/opening.ts
 	chmod -R a+rX app/dist
-	C=$$($${RSYNC_RSH:-ssh} $(SSO_HOST) 'gzip -dc $(SSO_ROOT)/data/opening.bin.gz | head -c 400' | LC_ALL=C grep -aEo '"commit":"[0-9a-f]+"' | cut -d'"' -f4); \
+	C=$$($${RSYNC_RSH:-ssh} $(DEPLOY_HOST) 'gzip -dc $(DEPLOY_ROOT)/data/opening.bin.gz | head -c 400' | LC_ALL=C grep -aEo '"commit":"[0-9a-f]+"' | cut -d'"' -f4); \
 	  D=data/raw-aside/live-$${C:-$$(date +%Y%m%d-%H%M)}; mkdir -p $$D && rsync -rm --delete --exclude .htaccess $(DEPLOY_TARGET:%/=%)/ $$D/ && \
 	  echo "deploy: the site as it stands kept for a rollback in $$D/" && \
 	  { node app/scripts/compare_sets.ts $$D/data app/dist/data || echo "deploy: the sets listed above change with this deploy"; }
@@ -138,22 +138,19 @@ deploy: deploy-ready ci
 	$(if $(filter 1,$(DRY_RUN)),,$(MAKE) offline)
 
 # DEPLOY_TARGET's host and path, for the ssh steps.
-SSO_HOST = $(firstword $(subst :, ,$(DEPLOY_TARGET)))
-SSO_ROOT = $(word 2,$(subst :, ,$(DEPLOY_TARGET)))
+DEPLOY_HOST = $(firstword $(subst :, ,$(DEPLOY_TARGET)))
+DEPLOY_ROOT = $(word 2,$(subst :, ,$(DEPLOY_TARGET)))
 
-# R-DEP-5's check through the way in without the password (ERRATA E-175): the token read over ssh into the
-# environment by the shell, never by make, so that the recipe's echo shows the command, not the value; DEPLOY_AUTH,
-# where the password is at hand, works beside it.
-SSO_TOKEN = DEPLOY_SSO="$$($${RSYNC_RSH:-ssh} $(SSO_HOST) 'cat $(SSO_ROOT)/../.sso-token-v5 2>/dev/null')"
-DEPLOYED = $(SSO_TOKEN) $(BIN)/python -m validate.deployed $(DEPLOY_URL)
+# R-DEP-5's check of the open site (D-318, D-331): the manifest, every file of the build, the answer to a reader and
+# the security headers. DEPLOY_AUTH (user:password) still logs in where a site sits behind Basic Auth.
+DEPLOYED = $(BIN)/python -m validate.deployed $(DEPLOY_URL)
 
 # After a deploy, the live site against the build in app/dist — validate.deployed's checks — and then its pages in
-# Chromium and WebKit through the way in without the password: browser_check.py on DEPLOY_URL, PLAYWRIGHT_PYTHON as
+# Chromium and WebKit: browser_check.py on DEPLOY_URL, PLAYWRIGHT_PYTHON as
 # for browser-check. A few minutes on a quiet machine; it reads the site and changes nothing on it.
 live-check:
-	@test -n "$(DEPLOY_TARGET)" || { echo "live-check: DEPLOY_TARGET is not set (user@host:path of the document root), to read the token over ssh"; exit 1; }
 	$(DEPLOYED)
-	$(SSO_TOKEN) $(PLAYWRIGHT_PYTHON) -I spikes/page-speed/browser_check.py $(DEPLOY_URL)
+	$(PLAYWRIGHT_PYTHON) -I spikes/page-speed/browser_check.py $(DEPLOY_URL)
 
 deploy-ready:
 	@test -n "$(DEPLOY_TARGET)" || { echo "deploy: DEPLOY_TARGET is not set (user@host:path of the document root)"; exit 1; }
@@ -169,7 +166,7 @@ deploy-ready:
 FETCH ?= 1
 YEAR := $(shell date +%Y)
 ASIDE := data/raw-aside/$(shell date +%F)
-# the live site's sets, mirrored over ssh first — its data/ alone: the document root's .htaccess holds the token — so
+# the live site's sets, mirrored over ssh first — its data/ alone — so
 # that the comparison needs no password and an ssh failure stops the freeze before its long steps (ERRATA E-175)
 LIVE := $(ASIDE)/live
 freeze:

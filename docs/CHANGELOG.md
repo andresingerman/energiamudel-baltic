@@ -6,6 +6,12 @@ public release, is in the author's private history (DECISIONS D-328); what was d
 
 ## Unreleased
 
+- Deployed 2026-11-25 (main c04fac9: D-328's engine without the sampler, D-331's headers, `sso.php` gone): every
+  set as before, the four security headers sent, `make live-check` passed.
+
+- The site sends four security headers and `sso.php` is gone (D-331, specification 2.143); the deploy's check wants
+  the headers.
+
 - `certifi` raised to 2026.10.19 against GHSA-6q48-6c7w-9gw2 (the data pipeline's HTTPS; D-330); the workflow states
   its permissions.
 

@@ -12,10 +12,9 @@ Chromium and in WebKit:
 4. no page error anywhere.
 
     python3 -I spikes/page-speed/browser_check.py [built site, default app/dist]      BROWSERS="chromium webkit"
-    DEPLOY_SSO=<token> python3 -I spikes/page-speed/browser_check.py https://energiamudel.ee
+    python3 -I spikes/page-speed/browser_check.py https://energiamudel.ee
 
-Given an address, it checks that site as deployed instead, through the way in without the password (D-179): the
-token in DEPLOY_SSO, sent as the cookie, never printed. `make live-check` runs it so after a deploy, as the deploys
+Given an address, it checks that site as deployed instead. `make live-check` runs it so after a deploy, as the deploys
 of 2026-10-27 to 2026-11-11 checked their live pages from a script of their own.
 
 The site must hold its sets: `cd app && npm run build && node --no-maglev scripts/opening.ts`. Needs a Python with
@@ -38,7 +37,6 @@ LIVE = TARGET.startswith(("http://", "https://"))
 ROOT = os.path.abspath(TARGET)
 PROBE = open(f"{HERE}/probe.js").read()
 BROWSERS = os.environ.get("BROWSERS", "chromium webkit").split()
-SSO = os.environ.get("DEPLOY_SSO")  # the cookie's value is the token itself: never printed
 if not LIVE and not os.path.exists(f"{ROOT}/data/sets.json.gz"):
     sys.exit(f"{ROOT} holds no computed sets: cd app && npm run build && node --no-maglev scripts/opening.ts")
 
@@ -111,8 +109,6 @@ def need(ok, what, got=None):
 
 def page(browser, script=None):
     ctx = browser.new_context(viewport={"width": 1440, "height": 900})
-    if SSO:
-        ctx.add_cookies([{"name": "energiamudel_sso", "value": SSO, "url": URL}])
     ctx.add_init_script(PROBE)
     if script:
         ctx.add_init_script(script)

@@ -1,8 +1,8 @@
 # energiamudel.ee (SPECIFICATION.md R-DEP-3, R-DEP-4; DECISIONS D-124, D-125, D-178, D-318): v5 at the site's root,
 # public from 2026-10-17, behind a password from 2026-10-26 (D-178) and open to everyone again since 2026-11-25 at the
 # owner's word (D-318). Links already given out keep a home: the former staging path /v5 redirects here, and v3's
-# Data page /stat/ to the v3 archive at v3.energiamudel.ee (v3's ADR-035), which keeps v3's own password. sso.php,
-# the way in from the team's tools page (D-179), stays so that its button still lands here; its cookie gates nothing now.
+# Data page /stat/ to the v3 archive at v3.energiamudel.ee (v3's ADR-035), which keeps v3's own password. The way in without
+# the password of D-179, sso.php, went on 2026-11-25 (D-331): the open site has nothing for it to let into.
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteRule ^v5(?:/(.*))?$ /$1 [R=301,L]
@@ -13,6 +13,15 @@
 # name; the page, the data files and the manifest are replaced in place on every deploy, so the
 # browser asks again each time.
 <IfModule mod_headers.c>
+  # What the browser is told about the site itself (D-331): HTTPS only from the first visit on, a file is what the
+  # server says it is, no other site may show this one in a frame, and a link followed elsewhere carries the site's
+  # name alone. No content security policy: the page's WebAssembly, workers and inline styles would each need an
+  # exception, and it is left until it can be tested on its own.
+  Header always set Strict-Transport-Security "max-age=31536000"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "DENY"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
   <FilesMatch "\.(js|css|wasm|woff2?)$">
     Header set Cache-Control "public, max-age=31536000, immutable"
   </FilesMatch>

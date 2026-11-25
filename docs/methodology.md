@@ -2514,19 +2514,19 @@ named by the commit its opening view was built from) and lists with `compare_set
 deploy changes, sends `app/dist/` with `rsync --delete` to `DEPLOY_TARGET` (the owner's, from the
 environment, never committed) and compares the deployed site with the build over HTTPS
 (`validate/deployed.py`, R-DEP-5): the deployed `data/manifest.json` with the build's, then every file of
-`app/dist` byte for byte, `.htaccess` and `sso.php` aside, and the site's answer to a reader with neither the
-password nor the cookie, 200 since D-318 (401 while the site was shut). Last it copies what went up for use without the network (`make offline`, D-145).
+`app/dist` byte for byte, `.htaccess` aside, the site's answer to a reader, 200 since D-318 (401 while the site
+was shut), and the security headers its page comes with (D-331). Last it copies what went up for use without the network (`make offline`, D-145).
 These steps the deploys of 2026-10-27 to 2026-11-11 ran from a script of their own beside `make deploy`; they are
 its own since 2026-11-12. `make live-check` reads the live site again in the same way and then shows its pages in
-Chromium and WebKit through the cookie — every view, the browser store's round trip, the Presentation page's
+Chromium and WebKit — every view, the browser store's round trip, the Presentation page's
 charts, no page error (`spikes/page-speed/browser_check.py`, ERRATA E-191) — with a Python that has Playwright,
-which is no dependency of the repository. Since D-179 the team's tools page lets its readers in
-without the password: its button posts a token to `sso.php`, which sets a cookie of 30 days when the token equals the
-one kept one directory above the document root; `.htaccess` let in the password or that cookie until D-318, and
-since then asks for neither, `sso.php` kept so that the button still lands on the site. The check reads the token over
-ssh and fetches with that cookie, so it needs no password; `DEPLOY_AUTH` (user:password) works beside it (ERRATA
-E-175). The token is never printed or kept in the repository; the rollback copy leaves `.htaccess` out
-(E-177), and a rollback sends a copy back with the same exclusion, its files made readable to all first (E-169).
+which is no dependency of the repository. From D-179 to D-331 the site had a way in without the password for the
+team's tools page, a token posted to `sso.php`; with the site open since D-318 it let into nothing and was taken
+out, and the checks fetch the site as any reader does (`DEPLOY_AUTH`, user:password, still logs in where a site is
+shut). The site's `.htaccess` sends four security headers with every answer — HTTPS only, the declared content
+type, no framing by another site, a short referrer — and the deploy's check fails without them (D-331). The
+rollback copy leaves `.htaccess` out, and a rollback sends a copy back with the same exclusion, its files made
+readable to all first (E-169).
 `DRY_RUN=1` sends nothing; it keeps the copy and lists the sets the deploy would change. On 2026-09-29 `make deploy DRY_RUN=1` stopped at `make validate`: R-VAL-5 is not met, so
 no build was deployable (ERRATA E-049); since D-085 the deploy behind the password does not wait for
 R-VAL-5, and opening the site to the public waited for the owner's acceptance of the validation as

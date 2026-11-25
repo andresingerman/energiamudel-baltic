@@ -8605,3 +8605,26 @@ On R-NFR-10 and R-PUB-6.
    with push protection, protection of `main`, private reports of vulnerabilities.
 4. No figure moves.
 
+## D-331 · 2026-11-25 · Security headers on the site; sso.php taken out
+
+**Status:** Accepted · 2026-11-25 · the owner, on the two points D-330 left for the site: "do the headers; sso.php is
+not needed". On R-DEP-3, R-DEP-5 and R-NFR-1.
+
+**Decision:**
+1. **The site sends four headers with every answer** (`app/public/.htaccess`):
+   `Strict-Transport-Security: max-age=31536000` — HTTPS only from the first visit on, for a year, this host alone;
+   `X-Content-Type-Options: nosniff` — a file is what the server says it is (the server's types for the scripts, the
+   styles and the WebAssembly were checked: they are right); `X-Frame-Options: DENY` — no other site shows this one
+   in a frame; `Referrer-Policy: strict-origin-when-cross-origin`.
+2. **No content security policy yet.** The page's WebAssembly, its workers and its inline styles would each need an
+   exception, and a wrong one stops the computation; it waits for a test of its own.
+3. **`sso.php` is gone**, with what served it: the Makefile no longer reads the token over ssh, `validate.deployed`
+   and the browser check send no cookie and fetch the site as any reader does. `DEPLOY_AUTH` still logs in where a
+   site is shut. The files `.sso-token-v5` and `.htpasswd-v5` above the document root are the owner's to delete; the
+   button of the team's tools page that posted to `sso.php` will find no page, and is that page's to change.
+4. **The deploy checks the headers:** `validate.deployed` fails when the live page comes without one of the four
+   (a test holds it to that), so a host's change that drops them is seen at the next deploy.
+5. Specification revision 2.143. No figure moves. The headers reach the site at the next deploy, the owner's word.
+
+**Done:** deployed on 2026-11-25 at the owner's word ("Yes, deploy"), main c04fac9: the rollback copy `data/raw-aside/live-0969630d3722/`; the sets computed again under the engine's id 6594ed7b8a66 (D-328), the opening view and the presentation's 54 sets none differing from the site's before; 146 files as built, 200 to a reader, all four headers sent; `make live-check` passed in Chromium and WebKit; `sso.php` answers 404.
+
