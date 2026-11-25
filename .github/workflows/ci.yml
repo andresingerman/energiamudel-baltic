@@ -2,6 +2,8 @@
 # remote (R-PUB-6); it calls the same target as a local run.
 name: ci
 on: [push, pull_request]
+permissions:
+  contents: read # the gate reads the repository and writes nothing
 jobs:
   ci:
     runs-on: macos-latest # the jsc shell of JavaScriptCore, which golden:jsc needs (R-NFR-5)

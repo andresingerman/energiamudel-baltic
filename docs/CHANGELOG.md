@@ -6,6 +6,9 @@ public release, is in the author's private history (DECISIONS D-328); what was d
 
 ## Unreleased
 
+- `certifi` raised to 2026.10.19 against GHSA-6q48-6c7w-9gw2 (the data pipeline's HTTPS; D-330); the workflow states
+  its permissions.
+
 - The repository's address, `andresingerman/energiamudel-baltic`, in `LICENSE-docs` and `CITATION.cff` (D-329).
 
 ## 0.1.0-dev — the first public release, 26 November 2026

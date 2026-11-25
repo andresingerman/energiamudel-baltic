@@ -8577,3 +8577,31 @@ visibility, the owner chose `energiamudel-baltic` and "private first". On R-PUB-
    `repository-code`; the snapshot of D-324's first run (817dced), never pushed, is made again with them.
 5. Specification revision 2.142 (`R-PUB-6`). No figure moves.
 
+**Done:** the snapshot 5518402 pushed to the private repository's `main` on 2026-11-25 at the owner's word ("Yes, push it"): one commit without parents, the repository's only branch; nothing of `main`'s history left the machine.
+
+## D-330 · 2026-11-25 · The check for vulnerabilities before the repository opens
+
+**Status:** Accepted · 2026-11-25 · the owner: "check it for vulnerabilities", and to the findings "Yes, fix and push".
+On R-NFR-10 and R-PUB-6.
+
+**Found:**
+1. **`certifi` 2026.7.22, pinned in `constraints.txt`, carries a critical advisory** (GHSA-6q48-6c7w-9gw2): its bundle
+   trusts a root whose intermediate keys are compromised, so an attacker on the path who holds one can forge an HTTPS
+   connection. It reaches the data pipeline alone — its fetches, and the ENTSO-E token they carry — never the page.
+2. Nothing else known: the application's 78 npm packages (`npm audit`) and the other 33 Python packages (the OSV
+   database) are clean.
+3. The page's code: no `eval` or the like; the one outside input, the scenario text of a link, is held to the schema
+   — an enumeration or lower-case letters, digits and underscores for every text field — and its error is shown as
+   text; every outside link opens with `noopener`; no request leaves the page's origin.
+4. The Python: no shell, no unpickling, archives read member by member; SQL takes table names of its own.
+5. The live site serves no dot file and redirects to HTTPS, and sends no security header (HSTS, `nosniff`, a content
+   security policy, frame options). GitHub's own protections are off while the repository is private.
+
+**Decision:**
+1. **`certifi` is pinned at 2026.10.19**, which the advisory names as fixed and the database knows nothing against.
+2. **The workflow states its permissions:** `contents: read`, the account's default written down.
+3. **Left for the owner's word, each needing a deploy or the repository public:** the site's security headers;
+   `sso.php`, which gates nothing since D-318; and on GitHub, once public — alerts for dependencies, secret scanning
+   with push protection, protection of `main`, private reports of vulnerabilities.
+4. No figure moves.
+
