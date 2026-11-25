@@ -1039,6 +1039,13 @@ export const ET: Record<string, string> = {
   "Estonia's net import bill falls; it holds part of the consumers' saving": "Eesti netoimpordi arve väheneb; sisaldab osa tarbijate säästust",
   "the investor's cost, which the contract's strike price repays": "investori kulu, mille tasub lepinguhind",
   "Each scenario against {gas}. The figures of {year} are held for each of the plant's {years} years, undiscounted. Contract for difference at a strike of {k} €/MWh{clause} for the first {term} years, the owner's assumption, then the market price.": "Iga stsenaarium võrreldes stsenaariumiga {gas}. {year}. aasta arvud on hoitud jaama iga {years} aasta kohta, diskonteerimata. Hinnavahemehhanism lepinguhinnaga {k} €/MWh{clause} esimesel {term} aastal, omaniku eeldus, seejärel turuhind.",
+  // the Documentation view's line on the public repository (D-334)
+  "The model's code, data and documents are open on GitHub:": "Mudeli kood, andmed ja dokumendid on GitHubis avalikud:",
+  // the last slide's notice of the public repository (D-333)
+  "OPEN SOURCE": "AVATUD LÄHTEKOOD",
+  "The model's code is open on GitHub": "Mudeli kood on GitHubis avalik",
+  "Code, data and documents: read them, run them, check them": "Kood, andmed ja dokumendid: loe, käivita, kontrolli",
+  "QR code of the repository's address": "Repositooriumi aadressi QR-kood",
   "Try it yourself": "Proovi ise",
   "Pick a scenario: <b>0 SMR</b>, <b>1 SMR</b> or <b>2 SMR</b>": "Vali stsenaarium: <b>0 SMR</b>, <b>1 SMR</b> või <b>2 SMR</b>",
   "Change the assumptions with the sliders: capacity, cables, fuel prices, the neighbours' prices": "Muuda eeldusi liuguritega: võimsused, kaablid, kütusehinnad, naabrite hinnad",

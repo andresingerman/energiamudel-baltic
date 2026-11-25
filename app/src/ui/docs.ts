@@ -7,7 +7,7 @@
 
 import { lang, t } from "./i18n.ts";
 import type { Sources } from "./labels.ts";
-import { esc } from "./labels.ts";
+import { REPO, esc } from "./labels.ts";
 
 const slug = (t: string) => t.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 
@@ -148,6 +148,7 @@ const DOC_TABS: [DocTab, string][] = [["methodology", t("Methodology")], ...(lan
   ["faq", t("Questions and answers")], ["sources", t("Sources")]];
 
 export function docsHtml(tab: DocTab, body: string): string {
+  // under the tabs, on each of them, where the model's code is (D-334)
   // a contents rail beside the long texts (D-197): the sections, and the full methodology's subsections under them;
   // buttons, so that the page's address keeps the scenario
   const heads = [...body.matchAll(/<h([23]) id="([^"]+)">(.*?)<\/h\1>/g)].filter((m) => m[1] === "2" || tab === "full");
@@ -155,5 +156,6 @@ export function docsHtml(tab: DocTab, body: string): string {
     `<li class="l${level}"><button type="button" class="toc-link" data-toc="${id}">${text}</button></li>`).join("")}</ol></nav>` : "";
   return `<div class="tabs" role="group" aria-label="${t("Document shown")}">${DOC_TABS.map(([k, label]) =>
     `<button type="button" class="seg" data-doc="${k}" aria-pressed="${k === tab}">${label}</button>`).join("")}</div>
+    <p class="note doc-repo">${t("The model's code, data and documents are open on GitHub:")} <a href="https://${REPO}" target="_blank" rel="noopener">${REPO}</a></p>
     <div class="doc-card">${rail}<article class="doc${tab === "sources" ? " wide" : ""}">${body}</article></div>`;
 }

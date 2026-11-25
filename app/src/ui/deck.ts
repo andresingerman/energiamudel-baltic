@@ -16,7 +16,7 @@ import type { Group, RunView } from "../worker/view.ts";
 import { GROUPS } from "../worker/view.ts";
 import { MONTHS, monthly } from "./charts.ts";
 import { lang, t } from "./i18n.ts";
-import { GROUP_LABEL, esc, fmt, signed } from "./labels.ts";
+import { GROUP_LABEL, REPO, esc, fmt, signed } from "./labels.ts";
 import { icon as glyphOf } from "./icons.ts";
 import type { Knob, Toggle } from "./panel.ts";
 import { SCENARIO_NAME, flag, profileName, setInputs } from "./panel.ts";
@@ -1145,6 +1145,22 @@ const ctaStep = (n: number, txt: string) => `
     <div style="font-size:30px;font-weight:800;color:${BRAND};margin-bottom:12px">${n}</div>
     <div style="font-size:27px;font-weight:500;line-height:1.35;color:${INK}">${txt}</div>
   </div>`;
+// the model's public repository (D-329, D-332) and its address as a QR code (D-333): version 4, error correction M,
+// 33 modules a side, its dark modules as the runs of each row; made once with the library uqr from REPO's address,
+// and to be made again if the address changes. The stage's white around it is its quiet zone.
+export { REPO };
+export const REPO_QR = "M0 0h7v1h-7zM11 0h2v1h-2zM14 0h1v1h-1zM16 0h1v1h-1zM18 0h4v1h-4zM23 0h1v1h-1zM26 0h7v1h-7zM0 1h1v1h-1zM6 1h1v1h-1zM10 1h1v1h-1zM12 1h1v1h-1zM15 1h4v1h-4zM21 1h2v1h-2zM26 1h1v1h-1zM32 1h1v1h-1zM0 2h1v1h-1zM2 2h3v1h-3zM6 2h1v1h-1zM8 2h3v1h-3zM14 2h3v1h-3zM19 2h4v1h-4zM26 2h1v1h-1zM28 2h3v1h-3zM32 2h1v1h-1zM0 3h1v1h-1zM2 3h3v1h-3zM6 3h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM15 3h1v1h-1zM18 3h2v1h-2zM22 3h1v1h-1zM24 3h1v1h-1zM26 3h1v1h-1zM28 3h3v1h-3zM32 3h1v1h-1zM0 4h1v1h-1zM2 4h3v1h-3zM6 4h1v1h-1zM8 4h2v1h-2zM14 4h3v1h-3zM18 4h4v1h-4zM23 4h1v1h-1zM26 4h1v1h-1zM28 4h3v1h-3zM32 4h1v1h-1zM0 5h1v1h-1zM6 5h1v1h-1zM8 5h2v1h-2zM11 5h1v1h-1zM13 5h1v1h-1zM20 5h1v1h-1zM24 5h1v1h-1zM26 5h1v1h-1zM32 5h1v1h-1zM0 6h7v1h-7zM8 6h1v1h-1zM10 6h1v1h-1zM12 6h1v1h-1zM14 6h1v1h-1zM16 6h1v1h-1zM18 6h1v1h-1zM20 6h1v1h-1zM22 6h1v1h-1zM24 6h1v1h-1zM26 6h7v1h-7zM8 7h2v1h-2zM12 7h1v1h-1zM16 7h1v1h-1zM18 7h1v1h-1zM21 7h1v1h-1zM0 8h1v1h-1zM2 8h5v1h-5zM11 8h1v1h-1zM13 8h2v1h-2zM17 8h1v1h-1zM19 8h1v1h-1zM26 8h5v1h-5zM0 9h3v1h-3zM7 9h1v1h-1zM9 9h1v1h-1zM12 9h2v1h-2zM16 9h2v1h-2zM19 9h2v1h-2zM23 9h1v1h-1zM26 9h2v1h-2zM29 9h2v1h-2zM32 9h1v1h-1zM0 10h1v1h-1zM5 10h2v1h-2zM8 10h10v1h-10zM20 10h3v1h-3zM24 10h2v1h-2zM28 10h1v1h-1zM30 10h1v1h-1zM0 11h1v1h-1zM3 11h2v1h-2zM10 11h4v1h-4zM16 11h3v1h-3zM21 11h1v1h-1zM24 11h3v1h-3zM28 11h3v1h-3zM32 11h1v1h-1zM0 12h3v1h-3zM4 12h1v1h-1zM6 12h6v1h-6zM14 12h3v1h-3zM23 12h3v1h-3zM27 12h3v1h-3zM31 12h2v1h-2zM0 13h1v1h-1zM4 13h1v1h-1zM7 13h2v1h-2zM10 13h3v1h-3zM15 13h1v1h-1zM18 13h3v1h-3zM23 13h1v1h-1zM26 13h1v1h-1zM29 13h1v1h-1zM31 13h2v1h-2zM1 14h1v1h-1zM3 14h4v1h-4zM12 14h7v1h-7zM22 14h1v1h-1zM25 14h5v1h-5zM31 14h1v1h-1zM0 15h1v1h-1zM2 15h1v1h-1zM4 15h2v1h-2zM7 15h5v1h-5zM13 15h1v1h-1zM15 15h1v1h-1zM18 15h1v1h-1zM20 15h2v1h-2zM25 15h3v1h-3zM29 15h2v1h-2zM0 16h2v1h-2zM4 16h1v1h-1zM6 16h5v1h-5zM13 16h1v1h-1zM15 16h1v1h-1zM17 16h1v1h-1zM22 16h1v1h-1zM24 16h2v1h-2zM27 16h2v1h-2zM32 16h1v1h-1zM0 17h1v1h-1zM8 17h2v1h-2zM11 17h4v1h-4zM16 17h1v1h-1zM18 17h3v1h-3zM23 17h1v1h-1zM26 17h2v1h-2zM29 17h2v1h-2zM32 17h1v1h-1zM0 18h3v1h-3zM6 18h1v1h-1zM8 18h3v1h-3zM12 18h2v1h-2zM15 18h1v1h-1zM18 18h1v1h-1zM20 18h3v1h-3zM24 18h1v1h-1zM26 18h3v1h-3zM30 18h2v1h-2zM1 19h2v1h-2zM5 19h1v1h-1zM7 19h3v1h-3zM11 19h2v1h-2zM16 19h1v1h-1zM19 19h4v1h-4zM25 19h1v1h-1zM27 19h5v1h-5zM0 20h1v1h-1zM2 20h6v1h-6zM9 20h3v1h-3zM18 20h3v1h-3zM22 20h1v1h-1zM25 20h1v1h-1zM28 20h2v1h-2zM0 21h1v1h-1zM2 21h3v1h-3zM7 21h1v1h-1zM11 21h2v1h-2zM14 21h3v1h-3zM19 21h3v1h-3zM23 21h1v1h-1zM26 21h1v1h-1zM29 21h2v1h-2zM32 21h1v1h-1zM0 22h1v1h-1zM5 22h2v1h-2zM9 22h5v1h-5zM25 22h1v1h-1zM29 22h3v1h-3zM0 23h1v1h-1zM3 23h1v1h-1zM5 23h1v1h-1zM7 23h3v1h-3zM12 23h2v1h-2zM16 23h1v1h-1zM20 23h3v1h-3zM25 23h2v1h-2zM29 23h3v1h-3zM0 24h1v1h-1zM4 24h3v1h-3zM8 24h1v1h-1zM10 24h4v1h-4zM17 24h1v1h-1zM19 24h1v1h-1zM22 24h7v1h-7zM31 24h1v1h-1zM8 25h1v1h-1zM10 25h1v1h-1zM12 25h1v1h-1zM14 25h1v1h-1zM16 25h2v1h-2zM19 25h1v1h-1zM21 25h1v1h-1zM23 25h2v1h-2zM28 25h1v1h-1zM30 25h1v1h-1zM32 25h1v1h-1zM0 26h7v1h-7zM10 26h4v1h-4zM15 26h3v1h-3zM20 26h1v1h-1zM23 26h2v1h-2zM26 26h1v1h-1zM28 26h1v1h-1zM30 26h2v1h-2zM0 27h1v1h-1zM6 27h1v1h-1zM8 27h1v1h-1zM11 27h1v1h-1zM13 27h3v1h-3zM17 27h2v1h-2zM20 27h2v1h-2zM23 27h2v1h-2zM28 27h4v1h-4zM0 28h1v1h-1zM2 28h3v1h-3zM6 28h1v1h-1zM8 28h2v1h-2zM12 28h1v1h-1zM14 28h1v1h-1zM16 28h1v1h-1zM19 28h1v1h-1zM22 28h1v1h-1zM24 28h6v1h-6zM31 28h2v1h-2zM0 29h1v1h-1zM2 29h3v1h-3zM6 29h1v1h-1zM8 29h1v1h-1zM13 29h1v1h-1zM15 29h1v1h-1zM18 29h3v1h-3zM23 29h3v1h-3zM28 29h2v1h-2zM31 29h2v1h-2zM0 30h1v1h-1zM2 30h3v1h-3zM6 30h1v1h-1zM8 30h1v1h-1zM12 30h2v1h-2zM15 30h4v1h-4zM20 30h1v1h-1zM22 30h1v1h-1zM26 30h2v1h-2zM0 31h1v1h-1zM6 31h1v1h-1zM9 31h2v1h-2zM12 31h1v1h-1zM14 31h2v1h-2zM21 31h2v1h-2zM28 31h3v1h-3zM0 32h7v1h-7zM8 32h1v1h-1zM10 32h2v1h-2zM13 32h1v1h-1zM15 32h1v1h-1zM17 32h1v1h-1zM22 32h4v1h-4zM27 32h1v1h-1zM31 32h1v1h-1z";
+const QR_SIDE = 33, QR_PX = 231; // 7 px a module on the 1920 stage
+const repoBlock = () => `
+  <div style="position:absolute;left:103px;top:772px;display:flex;align-items:center;gap:44px">
+    <a href="https://${REPO}" style="flex:none;line-height:0"><svg viewBox="0 0 ${QR_SIDE} ${QR_SIDE}" width="${QR_PX}" height="${QR_PX}" shape-rendering="crispEdges" role="img" aria-label="${esc(t("QR code of the repository's address"))}"><path d="${REPO_QR}" fill="${INK}"/></svg></a>
+    <div>
+      <div style="${SECT}">${t("OPEN SOURCE")}</div>
+      <div style="font-size:46px;font-weight:700;color:${INK};margin-top:10px">${t("The model's code is open on GitHub")}</div>
+      <div style="font-size:36px;font-weight:700;margin-top:10px"><a href="https://${REPO}" style="color:${BRAND};text-decoration:none">${REPO}</a></div>
+      <div style="font-size:25px;font-weight:500;color:${MUTED};margin-top:12px">${t("Code, data and documents: read them, run them, check them")}</div>
+    </div>
+  </div>`;
 const s14 = () => `
   <svg width="1920" height="1080" viewBox="0 0 1920 1080" style="position:absolute;inset:0" aria-hidden="true">
     <circle cx="1600" cy="1190" r="150" fill="#231FBD"/><circle cx="1790" cy="1160" r="200" fill="#1BE54E"/>
@@ -1157,7 +1173,7 @@ const s14 = () => `
     ${ctaStep(1, t("Pick a scenario: <b>0 SMR</b>, <b>1 SMR</b> or <b>2 SMR</b>"))}
     ${ctaStep(2, t("Change the assumptions with the sliders: capacity, cables, fuel prices, the neighbours' prices"))}
     ${ctaStep(3, t("See what happens to the price: the result is computed in your browser"))}
-  </div>`;
+  </div>${repoBlock()}`;
 
 /** The slides in order, each its markup for the 1920×1080 stage. */
 // the past years beside the market fourth, after how the model works, at the owner's word (D-244); the capital cost's

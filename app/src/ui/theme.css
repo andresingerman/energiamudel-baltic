@@ -406,6 +406,7 @@ caption.rh { text-align: left; margin: 0; padding: 0 0 6px; }
 .by-year .w { font-weight: 700; }
 /* the calibration page (R-APP-7): a failure carries a ✗ as well as its colour */
 .calibration h3 { font-size: 13px; margin: 16px 0 4px; }
+.doc-repo { margin: 8px 0 10px; }
 .calibration .why { max-width: 90ch; margin: 2px 0 6px; line-height: 1.5; }
 .calib { border-collapse: collapse; font-size: 12px; margin: 4px 0 10px; width: 100%; }
 .calib th { color: var(--muted); font-weight: 400; font-size: 11px; text-align: right; padding: 2px 0 2px 12px; vertical-align: bottom; }

@@ -15,7 +15,7 @@ import { replay } from "../src/state/scenario.ts";
 import { runKey } from "../src/state/text.ts";
 import type { DeckInput, Side, Trio } from "../src/ui/deck.ts";
 import type { Toggle } from "../src/ui/panel.ts";
-import { NB_KEYS, OUTAGES, REPLAY_SLIDE, REPLAY_YEARS, SLIDES, deckShell, without, yearPrices } from "../src/ui/deck.ts";
+import { NB_KEYS, OUTAGES, REPLAY_SLIDE, REPLAY_YEARS, REPO, REPO_QR, SLIDES, deckShell, without, yearPrices } from "../src/ui/deck.ts";
 import { monthly } from "../src/ui/charts.ts";
 import { lineKeys, linesSvg, panelControls, toggleLine } from "../src/ui/panel.ts";
 import { LAND } from "../src/ui/basemap.ts";
@@ -64,7 +64,8 @@ test("seventeen slides, none with a figure missing or a hyphen for a minus", () 
     assert.doesNotMatch(h, />-\d/, `slide ${i + 1}`);
     // no third-party address in a slide's own markup (R-NFR-1): sources are named, and the seventh slide's link to
     // Fingrid's forecast (D-270) takes its address from the site's sources, which this input leaves out
-    assert.doesNotMatch(h, /https?:\/\//, `slide ${i + 1}`);
+    // — and the last slide's link to the model's own repository (D-333), which is no third party
+    assert.doesNotMatch(h.replaceAll(`https://${REPO}`, ""), /https?:\/\//, `slide ${i + 1}`);
   }
 });
 
@@ -450,4 +451,16 @@ test("the past years' slide: each gate year a column of Estonia's four charts, e
 
 test("the deck's bar has no notes: no button, no N, no panel under the frame (D-321)", () => {
   assert.doesNotMatch(deckShell(), /notes|deck-talk/i);
+});
+
+test("the last slide names the public repository and shows its address as a QR code (D-333)", async () => {
+  const h = slides(input(trio)).at(-1)!, text = h.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ");
+  assert.ok(text.includes("OPEN SOURCE The model's code is open on GitHub github.com/andresingerman/energiamudel-baltic"), text);
+  assert.equal(h.split(`href="https://${REPO}"`).length - 1, 2); // the code and the address, both a link
+  assert.match(h, /<svg viewBox="0 0 33 33" width="231" height="231" shape-rendering="crispEdges" role="img" aria-label="QR code of the repository(?:'|&#39;)s address">/);
+  // the code's shape belongs to this address: it was scanned back to it in a browser on 2026-11-25, and a change of
+  // either without the other fails here — make the code again from the new address (deck.ts says how)
+  const { createHash } = await import("node:crypto");
+  assert.equal(REPO, "github.com/andresingerman/energiamudel-baltic");
+  assert.equal(createHash("sha256").update(REPO_QR).digest("hex"), "38046c30ccc7dadccba745ee1a970a7f39c712fac490c2a6016763a975c054e2");
 });

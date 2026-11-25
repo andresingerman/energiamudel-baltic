@@ -8628,3 +8628,54 @@ not needed". On R-DEP-3, R-DEP-5 and R-NFR-1.
 
 **Done:** deployed on 2026-11-25 at the owner's word ("Yes, deploy"), main c04fac9: the rollback copy `data/raw-aside/live-0969630d3722/`; the sets computed again under the engine's id 6594ed7b8a66 (D-328), the opening view and the presentation's 54 sets none differing from the site's before; 146 files as built, 200 to a reader, all four headers sent; `make live-check` passed in Chromium and WebKit; `sso.php` answers 404.
 
+## D-332 · 2026-11-25 · The repository is public
+
+**Status:** Accepted · 2026-11-25 · the owner: "make the repository public". On R-PUB-6; it closes the preparation of
+D-323 to D-331.
+
+**Decision:**
+1. **`andresingerman/energiamudel-baltic` is public** since 2026-11-25. It holds three snapshot commits on `main`
+   (5518402, 1004101, 864d57f), each under the noreply address, and nothing of the development history.
+2. **Checked before the switch:** each of the three commits scanned again — no key of `.env`, no private key or
+   token, no personal address or path, no hosting detail, no Cyrillic letter, neither internal host; GitHub's `main`
+   the local `public` to the commit; one branch, no tag. The workflow had passed on all three.
+3. **Checked after it, as a reader without a login:** the page and the README answer, the licence is read as
+   AGPL-3.0, one branch and three commits are seen, and an anonymous clone brings 481 files.
+4. **Still the owner's to decide:** GitHub's protections that a public repository may have — alerts for dependencies,
+   secret scanning with push protection, protection of `main`, private reports of vulnerabilities (D-330).
+5. Specification revision 2.144 (`R-PUB-6`). No figure moves.
+
+**Done, the same day at the owner's word ("Yes, turn them on"):** alerts for vulnerable dependencies (alerts alone, no automatic pull requests); secret scanning with push protection; `main` protected against force pushes and deletion, the owner included, which a snapshot's ordinary push passes; private reports of vulnerabilities. GitHub showed no alert of either kind when they were turned on. To rewrite the public history the protection of `main` would have to be lifted first.
+
+## D-333 · 2026-11-25 · The open repository on the deck's last slide
+
+**Status:** Accepted · 2026-11-25 · the owner: "add a notice of the open repository on GitHub on the last slide, and
+a QR". On R-APP-16.
+
+**Decision:**
+1. **Under the three steps of «Try it yourself»** the last slide says that the model's code is open on GitHub, in
+   the page's language: a kicker, a headline, the address `github.com/andresingerman/energiamudel-baltic` and a line
+   on what is there. The address and the code are links to the repository.
+2. **The address as a QR code**, 231 px a side on the stage (7 px a module), drawn as an inline SVG of the code's
+   dark modules: version 4, error correction M. It was made once from the address with the library `uqr`, which is
+   no dependency of the application, and is kept in `deck.ts` as the shape; a browser's own reader scanned it back
+   to the address. A test holds the shape to the address, so a new address needs a new code.
+3. The slides' rule that no third-party address stands in their markup (R-NFR-1) holds: the repository is the
+   model's own, and the test lets that one address through.
+4. Specification revision 2.145 (`R-APP-16`). No figure moves.
+
+## D-334 · 2026-11-25 · The Documentation view names the repository
+
+**Status:** Accepted · 2026-11-25 · the owner: "make a mention of GitHub in the Documentation view". On the
+Documentation view's requirement and R-PUB-6.
+
+**Decision:**
+1. **One line under the view's tabs, on each of them** — the short methodology, the full one, the questions and
+   answers, the sources — says that the model's code, data and documents are open on GitHub and links to
+   `github.com/andresingerman/energiamudel-baltic`, in the page's language. The link opens in a tab of its own.
+2. The address is written once (`REPO` in `app/src/ui/labels.ts`) for this line and the deck's last slide (D-333).
+3. The questions and answers are left as the owner cut them (D-293): no question on the code is added.
+4. Specification revision 2.146. No figure moves.
+
+**Done:** D-333 and D-334 deployed on 2026-11-25 at the owner's word ("Yes, deploy"), main 8ed4123: the rollback copy `data/raw-aside/live-c04fac91338d/`; the opening view and the presentation's 54 sets none differing; 146 files as built, 200 to a reader, all four headers sent; `make live-check` passed in Chromium and WebKit. On the live site the last slide's code scanned back to the repository's address and the Documentation view's line linked to it.
+

@@ -6,6 +6,16 @@ public release, is in the author's private history (DECISIONS D-328); what was d
 
 ## Unreleased
 
+- Deployed 2026-11-25 (main 8ed4123: D-333's last slide, D-334's line in the Documentation view): every set as
+  before, `make live-check` passed.
+
+- The Documentation view names the public repository under its tabs, with a link (D-334, specification 2.146).
+
+- The deck's last slide names the public repository on GitHub, its address a link and a QR code (D-333,
+  specification 2.145).
+
+- The repository `andresingerman/energiamudel-baltic` is public since 2026-11-25 (D-332).
+
 - Deployed 2026-11-25 (main c04fac9: D-328's engine without the sampler, D-331's headers, `sso.php` gone): every
   set as before, the four security headers sent, `make live-check` passed.
 

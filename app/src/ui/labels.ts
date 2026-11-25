@@ -3,6 +3,9 @@
 import { lang, t } from "./i18n.ts";
 
 /** Text into HTML: the five characters that would otherwise be markup (every innerHTML sink). */
+/** The model's public repository on GitHub (D-329, D-332), without the scheme. */
+export const REPO = "github.com/andresingerman/energiamudel-baltic";
+
 export const esc = (t: string): string => t.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]!);
 
 
