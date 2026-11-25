@@ -29,7 +29,7 @@ Seven views:
 | *Import price* | The neighbours' prices as the model takes them, and the generation and capacity behind them. |
 | *Weather* | Why the climate years 1995, 2008 and 2009, and what they are in the Baltic states. |
 | *Statistics* | Ten years of gas, CO₂ and day-ahead prices and of wind and solar build-out, with the data centres and new industrial loads by country. |
-| *Documentation* | The methodology, questions and answers, and the sources. |
+| *Documentation* | The methodology and the sources. |
 
 The scenario is in the address bar (`#s=…`): a link opens the same run. *Export CSV* and *export JSON* save the results with their provenance ([`docs/methodology.md`](docs/methodology.md) §8.4).
 
@@ -80,13 +80,12 @@ make ci         # Python and engine tests, lints, the golden fixture, the contra
 
 ## Read in this order
 
-1. [`docs/faq.md`](docs/faq.md) — plain answers for a reader of the application.
-2. [`docs/methodology.md`](docs/methodology.md) — how the model works and how it is validated.
-3. [`docs/SPECIFICATION.md`](docs/SPECIFICATION.md) — the binding document: objectives, requirements with identifiers, the validation protocol, the gates.
-4. [`docs/DECISIONS.md`](docs/DECISIONS.md) and [`docs/ERRATA.md`](docs/ERRATA.md) — what was decided and why, and every error found.
-5. [`docs/SOURCE_REGISTER.md`](docs/SOURCE_REGISTER.md) and [`docs/CHANGELOG.md`](docs/CHANGELOG.md) — every source with its licence, and what changed.
-6. [`AGENTS.md`](AGENTS.md) and [`docs/PLAN.md`](docs/PLAN.md) — the rules for anyone working here, people and coding agents alike, and the implementation plan.
-7. [`docs/research/`](docs/research/) — the evidence behind the specification and the studies made on the way.
+1. [`docs/methodology.md`](docs/methodology.md) — how the model works and how it is validated.
+2. [`docs/SPECIFICATION.md`](docs/SPECIFICATION.md) — the binding document: objectives, requirements with identifiers, the validation protocol, the gates.
+3. [`docs/DECISIONS.md`](docs/DECISIONS.md) and [`docs/ERRATA.md`](docs/ERRATA.md) — what was decided and why, and every error found.
+4. [`docs/SOURCE_REGISTER.md`](docs/SOURCE_REGISTER.md) and [`docs/CHANGELOG.md`](docs/CHANGELOG.md) — every source with its licence, and what changed.
+5. [`AGENTS.md`](AGENTS.md) and [`docs/PLAN.md`](docs/PLAN.md) — the rules for anyone working here, people and coding agents alike, and the implementation plan.
+6. [`docs/research/`](docs/research/) — the evidence behind the specification and the studies made on the way.
 
 ## Licences
 

@@ -419,7 +419,6 @@ export const ET: Record<string, string> = {
   // docs.ts
   "Methodology": "Metoodika lühidalt",
   "The full methodology": "Täielik metoodika (inglise keeles)",
-  "Questions and answers": "Küsimused ja vastused",
   "Document shown": "Näidatud dokument",
 
   // wiring.ts

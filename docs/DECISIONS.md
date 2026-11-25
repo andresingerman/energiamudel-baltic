@@ -8679,3 +8679,88 @@ Documentation view's requirement and R-PUB-6.
 
 **Done:** D-333 and D-334 deployed on 2026-11-25 at the owner's word ("Yes, deploy"), main 8ed4123: the rollback copy `data/raw-aside/live-c04fac91338d/`; the opening view and the presentation's 54 sets none differing; 146 files as built, 200 to a reader, all four headers sent; `make live-check` passed in Chromium and WebKit. On the live site the last slide's code scanned back to the repository's address and the Documentation view's line linked to it.
 
+## D-335 · 2026-11-25 · The short Estonian methodology checked against the model
+
+**Status:** Accepted · 2026-11-25 · the owner: "check the correctness of what is written in «Metoodika lühidalt»",
+and to the five points found, "Yes, fix them". On the methodology's requirement and R-PUB-4.
+
+**Checked:** every claim of `docs/methodology_et.md` against the opening state, the presets, the validation's files
+and the page — the two-day window, oil shale's entry by the day, the fleets and the owner's wind and solar beside
+S1's own, the unit's 315 MW, the weather years and their weights, the fuel and CO₂ prices, the neighbours' levels
+and averages, the lines out in 2035, the bids, the gas bid's adder and its level in 2035, Kruonis's four steps, the
+validation's errors and the EstLink 2 effect, the sensitivity table's rows, the limits. About thirty hold.
+
+**Corrected, five:**
+1. **The contract card** it named left the Model view on 2026-11-24 (D-294): the text now names the sensitivity
+   table's row and the deck's slide, which compute the state's payment from the run with the plant.
+2. **The average price below the record:** "1–5 €/MWh" read 2–6 in 2023–2025 by the validation's files, and up to 7
+   in 2026.
+3. **Kruonis:** "about half as much" understated it — two to three times less than on the day-ahead market in
+   2023–2025.
+4. **The links:** ERAA's hourly capacities are the land borders' alone; the submarine cables run at their ratings
+   with the typical availability of ENTSO-E's HVDC statistics, Lithuania–Poland on Litgrid's plan, Harmony Link in
+   service.
+5. **Its date,** 28 October, is 25 November.
+
+And one in the English methodology it defers to: the replays' average below the record, 1.4–7.0 €/MWh with 2024's and
+2026's figures of an earlier run, is 1.6–6.6 with the figures the Calibration view shows.
+
+No requirement changes. No figure of the model moves.
+
+## D-336 · 2026-11-25 · The full methodology checked against the repository
+
+**Status:** Accepted · 2026-11-25 · the owner: "now check the full methodology", and to the findings, "Yes, fix them".
+On the methodology's requirement and R-PUB-4. One finding is left open for the owner: point 5.
+
+**Checked:** `docs/methodology.md`, all of it, in six parts by six readers who were given the code and the committed
+files and not each other's conclusions — about 700 claims, of which about 610 held. The engine's section was the
+cleanest: the gap table and the opening's prices were computed again and came out as written. The 67 findings were
+drafted as 83 exact replacements, checked together — each occurring once, none overlapping — and applied in one pass.
+
+**Corrected:**
+1. **Wrong facts.** No slide of the deck states the declaration of interest (the text said the second did); the
+   table of the four scenarios has no capture-price row; the storage of the gap test's weeks is 4.6 GW, not 4.0;
+   waste's availability factor is 0.941, not 0.943; the model's average in 2020–2021 is 11–16 €/MWh above the record,
+   not 12–17; a lineage record of a page no longer cited stays until its file is deleted, a clean build does not drop
+   it; the replay of 2020 does meet the case of E-160 at the register's adder, and D-165's mend acts there.
+2. **What the page no longer has**, each now told as the past it is: the contract card with its strike's slider and
+   four designs (D-294), the deck's notes (D-321), the one-page Presentation's blocks (D-249), the panel's chips of
+   family, target year and presets, the sensitivities as cards (D-195), the banner of the validation's state (D-201).
+3. **The deck as it stands:** seventeen slides in the present order, the neighbours' slides as the code draws them,
+   the map of nuclear projects (D-319), the repository's notice and QR code (D-333).
+4. **Figures of the run before D-171** given as current in the calibration's section — Kruonis's grid, the Δ table,
+   2020–2022's errors, the margin over v4, 2024's duration curve — are the committed files' now, the earlier ones
+   attributed to D-164's gross basis.
+5. **The batteries' cycling cost Δ — a finding about the model, left open.** The register's 71.5 €/MWh is the fit of
+   2026-03-12 to 2026-09-30. `fit_delta.ts` fits to the end of the year's data, and on the data as they stand, with
+   October in, gives 60.5. The text said `make fit` rewrites the same values; it now says what is true. **The refit is
+   not adopted:** the register and every figure of the site stay on 71.5 until the owner decides.
+6. **Since today:** the workflow runs on the public repository (D-329, D-332); the Calibration view's words (D-322)
+   and the Documentation view's line on the repository (D-334) are described; the lines' variants on the opening
+   scenario were computed again on the present opening, 101.7 / 100.6 / 103.5 €/MWh with both planned lines in service
+   and 107.5 / 109.0 / 109.3 at nameplate.
+7. Three stale lines outside it: the Makefile's help for `browser-check` and `deploy`, and the workflow's header.
+
+**Not touched:** the sensitivity table's figures in §8, which no reader computed again; three figures of §3 and §4
+that need the raw workbooks; the dated timings. No requirement changes. No figure of the model moves.
+
+## D-337 · 2026-11-25 · The questions and answers taken out
+
+**Status:** Accepted · 2026-11-25 · the owner: "remove the questions and answers" (the Documentation view's tab
+«Küsimused ja vastused»). On R-APP-9, R-PUB-2 and R-PUB-4; it ends the questions and answers of D-293.
+
+**Decision:**
+1. **The Documentation view has three tabs in Estonian and two in English:** the short methodology and the full one
+   (Estonian), the methodology (English), and the Sources. The tab of the questions and answers is gone.
+2. **`docs/faq.md` and `docs/faq_et.md` leave the repository.** README's reading order starts with the methodology.
+3. **What the questions and answers alone carried goes with them, and is said here so that it is the owner's choice
+   and not an oversight:** "Who made it?" was the one place on the site that named the author, his role at Fermi
+   Energia and his address, and with it the declaration of interest. README still states the declaration, in the
+   owner's one sentence (D-326); the site itself now states neither. The validation gate's figures, which the
+   questions and answers quoted, stay in the exports' gate line, the methodology's gate status and the Calibration
+   view; the test that read them in the questions and answers reads the methodology's head.
+4. The short Estonian methodology's last section no longer points to the tab, and says where the code is.
+5. Specification revision 2.147. No figure moves.
+
+**Done:** D-335, D-336 and D-337 deployed on 2026-11-25 at the owner's word ("Yes, deploy"), main 0abd186: the rollback copy `data/raw-aside/live-8ed412314716/`; the opening view and the presentation's 54 sets none differing; 144 files as built, 200 to a reader, all four headers sent. `make live-check` passed in Chromium. In WebKit the browser's own process crashed twice right after the deploy, at two different steps ("Target crashed", then the page closed while it waited), with no failed check before either; run again three times, it passed all sixteen checks each time. Nothing of the page's computing changed with this deploy, and the crash was not met again: it is set down as seen, its cause not found. On the live site the Documentation view shows three tabs in Estonian and both methodologies as corrected.
+

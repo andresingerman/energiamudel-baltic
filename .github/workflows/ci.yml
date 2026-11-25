@@ -1,5 +1,5 @@
-# SPECIFICATION.md R-DEP-2: the repository's own gate on every push. Inert until the owner creates a
-# remote (R-PUB-6); it calls the same target as a local run.
+# SPECIFICATION.md R-DEP-2: the repository's own gate on every push to the public repository (R-PUB-6,
+# D-332); it calls the same target as a local run.
 name: ci
 on: [push, pull_request]
 permissions:

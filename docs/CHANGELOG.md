@@ -6,6 +6,19 @@ public release, is in the author's private history (DECISIONS D-328); what was d
 
 ## Unreleased
 
+- Deployed 2026-11-25 (main 0abd186: D-335 and D-336's methodologies, D-337's questions and answers out): every
+  set as before; the live check passed in Chromium, and in WebKit after the browser's process had crashed twice.
+
+- The questions and answers are taken out: their tab of the Documentation view, `docs/faq.md` and `docs/faq_et.md`
+  (D-337, specification 2.147). README alone states the declaration of interest.
+
+- The full methodology checked against the repository and corrected in 67 places (D-336): wrong facts, what the
+  page no longer has, the deck as it stands, the calibration's figures of an earlier run. The batteries' cycling
+  cost would refit to 60.5 €/MWh on today's data against the register's 71.5: stated, not adopted.
+
+- The short Estonian methodology checked against the model and corrected in five places (D-335): the contract
+  card it named, the price bias, Kruonis, the links, its date; the English methodology's bias figures too.
+
 - Deployed 2026-11-25 (main 8ed4123: D-333's last slide, D-334's line in the Documentation view): every set as
   before, `make live-check` passed.
 

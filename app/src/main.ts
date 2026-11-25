@@ -901,13 +901,12 @@ ipEl.addEventListener("click", (e) => {
   if (b) { ipZone = b.dataset.ipzone as IpZone; void drawImport(true); }
 });
 
-// the documentation (R-APP-9): the methodology and the questions and answers as the repository
-// holds them, loaded when first shown — in Estonian the questions' and the methodology's short
-// translations, the full methodology in English beside them (D-142); the Sources view from sources.json
+// the documentation (R-APP-9): the methodology as the repository holds it, loaded when first shown — in Estonian
+// its short summary, the full methodology in English beside it (D-142); the Sources view from sources.json. The
+// questions and answers were taken out at the owner's word (D-337)
 const DOCS: Record<Exclude<DocTab, "sources">, () => Promise<{ default: string }>> = {
   methodology: lang === "et" ? () => import("../../docs/methodology_et.md?raw") : () => import("../../docs/methodology.md?raw"),
   full: () => import("../../docs/methodology.md?raw"),
-  faq: lang === "et" ? () => import("../../docs/faq_et.md?raw") : () => import("../../docs/faq.md?raw"),
 };
 let docTab: DocTab = "methodology";
 

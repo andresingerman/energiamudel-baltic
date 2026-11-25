@@ -27,7 +27,7 @@ figures because they can check them.
 ## Brand Personality
 
 Rigorous, transparent, calm. The voice of a research institute's report: precise words, numbers with their
-units and their sources, no persuasion. The author works with Fermi Energia and declares it in the README and in the questions and answers (on every page until D-224);
+units and their sources, no persuasion. The author works with Fermi Energia and declares it in the README (in the questions and answers too until D-337, on every page until D-224);
 the design earns trust by being visibly neutral, not by selling.
 
 ## Anti-references

@@ -25,7 +25,7 @@ test("every input, select, textarea and button has an accessible name", () => {
 });
 
 test("the results' controls are named too: the documentation tabs (the contract card out, D-294; the adequacy tab out, D-320)", () => {
-  assertNamed(docsHtml("faq", "<p>text</p>"), "documentation tabs");
+  assertNamed(docsHtml("methodology", "<p>text</p>"), "documentation tabs");
 });
 
 test("the demand and border-price hints scale the run's inputs, and wait while they are stale", () => {

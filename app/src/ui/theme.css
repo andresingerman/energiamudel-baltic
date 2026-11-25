@@ -535,7 +535,7 @@ caption.rh { text-align: left; margin: 0; padding: 0 0 6px; }
 .ip-months tbody th, .ip-months thead th:first-child { text-align: right; padding-right: 6px; }
 .ip-months tbody th, .ip-months thead th:first-child { overflow: visible; } /* "average" is wider than the plot's margin it aligns with (ERRATA E-166) */
 .ip-table tbody th { text-align: left; padding-left: 0; }
-/* the documentation (R-APP-9): the methodology, the questions and answers, the sources. Since D-197 the documents as
+/* the documentation (R-APP-9): the methodology and the sources (the questions and answers until D-337). Since D-197 the documents as
    pills on a track, the text in a white card, a contents rail beside the long texts, the lead on a plate, square
    bullets, a check's status as a chip; the Sources' documents by letter with a search box. The Statistics page's
    parts on the same track (D-213) */

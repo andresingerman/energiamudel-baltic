@@ -1,4 +1,4 @@
-// The documentation views (R-APP-9): methodology.md and faq.md rendered in the page, and the Sources
+// The documentation views (R-APP-9): methodology.md rendered in the page (the questions and answers until D-337), and the Sources
 // view from sources.json — the register the export generates from the lineage records — with a row
 // per source family and per document that the panel's source buttons link to. The Markdown reader
 // covers what the documents use: headings, paragraphs, lists with continued lines, pipe tables,
@@ -142,10 +142,10 @@ export function filterSources(root: ParentNode, q: string): void {
   }
 }
 
-export type DocTab = "methodology" | "full" | "faq" | "sources";
+export type DocTab = "methodology" | "full" | "sources";
 /** In Estonian the methodology's short summary first and the full text, in English, beside it (D-142). */
 const DOC_TABS: [DocTab, string][] = [["methodology", t("Methodology")], ...(lang === "et" ? [["full", t("The full methodology")] as [DocTab, string]] : []),
-  ["faq", t("Questions and answers")], ["sources", t("Sources")]];
+  ["sources", t("Sources")]];
 
 export function docsHtml(tab: DocTab, body: string): string {
   // under the tabs, on each of them, where the model's code is (D-334)

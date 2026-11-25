@@ -1,7 +1,7 @@
 # Metoodika lühidalt
 
 *Lühikokkuvõte ingliskeelsest metoodikast (`docs/methodology.md`, sakk „Täielik metoodika“),
-seisuga 28. oktoober 2026. Kui need kaks lahknevad, kehtib ingliskeelne; iga allpool oleva väite
+seisuga 25. november 2026. Kui need kaks lahknevad, kehtib ingliskeelne; iga allpool oleva väite
 valemid, allikad ja otsused on seal.*
 
 ## Mida mudel teeb
@@ -33,8 +33,9 @@ mootoriga.
   avaldatud, omaniku hinnatasemega: Soome ×1,88, Rootsi SE4 ×1,96, Poola ×2,10, keskmiselt 75, 90 ja 120 €/MWh
   (D-182, D-185, D-194). Stsenaariumi gaasi- ja CO₂-hind liigutavad ainult Balti jaamu: naabrite profiilide
   ümberhinnastamine on eemaldatud (D-194). Teised profiilid algavad ×1-st (D-190).
-- **Ühendused:** ERAA 2025 tunnipõhised võimsused; EstLink 3 ja neljas Eesti–Läti liin on 2035.
-  aastal väljas nagu S1-s.
+- **Ühendused:** merekaablid on nimivõimsusel koos tüüpilise käideldavusega ENTSO-E alalisvooluühenduste
+  statistikast; maismaapiirid ERAA 2025 tunnipõhiste võimsustega; Leedu–Poola piir Litgridi plaani järgi,
+  Harmony Link töös. EstLink 3 ja neljas Eesti–Läti liin on 2035. aastal väljas nagu S1-s.
 
 ## Pakkumised
 
@@ -69,8 +70,9 @@ erinevusega juhtumist 0 SMR. Neli standardtundlikkust — omaniku neli LNG ja CO
 45/95, 60/120 ja 75/150 €/MWh ja €/t, LNG alumise kütteväärtuse järgi) — on üks tabel, omaniku oma (D-195): iga
 paari all gaasijaamade pakkumine, Eesti hind tuumaenergiata ning ühe kuni kolme plokiga, igaühe juures aasta osa, mil
 hinna kujundas Balti gaasijaam, ning plokkide kohta hinnaalanduse kasu, hinnavahemehhanism ja tarbijate netokasu
-aastas (D-183, D-184, D-187, D-188). Hinnavahe lepingu kaart arvutab riigi makse jaamaga arvutusest, nii et jaama
-enda mõju hinnale on sees.
+aastas (D-183, D-184, D-187, D-188). Hinnavahemehhanismi rida arvutab riigi makse jaamaga arvutusest, nii et jaama
+enda mõju hinnale on sees; sama arvutus on esitluse slaidil, mis näitab jaama kogukasu Eestile. Eraldi hinnavahe
+lepingu kaarti mudeli vaates enam ei ole (D-294).
 
 ## Piirangud
 
@@ -84,10 +86,11 @@ enda mõju hinnale on sees.
 - **Tarbimine ei reageeri hinnale** peale ERAA tarbimise juhtimise astmete.
 - **Ette näeb kaks päeva.** Salvestid ja vesi teavad hindu kaks päeva ette kindlalt.
 - **Tunnipõhine.** Turg on alates oktoobrist 2025 veerandtunnipõhine; mudel arvutab tunde.
-- **Kruonist kasutatakse liiga vähe:** mudelis umbes poole vähem kui tegelikult päev-ette turul.
-- **Keskmine hind on mõne euro võrra madalam:** valideerimisaastatel 1–5 €/MWh alla tegeliku.
+- **Kruonist kasutatakse liiga vähe:** aastatel 2023–2025 mudelis kaks kuni kolm korda vähem kui tegelikult
+  päev-ette turul.
+- **Keskmine hind on mõne euro võrra madalam:** aastatel 2023–2025 2–6 €/MWh alla tegeliku, 2026. aastal kuni 7.
 
 ## Kust lugeda edasi
 
-Täielik metoodika (inglise keeles) on selle vaate teisel sakil; küsimused ja vastused on kolmandal;
-iga väärtuse allikas on paneeli *i* nupu taga ja vaates „Allikad“.
+Täielik metoodika (inglise keeles) on selle vaate teisel sakil; iga väärtuse allikas on paneeli *i* nupu taga
+ja sakil „Allikad“. Mudeli kood, andmed ja dokumendid on GitHubis avalikud.

@@ -32,14 +32,17 @@ Time is UTC and marks the start of the interval everywhere (R-DATA-4). Sub-hourl
 
 Stage 2 checks (`make check`): every fact row has its record and every record its file; every
 source in use is registered and every cited document cached; prices of the six zones and load
-of the three core zones are complete for 2023-2025 with 24 hours on every DST date; a fresh
+of the three core zones are complete for 2023-2025, less the source gaps the check names (7 hours of Estonia's load in
+2025), with 24 hours on every DST date; a fresh
 build reproduces every table; JAO's time base agrees with ENTSO-E's; every documentary row has a
-verification record (`data/documentary/verification.csv`). `make db` updates the database in
+verification record (`data/documentary/verification.csv`); every table holds rows; every fitted parameter's lineage
+record states the value the register holds (D-147, ERRATA E-158). `make db` updates the database in
 place and skips archives that have not changed; a row removed from a documentary CSV leaves its
 table at the next `make db` (ERRATA E-095), while a page citation removed from one keeps its
-lineage record until a clean build (`rm data/energiamudel.duckdb && make db`), and the rebuild
-check reports the difference. A change to how an archive is read reaches the database only
-through a clean build, since an unchanged archive is not read again (E-099).
+lineage record: the record's file stays in `data/lineage`, and every build loads it, a clean one too, until the
+file is deleted, so the rebuild check, built from the same records, reports no difference. A change to how an
+archive is read reaches the database only through a clean build (`rm data/energiamudel.duckdb && make db`),
+since an unchanged archive is not read again (E-099).
 
 ### 1.1 Verification of the documentary inputs
 
@@ -52,7 +55,8 @@ evidence and the method (DECISIONS.md D-006).
   `validate/documentary_tyndp.py`, `validate/documentary.py`; `.venv/bin/python -m
   validate.documentary`).
 - **Rows read off a page** were re-read on the cached edition on 2026-09-24 by an AI assistant
-  (Claude), page by page, each record naming the page found. The parameters added in Stage 2
+  (Claude), page by page, each record naming the page found; a row added or changed since carries the date
+  of its own reading (`verified_on`, from 2026-09-25 to 2026-11-24) and its method. The parameters added in Stage 2
   were extracted by one reader and confirmed by a second pass: a script found each printed
   value on its cited page, and the tables and charts of the ENTSO-E HVDC statistics, whose text
   layer cannot be read, were re-read from the page images by a separate reader.
@@ -63,9 +67,10 @@ the cached file. Errors found are in `docs/ERRATA.md`.
 
 ## 2. PECD versus observed capacity factors (R-TIME-5)
 
-Scenario years run on PECD 3.1 capacity factors (TYNDP 2024, target year 2030); observed years
-run on observed ones (R-SUP-2). `validate/pecd_cf.py` compares the two per core zone and
-technology. Observed capacity factor = ENTSO-E A75 generation / (average of the A68 capacity at
+Scenario years of the TYNDP 2024 family run on PECD 3.1 capacity factors (target years 2030 and 2040: the
+target's own, or the two nearest blended, D-020); observed years run on observed ones (R-SUP-2).
+`validate/pecd_cf.py` compares the two per core zone and technology, PECD's at target year 2030.
+Observed capacity factor = ENTSO-E A75 generation / (average of the A68 capacity at
 1 January of the year and of the next year × hours). A year outside 0.05-0.20 (solar) or
 0.10-0.50 (onshore wind) is a data error, not weather, and is left out. Two comparisons: the
 same calendar years 2015-2019, the only overlap (D-005); and the observed years 2020-2025
@@ -156,7 +161,8 @@ higher than PECD 3.1's and the observed ones (Estonian onshore wind 2035: 0.34�
 ## 4. The export (M1; R-DATA-8, DECISIONS D-013 to D-015)
 
 `make export` (`export/`) turns the database into the files the browser reads, in
-`data/export/`, each validated against its JSON Schema in `schema/` before it is written; the
+`data/export/`; the year files, `presets.json`, `links.json.gz` and `manifest.json` are each validated against
+their JSON Schema in `schema/` before they are written (the validation, attribution and sources files have none); the
 TypeScript types of the same schemas are generated into `app/src/contract/` (`npm run contract`).
 The same database gives the same bytes: keys sorted, numbers rounded to the precision of their
 kind (MW and MWh whole, prices 0.01, capacity factors 0.0001, temperature 0.1), gzip without a
@@ -190,18 +196,23 @@ D-091, ERRATA E-073; planned outages are not used, their records outlive cancell
 An observed year carries only what the engine takes as given or needs as a bound
 (`years.observed`): load; hourly output of wind, solar, small run-of-river, waste and other (scaled
 by the capacity the user sets, R-SUP-2); weekly energy of the Daugava cascade and of Kruonis
-(R-ENG-5); installed capacity (A68); temperature; balancing capacity procured from the market's
+(R-ENG-5), with the weekly bounds read off the same record — the cascade's minimum, maximum and 10th and 90th
+percentile hour, Kruonis's maximum (D-022, D-042, D-044, D-073); the fuel-burning technologies' weekly maximum and
+10th percentile hour (D-022, D-073); installed capacity (A68); temperature; balancing capacity procured from the market's
 first hour, 2025-02-04 23:00 UTC, and 0 before (R-STO-5, PLAN O-2); the boundary zones' prices;
-offered capacity per border and direction, and on the AC borders the capacity allocated to
-balancing (R-LINK-5); monthly gas in €/MWh thermal (Pink Sheet TTF / ECB USD per EUR / 0.2930711
+offered capacity per border and direction, and on the Estonian–Latvian border the capacity
+allocated to balancing (R-LINK-5; the Latvian–Lithuanian border's published capacity does not hold it, D-077);
+monthly gas in €/MWh thermal (Pink Sheet TTF / ECB USD per EUR / 0.2930711
 MWh per MMBtu, NIST SP 811), per gross MWh as TTF trades — a run takes it per net MWh, the basis of
 ERAA's efficiencies and prices, over 0.9 (IPCC 2006, Volume 2, §1.4.1.2; D-171) — and EUA (EEX's
 auctions of general allowances; the aviation allowances' are left out, D-094). Prices of EE, LV and LT, all generation, flows, scheduled exchanges and net
 positions go to `validation/<year>.json.gz`, which the engine never loads (R-BND-3); A78 events and
-UMM messages of the five borders to `attribution/<year>.json` (R-LINK-6). A climate year carries
+UMM messages of the five borders to `attribution/<year>.json.gz` (R-LINK-6). A climate year carries
 the National Trends demand profiles and PECD capacity factors of target years 2030 and 2040, the
-Daugava and Lithuanian run-of-river inflow of 2030, 2040 and 2050, and every boundary profile
-published for the year; its labels are R-TIME-4's ranks (`years.ranks`). A weather scenario carries
+Daugava and Lithuanian run-of-river inflow of 2030, 2040 and 2050, the year's temperature, every boundary profile
+published for the year and, beside those, the neighbours' observed prices of 2025 (`REAL_2025`, D-051) and the two
+tight profiles of energiamudel's own research on the neighbours (`TIGHT_2035`, `TIGHTJ_2035`, D-121); its labels are
+R-TIME-4's ranks (`years.ranks`). A weather scenario carries
 NT+'s four demand components, capacity factors, hydro inflow and boundary prices, with the proxies
 of D-015.
 
@@ -292,11 +303,12 @@ the storage units and the Daugava.
   (electrolysis taken out, R-DEM-5) spread on the TYNDP demand profile of the weather year;
   both times the multiplier and the firm block (R-DEM-3, R-DEM-4).
 - *Fixed output:* observed small hydro, waste and other; in scenario runs run-of-river, and waste
-  at its megawatts less the technology's forced and planned outages (a factor of 0.943: a waste
+  at its megawatts less the technology's forced and planned outages (a factor of 0.941: a waste
   plant burns what it is paid to take, whatever the price; D-074, ERRATA E-067); the
   plant's must-run share under the negative-price clause (R-SMR-4) in its units' service hours (`smr.ts`: each unit's 336-hour
   outage in the window of largest Baltic surplus of fixed and renewable output over load, 168
-  hours apart).
+  hours apart); the power the plant has above that share is an offer at `CLAUSE_BID`, 0.01 €/MWh, and without the clause
+  all of its available power is an offer at the market's floor (D-150).
 - *Offers:* wind and solar at 0 €/MWh, curtailable, their output observed (A75) or capacity ×
   PECD factor (R-SUP-2); thermal classes at their short-run cost `thermalOffer`:
 
@@ -316,7 +328,11 @@ the storage units and the Daugava.
   from zero exchange (ERRATA E-041).
 - *Links:* observed A31, on EE–LV less the balancing reservation (R-LINK-5; LV–LT's A31 is
   already without it, D-077); ERAA 2025's hourly
-  NTC in scenario runs.
+  NTC in scenario runs without a choice of lines (the scripts' runs of `runs.ts`, the gap test's among them). With
+  one, as every run of the application has, a scenario year's border is the sum of its lines (`scenarioLines`;
+  R-LINK-3 to R-LINK-5, D-032): ERAA's NTC shared among a border's cables by their rating, each at its availability,
+  the two internal borders less their balancing reservation, LT–PL its lines at their megawatts, held to Litgrid's
+  plan unless the choice lifts it. The NTC of the boundary borders above is built the same way.
 - *Reserve headroom (R-STO-5…7, R-SUP-7):* per hour the zone's FCR + aFRR up + mFRR up (observed
   from 2025-02-04 23:00 UTC, else 0; scenario runs: the 2026 need allocated by 2025 shares);
   batteries hold min(capacity, FCR + aFRR + s × mFRR), s the share of mFRR they carry (0 since
@@ -327,11 +343,14 @@ the storage units and the Daugava.
   already net of what was held (§7.1), so nothing is taken off them twice.
 - *Calibrated elements (M3, §7):* in observed years each thermal technology is available up to
   its weekly maximum output (`capAvailability`); the CHP floor of R-SUP-5 runs whatever the
-  price (`applyChpFloor`); every gas offer of the three zones bids one price, a combined-cycle
+  price (`applyChpFloor`), and in a replay each fuel-burning technology at least the week's 10th-percentile hour of its
+  observed output (`applyObservedFloor`, D-073); every gas offer of the three zones bids one price, a combined-cycle
   plant's cost plus the fitted adder (`applyGasBid`, R-SUP-6, D-164; until then four tranches of a
-  utilisation markup in Latvia and Lithuania, `applyMarkup`); Kruonis bids its cycle cost, its output in an hour in four
-  steps of its power (D-115; §7.1); the Daugava's minimum flow is its observed weekly
-  minimum in observed years.
+  utilisation markup in Latvia and Lithuania, `applyMarkup`), and above it a thousandth of what the offer's own class
+  costs more than that plant, so that the cheaper plant runs first among them (`GAS_ORDER`, D-168); Kruonis bids its
+  cycle cost, its output in an hour in four
+  steps of its power (D-115; §7.1); the Daugava's minimum flow is the 10th-percentile hour of
+  its observed week in observed years (D-044; the week's observed minimum where a year file gives none).
 
 What the builder assumes where the data say nothing is D-020 (target-year blending, the NTC and
 fuel-path years, biomass prices, thermal availability, the proxies of small hydro and `other`).
@@ -444,7 +463,8 @@ further quarter costing the fitted step more (D-115; §7.1), so the programme do
 shave a peak with all the plant has, as a price-taker with perfect foresight would; where the programme is degenerate — two zones' gas plants with the same
 cost, for one — the split of volumes between them is the perturbation's choice, not a fact
 (R-ENG-9); prices are the duals, one per zone and hour. Of both: Kruonis's turbines deliver at
-most 666 MW under the programme's convention (P × η); thermal plants are available at
+most 666 MW under the programme's convention (P × η) at the 900 MW of the observed years, 694 MW at the 938 MW of ERAA
+2035's fleet, which the opening state has; thermal plants are available at
 installed capacity in scenario runs and at their weekly maximum output in observed years (§7.1);
 the Daugava is held to the record's weekly band in observed years (§7.1), and in scenario runs
 to the band the record shows for a week of the same average output (D-071): the weeks of 2020–2025
@@ -485,7 +505,8 @@ balances, the Daugava's water value the dual of its budget row in the week's fir
 bit for bit; with it the stores planned the week with all of its hours known, and held the price
 at their water value wherever they ran part-loaded (§7.3). The
 solver is HiGHS compiled to WebAssembly (highs-js, pinned) with HiGHS's default options written
-out (`app/scripts/highs.ts`); the model goes to it as arrays in compressed sparse columns. Within
+out, but presolve, off since D-130 (`OPTIONS` in `app/src/worker/solver.ts`, which `app/scripts/highs.ts` loads in
+Node); the model goes to it as arrays in compressed sparse columns. Within
 a clearing the weeks are independent, so the workers share a year's (`split.ts`, D-114): each
 clears a part of contiguous weeks, and the parts put back together are, bit for bit, what `runLP`
 gives solving them one after the other, each day by day (§8). With oil shale's market entry
@@ -609,7 +630,8 @@ solved by the same HiGHS release in WebAssembly.
 
 The test weeks are weeks 3 and 28 (UTC weeks of 168 hours from 1 January) of the calibration
 years 2023–2025 in replay, and of climate year 2009 with ERAA 2035's fleets (1 500 MW of
-Estonian batteries, 4.0 GW in all with Kruonis), Distributed Energy 2035 as published at the borders (the gap test does not re-price, D-079) and
+Estonian batteries, 4.6 GW in all with Latvia's 420 MW, Lithuania's 1 750 MW and Kruonis's 938 MW), Distributed Energy
+2035 as published at the borders (the gap test does not re-price, D-079) and
 ERAA 2025's fuel prices. `make gap` writes `data/derived/gap/gap.json` and fails when the gate
 is not met.
 
@@ -700,7 +722,9 @@ from the engine of record. `make fit` runs the fits (`validate/fit.py`) into the
 the export copies the register into `presets.json` (`fitted`), from where the engine reads it.
 Lineage records are not committed (they are rebuilt from the raw cache), so on a fresh clone
 `make fit` runs after `make db` and before `make export`: it finds the register equal to the
-committed presets, rewrites the same values and their records, and exports only if they differ.
+committed presets, rewrites the same values and their records, and exports only if they differ — but for the
+batteries' Δ as the data stand on 2026-11-25: its fit runs to the end of the year's data, which now hold October, and
+gives 60.5 €/MWh where the register holds 71.5, a refit not adopted (§7.2).
 `make validate` replays 2020–2026 (`app/scripts/validate_fit.ts`, written to
 `data/derived/validation/<year>.json`) and runs the EstLink 2 gate (`app/scripts/estlink2.ts`).
 The step-by-step log, what was tried and not kept, and where the error sits are in
@@ -708,7 +732,8 @@ The step-by-step log, what was tried and not kept, and where the error sits are 
 `docs/research/2026-10-04_calibration_night.md` (steps S7–S12, the round of D-042 and D-044) and
 `docs/research/2026-10-05_validation_round3.md` (steps S13–S17, the round of D-073).
 The figures of this section are on the gas plants' one bid and its refit (D-164, decided by the owner
-on 2026-10-22), each beside the figure on the register before it, which runs Kruonis's output in steps of
+on 2026-10-22) and, since D-171 (2026-10-23), on the record's gas price per net MWh with the adder refitted on it,
+each beside the figure on the register before it, which runs Kruonis's output in steps of
 its power with the markup refitted on it (D-115, accepted by the owner on 2026-10-11, D-116), over the decisions the owner
 accepted on 2026-10-11 (D-114) — September's data (D-111), the engine of record day ahead (D-112),
 oil shale's market entry with its start on the megawatts available (D-113, D-114) — each beside the
@@ -758,12 +783,14 @@ D-025's in D-042's.
   committed again with every such class on, its week cleared again, a start the rule did not pay for
   and the next day decided as before (D-165). Under one gas adder of 50 €/MWh the fluidised-bed
   class stayed off on 10 June 2020 and 16 hours cleared at the cap (ERRATA E-160); at the register's
-  adder no replay meets it. Replays and scenarios alike; the decision reads the
+  adder of 42.5 the replay of 2020 meets it on the same day — the fluidised-bed class, 288 MW available, kept off and
+  16 hours at the cap, none once the day is committed again — and no other replay does. Replays and scenarios alike;
+  the decision reads the
   model's own price; its results count the committed minimum load (ERRATA E-141). In the record
   the fleet is off — no hour of the day above 50 MW, below any unit's minimum stable load — on 11,
-  11, 22 and 40 % of the days of 2023–2026, and runs in campaigns of 9–17 days at the median, a
+  11, 22 and 38 % of the days of 2023–2026 (2026 to October), and runs in campaigns of 8–17 days at the median, a
   day on's least hour at 57–63 % of its highest (`spikes/commitment/record.ts`); under the entry
-  the replays' oil shale lies within 6 % of the record in 2023–2025 and 8 % in 2026 (§7.3; within 7 % in
+  the replays' oil shale lies within 7 % of the record in 2023–2025 and 8 % in 2026 (§7.3; within 7 % in
   2023–2026 on D-115's register).
 - *Kruonis* bids its cycle cost, Δ = 60 €/MWh, the batteries' prior (R-PAR-6), as in v4 (v4 D-053).
   Its power in a replay is the record's of the week (D-073): it delivers at most the week's
@@ -938,7 +965,7 @@ three zones' MAE over the two fit years 69.78 at cost and step 0, 61.43 with the
 gas price per net MWh; on the gross price of D-164 the adder was 51.25 — 50 and 52.5 — 71.98 at cost and 61.30). The schedule it
 replaced, 32.5 / 80 / 220 / 260 on Latvia's and Lithuania's gas alone (below), fits the two years to 59.13 on the
 same engine (59.51 when it was fitted, before D-130) and keeps more of the price distribution's tail: in 2025 Latvia
-has 197 hours above 250 €/MWh on it against the one bid's 105 and the record's 251, and the duration curve's RMSE
+has 197 hours at or above 250 €/MWh on it against the one bid's 105 and the record's 251, and the duration curve's RMSE
 8.0–8.7 against 14.4–15.9 (§7.3). The one bid is identified where the schedule was not: each fit year alone gives
 47.5–55 €/MWh at every step of Kruonis's grid, and its left-out sum is its fitted one; the schedule's top bins
 differed threefold between the years. On the net basis both fit years choose 42.5 at step 60, and the register
@@ -1023,7 +1050,15 @@ further quarter a step more (§7.1). The gas bid's adder (before D-164 the sched
 grid, and the step whose register fits the two fit years best is kept — one structural number for both years:
 carried as a fifth coordinate of the descent the step ends where the path takes it (on the four
 units' form the fit years ask for 135 and 45 €/MWh on their own, and their average fits neither).
-The fit years' sum of MAE at the register refitted at each step, with the one bid (D-164):
+The fit years' sum of MAE at the register refitted at each step, with the one bid on the record's gas price per net
+MWh (D-171):
+
+| Step, €/MWh | 0 | 15 | 30 | 45 | **60** | 90 |
+|---|---|---|---|---|---|---|
+| Adder, €/MWh | 45 | 43.75 | 42.5 | 42.5 | **42.5** | 42.5 |
+| Sum of MAE, 2023 + 2024 | 64.56 | 62.97 | 62.00 | 61.51 | **61.43** | 61.59 |
+
+with the one bid on the gross price (D-164), before it:
 
 | Step, €/MWh | 0 | 15 | 30 | 45 | **60** | 90 |
 |---|---|---|---|---|---|---|
@@ -1040,8 +1075,8 @@ and with the schedule (D-115):
 *At step 0 the schedule's programme is D-114's and returns its register to the euro. Lineage: the gas bid's,
 `pipeline.gas_bid.2023-2024` (the markup's, `pipeline.markup.2023-2024`, before D-164).*
 
-The step is weakly identified — 45 and 60 fit the years within 0.07 with the one bid (0.04 on D-115's
-register), the gain holds over 30–60 — and
+The step is weakly identified — 45 and 60 fit the years within 0.08 with the one bid (0.07 on the gross price of
+D-164, 0.04 on D-115's register), the gain holds over 30–60 — and
 a segment is a quarter of the hour's power: in a replay the week's, about 106 MW at the fit years'
 median, in a scenario the plant's full output, 166–187 MW for the fleets' 900–1 010 MW. The step
 fitted on the replays holds a scenario's Kruonis back 35–45 % less per megawatt (D-115, limits).
@@ -1064,13 +1099,16 @@ the replay, Estonia's price is less low and its batteries discharge more at a gi
 fit answers with 69.5. With September (D-111) the window holds 31 015 MWh and the fit gives 63.5;
 the day-ahead clearing (D-112) leaves it there and oil shale's market entry (D-113) takes it to 71,
 where its start on the megawatts available (D-114) leaves it; Kruonis's output in steps (D-115)
-takes it to 71.5.
+takes it to 71.5. The register's 71.5 is the fit of that window, from 2026-03-12 to 2026-09-30.
+`fit_delta.ts` fits to the end of the year's data: run on the data as they stand on 2026-11-25, with October in, it
+gives 60.5 €/MWh (the window to hour 7 296, 42 777 MWh observed). That refit is not adopted — the register and every
+figure of the site stay on 71.5 until the owner decides — so `make fit` today does not rewrite the same value for Δ.
 
 | mFRR share held by batteries | Δ, €/MWh | Modelled discharge, MWh | Residual |
 |---|---|---|---|
 | 0.5 (the specification's default) | 0 (bound) | 18 445 | −40.5 % |
-| 0.25 | 37.5 | 31 205 | +0.6 % |
-| **0 (adopted, D-025)** | **71.5** | 31 297 | +0.9 % |
+| 0.25 | 37.5 | 31 206 | +0.6 % |
+| **0 (adopted, D-025)** | **71.5** | 31 241 | +0.7 % |
 
 *At the default share even Δ = 0 leaves the batteries two fifths short: the reserve takes most of
 their power. On D-115's register, before the one bid: 0 (18 445 MWh), 37.5 (31 163) and 71.5 (31 161). On D-114's register: 0 (18 414 MWh), 37.5 (30 916) and 71 (31 023); on D-113's as
@@ -1133,7 +1171,8 @@ duration-curve RMSE 1.4–8.7, average model prices 90.0 / 92.8 / 93.5, 84.1 / 8
 prices 75.4 / 84.3 / 83.7 and Latvia's dear hours 11.2 % before it).*
 
 2023 meets the three price thresholds in every zone. 2024 meets the MAE but misses, in Latvia and Lithuania, the
-duration curve (10.8 and 10.6 against 10) and the share of dear hours (3.3 points short against the 3 allowed),
+duration curve (10.9 and 10.7 against 10; 10.8 and 10.6 on D-164) and the share of dear hours (3.4 and 3.3 points short
+against the 3 allowed),
 which it met on D-115's register (8.4 and 2.3–2.5 short) and missed before it by a hair (3.1 and 3.0; 2.8–2.9 with
 oil shale's start on its installed megawatts, as D-113 was proposed; 3.2 before D-112 and D-113, and before D-106
 the duration curve by 0.1 and by less than 0.05). The blind year 2025 meets the share of dear hours (2.9 points
@@ -1185,7 +1224,7 @@ with oil shale's start on its installed megawatts, as D-113 was proposed; 11, 9 
 18 and 17 on M3's).
 
 What is left sits in the dear hours, and less of it than the bins of the record's price say. With the one bid the
-upper tail is shorter still: Latvia's hours above 250 €/MWh are 38 / 121 / 105 in 2023–2025 against 48 / 146 / 197 on
+upper tail is shorter still: Latvia's hours at or above 250 €/MWh are 38 / 121 / 105 in 2023–2025 against 48 / 146 / 197 on
 D-115's register and the record's 105 / 218 / 251. In
 the hours the market cleared above 250 €/MWh — 99, 211 and 247 hours of 2023, 2024 and 2025, most
 of them in the morning and evening ramps — the model is 90–135 €/MWh below the record with the one bid on the
@@ -1218,13 +1257,15 @@ pumps part-loaded and 70 where the Daugava does, against 17 and 31 in the market
 (`spikes/validation-round2/setter.ts`, measured before D-076). v4 reached 12.1 / 13.2 / 12.8 €/MWh in 2023, 17.3 / 17.6 / 17.6 in 2024 and 20.7 /
 18.9 / 18.5 in 2025, with an observed daily committed minimum and scarcity steps among its inputs
 (v4 `docs/CALIBRATION_2025.md`, "Result"): this model is now ahead of v4 in every zone of every
-year — by 2.9–4.2 €/MWh in 2023, 5.5–6.8 in 2024 and 1.6–2.8 in the blind year with the one bid (2.9–4.4,
+year — by 2.9–4.2 €/MWh in 2023, 5.5–6.8 in 2024 and 1.7–2.9 in the blind year with the one bid on the
+net basis (1.6–2.8 in the blind year on the gross price of D-164; 2.9–4.4,
 6.3–7.2 and 1.7–2.6 on D-115's register; 6.2–7.0 and 1.9–2.7 before D-130; 2.5–4.0, 5.8–6.5 and 0.9–2.0 on D-114's
 register) — without them. v3's published
 fit, 8–12 €/MWh in 2023–2025, comes from a replay that anchors each neighbour's supply on the hour's
 observed Baltic price and flow, and from 2025 as its calibration year (SPECIFICATION §5). Run on
 the same years without the anchor, v3's error is 26–32 €/MWh, and 36–80 in 2020–2022, where this
-model's is 16–22 with the one bid (14–22 on D-115's register; `docs/research/2026-10-18_v3_v5_accuracy.md`).
+model's is 15–22 with the one bid on the net basis (16–22 on the gross price of D-164, 14–22 on D-115's register;
+`docs/research/2026-10-18_v3_v5_accuracy.md`).
 The gate returns to the owner (D-073, D-075, D-076, D-077).
 
 ### 7.4 The EstLink 2 gate R-VAL-6: met
@@ -1309,9 +1350,11 @@ at its limit in 41 % of hours against 40 observed (43 on D-114's) and FI→EE in
 shale under its entry rule runs 0.94 TWh against the record's 0.89 (0.95 on D-114's, 0.93 before the
 entry), and the replay parts Estonia from Latvia where the record does not in 12.6 % of hours (13.1
 on D-114's, 14.3 % before D-112 and D-113).
-2020–2022 as diagnostics of the fuel-based bids: MAE 15.9 / 17.2 / 17.2 (2020), 15.5 / 16.9 / 15.7 (2021) and
-21.8 / 20.4 / 17.4 (2022) with the gas plants' one bid (D-164): 2021 loses 1.3–2.0 €/MWh, its average already too
-high and the one bid's lower tranches dearer than the schedule's first (51.25 against 32.5); 16.3 / 17.3 / 17.4
+2020–2022 as diagnostics of the fuel-based bids: MAE 15.2 / 16.4 / 16.4 (2020), 15.2 / 16.6 / 15.3 (2021) and
+21.9 / 20.2 / 17.3 (2022) with the gas plants' one bid on the record's gas price per net MWh (D-171); 15.9 / 17.2 /
+17.2, 15.5 / 16.9 / 15.7 and 21.8 / 20.4 / 17.4 on the gross price of D-164, where 2021 loses 1.3–2.0 €/MWh, its
+average already too high and the one bid's lower tranches dearer than the schedule's first (51.25 against 32.5);
+16.3 / 17.3 / 17.4
 (2020), 14.2 / 15.0 / 13.8 (2021), 21.7 / 19.8 / 17.1 (2022) on D-115's register, whose oil shale under its entry rule runs
 1.78, 3.25 and 4.50 TWh against the record's 2.20, 3.72 and 4.15; 17.4 / 18.8 / 18.8, 14.6 / 15.9 /
 14.7 and 21.9 / 20.2 / 17.6 on D-112 to D-114 (oil shale 1.80, 3.28 and 4.50 TWh) — 14.9 / 16.2 / 14.9 and 22.0 / 20.3 /
@@ -1325,8 +1368,9 @@ on the register of D-042 and D-044. 2022 gains 14–15 €/MWh in Latvia and Lit
 that year Poland's export limit bound in 72 % of hours and LitPol cleared 100 €/MWh above
 Poland's price on average. 2020 and 2021, which have no clearing price (the Core publication
 starts on 2022-06-09), lose 1–3 €/MWh to the higher markup and 0.4–1.3 more to D-112 to D-114,
-and win 0.5–1.4 back with D-115: there the model's average price is 12–17 €/MWh too high with the one
-bid (10–17 on D-115's register) and FI→EE and SE4→LT sit at their limits in 71–94 % of hours against 31–46 % observed: until 2022 the
+and win 0.5–1.4 back with D-115: there the model's average price is 11–16 €/MWh too high with the one
+bid on the net basis (12–17 on the gross price of D-164, 10–17 on D-115's register) and FI→EE and SE4→LT sit at their
+limits in 71–93 % of hours against 31–46 % observed: until 2022 the
 Baltic market also traded across the Russian and Belarusian borders, which the model does not
 have (R-LINK-1).
 
@@ -1340,7 +1384,8 @@ have (R-LINK-1).
   D-113's as proposed; 63.5 on D-111's
   data before them, 69.5 on the register of D-109, 67.5 on D-106's, 67 on D-077's, 61 on D-076's, 61.5 on D-073's, 61 on that of D-042 and D-044,
   65.5 on D-025's;
-  §7.2).
+  §7.2). `fit_delta.ts` on the data to 2026-10-31 gives 60.5, not adopted: the register stays on 71.5 until the owner
+  decides (§7.2).
 - OPEN-4 (Finnish slope): the default, 5 €/MWh per GW, off unless chosen; not re-estimated
   without Nord Pool's curves.
 - OPEN-10: Nord Pool's aggregated curves are collected from 2026-10-08, the public days only, with
@@ -1385,7 +1430,8 @@ have (R-LINK-1).
   10.5 / 12.1 / 12.0, duration-curve RMSE → 7.9 / 10.8 / 10.6), the four engine cases moving and the synthetic week,
   which builds no gas, keeping its digest; V8 and JavaScriptCore alike, at the owner's decision. Re-baselined
   since on D-169 to D-171's corrections, and the three opening cases on the owner's opening (D-182, D-185) and the
-  two of 2 SMR on units of 315 MW (D-189), each with a note in the fixture; D-190 moved none.
+  two of 2 SMR on units of 315 MW (D-189), each with a note in the fixture; D-190 moved none. The three opening cases
+  re-baselined again on 2026-10-28 with the neighbours' profiles as published and the owner's levels on them (D-194).
 
 ## 8. The application (M4, and §8.1–§8.9 M6–M7 and after; R-APP-1, R-APP-2, R-APP-7, R-APP-9 … R-APP-16, R-UI-1…6, R-NFR-1…4; D-026 to D-028, D-036, D-039, D-040)
 
@@ -1394,7 +1440,7 @@ R-NFR-6) that computes in the visitor's browser and requests nothing outside its
 `npm run site` checks the built files). `npm run dev` serves it locally; `npm run build` writes
 `app/dist/`, with the export under `data/` (D-013) and the fonts under `fonts/`.
 
-**What runs where.** The page loads `presets.json` and `sources.json` and holds the scenario
+**What runs where.** The page loads `presets.json`, `sources.json.gz` and `links.json.gz` and holds the scenario
 (`app/src/state/model.ts`). Every change of a control is debounced by 70 ms and starts a new
 generation of jobs (`app/src/worker/pool.ts`) on up to eight Web Workers, one less than the
 machine's cores (D-114; four until then, D-028, D-095); a phone — a touch screen under 900 px on its
@@ -1423,7 +1469,7 @@ four scenarios in `scenarioOrder` (`ui/wiring.ts`): the one shown, 0 SMR — aga
 the table gives its differences — and the other two, at the pool's priorities 0, ¼, ½ and ¾, so
 that each scenario's years finish before the next one's while the next one's first clearings fill
 the workers' gaps (`pool.test`). The scenario shown is drawn as soon as its years are in (`runTrio`
-in `main.ts`): its cards, charts and contract card, its sensitivities said to be computing; each
+in `main.ts`): its cards and charts (its contract card too until D-294), its sensitivities said to be computing; each
 other scenario then fills its columns of the table, whose cells said "computing…" until it came,
 and only the table is redrawn. The banner dims the results as the previous settings' until the
 scenario shown is in, and then counts the years of the others still to come. The sensitivities
@@ -1445,7 +1491,8 @@ shown. Since D-177 it also computes the presentation's blocks of Global Ambition
 since D-184 the four price pairs for every scenario, and since D-221 the two outage trios of the opening state the deck's
 cables' slide shows: 220 years in about 110 s on seven workers, 51 files, 28.6 MB against a cap of 35 MB (2026-11-09; 196
 years, 49 files and 25.8 MB on 2026-11-08; 29.9 MB on 2026-10-27; 216 years in about 1.5 minutes, 58 files, 28.6 MB on 2026-10-23; 180
-years in about 2.6 minutes, 47 files and 23.8 MB at D-129; since D-236, as packs, 223 years, 54 files and 18.2 MB).
+years in about 2.6 minutes, 47 files and 23.8 MB at D-129; since D-236, as packs, 223 years, 54 files and 18.2 MB;
+since D-253, with the replay of 2026, 224 years and 55 files by the script's own list, the megabytes not measured again).
 It writes `data/opening.bin.gz` (`opening.json.gz` until D-236)
 with the bundle's commit, the id of the sources that compute a set (D-237), the export's hash and the run's
 settings (`runKey`: the scenario shown and
@@ -1485,17 +1532,18 @@ with Kruonis's output in steps (D-115), 16.9 and 12.7–13.2 s on six to eight b
 IndexedDB, each set with when it was last used, the longest unused dropped beyond 192 MB, then the build's files, and
 only then the engine. The store spares a computation and never holds one up: nobody waits for it longer
 than 1.5 s (ERRATA E-191); one that opens later than that is used from then on, one whose request has not answered
-is done without for the life of the page (ERRATA E-192). The presentation's blocks, the deck's outages and replays and a validation run's year go through
-it as the table and the sensitivities do (D-232). A set is kept, and the build's sets are read, under the *engine id* in the commit's place: a hash
+is done without for the life of the page (ERRATA E-192). The deck's outages and replays and a validation run's year go through
+it as the table and the sensitivities do (D-232), and as the Presentation page's blocks did until D-249 took the page out. A set is kept, and the build's sets are read, under the *engine id* in the commit's place: a hash
 of every source under `src/contract`, `src/data`, `src/engine`, `src/state` and `src/worker`, of the
 scenario schema and of the solver's pinned version (`app/scripts/engine_id.ts`), so that an edit to the interface keeps
 what was computed and the development server keeps its sets, loading the page again under a new id when one of those
 sources changes; `test/engine_id.test.ts` finds every import of the worker, the pool, the store and the job's key among
 the id's files, and `?nostore` in the address keeps and reads nothing (D-237). The build writes its sets as packs — a
-JSON header and the typed arrays' own bytes, gzipped: `data/opening.bin.gz`, `data/sets/<n>.bin.gz` — which the page
+JSON header and the typed arrays' own bytes, gzipped: `data/opening.bin.gz`, `data/sets/<hash>.bin.gz`, a set's file named
+by a hash of the engine id, the export's hash and the set's id (D-238) — which the page
 reads in milliseconds where the JSON text took 0.4 s of the main thread for the opening view (D-236; 18.2 MB of sets
 against 29.0). While another page than the Model view is shown, the sensitivities wait behind that page's own sets
-(D-233), and the Presentation page draws again only the block whose sets changed (D-235). Measured before and
+(D-233); the Presentation page, taken out by D-249, drew again only the block whose sets changed (D-235). Measured before and
 after: a value two changes back 24 s and 0.2 s; the Presentation page on a changed state it has seen 16–18 s and
 0.5 s, and whole after a control moved on it 49–55 s and 18–20 s; the opening view's cards 0.6 s and 0.3 s after the
 navigation; the development server's second load 35–39 s and 0.7 s. A state never seen is computed as before.
@@ -1503,8 +1551,9 @@ navigation; the development server's second load 35–39 s and 0.7 s. A state ne
 **The set and its weights (R-TIME-3, R-TIME-4).** A replay is its year alone. A TYNDP 2024 scenario
 runs on the climate years 1995, 2008 and 2009 with the Implementation Guidelines' weights
 (National Trends only on 2009, D-007); a TYNDP 2026 scenario on the three weather scenarios of its
-target year with their weights. Cards show the weighted figures; the header lists each year's
-weight and Estonia's wind and solar ranks among the 38 PECD years.
+target year with their weights. Cards show the weighted figures; a "?" beside the table of the weather
+years lists each year's weight and Estonia's wind, solar and demand-peak ranks among the 38 PECD years (`setNote`; the
+header's line of a scenario is gone since D-224).
 
 **Opening state (R-BND-5, R-PUB-3; D-011, D-027).** TYNDP 2024 Distributed Energy 2035 at the
 borders; ERAA 2025 National Trends 2035 fleets in all three zones; demand from Elering's plan
@@ -1527,24 +1576,29 @@ of its UTF-8. Import is strict (`app/src/state/text.ts`): an unknown key, a valu
 range in `schema/scenario.schema.json`, a preset or class `presets.json` does not have, a key twice
 or a missing one — each rejects the text, and the page says why and opens on its default.
 
-**The panel (R-APP-1, R-UI-6).** v4's order: the run (scenario or replay — on the page
+**The panel (R-APP-1, R-UI-6).** As M4 built it, in v4's order: the run (scenario or replay — on the page
 "Validation", the owner's wording of 2026-09-29, while the scenario text keeps `run=replay`;
 family, target year, profile), the country switcher (EE, LV, LT modelled; FI, SE4, PL the borders' prices), demand
 (preset chips, multiplier, firm block), fleet (preset chips; one slider per class with the bid it
 implies at the fuel path, `impliedBid`), flexibility (electrolysis, power-to-heat), fuel and CO₂
 path with DSR bands — in the scenario view the CO₂ and the gas price as two boxes to type, opening
 at the path's values (D-064), the gas price's box named LNG since D-224 —, batteries and reserve, links (the borders' lines, their switches and what-ifs,
-§9), and the text. Every slider shows its preset value as
+§9), and the text. The panel as it stands (`panelHtml`) has no chips of family, target year or presets and no control of
+flexibility, the fuel path or the DSR bands: in the scenario view these keep their defaults and stay in the text (§8.1,
+D-036). The scenario view holds the scenario, the neighbours' prices, the CO₂ and gas prices, generation and demand with
+the zone's switch, the links and the text; the validation view the observed year, the switcher of the six countries, the
+zone's or the border's box, batteries and reserve, the links and the text. Every slider shows its preset value as
 a tick, sticks to it within 2 % of its range and turns amber when moved off it; an *i* button
-lists the sources of a default or preset value (`sources.json`). Official presets come first; the
-owner's are labelled and dashed (R-PUB-3). A replay keeps the observed fleet and lists it per
+lists the sources of a default or preset value (`sources.json`). Official presets came first and the
+owner's were labelled and dashed while the panel had preset chips (R-PUB-3); the owner's opening values are named as
+the owner's in a line under their sliders (D-182, D-231). A replay keeps the observed fleet and lists it per
 country — each class's capacity, its average bid over the year and its generation (D-029). Under
 the demand multiplier the year's demand in TWh, and under a border's price level factor its
 average price, follow the slider as it moves: each run reports its zones' load before the
 multiplier and the firm block and its borders' average price before the level factor
 (`engine.worker.ts`), weighted over the set as the cards are, and the panel scales them; while a
 chip has changed what they depend on, the line waits for the next run. At each capacity slider
-of the scenario view, left of its number box, a mark gives the class's change from the latest
+of the scenario view, beside the source's name above its number box, a mark gives the class's change from the latest
 observed fleet — A68 of 2026 by class, else 2025's; gas and oil shale each as a whole — green up
 and red down, the year and the figure in its tooltip; demand's mark is measured from the load of
 2025, the latest full year. These are hints no run reads (`growthMark`; D-052, D-057, D-062). While the headline run computes, a line slides under the
@@ -1566,7 +1620,7 @@ is their sum, and the scenario text carries moved rows as `EE.part.<row>` (D-059
 of oil shale (its three blocks and retort gas) and its four rows of gas fold under a line each, closed until
 opened: the line gives the group's megawatts, the sum of its rows, and its change from the reference year, gas's
 line its one bid too. Right of each generation
-row a tag gives the source's bid at the two prices of the box above (`impliedBid`, the gas plants' one bid for gas;
+row's number box a tag gives the source's bid at the two prices of the box above (`impliedBid`, the gas plants' one bid for gas;
 0 for wind, solar and run-of-river; for batteries the spread they need, D-065). The neighbours' profile
 is chosen from one list of every profile held, and each neighbour's level ends in a box with the
 average price it makes; Estonia's run-of-river hydro stops at the preset's 8 MW (D-066). Latvia's and
@@ -1651,7 +1705,7 @@ profile before D-194; `spikes/presentation-2026-11/figures.ts`, the talk's slide
 (until then dark by default with v4's tokens, light on the system's preference or the toggle), print the same on
 white surfaces. Since D-197 it has the look of Fermi's projects, the owner's choice of 2026-11-02: white cards on a
 pale ground, navy headings, an indigo accent whose tint marks the view shown, the validation's state on an amber
-plate with its warning sign, a sign's colour on a light fill of its own; the wordmark is Montserrat ExtraBold's
+plate with its warning sign until D-201 took that banner off the pages, a sign's colour on a light fill of its own; the wordmark is Montserrat ExtraBold's
 outlines with a tile of Fermi's green (energiamudel.ee stays a neutral site: no Fermi logo). Montserrat sets text
 and numbers, tabular figures for the numbers, self-hosted with its licence (D-DIN and JetBrains Mono until D-197);
 the panel's sources carry glyphs after Lucide (ISC): generation's in the accent, demand's in the
@@ -1700,8 +1754,8 @@ the three climate years, 5.8 s in the browser on the development machine (nine r
 
 The panel holds the scenario; the neighbours' profile — TYNDP 2024 Distributed Energy 2035 or
 Global Ambition 2035 on the climate years, or TYNDP 2026 National Trends+ 2035, which also brings
-that family's weather scenarios and its own Baltic demand (R-TIME-2), or through *Other* any
-profile the year files hold (D-046: Distributed Energy and Global Ambition 2035, 2040 and 2050;
+that family's weather scenarios and its own Baltic demand (R-TIME-2), or any other
+profile the year files hold, all of them in one list since D-066 (through *Other* until then, D-046: Distributed Energy and Global Ambition 2035, 2040 and 2050;
 National Trends 2030 and 2040, on climate year 2009 alone; National Trends+ 2035, 2040 and 2050 on
 that year's weather scenarios; each named with its weighted average price in Finland, SE4 and
 Poland, `boundary.mean_price`, D-047; since D-225 in the open list only, the closed list naming the profile by its maker,
@@ -1745,7 +1799,7 @@ asked the system for less motion —
 EstLink 3 and the fourth EE–LV line
 off by default, as S1 has them from 2040 (the owner, over D-031's ERAA years for this view); the
 text, folded. Everything else keeps its default and stays in the text: the family and target year
-follow the profile, the DSR bands ERAA's, electrolysis and power-to-heat off, the firm block 0, the
+follow the profile, the DSR bands ERAA's, electrolysis and power-to-heat off, the
 batteries' and Kruonis's parameters, the mFRR share and the reserve as fitted (D-025), the cables'
 typical profile, Litgrid's plan held, the AC reservation at the 2025 average, the price-taker border.
 
@@ -1756,20 +1810,23 @@ unit since D-205, as the canvas drew it), the
 scenario's button at the head of its pair, the one shown marked, the table as wide as the
 results and the row and column under the pointer lit, the cell itself most (D-082) — each weighted over its years — the price of each zone,
 Estonia's net import, the CO₂ of the three zones, the wind and solar curtailed, Estonia's hours with
-a fossil price and the plant's capture price — with the difference to *0 SMR* (R-SMR-5, §10), Estonia's rows — its
+a fossil price and the hours natural gas ran in Estonia in a year (the plant's capture price in their place until
+2026-10-21, then on the contract card alone until D-294) — with the difference to *0 SMR* (R-SMR-5, §10), Estonia's rows — its
 price, net import, fossil hours and gas hours — in bold since D-199;
 a scenario's title shows it without a new run; beneath them each weather year's Estonian price in
-the four, with its weight, and the weighted price in bold since D-212 — the scenario view's Outlook, and the four its Compare (revision 1.7,
-D-039) — and a line labels each year (R-TIME-4): a climate year by its ranks among the 38 PECD
+the four, and the weighted price in bold since D-212 — the scenario view's Outlook, and the four its Compare (revision 1.7,
+D-039) — and the "?" at their title gives each year's weight and labels it (R-TIME-4): a climate year by its ranks among the 38 PECD
 years, a TYNDP 2026 weather scenario by its climate model, modelled year and Estonian capacity
-factors (`yearLabel`); below, the cards, the sensitivities (since D-184 a card per price pair with Estonia's
-average in each of the four scenarios, and since D-188 the net gain or cost of the lower price and the contract
-under them, §8.1 and §10) and the charts of the scenario shown. The
+factors (`yearLabel`); below, the cards, the sensitivities (since D-195 one table, a column per price pair with Estonia's
+average in each of the four scenarios and under it the gain from the lower price, the contract and the net gain; a card
+per pair from D-184 until then, §8.1 and §10) and the charts of the scenario shown. The
 validation view keeps the panel of M4 and M5, its zone box in the scenario's form since D-083: the
 observed year's fleet as the scenario's generation rows — icon, installed megawatts on a slider that
 does not move, the bid tag the run gave the class, the TWh the model ran under each row.
 
-**Size (R-NFR-4).** JavaScript 348 KB and fonts 86 KB, against v3's 2.43 MB plus 30 %; the solver's
+**Size (R-NFR-4).** JavaScript 1 090 KB and fonts 245 KB in `app/dist` as built on 2026-11-25 — the page's script 641 KB,
+the worker's 153 KB, the documents' text 267 KB, the calibration's files the rest; ten Montserrat files — against v3's
+2.43 MB plus 30 % (348 KB and 86 KB when first measured); the solver's
 WebAssembly (3.5 MB, 1.2 MB compressed) is outside the limit (revision 1.4).
 
 ### 8.2 The calibration page (R-APP-7; revision 1.7)
@@ -1782,13 +1839,15 @@ opens). The thresholds and the rule for each figure are one module, `app/src/wor
 (`THRESHOLD`, `within`), which `validate_fit.ts` counts its breaches with, so the page marks with a ✗
 exactly the figures the script reports; a test holds the two together year by year. On the
 committed files, 26 figures of 2023–2025 lie outside their thresholds (7, 8 and 11; §7.3; 21 — 8, 5 and 8 —
-on D-115's register).
+on D-115's register). Since D-322 the view explains itself in words: a paragraph under its title, one above the three
+gates and one under each section's heading, in the page's language, with no figure of the data.
 
 ### 8.3 The documentation (R-APP-9, R-DOC-4)
 
-The *Documentation* view renders this methodology and `docs/faq.md` as the repository holds them — in Estonian
-the short summary `docs/methodology_et.md` and `docs/faq_et.md`, the full methodology beside them (D-142) —
-loaded when first shown, with a small Markdown reader for what the two use — headings, paragraphs,
+The *Documentation* view renders this methodology as the repository holds it — in Estonian
+the short summary `docs/methodology_et.md`, the full methodology beside it (D-142); until D-337 the questions and
+answers too (`docs/faq.md`, `docs/faq_et.md`), which the owner took out with their tab —
+loaded when first shown, with a small Markdown reader for what it uses — headings, paragraphs,
 lists, pipe tables, bold, italic, code and links, the text's HTML escaped (`app/src/ui/docs.ts`,
 `markdown`; no dependency, R-NFR-6). Its *Sources* view is the register the export generates from
 the lineage records (`sources.json`): a row per measured source with its access, use and licence, a
@@ -1797,12 +1856,14 @@ set, as the generated register lists them. Each panel value's *i* button names i
 to that row (`sourceRow`: the value's document, else the owner's assumption, else its source
 family, else — for a value the pipeline derived — its first input's); a test finds a row for every
 source id in `presets.json`. *Since D-197* the documents are pills on a track and each stands in a white card: the long
-texts — the summary, the full methodology with its subsections, the questions and answers — have a contents rail
+texts — the summary and the full methodology with its subsections — have a contents rail
 beside them, its entries buttons that bring a heading into view without touching the page's address (which carries
 the scenario); a list item the text opens with [✓ …] or [✗ …] shows that check's status as a chip, as the summary's
 checks do. The Sources view gives each measured source in three columns, its access under its name; the owner's
 values as code; the documents grouped by their title's first letter under an index of the letters, with a search box
-that keeps the rows holding every word typed — in the page, nothing sent.
+that keeps the rows holding every word typed — in the page, nothing sent. Since D-334 a line under the view's tabs, on each of them, says that the model's code, data
+and documents are open on GitHub and links to the public repository, github.com/andresingerman/energiamudel-baltic
+(`REPO`, `app/src/ui/labels.ts`).
 
 ### 8.4 Export, print and the declaration (R-APP-10, R-PUB-2, R-PUB-4)
 
@@ -1822,9 +1883,10 @@ identity — the export's hash in `manifest.json`, the hash of `presets.json`, e
 and its series' lineage ids (`app/src/ui/export.ts`; a test checks the JSON against the schema and
 the CSV's rows against the hours). Printing hides the controls, keeps cards and tables whole and
 draws the charts again for the print layout (D13: the print stylesheet serves for a PDF). The
-README carries the declaration of interest in the wording the owner confirmed (R-PUB-2; OPEN-9, D-124, D-193), and the
-deck's second slide states it; the questions and answers' "Who made it?" gives the author, his role at Fermi Energia and
-his address since D-293; the page's footer carried it too until the owner took the footer off (D-224;
+README carries the declaration of interest in the wording the owner confirmed (R-PUB-2; OPEN-9, D-124, D-193);
+the questions and answers' "Who made it?" gave the author, his role at Fermi Energia and his address from D-293 until
+the owner took the questions and answers out (D-337), since when README alone states it; no
+slide of the deck states it, and the talk's notes, which placed it before the figures, went with D-321; the page's footer carried it too until the owner took the footer off (D-224;
 revisions 2.72 and 2.74, ERRATA E-185).
 
 ### 8.5 The import-price page (R-APP-12, R-BND-8; revision 1.8, D-040)
@@ -2114,7 +2176,7 @@ opening the tight cases read 119.1 / 105.4 / 94.6 / 84.3 €/MWh (each on its ow
 (all together) with no to three units, Global Ambition 2035 75.7 / 66.8 / 57.8 / 48.0 and National Trends 2040
 145.6 / 127.3 / 117.1 / 107.7.
 
-### 8.9 Presentation, the deck (R-APP-16; revisions 2.68–2.74, 2.77 to 2.85; D-220 to D-229, D-240 to D-255) — *Presentation 2* until D-249
+### 8.9 Presentation, the deck (R-APP-16; revisions 2.68–2.74, 2.77 to 2.85, 2.87 to 2.130, 2.133, 2.135 and 2.145; D-220 to D-229, D-240 to D-255, D-257 to D-292, D-295 to D-315, D-319, D-321, D-333) — *Presentation 2* until D-249
 
 v3's twelve press slides, ported to TypeScript (`app/src/ui/deck.ts`, `PROVENANCE.md`), on the Fermi deck's frame: a
 white 1920 × 1080 stage scaled to the page or, on a button or the F key, to the screen. The address carries the view and the
@@ -2130,8 +2192,10 @@ of v3's slide; the hours gas sets the price are those a Baltic gas plant set Est
 is the Model view's table (§8.8). The cables' slide runs the same four with EstLink 2 out all year and with both
 EstLinks out, the panel's what-if outage (§9): the opening state's two trios are the build's sets (§8.1, D-221), any other
 state's compute in the browser while the deck shows. Every sentence that states a result
-is written from these figures. The literature beside them is v3's, named on the slide without a link (the site holds
-no third-party address, R-NFR-1), and enters no computation: the direct emissions of combined-cycle gas, 370 g CO₂-eq/kWh
+is written from these figures. The literature beside them is v3's, named on the slide without a link (the site's code holds
+no third-party address, R-NFR-1; the links of the neighbours' slides take their addresses from the site's sources,
+D-270, and the last slide's repository is the model's own, D-333), and enters no computation:
+the direct emissions of combined-cycle gas, 370 g CO₂-eq/kWh
 (350–490 over the studies), and of nuclear, 0 — IPCC (2014), Annex III: Technology-specific cost and performance
 parameters, in *Climate Change 2014: Mitigation of Climate Change*, Working Group III's contribution to the Fifth
 Assessment Report, Cambridge University Press, Table A.III.2, [doi:10.1017/CBO9781107415416.025](https://doi.org/10.1017/CBO9781107415416.025)
@@ -2139,11 +2203,12 @@ Assessment Report, Cambridge University Press, Table A.III.2, [doi:10.1017/CBO97
 Article 2(1), whose 2040 target Regulation (EU) 2026/667 wrote in — signed 11 March 2026, in the Official Journal 18 March,
 in force 7 April 2026, which the slide's caption says since E-183 (v3's slide, and the port, said March).
 
-Each slide has a note for the speaker (revision 2.70, D-222; `deck.ts` `NOTES`), shown under the stage on the N key or the
-bar's button and never in full screen: what is said with the slide — which chart is which, how a figure reads and what it
-is not — in the page's language, the Estonian taken from the talk pack (`spikes/presentation-2026-11/`). A note is text
-only: it carries no figure and states no result of the runs, so it enters no computation and cannot say what the slide's
-figures, read from the runs, do not.
+From D-222 to D-321 each slide had a note for the speaker (revision 2.70; `deck.ts` `NOTES`), shown under the stage on
+the N key or the bar's button and never in full screen: what is said with the slide — which chart is which, how a figure
+reads and what it is not — in the page's language, the Estonian taken from the talk pack. A note was text only: it
+carried no figure and stated no result of the runs. The owner took the notes out on 2026-11-25 (revision 2.135, D-321):
+the bar's button, the N key, the panel under the frame and the seventeen notes are gone, the full-screen button keeps
+its place at the bar's right end, and the talk's sentences stay in the talk pack.
 
 From 2026-11-09 to 2026-11-12 a thirteenth slide, the twelfth in order, was v5's own (revision 2.71, D-223): how accurate
 the model is. It showed the protocol's hourly mean absolute error of price (§7.3; R-VAL-3) for the three zones in each year the thresholds
@@ -2160,8 +2225,8 @@ The owner's edits of 2026-11-09 (D-224, D-227 to D-229): the title slide asks wh
 builds a nuclear plant, the four scenarios sharing their gas (D-151, D-227); the scenarios' slide gives each zone's demand
 with its growth from the observed load of 2025, the full year the panel's demand mark compares with (D-057, D-228); the
 last slide ends with its three steps, without the sources' line, the declaration of interest and the author's name
-(D-224). A fourteenth slide, the thirteenth in order and the twelfth since D-240, shows the validation as charts (revision
-2.73, D-229): Estonia's
+(D-224; since D-333 the notice of the open repository stands under the steps, below). A fourteenth slide, the thirteenth
+in order and the twelfth since D-240, shows the validation as charts (revision 2.73, D-229): Estonia's
 replay of one of the gate's years (R-VAL-5), chosen by a button on the slide, beside the record of that year — the energy
 sources as a bar each (the replay's mix; the record's ENTSO-E A75 generation in the same groups, `actualOf`), the price
 duration curve on an axis cut at 400 €/MWh with the hours above it counted for each, and the monthly average and median
@@ -2197,12 +2262,15 @@ and its weight are and gives its chart's unit, the scenarios' slide names the ga
 impact headings take the figures' blue, and the capital cost's slide drops its present value's column, which the Model
 view's table keeps (§8.8).
 
-The plant's account for the state (revisions 2.80 and 2.81, D-246, D-247), the thirteenth slide: for one, two and
-three units, each against 0 SMR, over the plant's design life of 60 years, the model year's figures held for each
+The plant's account for the state (revisions 2.80 and 2.81, D-246, D-247), the thirteenth slide then and the fifteenth
+of seventeen now: for one, two and three units, each against 0 SMR, over the plant's design life of 60 years, the model
+year's figures held for each
 year and undiscounted. Its sum is the consumers' and the taxpayers' account, as the sensitivities' net row has it
-(D-188): the consumers' saving — Estonia's demand times the gap of the weighted average prices, the seventh slide's —
-less the contract's cost, what the state pays a year under contract (a) settled hourly at the panel's strike
-(`statePaysOf`, §8.3), a gain where the operator pays back. Under the sum, for reference and outside it: the fall of
+(D-188): the consumers' saving — Estonia's demand times the gap of the weighted average prices, the price slide's —
+less the contract's cost, what the state pays a year under contract (a) settled hourly at the state's strike
+(`statePaysOf`, §8.3; the contract card's slider set it until D-294 took the card out, and it is 90 €/MWh unless the
+page's address carries another), a gain where the operator pays back.
+Under the sum, for reference and outside it: the fall of
 the net import bill, imports less exports at Estonia's price (the Presentation page's impact row, §8.8), and the
 plant's construction, its megawatts at the owner's price. D-246 had added all four; the owner took the two out of the
 sum (D-247) because each counts money the sum's lines hold: the import bill's fall holds the cheaper imports the saving
@@ -2230,8 +2298,9 @@ end (`observed_hours`), and the Statistics page takes a month once nine tenths o
 in per cent of the market's — the replay's mean against the record's, the arrays the slide's charts draw — where the
 hourly error stood (−1.8, −4.2 and −5.0 % for 2023 to 2025); the hourly errors stay the calibration page's (§8.2). Since D-258 the slide gives
 the two averages alone, model and market, without their difference in per cent. Since D-259 the second slide's prices stand in boxes, the
-third slide's panel shows demand, one generation source named by no technology (onshore wind's slider) and the gas
-plants' one bid as the panel sets it, the fourth slide's averages are a size larger, and the sixth slide names the
+third slide's real data name the installed capacity and generation, the bids out, its panel shows demand, one generation
+source named by no technology (onshore wind's slider) and the gas plants' one bid as the panel sets it, the fourth
+slide's averages are a size larger, and the sixth slide names the
 neighbours' scenario as the panel's list does. Since D-260 the third slide's source is Estonia's gas plants summed, with its MW and its
 bid side by side, and its links are numbered, not named; the sixth slide's card begins with demand and gives Estonia's
 oil shale, its foot each neighbour's average with its unit; the twelfth slide no longer gives the plant's construction. Since D-263 a
@@ -2244,14 +2313,23 @@ Germany Trade & Invest's table of 28 August 2026 (`statistics.dc.fi.project.*_mw
 first phase and its extensions summed), with their sums by stage. Since D-266 the table is twelve projects, the megawatts from
 each project's own document where one is at hand (the environmental impact assessments of Microsoft's three sites, YIT's
 release on atNorth's campus, AmpTank's announcement, the study TikTok and Hyperco commissioned) and from the trade
-agency's table else; each row names its first phase — the year and, where published, the megawatts — beside the campus's
-final capacity, and the sums stand beside Finland's IT power of 2025 and 2027 (EUDCA), which is another measure. Since
-D-279 Sweden's and Poland's slides follow Finland's, sixteen in all, drawn by the same function from a country's record:
+agency's table else; each row named its first phase — the year and, where published, the megawatts — beside the campus's
+final capacity until D-273 took that column out, and the sums stand beside Finland's IT power of 2025 and 2027 (EUDCA),
+which is another measure. Since D-268 a thirteenth row holds Google's three new sites, Kajaani, Muhos and Vaala, with no
+megawatts and in no sum. Since D-277 the card's price is one line — the profile's average as published, the level right
+after it and an arrow to the price the model takes — and the market's year to date stands on the second slide's map
+alone. Since D-279 Sweden's and Poland's slides follow Finland's, sixteen in all then, drawn by the same function from a
+country's record:
 Sweden's plan is the midpoint of the 2030 and 2040 readings of Figure 5 of Svenska kraftnät's long-term market analysis
 (the research's `se2035.*` values), its table five campuses from the developers' releases and the trade press, none in
 SE4; Poland's plan is PSE's draft development plan 2027–2036 and its table every data-centre row of PSE's list of
 connection requests (`statistics.dc.pl.project.*_mw`), none with an agreement — the slides argue for the owner's levels
-and derive none. The
+and derive none. Each data-centre row's base has since become its operator's own, and Finland's industry row's too:
+Finland's two rows start from Fingrid's figures of 2025 (D-289), Poland's data centres from PSE's 0.6 TWh of 2024 (D-298)
+and Sweden's from Svenska kraftnät's 2.5 TWh of 2026 (D-311); Poland's industry keeps Eurostat's 2024. Sweden's industry
+block has no figure line (D-313): it lists five rows of Svenska kraftnät's Table 4, scenario MM, 2026 → 2050 — fossil-free
+steel, fossil-free cement, refineries, electric vehicles, hydrogen production — a column a year, TWh beside each figure
+(D-314, D-315). The
 plant's account counts what the state pays under the contract for difference over its first 40 years alone
 (`finance.cfd_term_years`, the owner's assumption), after which the plant sells at the market price and the state pays
 nothing; the consumers' saving runs the plant's whole 60 years, so the sum is the saving times 60 less the contract's
@@ -2275,6 +2353,36 @@ in the three scenarios: a row per border with its lines and their MW as the pane
 state EstLink 1 and 2, 1 000 MW; the EE–LV lines, 1 035; the LV–LT lines, 1 750; NordBalt, 700; Harmony Link and LitPol,
 1 200), EstLink 3 and the fourth EE–LV line, out of service in 2035 (S1), left out. On the accuracy slide the market's
 line is solid and the model's dashed (D-255), the other way round before.
+
+The neighbours' three slides as they stand (D-270, D-276, D-278, D-281, D-282, D-286, D-292, D-299, D-301, D-309): the
+country's flag stands in the title; Finland's slide alone keeps a conclusion under it — Finland's demand grows faster
+than its new generation — and Sweden's and Poland's have none; the figures of the left card and the places of the table
+are links to the documents they come from, the addresses read from the site's sources; a project's dot is green where
+building has begun and grey else; Arctial's rendering of its smelter at Kokkola stands over Finland's industry block
+(`app/public/img/arctial_kokkola.webp`); Sweden's price is SE4's and its blocks are marked as all Sweden's; Poland's
+list gives no sums by stage, which its left card holds.
+
+The order since 2026-11-24 (revisions 2.111 and 2.112, D-295, D-296): the scenarios' slide stands before the weather
+years', and the weather years' after the neighbours' three, right before the weighted prices they explain. The slides
+run: the title; why another model, with the map; how the model works; how accurate it is; the three scenarios; Finland;
+Sweden; Poland; the weather years; the price gap; the dependence on cables and neighbours, with the hours gas sets the
+price; the EstLink cables; CO₂; the trilemma; the plant's account, counted for Estonia since D-281; the map of nuclear
+projects; try it yourself (`deck.ts` `SLIDES`). The ordinals in the paragraphs above are those of their day.
+
+The sixteenth slide (revision 2.133, D-319) is the map of nuclear projects in Europe and North America by stage —
+feasibility study, early development, ongoing project, under construction — each with its technology and the sites
+named: slide 127 of the Fermi deck, kept as a picture and not ported, shot at 3840 × 2160 in Estonian and in English
+(`app/public/img/projects_map_et.webp`, `projects_map_en.webp`) and shown full-bleed in the page's language, in that
+deck's own frame, with its QR code to the Fermi deck's page of sources. It states no result of the runs, so the rule
+that every figure of a slide is read from the runs (D-220) does not reach it; a change in that deck needs the picture
+shot again. Seventeen slides.
+
+The last slide (revision 2.145, D-333) says under its three steps that the model's code is open on GitHub, in the
+page's language: a kicker, a headline, the address `github.com/andresingerman/energiamudel-baltic` and a line on what is
+there — code, data and documents. The address is a link, and beside it stands the address as a QR code, a link too:
+version 4 with error correction M, 33 modules a side at 7 px, 231 px on the stage, an inline SVG of the code's dark
+modules kept in `deck.ts` (`REPO_QR`; the address once, in `labels.ts` `REPO`). It was made once with the library `uqr`,
+which is no dependency of the application, and a test holds the shape to the address, so a new address needs a new code.
 
 ## 9. Interconnectors and adequacy (M5; R-LINK-1, R-LINK-3 … R-LINK-7, R-APP-3, R-APP-8, R-BND-7; DECISIONS D-031 to D-034)
 
@@ -2305,7 +2413,8 @@ allocation to balancing, both directions averaged: EE-LV 265 MW, LV-LT 272, edit
 
 **Typical availability (R-LINK-3 (ii), OPEN-5).** For each HVDC cable the statistics of 2019–2024
 give the average available technical capacity *a* and the planned-maintenance share *m* (EstLink 2's
-2024, a cable failure, is left out). The AC lines take ERAA's forced-outage rate for
+2024, a cable failure, is left out; the presets hold no 2022 for EstLink 1, nor 2022's maintenance share for any
+cable). The AC lines take ERAA's forced-outage rate for
 HVAC, 0 % (ERAA 2025, Annex 2, §2.2, p. 17), and no profile: their planned maintenance is in the
 TSOs' NTC. Until D-170 LitPol carried its converter's statistics of 2019–2024 (*a* 90.9 %, *m* 4.4 %)
 and Harmony Link an HVDC cable's 94 % without history (ERRATA E-170, E-172):
@@ -2330,14 +2439,17 @@ border keeps the lesser of the offer and the cables' shares of the year's highes
 a cable in a forced outage carries nothing and the other all of the offer; with a planned event of
 one, the other carries its share and the one with the event the rest; alike events split the offer
 by rating. Each cable then keeps at most its what-if; both at 0 leave nothing. The what-ifs are
-listed with the result as changes from the presets and above the border panel.
+listed in the Links box and above the border panel; until D-224 the result listed them too, as changes from the
+presets.
 
 **The Links box** draws the lines as v4's panel did (v4 D-046 … D-049; the owner asked, 2026-09-29):
 a schematic map of the six nodes across the panel, each where its country lies, north up (D-120), with a line per
 catalogue entry (width by MW; switched off dashed red, held for part of the year dashed amber), and
 a switch per line grouped by border — an HVDC cable at its
 rating, a planned line at ERAA's step with ERAA's and the TSO's year, an AC group at ERAA's highest
-hourly NTC of the target year (in a validation run its capacity is A31's). A switch, or a click on
+hourly NTC of the target year — of the year before its planned line where the target year holds that line — and the
+fourth EE–LV line at the difference of the two years' highest hours, +1 000 MW, where its hourly step averages 596
+(`lineMw`; in a validation run an AC group's capacity is A31's). A switch, or a click on
 the line in the map, takes a planned line in or out of service and a line in service off as a
 what-if of 0 MW for the whole year (`toggleLine`, `app/src/ui/panel.ts`); partial holds come from
 the what-if editor below it.
@@ -2349,15 +2461,18 @@ and the way below at its foot, each with the two countries' flags; and in a vali
 on that border, the two directions of one event as one label, the twelve longest by date
 (`app/src/ui/attribution.ts`, R-LINK-6). The labels explain the profile; they do not change it.
 
-**Effect on the opening scenario** (*0 SMR*, 2035, as the application opens — the neighbours'
-profile re-priced, D-079; recomputed on 2026-10-23 with the record's gas price per net MWh, D-171, the
-Lithuania–Poland lines AC, D-170, and the cheaper gas plant first, D-169, after D-105, which took Latvia's
-and Lithuania's offshore wind out, and D-107's factor on Lithuania's onshore wind; on the owner's opening,
-D-182 to D-190, recomputed on 2026-10-28). 107.0, 108.9 and 109.3 €/MWh (EE, LV, LT) with the lines as the panel
-sets them — EstLink 3 and the fourth EE–LV line off, as in S1; with both in service 100.9, 99.3 and 102.9; on
-ERAA's NTC as given, which holds them, 99.7, 95.9 and 97.4; with every cable at nameplate 106.4, 108.3 and 108.7;
-Lithuania–Poland no longer held to Litgrid's plan changes nothing, its two AC lines making the plan's 1 200 MW.
-(On D-169 to D-171's opening, recomputed on 2026-10-23: 83.6 / 79.8 / 79.9, 76.2 / 73.7 / 73.6, 75.9 / 72.3 /
+**Effect on the opening scenario** (*0 SMR*, 2035, as the application opens — the neighbours' profile as published
+times the owner's levels, D-194, §5.9; the lines' variants recomputed on 2026-11-25). 108.1, 109.5 and 109.9 €/MWh
+(EE, LV, LT) with the lines as the panel sets them — EstLink 3 and the fourth EE–LV line off, as in S1; with both in
+service 101.7, 100.6 and 103.5; with every cable at nameplate 107.5, 109.0 and 109.3; Lithuania–Poland no longer held
+to Litgrid's plan changes nothing, its two AC lines making the plan's 1 200 MW. ERAA's NTC as given, which holds both
+planned lines, is no state the page sets, and was not computed again.
+(In each state below: the lines as the panel sets them, both planned lines in service, ERAA's NTC as given and every
+cable at nameplate. On the owner's opening of D-182 to D-190 with the neighbours' profile re-priced, D-079, recomputed
+on 2026-10-28 — with the record's gas price per net MWh, D-171, the Lithuania–Poland lines AC, D-170, and the cheaper
+gas plant first, D-169, after D-105, which took Latvia's and Lithuania's offshore wind out, and D-107's factor on
+Lithuania's onshore wind: 107.0 / 108.9 / 109.3, 100.9 / 99.3 / 102.9, 99.7 / 95.9 / 97.4 and 106.4 / 108.3 / 108.7.
+On D-169 to D-171's opening, recomputed on 2026-10-23: 83.6 / 79.8 / 79.9, 76.2 / 73.7 / 73.6, 75.9 / 72.3 /
 72.0 and 82.8 / 79.2 / 79.2. With the gas plants' one bid of D-164,
 recomputed on 2026-10-23: 85.4 / 81.5 / 81.5, 77.0 / 74.3 / 74.1, 76.8 / 73.1 / 72.8 and 83.7 / 79.9 /
 80.0. On D-115's register,
@@ -2431,21 +2546,25 @@ Estonian price is inside the figure — what the state pays in a year under: (a)
 settled hourly, Σ_h (S − p_h)·q_h; (b) the same settled on each month's simple average price,
 Σ_m (S − p̄_m)·Q_m; (c) a collar settled hourly, (80 − p_h)·q_h paid below 80 €/MWh and
 (p_h − 100)·q_h paid back above 100; (d) the collar 70–110. With the clause (v4 D-061), an hour
-priced at or below 0 settles at the market price and leaves (b)'s average and volume. The card
-(`app/src/ui/contract.ts`) shows each design's cost weighted over the years and each year's, the
-operator's income per MWh (the market revenue and the difference paid), and the settlement periods
-in which each side pays; above them the plant's output, capacity factor and capture price. The
-strike is a control, 40–160 €/MWh, default 90 (the owner's), which a pointer snaps to and a red dashed line marks under
-the knob since D-211; the rows are recomputed on the page
-from the stored runs as it moves (R-APP-4). The clause changes the dispatch, so choosing it runs
-the four scenarios again; the card shows the four designs of the clause chosen — the
-specification's eight rows are those four with and without the clause (ERRATA E-029).
+priced at or below 0 settles at the market price and leaves (b)'s average and volume. Until D-294 a
+card of the Model view (`app/src/ui/contract.ts`, gone with it) showed each design's cost weighted over the years and
+each year's, the operator's income per MWh (the market revenue and the difference paid), and the settlement periods
+in which each side paid; above them the plant's output, capacity factor and capture price. The strike was a control,
+40–160 €/MWh, which a pointer snapped to and a red dashed line marked under the knob since D-211, and the clause a
+choice; the card showed the four designs of the clause chosen — the specification's eight rows are those four with
+and without the clause (ERRATA E-029). The owner took the card out (D-294). The page now shows design (a) alone: the
+row "Contract for difference" of the sensitivities' table, at the state's strike (`statePaysOf`,
+`app/src/ui/results.ts`; below), and the deck's slide on the plant's account (`app/src/ui/deck.ts`). The strike,
+default 90 €/MWh (the owner's), and the clause are held in the state and the scenario text, with no control on the
+page. The strike moves no dispatch: another strike is computed on the page from the stored runs (R-APP-4). The clause
+changes the plant's dispatch, so another clause runs the three scenarios with the plant again. Designs (b) to (d)
+remain in `contract.ts`, called by nothing on the page.
 
 **The price level the contract settles on.** A contract's cost moves with the average price, and
 the register is fitted on the hourly MAE (§7.2). The MAE fits the median of a right-skewed price,
-and the replays' average sits below the record by 1.4–7.0 €/MWh in 2023–2026 with the one bid (EE / LV / LT
-2024 −3.4 / −5.3 / −5.2, 2026 −7.0 / −4.8 / −5.1; 1.2–6.5 on D-115's register). It sits above the record by
-12–17 in 2020–2021, the
+and the replays' average sits below the record by 1.6–6.6 €/MWh in 2023–2026 with the one bid (EE / LV / LT
+2024 −3.7 / −5.6 / −5.6, 2026 −6.6 / −4.5 / −4.5, as the Calibration view shows them; 1.2–6.5 on D-115's register). It sits above the record by
+11–16 in 2020–2021, the
 years of cheap neighbours. The lean is the year's, not a constant the markup can take out. Fitted on
 the MAE and the average bias, the register halves the fit years' lean but fits their hours 8.3
 €/MWh worse and turns 2025's into +5. Fitted on the MAE and the duration curve, it fits the hours
@@ -2480,11 +2599,14 @@ and 2.1 %; on the register before it 8.2, 6.8, 4.3 and 1.9 % after ERRATA E-064,
 4.9 and 2.3 % on the level of 87.7 that every profile took until then; at D-037 13.4, 7.4 and
 3.3 %).
 
-**The sensitivities in the four scenarios (R-APP-11, R-SMR-5; D-184, D-188).** Each of the owner's four price pairs
-of LNG and CO₂ runs for every scenario, the one shown first; its card gives Estonia's average price in each with
-its change against the same scenario's headline, and since D-188 a table under the cards gives, for each pair and
-one to three units, the fall of Estonia's average price against *0 SMR* at the same pair times Estonia's demand,
-what the state receives or pays under the contract (a) at the strike, and the two together, M€ a year (§8.1). Until
+**The sensitivities in the four scenarios (R-APP-11, R-SMR-5; D-184, D-188, D-195).** Each of the owner's four price
+pairs of LNG and CO₂ runs for every scenario, the one shown first. Since D-195 they are one table (§8, "The standard
+sensitivities"): a column per pair, Estonia's average price without the plant and with one to three units, under each
+the share of the year in which a Baltic gas plant set Estonia's price, and for the units, as since D-188, the fall of
+Estonia's average price against *0 SMR* at the same pair times Estonia's demand, what the state receives or pays under
+the contract (a) at the strike, and the two together, M€ a year (§8.1). From D-184 to D-195 a card per pair gave
+Estonia's average price in each scenario with its change against the same scenario's headline, the money table under
+the cards since D-188. Until
 D-184 each of the five sensitivities ran for the scenario shown and *0 SMR*, the card giving the plant's effect
 within the sensitivity. The sets are kept per scenario for the settings they ran with, so showing another scenario
 runs nothing twice (`main.ts`, `runSensitivities`).
@@ -2493,15 +2615,16 @@ runs nothing twice (`main.ts`, `runSensitivities`).
 Adequacy view drew were taken out with it (§9.1).
 
 **Publication (R-SMR-8).** The official state — 0 SMR — opens the view; results with the
-plant are released with the validation as it stands, at the owner's decision (D-123), and the header
-says so.
+plant are released with the validation as it stands, at the owner's decision (D-123). A banner at the top of
+every page said so until D-201 took it off; the exports' gate line says so still, and the Calibration page gives the
+gates with their verdicts (§8).
 
 ## 11. Deployment and verification (M7; R-DEP-1 … R-DEP-5, R-ENG-7, R-NFR-2; DECISIONS D-039, D-085)
 
 **The site is `https://energiamudel.ee`**, public from 2026-10-17 (D-125), behind HTTP Basic Auth from 2026-10-26 (D-178)
 and open to everyone again since 2026-11-25 (D-318): the document root
-`htdocs/`, where v3 stood; v3 3.5.0 is archived at `v3.energiamudel.ee`, behind the site's password (v3's
-ADR-035). From D-085 to then v5 was staged at `energiamudel.ee/v5` behind that password; before D-085
+`htdocs/`, where v3 stood; v3 3.5.0 is archived at `v3.energiamudel.ee`, behind v3's own password (v3's
+ADR-035). From D-085 to 2026-10-17 v5 was staged at `energiamudel.ee/v5` behind that password; before D-085
 nothing was deployed (D-039). The build is relative (`base: "./"`), so it runs under any path.
 `app/public/.htaccess` goes with the build: the redirects of the former staging path `/v5` to the root
 and of v3's Data page `/stat/` to the archive, and v3's caching — the hashed JavaScript, CSS,
@@ -2518,8 +2641,8 @@ environment, never committed) and compares the deployed site with the build over
 was shut), and the security headers its page comes with (D-331). Last it copies what went up for use without the network (`make offline`, D-145).
 These steps the deploys of 2026-10-27 to 2026-11-11 ran from a script of their own beside `make deploy`; they are
 its own since 2026-11-12. `make live-check` reads the live site again in the same way and then shows its pages in
-Chromium and WebKit — every view, the browser store's round trip, the Presentation page's
-charts, no page error (`spikes/page-speed/browser_check.py`, ERRATA E-191) — with a Python that has Playwright,
+Chromium and WebKit — every view, the browser store's round trip, no page error; the Presentation page's charts too
+until that page went, D-249 (`spikes/page-speed/browser_check.py`, ERRATA E-191) — with a Python that has Playwright,
 which is no dependency of the repository. From D-179 to D-331 the site had a way in without the password for the
 team's tools page, a token posted to `sso.php`; with the site open since D-318 it let into nothing and was taken
 out, and the checks fetch the site as any reader does (`DEPLOY_AUTH`, user:password, still logs in where a site is
@@ -2533,8 +2656,9 @@ R-VAL-5, and opening the site to the public waited for the owner's acceptance of
 it stands (D-123). v3's production workflow writes `v3.energiamudel.ee`'s root since v3's ADR-035,
 never `htdocs/`.
 The deployment runs where the database is — the owner's machine — since the provenance checks read
-it; `.github/workflows/ci.yml` (`make ci` on every push) stays inert until the owner creates a
-remote (R-PUB-6), and no workflow deploys.
+it; `.github/workflows/ci.yml` (`make ci` on every push) was inert until 2026-11-25, when the remote came
+(R-PUB-6): the public repository `github.com/andresingerman/energiamudel-baltic` (D-329, D-332), which receives
+snapshots of the tree made by `make public` (D-324). The workflow runs on each push there, and no workflow deploys.
 
 **Time on the built site (R-ENG-7, R-NFR-2).** `vite preview` of `app/dist/` on the development
 machine (8 cores, so four workers): the opening view's nine runs — three scenarios on three

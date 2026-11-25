@@ -23,9 +23,9 @@ const ALLOWED = new Set([
 const files = (d: string): string[] => readdirSync(d).flatMap((f) => (statSync(join(d, f)).isDirectory() ? files(join(d, f)) : [join(d, f)]));
 const all = files(DIST).filter((f) => !f.includes(`${DIST}/data/`));
 const failures: string[] = [];
-/** The documents' text (methodology.md, faq.md and their Estonian; R-APP-9): its addresses are references for the
+/** The documents' text (methodology.md and its Estonian summary; R-APP-9): its addresses are references for the
  * reader — the literature's DOIs, the sources' pages — not requests the site makes. */
-const TEXT = /\/assets\/(methodology|methodology_et|faq|faq_et)-[\w-]+\.js$/;
+const TEXT = /\/assets\/(methodology|methodology_et)-[\w-]+\.js$/;
 for (const f of all.filter((f) => /\.(html|css|js)$/.test(f) && !TEXT.test(f))) {
   // any address a request could go to: http(s), websockets, and protocol-relative "//host.tld"
   for (const m of readFileSync(f, "utf8").matchAll(/(?:(?:https?|wss?):)?\/\/[a-z0-9-]+(?:\.[a-z0-9-]+)+[^\s"'`)<>]*/gi)) {

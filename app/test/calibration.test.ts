@@ -18,15 +18,16 @@ test("the page's ✗ are validate_fit's breaches, year by year", () => {
   for (const e of years) if (GATE_YEARS.includes(e.year)) assert.equal(breaches(e), e.failures.length, `${e.year}`);
 });
 
-test("the exports' gate line and the FAQ quote the protocol's own hourly errors (R-PUB-4, D-201; the README not since D-326)", () => {
+test("the exports' gate line and the methodology quote the protocol's own hourly errors (R-PUB-4, D-201; the README not since D-326, the questions and answers gone, D-337)", () => {
   const mae = (ys: number[]) => years.filter((e) => ys.includes(e.year)).flatMap((e) => Object.values(e.zones).map((z) => z.mae));
   const span = (xs: number[]) => `${Math.round(Math.min(...xs))}–${Math.round(Math.max(...xs))}`; // as the documents round
   assert.ok(gateNote().includes(`miss hourly prices by ${span(mae([2023, 2024, 2025]))} €/MWh`), span(mae([2023, 2024, 2025])));
   // the pages carry no banner of it since D-201
   assert.doesNotMatch(readFileSync(join(EXPORT, "..", "..", "app", "index.html"), "utf8"), /class="gate"/);
-  const quote = `by ${span(mae([2023, 2024]))} €/MWh in 2023–2024 and ${span(mae([2025]))} in the blind year 2025`;
-  const faq = readFileSync(join(EXPORT, "..", "..", "docs", "faq.md"), "utf8").replace(/\s+/g, " ");
-  assert.ok(faq.includes(quote), "faq.md (ERRATA E-146)");
+  // the methodology's gate status, which the Documentation view shows, gives the same two ranges
+  const head = readFileSync(join(EXPORT, "..", "..", "docs", "methodology.md"), "utf8").slice(0, 600).replace(/\s+/g, " ");
+  assert.ok(head.includes(`hourly price errors of ${span(mae([2023, 2024]))} €/MWh in the fit years`), "methodology.md, fit years");
+  assert.ok(head.includes(`and ${span(mae([2025]))} in the blind year 2025 against a threshold of 15`), "methodology.md, blind year");
 });
 
 test("the page renders every section and the three gates", () => {
