@@ -407,6 +407,13 @@ caption.rh { text-align: left; margin: 0; padding: 0 0 6px; }
 /* the calibration page (R-APP-7): a failure carries a ✗ as well as its colour */
 .calibration h3 { font-size: 13px; margin: 16px 0 4px; }
 .doc-repo { margin: 8px 0 10px; }
+/* the visit statistics' banner and its link back (D-338): a card at the window's foot, two buttons of equal weight */
+.consent { position: fixed; left: 16px; bottom: 16px; z-index: 60; max-width: 520px; padding: 14px 16px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-card); box-shadow: 0 6px 24px rgb(3 8 76 / .14); font-size: 13px; line-height: 1.45; }
+.consent-h { font-weight: 700; color: var(--navy); margin: 0 0 4px; }
+.consent p { margin: 0 0 10px; }
+.consent-b { display: flex; gap: 8px; }
+.consent-b .seg { min-width: 110px; }
+.linkish { border: 0; padding: 0; background: none; color: var(--accent); font: inherit; text-decoration: underline; cursor: pointer; }
 .calibration .why { max-width: 90ch; margin: 2px 0 6px; line-height: 1.5; }
 .calib { border-collapse: collapse; font-size: 12px; margin: 4px 0 10px; width: 100%; }
 .calib th { color: var(--muted); font-weight: 400; font-size: 11px; text-align: right; padding: 2px 0 2px 12px; vertical-align: bottom; }
@@ -680,14 +687,9 @@ details.fold > summary { cursor: pointer; color: var(--muted); font-size: 12px; 
 /* a difference to 0 SMR in its own column: green where the figure falls, red where it rises */
 .pres-fig td.d { padding: 4px 8px 4px 5px; font: 600 12px var(--num); color: var(--muted); }
 /* a rule before each scenario, so that a figure's difference is not read as the next scenario's (2026-10-22) */
-.pres-fig td.n.g, .pres-fig th.g, .pres-zones td.g, .pres-zones th.g, .pres-capex td.g, .pres-capex th.g { border-left: 1px solid var(--line); padding-left: 12px; }
+.pres-fig td.n.g, .pres-fig th.g, .pres-zones td.g, .pres-zones th.g { border-left: 1px solid var(--line); padding-left: 12px; }
 /* the capital cost of the energy mix (2026-10-22): the window's width, the totals in bold */
 /* the Model view's capital cost by source (D-160): a narrow column scrolls it, not the page */
-.capex-card { margin: 12px 0; overflow-x: auto; }
-.pres-t.pres-capex { width: auto; }
-.pres-capex th.zc { text-align: center; color: var(--ink); font-weight: 700; }
-.pres-capex td.n b { font-weight: 700; }
-.pres-capex tr.sum td { border-top: 2px solid var(--line); font-weight: 700; }
 .pres-fig td.d.good { color: var(--green); background: var(--ok-bg); } .pres-fig td.d.bad { color: var(--red); background: var(--bad-bg); }
 .pres-fig td.d .u { color: inherit; }
 .pres-fig td.pending { color: var(--muted); font-style: italic; }
@@ -729,7 +731,6 @@ details.fold > summary { cursor: pointer; color: var(--muted); font-size: 12px; 
 .fold-btn::before { content: ""; position: absolute; left: 9px; top: 7px; width: 6px; height: 6px; border-right: 2px solid var(--muted); border-bottom: 2px solid var(--muted); transform: rotate(45deg); }
 .box.open > h2 > .fold-btn::before { top: 10px; transform: rotate(-135deg); }
 /* the capital cost's Latvia and Lithuania folded to a column with a button until opened (D-197) */
-.pres-capex th.fold, .pres-capex td.fold { width: 52px; text-align: center; background: var(--surface2); }
 .fold-zone { margin-left: 6px; width: 22px; height: 22px; padding: 0; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); color: var(--accent); font: 700 12px/1 var(--text); cursor: pointer; vertical-align: 1px; }
 /* a trade balance's sign on its light fill (the owner, 2026-11-02), a calibration's breach on red, its pass on green */
 .card td .pos, .card td .neg { display: inline-block; padding: 0 6px; border-radius: 999px; }

@@ -29,7 +29,7 @@ import { durationRmse, mae, shareAtLeast } from "./worker/metrics.ts";
 import type { SensMoney } from "./ui/results.ts";
 import { cardsHtml, chartsHtml, sensBid, sensHtml, setNote, trioHtml } from "./ui/results.ts";
 import type { PresContext } from "./ui/presentation.ts";
-import { capexHtml, capexOf } from "./ui/presentation.ts";
+import { capexOf } from "./ui/presentation.ts";
 import type { DeckInput, Side, Trio } from "./ui/deck.ts";
 import { H as DECK_H, NB_DOCS, NB_KEYS, OUTAGES, REPLAY_SLIDE, REPLAY_YEARS, SLIDES, W as DECK_W, deckShell, without, yearPrices } from "./ui/deck.ts";
 import type { Calibration } from "./ui/calibration.ts";
@@ -48,6 +48,7 @@ import type { DocTab } from "./ui/docs.ts";
 import type { Manifest } from "./ui/export.ts";
 import { resultsCsv, resultsJson, scenarioSources } from "./ui/export.ts";
 import { docsHtml, filterSources, markdown, sourcesHtml } from "./ui/docs.ts";
+import { initAnalytics, pageView, reopenConsent } from "./ui/consent.ts";
 import type { Port } from "./worker/pool.ts";
 import { Pool, runYear } from "./worker/pool.ts";
 import { setOf } from "./worker/assemble.ts";
@@ -135,7 +136,7 @@ function shell(): void {
 }
 shell();
 
-const panel = $("panel"), status = $("status"), cards = $("cards"), sens = $("sens"), chartsEl = $("charts"), capexEl = $("capex"), runEl = $("run"), calEl = $("calibration"), ipEl = $("import"), weatherEl = $("weather"), statsEl = $("statistics"), docsEl = $("docs"), deckEl = $("deck"), noticeEl = $("notice");
+const panel = $("panel"), status = $("status"), cards = $("cards"), sens = $("sens"), chartsEl = $("charts"), runEl = $("run"), calEl = $("calibration"), ipEl = $("import"), weatherEl = $("weather"), statsEl = $("statistics"), docsEl = $("docs"), deckEl = $("deck"), noticeEl = $("notice");
 
 const pool = new Pool(Array.from({ length: Math.min(phone ? 2 : 8, Pool.size(navigator.hardwareConcurrency)) }, () =>
   new Worker(new URL("./worker/engine.worker.ts", import.meta.url), { type: "module" }) as unknown as Port));
@@ -478,37 +479,17 @@ function drawCards() {
   const about = headline.length > 1 ? setNote(headline) : "";
   redraw(cards, (trio ? `<div id="trio-box">${trioHtml(trio, SCENARIO_NAME, state.scenario, about)}</div>` : "")
     + marks + cardsHtml(headline, actual, obs, cardsOpen));
-  // the capital cost last on the Model view, under the charts (the owner, 2026-10-25)
-  redraw(capexEl, trio && run === "scenario" ? `<section class="card capex-card" id="capex-box">${capexCard()}</section>` : "");
-  drawDeck();
 }
 
 /** The four scenarios' table alone, when one of the others comes in: the contract card's strike may
  * be in the reader's hand (D-127). */
 function drawTrio() {
   const box = document.getElementById("trio-box");
-  if (box && trio) { redraw(box, trioHtml(trio, SCENARIO_NAME, state.scenario, headline.length > 1 ? setNote(headline) : "")); drawCapex(); drawDeck(); }
+  if (box && trio) { redraw(box, trioHtml(trio, SCENARIO_NAME, state.scenario, headline.length > 1 ? setNote(headline) : "")); }
   else drawCards();
 }
 
-/** The Model view's capital cost of the energy mix, by source (the owner moved it there, 2026-10-22; D-160). */
-let capexOpen = new Set<string>(); // the zones whose columns the reader opened in it, Latvia and Lithuania folded until then (D-197)
-const capexCard = () => {
-  const x = capexHtml(trio ?? {}, SCENARIO_NAME, shown ?? state, presContext(shown ?? state), true, capexOpen);
-  return x.body + (x.note ? `<p class="pres-note">${esc(x.note)}</p>` : "");
-};
-function drawCapex(): void {
-  const box = document.getElementById("capex-box");
-  if (box && trio) redraw(box, capexCard());
-}
-capexEl.addEventListener("click", (e) => {
-  const z = (e.target as HTMLElement).closest<HTMLButtonElement>("button[data-capex-zone]")?.dataset.capexZone;
-  if (!z) return;
-  capexOpen = new Set(capexOpen.has(z) ? [...capexOpen].filter((x) => x !== z) : [...capexOpen, z]);
-  drawCapex();
-});
-
-/** What the presentation page and the Model view's capital cost take besides the runs (D-152 … D-160). */
+/** What the deck takes besides the runs (D-152 … D-160; the Model view's capital cost took it too until D-339). */
 function presContext(s: State): PresContext {
   const unit = p.parameters["smr.bwrx300.net_output_mw"]!.value;
   // the impact's three parameters and their publishers, as the export names them (R-APP-9)
@@ -593,19 +574,20 @@ function deckReplay(y: number): { model: Side | null; market: Side | null } {
   return got;
 }
 
+/** The deck's state: the opening's, the four scenarios as the build computed them, whatever the Model view shows
+ * (D-340, the owner: the deck "fixed by our scenarios"). */
+let deckState: State | null = null;
+
 function drawDeck(): void {
   if (showing !== "deck") return;
-  const s = shown ?? state;
-  const scen = s.run === "scenario";
-  const [e2, e12] = OUTAGES.map((lines, i) => {
-    if (!scen) return {};
-    const st = without(s, lines), key = runKey(st);
+  const s = (deckState ??= opening(p));
+  // the opening's four scenarios and, for the cables' slide, the same with EstLink 2 and with both EstLinks out: the
+  // build's sets (D-221), read once and kept
+  const [main, e2, e12] = [s, ...OUTAGES.map((lines) => without(s, lines))].map((st, i) => {
+    const key = runKey(st);
     if (!deckTrios.has(key)) void loadTrio(deckTrios, drawDeck, st, key, 2 + i / 10);
     return deckTrios.get(key) ?? {};
   });
-  // the outages of states left behind are let go
-  const keys = new Set(scen ? OUTAGES.map((l) => runKey(without(s, l))) : []);
-  for (const k of deckTrios.keys()) if (!keys.has(k) && !presLoading.has(k)) deckTrios.delete(k);
   // the past years' slide asks for its year once it is shown or next to the slide shown
   const near = Math.abs(deckAt - REPLAY_SLIDE) <= 1;
   const rep = REPLAY_YEARS.map((y) => ({ year: y, ...(near || deckReplays.has(y) ? deckReplay(y) : { model: null, market: null }) }));
@@ -619,7 +601,7 @@ function drawDeck(): void {
       const rec = sources.records[p.parameters[k]?.src[0] ?? ""], doc = sources.documents[rec?.derived_from[0] ?? ""];
       return doc?.url ? [[k, { url: doc.url, page: Number(/^p\. (\d+)$/.exec(rec.page ?? "")?.[1]) || null, title: doc.title }]] : [];
     })) };
-  deck = { trio: scen ? trio ?? {} : {}, e2, e12, s, c: presContext(s), runs: runsOf(p, s), prices, nb,
+  deck = { trio: main, e2, e12, s, c: presContext(s), runs: runsOf(p, s), prices, nb,
     rep, map: linesSvg({ p, state: s, links: lk }, lineKeys(p, s.run === "scenario"), true, prices?.zones),
     ctl: panelControls({ p, state: s, links: lk }), lines: panelControls({ p, state: s, links: lk }, Infinity).lines };
   paintDeck();
@@ -943,7 +925,7 @@ function show(view: typeof showing, row?: string): void {
   showing = view;
   if (sensBehind() !== was) pool.shift("sens", sensBehind() - was); // the sensitivities behind another page's own sets, and back (D-233)
   for (const x of document.querySelectorAll<HTMLButtonElement>("header .views button")) x.setAttribute("aria-pressed", String(x.dataset.view === view));
-  for (const el of [cards, sens, chartsEl, capexEl]) el.hidden = view !== "model";
+  for (const el of [cards, sens, chartsEl]) el.hidden = view !== "model";
   // off the Model view the panel's long boxes fold to their headings (D-197)
   panel.classList.toggle("folded", view !== "model");
   applyFold(panel);
@@ -956,10 +938,8 @@ function show(view: typeof showing, row?: string): void {
   // the deck takes the window's width: the panel folds away while it shows
   document.querySelector(".app")!.classList.toggle("full", view === "deck");
   if (view === "deck") {
-    // the pages are of the four scenarios: a validation run gives way to the scenario view's opening state,
-    // as the panel's switch does, and the page says "computing…" until they are in (the owner found the
-    // validation's note under a folded panel looked hung, 2026-10-21)
-    if (state.run === "replay") ctx().set(opening(p), true);
+    // the pages are of the opening's four scenarios whatever the panel holds (D-340), and say "computing…" until
+    // they are in
     void warmDeck().then(drawDeck);
   } else if (view === "calibration") drawCalibration();
   else if (view === "import") void drawImport(true);
@@ -968,6 +948,7 @@ function show(view: typeof showing, row?: string): void {
   else if (view === "docs") void drawDocs(row);
   else if (headline.length) drawChartsNow();
   placeInAddress();
+  pageView(); // a view shown is a page view, with the reader's consent (D-338)
 }
 
 document.querySelector("header .views")!.addEventListener("click", (e) => {
@@ -990,6 +971,7 @@ docsEl.addEventListener("click", (e) => {
   // a contents entry, a section's pill or a letter brings its heading into view, the address untouched (D-197)
   const to = el.closest<HTMLElement>("[data-toc]")?.dataset.toc;
   if (to) document.getElementById(to)?.scrollIntoView({ block: "start" });
+  if (el.closest("[data-act=consent]")) reopenConsent(); // the visit statistics' choice, asked again (D-338)
 });
 // the Sources view's search keeps the documents that hold every word typed, in the page (D-197)
 docsEl.addEventListener("input", (e) => {
@@ -1121,7 +1103,6 @@ async function boot() {
     };
     refreshHints(panel, ctx());
     drawDeck(); // the inputs' growth from 2025 (the deck's)
-    drawCapex(); // and the capital cost of what is built above it (the Model view)
   }).catch(() => undefined);
   bindPanel(panel, ctx, (text) => {
     try {
@@ -1146,6 +1127,8 @@ async function boot() {
   deckAt = Math.max(0, (Number(url.searchParams.get("slide")) || 1) - 1);
   const asked = view === "presentation" ? "deck" : view; // the Presentation page's links open the deck, which took its name (D-249)
   if (asked && asked !== "model" && views.includes(asked)) show(asked as typeof showing);
+  // visit statistics, after the view the address asked for, so that the first page view is that view's (D-338)
+  initAnalytics();
 }
 
 boot().catch((e: unknown) => {

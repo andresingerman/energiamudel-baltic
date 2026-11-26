@@ -15,6 +15,10 @@ export const V3_BUNDLE = 1_915_056 + 518_660;
  * D-085), which Vite 8 bundles with the rest of the JSON where Vite 7 left out the keys the code does
  * not read. */
 const ALLOWED = new Set([
+  // Google's tag, loaded only after the reader's consent (D-338, R-NFR-1 revision 2.148); the minifier joins the
+  // address and its "?id=" into one literal
+  "https://www.googletagmanager.com/gtag/js",
+  "https://www.googletagmanager.com/gtag/js?id=",
   "http://web.mit.edu/lpsolve/doc/CPLEX-format.htm",
   "https://json-schema.org/draft/2020-12/schema",
   "https://energiamudel.ee/v5/schema/scenario.schema.json",

@@ -8,6 +8,7 @@
 import { lang, t } from "./i18n.ts";
 import type { Sources } from "./labels.ts";
 import { REPO, esc } from "./labels.ts";
+import { GA_ID } from "./consent.ts";
 
 const slug = (t: string) => t.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 
@@ -156,6 +157,6 @@ export function docsHtml(tab: DocTab, body: string): string {
     `<li class="l${level}"><button type="button" class="toc-link" data-toc="${id}">${text}</button></li>`).join("")}</ol></nav>` : "";
   return `<div class="tabs" role="group" aria-label="${t("Document shown")}">${DOC_TABS.map(([k, label]) =>
     `<button type="button" class="seg" data-doc="${k}" aria-pressed="${k === tab}">${label}</button>`).join("")}</div>
-    <p class="note doc-repo">${t("The model's code, data and documents are open on GitHub:")} <a href="https://${REPO}" target="_blank" rel="noopener">${REPO}</a></p>
+    <p class="note doc-repo">${t("The model's code, data and documents are open on GitHub:")} <a href="https://${REPO}" target="_blank" rel="noopener">${REPO}</a>${GA_ID ? ` · <button type="button" class="linkish" data-act="consent">${t("Visit statistics: your choice")}</button>` : ""}</p>
     <div class="doc-card">${rail}<article class="doc${tab === "sources" ? " wide" : ""}">${body}</article></div>`;
 }

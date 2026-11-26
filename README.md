@@ -2,7 +2,7 @@
 
 An hourly day-ahead market model of the Baltic bidding zones — Estonia, Latvia and Lithuania — that runs in the browser. Finland, Sweden (SE4) and Poland are hourly price profiles given to the model, not computed by it. It is built to show, under assumptions the user sets and can see, what a small modular nuclear plant in Estonia does to prices, imports and a contract for difference, and what interconnector outages do to prices.
 
-The application is live at <https://energiamudel.ee>, in English and Estonian. Nothing is installed and nothing is sent to a server: the page computes in the reader's browser.
+The application is live at <https://energiamudel.ee>, in English and Estonian. Nothing is installed: the page computes in the reader's browser. With the reader's consent it counts visits with Google Analytics; without it, nothing is sent anywhere.
 
 **Declaration of interest.** The author works with Fermi Energia, the company developing an Estonian nuclear plant of two BWRX-300 units.
 

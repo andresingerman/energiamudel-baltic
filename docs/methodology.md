@@ -1844,6 +1844,15 @@ gates and one under each section's heading, in the page's language, with no figu
 
 ### 8.3 The documentation (R-APP-9, R-DOC-4)
 
+*Visit statistics (D-338).* With the reader's consent the page counts visits with Google Analytics 4: a banner
+asks once and keeps the answer in the browser; Google's script is loaded only after «agree»; advertising storage
+and signals stay off. The page view on load is the stream's own, the address without its hash, which Google
+drops, so a campaign's `utm_` parameters reach the statistics; a page view then goes for each view shown, its
+address cut to the view, the language and the slide. The scenario's text in the hash is never sent, and the
+stream counts no history change of its own.
+The line under the Documentation view's tabs reopens the choice, and «decline» removes Google's cookies. Without
+consent the page calls no third party (R-NFR-1).
+
 The *Documentation* view renders this methodology as the repository holds it — in Estonian
 the short summary `docs/methodology_et.md`, the full methodology beside it (D-142); until D-337 the questions and
 answers too (`docs/faq.md`, `docs/faq_et.md`), which the owner took out with their tab —
@@ -2048,7 +2057,7 @@ IRENA's figures.
 ### 8.8 The Presentation page (R-APP-15; revisions 2.26 to 2.29, 2.37 to 2.42 and 2.51; D-152 … D-163, D-176 … D-181, D-190) — taken out (D-249)
 
 *The owner took the page out on 2026-11-12 (revision 2.82, D-249); the deck of §8.9 took its name. What follows describes
-the page as it stood. Its capital cost of the energy mix stays the Model view's table, and the helpers it read the
+the page as it stood. Its capital cost of the energy mix stayed the Model view's table until D-339, and the helpers it read the
 runs with serve the deck; the two neighbours' profiles of its blocks stay among the sets the build computes.*
 
 The *Presentation* view puts the four scenarios of 2035 on one page for a talk, the window's width, the
@@ -2095,7 +2104,8 @@ design life (`smr.bwrx300.design_life_years`), the figures of 2035 held and undi
 assumption of the table, not a result of the model; and what the state pays a year under the contract
 (a) at the strike, as the contract card computes it.
 
-*Since D-157* a table gives the capital cost of the energy mix to 2035: for each Baltic zone and source
+*From D-157 to D-339* a table gave the capital cost of the energy mix to 2035 — the owner took it off the Model view
+on 2026-11-26 (D-339); the deck still reads the plant's design life from the same figures (`capexOf`). It gave, for each Baltic zone and source
 the capacity the scenario holds above the observed fleet of 2025 as the inputs measure it — the line's
 growth, never below zero,
 batteries and pumped hydro apart — at the Danish Energy Agency's central estimates for 2030: 'Nominal
@@ -2190,8 +2200,10 @@ the lowest and the highest year; Estonia's demand is the Presentation page's (th
 multiplier plus the constant load); the trade balance is Estonia's export less its import at its own price, the sign
 of v3's slide; the hours gas sets the price are those a Baltic gas plant set Estonia's price (D-195); the capital cost
 is the Model view's table (§8.8). The cables' slide runs the same four with EstLink 2 out all year and with both
-EstLinks out, the panel's what-if outage (§9): the opening state's two trios are the build's sets (§8.1, D-221), any other
-state's compute in the browser while the deck shows. Every sentence that states a result
+EstLinks out, the panel's what-if outage (§9): the opening state's two trios are the build's sets (§8.1, D-221). Since
+D-340 the deck is always of the opening state — the four scenarios as published, whatever the panel holds — so that a
+change on the Model view moves no slide; until then it followed the state shown and computed another state's trios in the
+browser. Every sentence that states a result
 is written from these figures. The literature beside them is v3's, named on the slide without a link (the site's code holds
 no third-party address, R-NFR-1; the links of the neighbours' slides take their addresses from the site's sources,
 D-270, and the last slide's repository is the model's own, D-333), and enters no computation:

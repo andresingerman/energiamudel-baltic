@@ -6,6 +6,19 @@ public release, is in the author's private history (DECISIONS D-328); what was d
 
 ## Unreleased
 
+- Deployed 2026-11-26 (main a2cf2c2: D-340's deck on the opening state): every set as before; the live check passed
+  in Chromium and WebKit.
+
+- The deck is always of the opening state: a change on the Model view moves no slide (D-340, specification 2.150).
+
+- Deployed 2026-11-26 (main a708c87: D-338's visit statistics behind consent, D-339's table out): every set as
+  before; the live check passed in Chromium and WebKit.
+
+- The table of the energy mix's investments to 2035 is taken off the Model view (D-339, specification 2.149).
+
+- Visit statistics with Google Analytics 4, behind the reader's consent (D-338, specification 2.148): a banner in
+  both languages, Google's script only after «agree», the scenario never sent, the choice changeable.
+
 - Deployed 2026-11-25 (main 0abd186: D-335 and D-336's methodologies, D-337's questions and answers out): every
   set as before; the live check passed in Chromium, and in WebKit after the browser's process had crashed twice.
 

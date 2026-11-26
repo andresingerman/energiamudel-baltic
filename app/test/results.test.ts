@@ -11,8 +11,7 @@ import { replay } from "../src/state/scenario.ts";
 import { actualOf } from "../src/ui/actual.ts";
 import type { YearResult } from "../src/ui/results.ts";
 import { cardsHtml, chartsHtml, trioHtml, weightedMedian } from "../src/ui/results.ts";
-import { annuity, capexHtml, capexOf, lifeCost } from "../src/ui/presentation.ts";
-import { opening } from "../src/state/model.ts";
+import { capexOf } from "../src/ui/presentation.ts";
 import { view } from "../src/worker/view.ts";
 
 const { solve } = await loadSolver();
@@ -90,31 +89,8 @@ test("a scenario's median is the median of its years' weighted hours, not an ave
   assert.deepEqual([...cards.matchAll(/median price.{0,400}?<td class="n">([^<]*) </gs)].map((m) => m[1]), ["10.0", "10.0", "10.0"]);
 });
 
-test("the capital cost: each source's cost over the plant's life and its present value; the Model view's table by source with a row of the plant per scenario (D-157, D-158, D-166)", () => {
-  const ri: YearResult = { ...r, inputs: { hours: 8784, loadTwh: [10, 8, 12], price: { FI: 50, SE4: 60, PL: 80 } } };
-  const names = { gas: "0 SMR", smr1: "1 SMR", smr2: "2 SMR", smr3: "3 SMR" };
-  // the fleet of 2025 the run's own, so that nothing is built but the plant
-  const fleet2025 = Object.fromEntries(["EE", "LV", "LT"].map((z, i) => [z, Object.fromEntries(r.view.zones[i].fleet.filter((f) => f.installedMw).map((f) => [f.cls, f.installedMw!]))]));
-  const c = { plantMw: { gas: 0, smr1: 300, smr2: 600, smr3: 900 }, fleet2025, impact: { kwh: 3030, vat: 0.24, years: 60, sources: "ACER" }, strike: 90, clause: false, capex: capexOf(p, 300), rate: 0.03 };
+test("the capital cost's figures the deck takes: each source in 2025 euros, the plant's per MW, its design life (D-157)", () => {
   const k = capexOf(p, 300)!;
   const d = 128.75 / 105.06;
   assert.ok(Math.abs(k.cost.wind_onshore.mw - 1.1466 * d) < 1e-9 && Math.abs(k.plantMw - 4600 / 600) < 1e-9 && k.years === 60);
-  // over 60 years (D-158): onshore wind built twice, 30 years each; solar once and half again, 40 years
-  // each; a two-hour battery three times, 20 years each (the owner's), its rebuilds at 2050's cost
-  const near = (a: number, b: number) => Math.abs(a - b) < 1e-9;
-  assert.ok(near(lifeCost(k.cost.wind_onshore, 0, 60), (1.1466 + 1.0903) * d));
-  assert.ok(near(lifeCost(k.cost.solar, 0, 60), (0.5562 + 0.5 * 0.4611) * d));
-  assert.ok(near(lifeCost(k.cost.battery, 2, 60), (0.084 + 2 * 0.195 + 2 * (0.072 + 2 * 0.174)) * d));
-  // their present value in 2035 at 3 % (D-166): the build at its cost, each rebuild from its year — onshore
-  // wind's in 2060, solar's half in 2070, a battery's in 2050 and 2070; a sum paid at each of 60 years' ends
-  // is worth 27.68 of it in 2035, worked by hand: (1 − 1.03^−60) / 0.03 = (1 − 0.169733) / 0.03
-  assert.ok(Math.abs(annuity(0.03, 60) - 27.6756) < 1e-4 && annuity(0, 60) === 60);
-  assert.ok(near(lifeCost(k.cost.wind_onshore, 0, 60, 0.03), (1.1466 + 1.0903 / 1.03 ** 25) * d));
-  assert.ok(near(lifeCost(k.cost.solar, 0, 60, 0.03), (0.5562 + (0.5 * 0.4611) / 1.03 ** 35) * d));
-  assert.ok(near(lifeCost(k.cost.battery, 2, 60, 0.03), (0.084 + 2 * 0.195 + (0.072 + 2 * 0.174) / 1.03 ** 15 + (0.072 + 2 * 0.174) / 1.03 ** 35) * d));
-  assert.equal(lifeCost(k.cost.wind_onshore, 0, 60, 0), lifeCost(k.cost.wind_onshore, 0, 60));
-  // the Model view's table by source: the two heads and a row of the plant per scenario, 3 SMR's 900 MW at 4 600 M€ for 600
-  const full = capexHtml({ gas: [ri], smr1: [ri], smr2: [ri], smr3: [ri] }, names, opening(p), c, true).body.split('class="pres-t pres-capex"')[1].split("</table>")[0];
-  assert.equal(full.match(/<tr>/g)?.length, 5);
-  assert.match(full, /<b>6 900<\/b> <span class="u">M€<\/span>/);
 });

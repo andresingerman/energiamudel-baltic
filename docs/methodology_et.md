@@ -94,3 +94,6 @@ lepingu kaarti mudeli vaates enam ei ole (D-294).
 
 Täielik metoodika (inglise keeles) on selle vaate teisel sakil; iga väärtuse allikas on paneeli *i* nupu taga
 ja sakil „Allikad“. Mudeli kood, andmed ja dokumendid on GitHubis avalikud.
+
+Külastuste statistika: sinu nõusolekul loendab sait külastusi Google Analyticsiga (milline vaade avati, kust tuldi);
+stsenaariumi ei saadeta. Valikut saab muuta selle vaate ülaosas lingiga „Külastuste statistika: sinu valik“.

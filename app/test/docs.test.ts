@@ -74,6 +74,6 @@ test("every Sources link on the Statistics and Weather pages reaches its row, an
 test("the Documentation view names the public repository on each of its tabs (D-334)", () => {
   for (const tab of ["methodology", "full", "sources"] as const) {
     const h = docsHtml(tab, "<p>text</p>");
-    assert.match(h, /<p class="note doc-repo">The model(?:'|&#39;)s code, data and documents are open on GitHub: <a href="https:\/\/github\.com\/andresingerman\/energiamudel-baltic" target="_blank" rel="noopener">github\.com\/andresingerman\/energiamudel-baltic<\/a><\/p>/, tab);
+    assert.match(h, /<p class="note doc-repo">The model(?:'|&#39;)s code, data and documents are open on GitHub: <a href="https:\/\/github\.com\/andresingerman\/energiamudel-baltic" target="_blank" rel="noopener">github\.com\/andresingerman\/energiamudel-baltic<\/a> · <button type="button" class="linkish" data-act="consent">Visit statistics: your choice<\/button><\/p>/, tab);
   }
 });

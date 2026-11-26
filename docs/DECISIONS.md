@@ -8764,3 +8764,63 @@ that need the raw workbooks; the dated timings. No requirement changes. No figur
 
 **Done:** D-335, D-336 and D-337 deployed on 2026-11-25 at the owner's word ("Yes, deploy"), main 0abd186: the rollback copy `data/raw-aside/live-8ed412314716/`; the opening view and the presentation's 54 sets none differing; 144 files as built, 200 to a reader, all four headers sent. `make live-check` passed in Chromium. In WebKit the browser's own process crashed twice right after the deploy, at two different steps ("Target crashed", then the page closed while it waited), with no failed check before either; run again three times, it passed all sixteen checks each time. Nothing of the page's computing changed with this deploy, and the crash was not met again: it is set down as seen, its cause not found. On the live site the Documentation view shows three tabs in Estonian and both methodologies as corrected.
 
+## D-338 · 2026-11-26 · Visit statistics with Google Analytics, behind the reader's consent
+
+**Status:** Accepted · 2026-11-26 · the owner: "set up the statistics of visits to energiamudel.ee with Google
+Analytics"; told that R-NFR-1 excludes analytics, that README promised nothing is sent, and that Google Analytics needs
+a consent banner, the owner chose Google Analytics over the host's logs and a cookieless counter, and chose the
+Fermi Energia account for the property. On R-NFR-1, R-APP-9 and R-PUB-6.
+
+**Decision:**
+1. **A GA4 property `energiamudel.ee`** in the Fermi Energia account (Estonia's time zone, the euro), with one web
+   stream for `https://energiamudel.ee`, measurement id `G-YNNGZW3REW`. Its enhanced measurement keeps page loads,
+   scrolls, outbound clicks, site search, video and file downloads; it counts **no page change from the browser's
+   history** — the page rewrites its address on every slider's move — and **no form interaction** — every slider is a
+   form's control.
+2. **Nothing goes to Google without consent** (`app/src/ui/consent.ts`). A banner asks once, in the page's language,
+   with two buttons of equal weight; the choice is kept in the browser. Only after «agree» is Google's script loaded,
+   with consent for analytics storage and none for advertising storage, user data or personalisation, and Google
+   signals off. «Decline», now or later, sends nothing and removes Google's `_ga` cookies.
+3. **What Google is told of the address:** on load, the stream's own page view — its "page loads" cannot be turned
+   off — carries the address without its hash, which Google drops, so a campaign's `utm_` parameters are counted;
+   each view shown after it sends a page view with the address cut to its view, language and slide
+   (`pageLocation`). The scenario's text in the hash never leaves the page. Checked in the browser on the
+   development server: no request to Google before «agree»; after it, the tag with this id, one page view on load
+   with the hash dropped and `utm_source` kept, and one per view shown, cut as above.
+4. **The reader can change the choice:** a link under the Documentation view's tabs reopens the banner.
+5. **R-NFR-1 gains its one exception** (specification revision 2.148); `site_check` allows Google's tag's address
+   alone; README and both methodologies say what is counted and how to decline.
+6. No figure moves. The analytics reach the site at the next deploy, the owner's word.
+
+## D-339 · 2026-11-26 · The capital cost of the energy mix taken off the Model view
+
+**Status:** Accepted · 2026-11-26 · the owner, with a screenshot of the table «Energiamiksi investeeringud aastani
+2035»: "remove this part". On R-APP-1; it ends the Model view's table of D-160.
+
+**Decision:**
+1. **The Model view has no table of the capital cost** — what each zone builds above its fleet of 2025 to 2035 and over
+   60 years, at the Danish Energy Agency's costs, with the plant's rows. Its card, its folding of Latvia's and
+   Lithuania's columns, its code (`capexHtml`, `capexRowsOf`, `lifeCost`, `annuity`), its styles and its Estonian
+   strings are gone.
+2. **`capexOf` stays**, with the catalogue's figures in the presets: the deck's slide on the plant's account reads the
+   plant's design life, 60 years, from it.
+3. Specification revision 2.149 (`R-APP-1`); the methodology says the table stood from D-157 to D-339. No figure moves.
+
+**Done:** D-338 and D-339 deployed on 2026-11-26 at the owner's word ("Yes, deploy"), main a708c87: the rollback copy `data/raw-aside/live-0abd18630464/`; the opening view and the presentation's 54 sets none differing; 144 files as built, 200 to a reader, all four headers sent; `make live-check` passed in Chromium and WebKit. On the live site: the banner shows on a first visit and nothing goes to Google before the choice; after «Nõustun» Google's tag loads with G-YNNGZW3REW, the page view on load carries `https://energiamudel.ee/?lang=et` without the hash, and switching to the Documentation view sends one page view of `?view=docs&lang=et`; the Model view has no table of the capital cost.
+
+## D-340 · 2026-11-26 · The deck fixed to the opening state
+
+**Status:** Accepted · 2026-11-26 · the owner: the presentation changed its values when something was changed on the
+Model view; it is to be fixed by our scenarios. On R-APP-16.
+
+**Decision:**
+1. **The deck is always of the opening state** (`opening(p)`): its four scenarios and, for the cables' slide, the same
+   with EstLink 2 and with both EstLinks out — the build's sets (D-221), read once and kept. What the panel holds, a
+   sensitivity, a shared link's scenario or a validation run, moves no slide.
+2. Opening the deck no longer sets the reader's state: a validation run stays as it was on the Model view.
+3. Specification revision 2.150 (`R-APP-16`); the methodology says so. No figure of the opening state moves: the 17
+   slides' text was the same, character for character, before and after Finland's level was set to ×3 on the Model view
+   (EE there 108.1 → 134.7 €/MWh).
+
+**Done:** D-340 deployed on 2026-11-26 at the owner's word ("Yes, deploy"), main a2cf2c2: the rollback copy `data/raw-aside/live-a708c8774327/`; the opening view and the presentation's 54 sets none differing; 144 files as built, all four headers sent; `make live-check` passed in Chromium and WebKit. On the live site, with Finland's level at ×3 on the Model view (Estonia 134.7 €/MWh there), slide 10 still reads 108.1 / 96.2 / 86.0 €/MWh.
+
