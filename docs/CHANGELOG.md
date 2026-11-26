@@ -6,6 +6,14 @@ public release, is in the author's private history (DECISIONS D-328); what was d
 
 ## Unreleased
 
+- Deployed 2026-11-26 (main b3bcf3a: ERRATA E-202's fix, D-342's Google signals): every set as before; the live check
+  passed in Chromium and WebKit.
+
+- The visit statistics' consent covers Google signals: age groups, gender and interests as totals, for readers signed
+  in to Google who allow it; the banner says so and asks those who had agreed again (D-342, specification 2.152).
+
+- Withdrawing consent stops the visit statistics at once, not at the next reload (ERRATA E-202).
+
 - Deployed 2026-11-26 (main 2771a96: D-341's Feedback view and footer): every set as before; the live check passed in
   Chromium and WebKit.
 

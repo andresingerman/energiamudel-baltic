@@ -8846,3 +8846,29 @@ author D-337 took off the site.
 
 **Done:** D-341 deployed on 2026-11-26 at the owner's word ("Yes, deploy"), main 2771a96: the rollback copy `data/raw-aside/live-a2cf2c2fcc0a/`; the opening view and the presentation's 54 sets none differing; 144 files as built, all four headers sent; `make live-check` passed in Chromium and WebKit. On the live site the header's last view is «Tagasiside» with its text field and button, and the footer reads as decided, its four links to the author's page, his address and the two licence files. The button itself was not pressed: it would open the e-mail program of the machine the check ran on.
 
+## D-342 · 2026-11-26 · Google signals, under the same one question
+
+**Status:** Accepted · 2026-11-26 · the owner: "set up Google signals"; asked how the reader is to be asked, he chose
+one question over two levels of consent, and had the feature turned on in Google Analytics in his name, its
+acknowledgement with it. On R-NFR-1; it widens D-338, whose advertising storage and signals stayed off.
+
+**Decision:**
+1. **Google signals is on** for the property energiamudel.ee: Google links a visit to the Google account of a reader
+   who is signed in and has allowed it there, and the reports gain age groups, gender and interests as totals.
+2. **The banner asks one question and says what it covers**: the counting as before, signals by name, and that an
+   advertising cookie is among Google's; that the site shows no ads; that the scenario is never sent.
+3. **With «agree»** the page grants analytics storage, advertising storage and Google's consent for user data, and
+   no longer turns signals off in the tag. Signals need the last two: tried in the browser, with advertising storage
+   alone the tag sent no signals request; with user data granted too it sent them (`stats.g.doubleclick.net`,
+   `google.ee/ads/ga-audiences`), ad personalisation still denied (`npa=1`). Ad personalisation stays denied; no
+   advertising account is linked. With «decline», or no answer, nothing is loaded or sent, as before.
+4. **A reader who agreed under D-338 is asked again**, the question being wider (the choice is kept under a new key);
+   one who declined then is not asked again.
+5. Specification revision 2.152; both methodologies say it. No figure moves.
+
+**To watch:** demographics appear only above Google's thresholds and a day or two after the traffic; on a small site
+many rows will be withheld. Whether they arrive with ad personalisation denied is to be checked when the first data
+are in: the requests go, what Google makes of them is not seen from the page.
+
+**Done:** D-342 and ERRATA E-202's fix deployed on 2026-11-26 at the owner's word ("Yes, deploy"), main b3bcf3a: the rollback copy `data/raw-aside/live-2771a9618f3b/`; the opening view and the presentation's 54 sets none differing; 144 files as built, all four headers sent; `make live-check` passed in Chromium and WebKit. On the live site: a browser that had declined is not asked again and sends nothing; a first visit shows the banner with signals named, and nothing goes to Google before the choice; after «Nõustun» the page view goes with `gcs=G111`, `npa=1`, and the signals requests with it (`stats.g.doubleclick.net`, `google.ee/ads/ga-audiences`); after «Keeldun» two views and a scroll send nothing, Google's cookies are gone and its switch is on. Whether the demographics arrive is to be looked at in a day or two.
+

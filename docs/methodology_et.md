@@ -96,4 +96,6 @@ Täielik metoodika (inglise keeles) on selle vaate teisel sakil; iga väärtuse 
 ja sakil „Allikad“. Mudeli kood, andmed ja dokumendid on GitHubis avalikud.
 
 Külastuste statistika: sinu nõusolekul loendab sait külastusi Google Analyticsiga (milline vaade avati, kust tuldi);
-stsenaariumi ei saadeta. Valikut saab muuta selle vaate ülaosas lingiga „Külastuste statistika: sinu valik“.
+Google'isse sisse logitud külastaja puhul, kes on seda oma kontol lubanud, seob Google külastuse kontoga ja näitab
+vanuserühmi, sugu ja huvisid koondarvudena (Google signals), milleks ta paneb ka reklaamiküpsise; reklaami sait ei näita.
+Stsenaariumi ei saadeta. Valikut saab muuta selle vaate ülaosas lingiga „Külastuste statistika: sinu valik“.

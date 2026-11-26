@@ -3181,3 +3181,25 @@ a reader did.
 **Fix:** an index that did not come is asked for again next time (a build of other sources, the other cause of «no
 index», costs one small request per ask). The check's server queues 128 connections. Checked: four runs in both
 engines pass; with the old backlog of five, four Chromium runs pass, one of them after the index's request was reset.
+
+## E-202 — A page went on telling Google its views after the reader withdrew consent
+
+**Found:** 2026-11-26, the owner's check of the visit statistics on the live site · D-338 · `app/src/ui/consent.ts`
+(R-NFR-1) · **Status:** fixed 2026-11-26
+
+**What:** a reader who had agreed and then chose «decline» through the Documentation view's link had Google's cookies
+removed and consent mode set to denied — but the script was loaded, and consent mode with consent denied still sends
+"cookieless pings". Each view shown afterwards sent its page view (`gcs=G100`) until the page was reloaded; from the
+next load on, nothing was sent, as decided. Agreeing again on the same page did not restore consent either: the script
+being loaded, the choice changed nothing, and the views went as pings.
+
+**Effect:** against D-338's word that without consent nothing is sent: between a withdrawal and the next reload the
+page's views reached Google without a cookie or a client id. A reader who declined at the banner's first showing was
+never affected — the script is not loaded then. No figure.
+
+**Fix:** the choice is put into force in one place (`apply`): Google's own switch `ga-disable-<id>` follows it, so
+gtag sends nothing while consent is withdrawn; the page queues no page view then; agreeing again updates consent and
+resumes. A test holds the three steps. Checked in the browser: after «decline» two views and a scroll send nothing;
+after «agree» the next view goes with `gcs=G101`. A page view queued while consent stood may still leave a moment
+after the withdrawal.
+

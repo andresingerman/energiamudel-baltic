@@ -1845,13 +1845,18 @@ gates and one under each section's heading, in the page's language, with no figu
 ### 8.3 The documentation (R-APP-9, R-DOC-4)
 
 *Visit statistics (D-338).* With the reader's consent the page counts visits with Google Analytics 4: a banner
-asks once and keeps the answer in the browser; Google's script is loaded only after «agree»; advertising storage
-and signals stay off. The page view on load is the stream's own, the address without its hash, which Google
+asks once and keeps the answer in the browser; Google's script is loaded only after «agree». Until D-342 advertising
+storage and Google signals stayed off; since then the consent covers Google signals — for a reader signed in to
+Google who allows it there, Google links the visit to the account and the statistics show age groups, gender and
+interests as totals — which needs Google's advertising storage and its consent for user data (with either denied the
+tag sends no signals request), and the banner says so; ad personalisation stays off, and the site shows no ads. A reader who agreed to the narrower question is
+asked again; one who declined is not. The page view on load is the stream's own, the address without its hash, which Google
 drops, so a campaign's `utm_` parameters reach the statistics; a page view then goes for each view shown, its
 address cut to the view, the language and the slide. The scenario's text in the hash is never sent, and the
 stream counts no history change of its own.
-The line under the Documentation view's tabs reopens the choice, and «decline» removes Google's cookies. Without
-consent the page calls no third party (R-NFR-1).
+The line under the Documentation view's tabs reopens the choice, and «decline» removes Google's cookies and turns
+Google's own switch (`ga-disable-<id>`) on, so that a page whose script is loaded already sends nothing more — consent
+mode alone would leave its cookieless pings (ERRATA E-202). Without consent the page calls no third party (R-NFR-1).
 
 The *Documentation* view renders this methodology as the repository holds it — in Estonian
 the short summary `docs/methodology_et.md`, the full methodology beside it (D-142); until D-337 the questions and
