@@ -19,17 +19,18 @@ Version `0.1.0-dev`. The model first went public on 26 November 2026.
 
 ## The application
 
-Seven views:
+Eight views:
 
 | View | What it shows |
 |---|---|
 | *Model* | The scenarios of 2035 and the replays of past years: the panel of assumptions, the results, the charts. |
-| *Presentation* | A deck of seventeen slides whose every figure is read from the runs the page shows. |
+| *Presentation* | A deck of seventeen slides whose every figure is read from the runs of the opening state's four scenarios. |
 | *Calibration* | The validation: prices, generation and border flows against the record, the EstLink 2 test, the engine against the reference, the fitted parameters. |
 | *Import price* | The neighbours' prices as the model takes them, and the generation and capacity behind them. |
 | *Weather* | Why the climate years 1995, 2008 and 2009, and what they are in the Baltic states. |
 | *Statistics* | Ten years of gas, CO₂ and day-ahead prices and of wind and solar build-out, with the data centres and new industrial loads by country. |
 | *Documentation* | The methodology and the sources. |
+| *Feedback* | A note to the author through the reader's own e-mail program; the site sends and stores nothing. |
 
 The scenario is in the address bar (`#s=…`): a link opens the same run. *Export CSV* and *export JSON* save the results with their provenance ([`docs/methodology.md`](docs/methodology.md) §8.4).
 

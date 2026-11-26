@@ -8824,3 +8824,25 @@ Model view; it is to be fixed by our scenarios. On R-APP-16.
 
 **Done:** D-340 deployed on 2026-11-26 at the owner's word ("Yes, deploy"), main a2cf2c2: the rollback copy `data/raw-aside/live-a708c8774327/`; the opening view and the presentation's 54 sets none differing; 144 files as built, all four headers sent; `make live-check` passed in Chromium and WebKit. On the live site, with Finland's level at ×3 on the Model view (Estonia 134.7 €/MWh there), slide 10 still reads 108.1 / 96.2 / 86.0 €/MWh.
 
+## D-341 · 2026-11-26 · A Feedback view, and a footer with the author and the licences
+
+**Status:** Accepted · 2026-11-26 · the owner: a tab in the top menu to collect feedback, and in the footer who made
+the model; then the licence in the footer too, and the name a link to his LinkedIn page; shown on the development
+server and committed at his word. On R-APP-17 (new) and R-PUB-2; it brings back the footer D-224 took off and the
+author D-337 took off the site.
+
+**Decision:**
+1. **A Feedback view**, the last in the header (`view=feedback`; `app/src/ui/feedback.ts`): a text field and one button
+   that opens the reader's own e-mail program with the text as a letter to the author's address, and a link to the
+   repository's issues. The site sends and stores nothing, so R-NFR-1 stands as it is and no server code is added.
+   A form posted to the host was the alternative: it works for a reader with no e-mail program set up, at the price of
+   server code, a defence against spam and a line on personal data. Not taken now.
+2. **A footer under every view**: the author's name, a link to his LinkedIn page; his role at Fermi Energia and his
+   address, as the questions and answers gave them (D-293); the licences — the code's AGPL-3.0-or-later and the
+   documents' and data's CC BY 4.0 — each a link to its file in the repository. It is drawn in the page's language.
+3. The check of the built site allows the author's page beside Google's tag: a link the reader follows, not a request
+   the site makes.
+4. Specification revision 2.151. No figure moves.
+
+**Done:** D-341 deployed on 2026-11-26 at the owner's word ("Yes, deploy"), main 2771a96: the rollback copy `data/raw-aside/live-a2cf2c2fcc0a/`; the opening view and the presentation's 54 sets none differing; 144 files as built, all four headers sent; `make live-check` passed in Chromium and WebKit. On the live site the header's last view is «Tagasiside» with its text field and button, and the footer reads as decided, its four links to the author's page, his address and the two licence files. The button itself was not pressed: it would open the e-mail program of the machine the check ran on.
+

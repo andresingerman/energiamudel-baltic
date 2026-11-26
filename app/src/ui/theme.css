@@ -407,6 +407,12 @@ caption.rh { text-align: left; margin: 0; padding: 0 0 6px; }
 /* the calibration page (R-APP-7): a failure carries a ✗ as well as its colour */
 .calibration h3 { font-size: 13px; margin: 16px 0 4px; }
 .doc-repo { margin: 8px 0 10px; }
+/* the Feedback view's form and the footer's line on who made the model */
+.fb { max-width: 720px; }
+.fb-form { display: grid; gap: 10px; justify-items: start; margin: 10px 0; }
+.fb-text { width: 100%; padding: 10px 12px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); line-height: 1.45; resize: vertical; }
+.foot { padding: 14px 24px 18px; border-top: 1px solid var(--line); color: var(--muted); font-size: 12px; text-align: center; }
+.foot a { color: inherit; }
 /* the visit statistics' banner and its link back (D-338): a card at the window's foot, two buttons of equal weight */
 .consent { position: fixed; left: 16px; bottom: 16px; z-index: 60; max-width: 520px; padding: 14px 16px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-card); box-shadow: 0 6px 24px rgb(3 8 76 / .14); font-size: 13px; line-height: 1.45; }
 .consent-h { font-weight: 700; color: var(--navy); margin: 0 0 4px; }

@@ -41,6 +41,7 @@ import type { Statistics } from "./ui/statistics.ts";
 import { setKey, statisticsHtml } from "./ui/statistics.ts";
 import { busyText, chartInput, gotoTarget, ipInputOf, resultsRun, scenarioOrder, tipPlace } from "./ui/wiring.ts";
 import { weatherHtml } from "./ui/weather.ts";
+import { feedbackHtml, footHtml, mailto } from "./ui/feedback.ts";
 import { observedClasses } from "./engine/build.ts";
 import type { Year } from "./contract/year.ts";
 import type { Evaluation } from "./worker/metrics.ts";
@@ -129,6 +130,7 @@ function shell(): void {
     u.searchParams.set("lang", other);
     location.href = u.href;
   });
+  $("foot").innerHTML = footHtml(); // in the page's language, like every text
   if (lang === "en") return;
   document.title = t(document.title);
   for (const e of document.querySelectorAll<HTMLElement>("[data-t]")) e.textContent = t(e.textContent ?? "");
@@ -136,7 +138,7 @@ function shell(): void {
 }
 shell();
 
-const panel = $("panel"), status = $("status"), cards = $("cards"), sens = $("sens"), chartsEl = $("charts"), runEl = $("run"), calEl = $("calibration"), ipEl = $("import"), weatherEl = $("weather"), statsEl = $("statistics"), docsEl = $("docs"), deckEl = $("deck"), noticeEl = $("notice");
+const panel = $("panel"), status = $("status"), cards = $("cards"), sens = $("sens"), chartsEl = $("charts"), runEl = $("run"), calEl = $("calibration"), ipEl = $("import"), weatherEl = $("weather"), statsEl = $("statistics"), docsEl = $("docs"), fbEl = $("feedback"), deckEl = $("deck"), noticeEl = $("notice");
 
 const pool = new Pool(Array.from({ length: Math.min(phone ? 2 : 8, Pool.size(navigator.hardwareConcurrency)) }, () =>
   new Worker(new URL("./worker/engine.worker.ts", import.meta.url), { type: "module" }) as unknown as Port));
@@ -165,7 +167,7 @@ let chartBorder = "EE-FI";
 let chartImport: "line" | "fill" = "fill"; // the daily chart's net import
 let chartMonthly: "mean" | "median" = "mean"; // a scenario's monthly chart: the average or the median (D-202)
 let att: Attribution | null = null; // a validation run's outage labels (R-LINK-6)
-let showing: "model" | "deck" | "calibration" | "import" | "weather" | "statistics" | "docs" = "model";
+let showing: "model" | "deck" | "calibration" | "import" | "weather" | "statistics" | "docs" | "feedback" = "model";
 let ipZone: IpZone = "FI"; // the import-price page's boundary zone (D-040)
 let timer: ReturnType<typeof setTimeout> | undefined;
 // the state whose results the page shows — what an export describes (R-APP-10) — and the settings of
@@ -934,6 +936,7 @@ function show(view: typeof showing, row?: string): void {
   weatherEl.hidden = view !== "weather";
   statsEl.hidden = view !== "statistics";
   docsEl.hidden = view !== "docs";
+  fbEl.hidden = view !== "feedback";
   deckEl.hidden = view !== "deck";
   // the deck takes the window's width: the panel folds away while it shows
   document.querySelector(".app")!.classList.toggle("full", view === "deck");
@@ -946,6 +949,7 @@ function show(view: typeof showing, row?: string): void {
   else if (view === "weather") { if (!weatherEl.innerHTML) weatherEl.innerHTML = weatherHtml(p, sources); } // static: drawn once (R-APP-13)
   else if (view === "statistics") drawStats();
   else if (view === "docs") void drawDocs(row);
+  else if (view === "feedback") { if (!fbEl.innerHTML) fbEl.innerHTML = feedbackHtml(); } // static: drawn once
   else if (headline.length) drawChartsNow();
   placeInAddress();
   pageView(); // a view shown is a page view, with the reader's consent (D-338)
@@ -963,6 +967,11 @@ statsEl.addEventListener("click", (e) => {
   if (!b) return;
   for (const x of statsEl.querySelectorAll<HTMLButtonElement>("button[data-stat]")) x.setAttribute("aria-pressed", String(x === b));
   for (const x of statsEl.querySelectorAll<HTMLElement>(".st-pane")) x.hidden = x.dataset.pane !== b.dataset.stat;
+});
+// the Feedback view's button: the reader's text into their own e-mail program
+fbEl.addEventListener("submit", (e) => {
+  e.preventDefault();
+  location.href = mailto(fbEl.querySelector("textarea")!.value);
 });
 docsEl.addEventListener("click", (e) => {
   const el = e.target as HTMLElement;

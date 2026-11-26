@@ -6,6 +6,12 @@ public release, is in the author's private history (DECISIONS D-328); what was d
 
 ## Unreleased
 
+- Deployed 2026-11-26 (main 2771a96: D-341's Feedback view and footer): every set as before; the live check passed in
+  Chromium and WebKit.
+
+- A Feedback view in the header, and a footer under every view with the author and the licences (D-341,
+  specification 2.151).
+
 - Deployed 2026-11-26 (main a2cf2c2: D-340's deck on the opening state): every set as before; the live check passed
   in Chromium and WebKit.
 

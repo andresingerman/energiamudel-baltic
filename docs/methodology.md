@@ -1894,7 +1894,10 @@ the CSV's rows against the hours). Printing hides the controls, keeps cards and 
 draws the charts again for the print layout (D13: the print stylesheet serves for a PDF). The
 README carries the declaration of interest in the wording the owner confirmed (R-PUB-2; OPEN-9, D-124, D-193);
 the questions and answers' "Who made it?" gave the author, his role at Fermi Energia and his address from D-293 until
-the owner took the questions and answers out (D-337), since when README alone states it; no
+the owner took the questions and answers out (D-337), when README alone stated it; since D-341 a footer under every view
+names the author, his role at Fermi Energia and his address again, with the code's and the documents' licences, and a
+Feedback view takes a reader's note to that address through the reader's own e-mail program (the site sends and stores
+nothing); no
 slide of the deck states it, and the talk's notes, which placed it before the figures, went with D-321; the page's footer carried it too until the owner took the footer off (D-224;
 revisions 2.72 and 2.74, ERRATA E-185).
 

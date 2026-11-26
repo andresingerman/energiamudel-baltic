@@ -19,6 +19,8 @@ const ALLOWED = new Set([
   // address and its "?id=" into one literal
   "https://www.googletagmanager.com/gtag/js",
   "https://www.googletagmanager.com/gtag/js?id=",
+  // the author's page behind the name in the footer: a link the reader follows, not a request
+  "https://www.linkedin.com/in/andresingerman",
   "http://web.mit.edu/lpsolve/doc/CPLEX-format.htm",
   "https://json-schema.org/draft/2020-12/schema",
   "https://energiamudel.ee/v5/schema/scenario.schema.json",
