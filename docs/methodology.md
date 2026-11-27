@@ -542,9 +542,10 @@ solver scored worse on the protocol (D-130).
 
 **Removed on 2026-10-28 at the owner's word (D-194).** Every neighbours' profile is now taken as published, times its
 level, whatever the scenario's gas and CO₂: the gas and CO₂ prices move the Baltic plants alone. The owner's levels
-are ×1.8786 / ×1.9607 / ×2.0982 on Distributed Energy 2035 as published, whose averages are 39.9 / 45.9 / 57.2 €/MWh,
-for the same 75.0 / 90.0 / 120.0; the opening state gives *0 SMR* 108.1 / 109.5 / 109.9 €/MWh (EE / LV / LT) and
-*2 SMR* 86.0 / 106.0 / 106.5. Of the map below only its first step remains: the cost of the market model's best gas
+are ×2.0038 / ×1.9607 / ×2.0982 on Distributed Energy 2035 as published, whose averages are 39.9 / 45.9 / 57.2 €/MWh,
+for 80.0 / 90.0 / 120.0 (Finland's ×1.8786 for 75.0 until D-344 of 2026-11-27); the opening state gives *0 SMR*
+110.2 / 110.0 / 110.3 €/MWh (EE / LV / LT) and *2 SMR* 89.4 / 106.5 / 106.9 (108.1 / 109.5 / 109.9 and 86.0 / 106.0 /
+106.5 with Finland at 75). Of the map below only its first step remains: the cost of the market model's best gas
 plant on the model's own prices, the fossil level of §10 (`neighbourGasCost`). The rest of this section is the record
 of the map as it stood from D-072 to D-194.
 
@@ -1458,15 +1459,16 @@ too (`scripts/lp_worker.ts`), so that the bench and the build compute as the pag
 ERRATA E-151; `test/worker.test.ts` finds the pool's year the whole year's to the bit). A
 progress line appears when a run takes longer than 300 ms (R-ENG-7). When the headline set is in,
 the standard sensitivities run on the same years at a lower priority (R-APP-11; five until D-183, since D-184 the
-owner's four price pairs for each of the four scenarios, the one shown first); any change
+owner's four price pairs for each of the scenarios — three since D-343, four until then — the one shown first); any change
 of a control drops the queued jobs and discards the results of those still running. Nothing is
 computed by the two-pass engine (D-026; removed since, D-132). Measured in the browser on the development machine
 before D-112 (eight cores, four workers; the times since are in §11): 0.8–1.1 s for a replay year, 1.7–2.0 s for the three climate years of
 a set, and the twelve sensitivity runs 5.3 s after that (R-ENG-7: ≤ 2 s a year, ≤ 6 s a set).
 
 **The scenario shown first (R-ENG-7, revision 2.16, D-127).** A change of a control computes the
-four scenarios in `scenarioOrder` (`ui/wiring.ts`): the one shown, 0 SMR — against which
-the table gives its differences — and the other two, at the pool's priorities 0, ¼, ½ and ¾, so
+scenarios in `scenarioOrder` (`ui/wiring.ts`): the one shown, 0 SMR — against which
+the table gives its differences — and the rest, at the pool's priorities 0, ¼ and ½ (and ¾ while there were four,
+until D-343), so
 that each scenario's years finish before the next one's while the next one's first clearings fill
 the workers' gaps (`pool.test`). The scenario shown is drawn as soon as its years are in (`runTrio`
 in `main.ts`): its cards and charts (its contract card too until D-294), its sensitivities said to be computing; each
@@ -1479,13 +1481,13 @@ A scenario shown while the run computes is drawn at once if it is in, else when 
 order changes when jobs run, not what they compute, so no figure moves.
 
 **Results computed before (R-ENG-7, revision 2.15, D-126; revision 2.17, D-129).** The opening view does not wait for a
-run. `make deploy` computes it after the build (`app/scripts/opening.ts`): the four scenarios' sets
+run. `make deploy` computes it after the build (`app/scripts/opening.ts`): the scenarios' sets (three since D-343)
 of the opening state and the shown scenario's sensitivities (five until D-183, the owner's four price pairs since), each climate year built and
 cleared whole by the engine of record — `split.test.ts` proves the workers' parts the same — and
 assembled by the worker's own code (`app/src/worker/assemble.ts`). Since D-129 the same run, on
 Node workers through the page's job handler (`job.ts`), also computes the states the presentation
 of 10 November shows: the opening state's sensitivities for each other scenario shown, and the
-neighbours' two tight profiles with their four scenarios and each one's sensitivities, one file
+neighbours' two tight profiles with their scenarios and each one's sensitivities, one file
 each in `data/sets/`, listed by the page's own id in `data/sets.json.gz` and fetched when first
 shown. Since D-177 it also computes the presentation's blocks of Global Ambition 2035 and National Trends 2040,
 since D-184 the four price pairs for every scenario, and since D-221 the two outage trios of the opening state the deck's
@@ -1660,19 +1662,23 @@ owner's four price pairs of LNG and CO₂ — LNG 30 / 45 / 60 / 75 €/MWh ther
 (D-192), with CO₂ 80 / 95 / 120 / 150 €/t — each the scenario at one pair, everything else the headline's, the
 neighbours' prices too (their profiles as published since D-194). Since D-195 they are one table, the owner's: a
 column per pair under its LNG, CO₂ and the gas plants' one bid at it, 127 / 159 / 195 / 233 €/MWh (D-186, D-187);
-Estonia's average price without the plant and with one to three units, named by their output in a year (2.7 / 5.3 /
-8.0 TWh); under each, the share of the year in which a gas plant of Estonia, Latvia or Lithuania set Estonia's price
+Estonia's average price without the plant and with one or two units (three too until D-343), named by their output
+in a year (2.7 / 5.3 TWh); under each, the share of the year in which a gas plant of Estonia, Latvia or Lithuania set Estonia's price
 (`fossil.gas`, the gas plants' part of the hours of §10 whose price a Baltic fossil plant set); and for the units
 the gain from the lower price, the contract for difference and the consumers' net gain (D-188, §10). At the opening:
 
 | | (1) | (2) | (3) | (4) |
 |---|---|---|---|---|
-| *0 SMR*, €/MWh | 90.7 | 98.9 | 106.3 | 112.5 |
-| a Baltic gas plant sets the price, % of the year | 21.6 | 18.3 | 11.5 | 8.4 |
-| one unit, €/MWh | 84.1 | 90.0 | 95.3 | 99.6 |
-| two units | 77.2 | 80.5 | 84.0 | 86.7 |
-| three units | 71.2 | 72.8 | 74.1 | 75.1 |
-| the consumers' net gain, one / two / three units, M€ a year | +64 / +94 / +82 | +106 / +168 / +171 | +145 / +233 / +253 | +179 / +288 / +322 |
+| *0 SMR*, €/MWh | 93.1 | 101.0 | 108.4 | 114.3 |
+| a Baltic gas plant sets the price, % of the year | 20.3 | 18.4 | 11.2 | 8.2 |
+| one unit, €/MWh | 87.1 | 92.8 | 98.2 | 102.3 |
+| two units | 80.8 | 83.9 | 87.5 | 90.1 |
+| the consumers' net gain, one / two units, M€ a year | +64 / +98 | +107 / +172 | +145 / +236 | +176 / +288 |
+
+The table is the opening's since D-343 and D-344 (2026-11-27): Finland at 80 €/MWh, no row of three units. With
+Finland at 75 it read 90.7 / 98.9 / 106.3 / 112.5 without the plant, 84.1 / 90.0 / 95.3 / 99.6 with one unit, 77.2 /
+80.5 / 84.0 / 86.7 with two and 71.2 / 72.8 / 74.1 / 75.1 with three, the net gain +64 / +94 / +82, +106 / +168 /
++171, +145 / +233 / +253 and +179 / +288 / +322 M€ a year for one, two and three units.
 
 With the neighbours' profiles as published the pairs move Estonia's price less than they did when the neighbours
 followed them (73.4 / 92.5 / 107.2 / 121.4 €/MWh without the plant on the re-priced profile, D-183 to D-193), and
@@ -1746,8 +1752,8 @@ the three climate years, 5.8 s in the browser on the development machine (nine r
   Trends 2035's, less its offshore wind — 1 000 MW in Latvia, 1 400 in Lithuania — which the owner
   leaves out of every scenario of the two (D-105); Lithuania's onshore wind runs at 0.80 of PECD's
   capacity factor (D-107, §2).
-- *1 SMR*, *2 SMR*, *3 SMR* — the same with one, two or three units of 315 MW added (300 MW until D-189; R-SMR-1; one unit
-  since D-058): the four share one base, S1 with all its gas, and differ only in their units (D-151;
+- *1 SMR*, *2 SMR* — the same with one or two units of 315 MW added (300 MW until D-189; R-SMR-1; one unit
+  since D-058; *3 SMR*, three units, was the fourth scenario until the owner took it out, D-343): the scenarios share one base, S1 with all its gas, and differ only in their units (D-151;
   from D-036 to D-151 each unit replaced 300 MW of the Estonian peaking gas, leaving 1 064, 764 and
   464 MW of it, which raised Estonia's average by 0.6–0.7 €/MWh against the units on top); the plant
   runs as in M2 (R-SMR-2, R-SMR-4).
@@ -1760,9 +1766,9 @@ National Trends 2030 and 2040, on climate year 2009 alone; National Trends+ 2035
 that year's weather scenarios; each named with its weighted average price in Finland, SE4 and
 Poland, `boundary.mean_price`, D-047; since D-225 in the open list only, the closed list naming the profile by its maker,
 name and year, "TYNDP 2024 · Distributed Energy 2035") — with a level factor per
-boundary zone and the average price it gives: the owner's ×1.8786 / ×1.9607 / ×2.0982 on Distributed Energy 2035,
-75 / 90 / 120 €/MWh on the profile as published (D-182, D-185, D-194; ×1.4783 / ×1.4943 / ×1.5276 on the re-priced
-profile before D-194), ×1 on every other profile, a level carried over between profiles by its share (D-190); the
+boundary zone and the average price it gives: the owner's ×2.0038 / ×1.9607 / ×2.0982 on Distributed Energy 2035,
+80 / 90 / 120 €/MWh on the profile as published (D-182, D-185, D-194, D-344; Finland ×1.8786 for 75 until D-344;
+×1.4783 / ×1.4943 / ×1.5276 on the re-priced profile before D-194), ×1 on every other profile, a level carried over between profiles by its share (D-190); the
 factor runs from ×0.5 to ×3, and since D-226 each level's slider marks and snaps at its profile's default level, against
 which a level counts as changed; the factor on the profile as published stands beside each level's box. A profile of another year changes the neighbours'
 prices and, for National Trends+, the weather; the Baltic fleets, demand, fuel prices and lines
@@ -1784,7 +1790,7 @@ country as its own research found it, or all three short at once and solved toge
 Each is the research's hourly series of its climate year, computed with the gas scenario
 (`spikes/neighbours-2035/series.py` → `data/research/neighbours_tight_2035.json.gz` →
 `research_price`), weather-coherent with the Baltic side as a TYNDP profile is, and held fixed in
-all four scenarios: a fixed profile cannot see an SMR lowering its neighbours' prices through the
+every scenario: a fixed profile cannot see an SMR lowering its neighbours' prices through the
 cables, so with the plant it overstates Estonia's price (Sweden and Poland §8). They keep ERAA
 2025's fuel prices of 2035 and are not re-priced (D-072). They are conditional cases, not
 forecasts. National Trends+ 2030 is not in the list (D-050): its
@@ -1803,7 +1809,7 @@ follow the profile, the DSR bands ERAA's, electrolysis and power-to-heat off, th
 batteries' and Kruonis's parameters, the mFRR share and the reserve as fitted (D-025), the cables'
 typical profile, Litgrid's plan held, the AC reservation at the 2025 average, the price-taker border.
 
-Results: the four scenarios as one table, a column pair per scenario (its figure with its unit
+Results: the scenarios (three since D-343) as one table, a column pair per scenario (its figure with its unit
 and the difference to *0 SMR*, a green chip when it falls and a red one when it rises — a lower
 price, import, CO₂, curtailment or share of fossil hours is the good way; the chip without the
 unit since D-205, as the canvas drew it), the
@@ -1818,7 +1824,7 @@ the four, and the weighted price in bold since D-212 — the scenario view's Out
 D-039) — and the "?" at their title gives each year's weight and labels it (R-TIME-4): a climate year by its ranks among the 38 PECD
 years, a TYNDP 2026 weather scenario by its climate model, modelled year and Estonian capacity
 factors (`yearLabel`); below, the cards, the sensitivities (since D-195 one table, a column per price pair with Estonia's
-average in each of the four scenarios and under it the gain from the lower price, the contract and the net gain; a card
+average in each scenario and under it the gain from the lower price, the contract and the net gain; a card
 per pair from D-184 until then, §8.1 and §10) and the charts of the scenario shown. The
 validation view keeps the panel of M4 and M5, its zone box in the scenario's form since D-083: the
 observed year's fleet as the scenario's generation rows — icon, installed megawatts on a slider that
@@ -1891,7 +1897,7 @@ saves the scenario and its results in the contract
 `schema/results.schema.json`: the canonical text and the lineage ids of the presets it takes; per
 run and weighted, each zone's price, trade, CO₂, curtailment, unserved energy and share of hours
 with a fossil price, each border's flow, rent and congestion, the plant's output; in the scenario
-view the four scenarios weighted and the four sensitivities (each one's average price per zone in the scenario
+view the scenarios weighted and the four sensitivities (each one's average price per zone in the scenario
 shown and, with the plant, the same pair in *0 SMR*; ids "1" to "4" since ERRATA E-174; null while still computing); the code version (`git describe` of the build) and the data's
 identity — the export's hash in `manifest.json`, the hash of `presets.json`, each year file's hash
 and its series' lineage ids (`app/src/ui/export.ts`; a test checks the JSON against the schema and
@@ -2203,13 +2209,13 @@ slide (`view=deck&slide=7`), so a reload, a link and the language switch open th
 up, where v3's photographs stood (revision 2.69, D-221). v3 drew them on a snapshot of its results;
 here every figure is read from the runs the page shows, so a slide changes with the settings as the Presentation page
 does and cannot drift from the model (D13's reason, which D-220 keeps while superseding its drop of in-app decks).
-Each figure is the state's four scenarios weighted over the climate years, as everywhere (§4, R-TIME-4), its whisker
+Each figure is the state's scenarios weighted over the climate years, as everywhere (§4, R-TIME-4), its whisker
 the lowest and the highest year; Estonia's demand is the Presentation page's (the weighted base load times the
 multiplier plus the constant load); the trade balance is Estonia's export less its import at its own price, the sign
 of v3's slide; the hours gas sets the price are those a Baltic gas plant set Estonia's price (D-195); the capital cost
-is the Model view's table (§8.8). The cables' slide runs the same four with EstLink 2 out all year and with both
+is the Model view's table (§8.8). The cables' slide runs the same scenarios with EstLink 2 out all year and with both
 EstLinks out, the panel's what-if outage (§9): the opening state's two trios are the build's sets (§8.1, D-221). Since
-D-340 the deck is always of the opening state — the four scenarios as published, whatever the panel holds — so that a
+D-340 the deck is always of the opening state — its scenarios as published, three since D-343, whatever the panel holds — so that a
 change on the Model view moves no slide; until then it followed the state shown and computed another state's trios in the
 browser. Every sentence that states a result
 is written from these figures. The literature beside them is v3's, named on the slide without a link (the site's code holds
@@ -2301,8 +2307,8 @@ each row after its source's icon as the panel draws it (D-248).
 
 The owner's edits of 2026-11-13 (revision 2.83, D-250). Three units are on no slide: the deck shows 0, 1 and 2 SMR
 (`deck.ts` `SC`), so the price gap, the household's and the economy's money, the verdicts of the imports' and the
-cables' slides and the footnotes are told for two units where they were for three; the Model view and the build keep
-the four scenarios, and a slide waits for none of three units' runs. The second slide's map gives, after each zone's
+cables' slides and the footnotes are told for two units where they were for three; the Model view and the build kept
+the four scenarios until D-343 (2026-11-27), which took three units out of the model too. The second slide's map gives, after each zone's
 code, its average day-ahead price from January to the last month the Statistics page's series (§8.7, ENTSO-E A44) reach
 for all six zones — January to October 2026 at the time — each month's average weighted by its days (`yearPrices`), the
 same average as the year's hours to within the months' rounding (Estonia 80.38 €/MWh from the hours, 80.4 from the
@@ -2482,8 +2488,9 @@ on that border, the two directions of one event as one label, the twelve longest
 (`app/src/ui/attribution.ts`, R-LINK-6). The labels explain the profile; they do not change it.
 
 **Effect on the opening scenario** (*0 SMR*, 2035, as the application opens — the neighbours' profile as published
-times the owner's levels, D-194, §5.9; the lines' variants recomputed on 2026-11-25). 108.1, 109.5 and 109.9 €/MWh
-(EE, LV, LT) with the lines as the panel sets them — EstLink 3 and the fourth EE–LV line off, as in S1; with both in
+times the owner's levels, D-194, §5.9; the lines' variants recomputed on 2026-11-25, with Finland at 75 €/MWh: since
+D-344 of 2026-11-27 the opening reads 110.2, 110.0 and 110.3, and the variants below were not computed again). 108.1,
+109.5 and 109.9 €/MWh (EE, LV, LT) with the lines as the panel sets them — EstLink 3 and the fourth EE–LV line off, as in S1; with both in
 service 101.7, 100.6 and 103.5; with every cable at nameplate 107.5, 109.0 and 109.3; Lithuania–Poland no longer held
 to Litgrid's plan changes nothing, its two AC lines making the plan's 1 200 MW. ERAA's NTC as given, which holds both
 planned lines, is no state the page sets, and was not computed again.
@@ -2558,7 +2565,7 @@ D-171, as with the gas plants' one bid, D-164 (4.75 and 4.81 in 1995 and 2008; 4
 since D-107; 4.80, 4.70 and 4.78 after
 D-105 and D-106; 4.77, 4.62 and 4.72 before them; 4.76, 4.61 and 4.72 on the profile as published, before them; 4.77, 4.62 and 4.72 after D-074; 4.73, 4.55 and 4.67 while Auvere
 ran as must-run). In the scenario view
-the units come on top of the one base the four scenarios share (§8.1, D-151).
+the units come on top of the one base the scenarios share (§8.1, D-151).
 
 **The contract account (R-SMR-3, R-SMR-6; `app/src/engine/contract.ts`).** For strike S and the
 plant's hourly output q_h on the run with the plant — so that the plant's own depression of the
@@ -2619,9 +2626,9 @@ and 2.1 %; on the register before it 8.2, 6.8, 4.3 and 1.9 % after ERRATA E-064,
 4.9 and 2.3 % on the level of 87.7 that every profile took until then; at D-037 13.4, 7.4 and
 3.3 %).
 
-**The sensitivities in the four scenarios (R-APP-11, R-SMR-5; D-184, D-188, D-195).** Each of the owner's four price
+**The sensitivities in every scenario (R-APP-11, R-SMR-5; D-184, D-188, D-195).** Each of the owner's four price
 pairs of LNG and CO₂ runs for every scenario, the one shown first. Since D-195 they are one table (§8, "The standard
-sensitivities"): a column per pair, Estonia's average price without the plant and with one to three units, under each
+sensitivities"): a column per pair, Estonia's average price without the plant and with one or two units (three too until D-343), under each
 the share of the year in which a Baltic gas plant set Estonia's price, and for the units, as since D-188, the fall of
 Estonia's average price against *0 SMR* at the same pair times Estonia's demand, what the state receives or pays under
 the contract (a) at the strike, and the two together, M€ a year (§8.1). From D-184 to D-195 a card per pair gave

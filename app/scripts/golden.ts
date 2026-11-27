@@ -41,8 +41,10 @@ const NET_GAS = "; re-baselined 2026-10-23 with the record's gas price per net M
 const OWNERS_OPENING = "; re-baselined 2026-10-27 with the owner's opening: Estonia's onshore wind 1 300 MW and solar 2 500 MW in place of S1's, the neighbours' price levels FI 1.4783, SE4 1.5, PL 1.53 (D-182), then SE4 1.4943 and PL 1.5276 for 90 and 120 €/MWh (D-185); the unit at 315 MW in place of 300 (D-189)";
 // D-194: the scenario cases re-baselined with the neighbours' profile as published; the replay and the synthetic week unchanged
 const AS_PUBLISHED = "; re-baselined 2026-10-28 with the neighbours' profile as published, no longer re-priced to the scenario's gas and CO₂, and the owner's levels FI 1.8786, SE4 1.9607 and PL 2.0982 for the same 75, 90 and 120 €/MWh (D-194)";
+// D-344: the scenario cases re-baselined with Finland's level for 80 €/MWh; the replay and the synthetic week unchanged
+const FI_80 = "; re-baselined 2026-11-27 with Finland's level 2.0038 for 80 €/MWh in place of 1.8786 for 75, at the owner's word (D-344)";
 const CASES = Object.fromEntries(Object.entries(goldenRuns(presets(), year, links(), solve)).map(([k, run]) =>
-  [k, { note: NOTES[k] + SIGNED + WATER + (k.startsWith("synthetic") ? "" : ONE_BID) + (k.startsWith("opening") ? LINES_AC : "") + (k.startsWith("synthetic") ? "" : NET_GAS) + (k.startsWith("opening") ? OWNERS_OPENING + AS_PUBLISHED : ""), provisional: false, run }]));
+  [k, { note: NOTES[k] + SIGNED + WATER + (k.startsWith("synthetic") ? "" : ONE_BID) + (k.startsWith("opening") ? LINES_AC : "") + (k.startsWith("synthetic") ? "" : NET_GAS) + (k.startsWith("opening") ? OWNERS_OPENING + AS_PUBLISHED + FI_80 : ""), provisional: false, run }]));
 
 const got = Object.fromEntries(Object.entries(CASES).map(([k, c]) => [k, { sha256: digest(c.run()), provisional: c.provisional, note: c.note }]));
 if (process.argv.includes("--write")) {

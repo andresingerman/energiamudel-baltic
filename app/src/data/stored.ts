@@ -88,7 +88,7 @@ export const read = <T>(b: Uint8Array): T => (isPack(b) ? unpack<T>(b) : decode<
 /** How long the page waits for a file of the build's sets — the largest is 1.6 MB — before it computes instead. */
 export const FILE_MS = 30_000;
 
-/** What the build computed for the opening view: the four scenarios' sets and the shown scenario's
+/** What the build computed for the opening view: the three scenarios' sets and the shown scenario's
  * sensitivities, keyed `${scenario}|${id}` as the page keys them. */
 export interface Opening<S> { commit: string; engine: string; export: string; key: string; trio: Record<string, S>; sens: Record<string, S> }
 
@@ -170,7 +170,8 @@ const DB = "energiamudel-sets", SETS = "sets", META = "meta";
 const OLD_DB = "energiamudel-results";
 /** The browser's budget: the bytes of the sets it keeps, those last used. A set of three years weighs about 0.66 MB,
  * a state's table and sensitivities twenty of them, its presentation blocks and the deck's outages twenty-four more:
- * room for about seven states with everything shown, or fourteen with the Model view alone (D-232).
+ * room for about seven states with everything shown, or fourteen with the Model view alone (D-232; counted with
+ * four scenarios — with the three of D-343 a state's table and sensitivities are fifteen sets).
  * ponytail: a fixed budget; a browser short of room refuses the write, and the page computes again. */
 export const STORE_BYTES = 192e6;
 /** How long the page waits for the browser's store before it goes on without it (ERRATA E-191): the store spares a

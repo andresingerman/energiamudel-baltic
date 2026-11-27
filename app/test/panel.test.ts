@@ -83,7 +83,7 @@ test("the neighbours' box: one list of every profile and year the year files hol
   assert.doesNotMatch(html, /NTplus_2030/); // D-050
   const nt = panelHtml({ p, sources, state: withProfile(s0, "NT", 2040), country: "EE", set() {}, select() {} });
   // each level's tick and snap at the profile's default: the owner's levels on DE 2035, not amber there; ×1 on the others (D-226)
-  for (const [z, v] of [["FI", "1.8786"], ["SE4", "1.9607"], ["PL", "2.0982"]]) {
+  for (const [z, v] of [["FI", "2.0038"], ["SE4", "1.9607"], ["PL", "2.0982"]]) {
     assert.match(html, new RegExp(`class="nbox num" id="v-${z}\\.level"`));
     assert.match(html, new RegExp(`id="c-${z}\\.level" data-k="${z}\\.level" data-preset="${v}"`));
     assert.match(nt, new RegExp(`id="c-${z}\\.level" data-k="${z}\\.level" data-preset="1"`));

@@ -42,12 +42,11 @@ const trio: Trio = {
   gas: set([120, 100, 110], { importTwh: 4, exportTwh: 1, importMeur: 300, exportMeur: 50, fossil: { unit: 5000, gas: 4380, neighbour: 0 }, co2Mt: 1.5 }),
   smr1: set([110, 92, 100], { importTwh: 3, exportTwh: 2, importMeur: 200, exportMeur: 100, fossil: { unit: 3000, gas: 2628, neighbour: 0 }, co2Mt: 1.2 }),
   smr2: set([95, 80, 88], { importTwh: 2, exportTwh: 2.5, importMeur: 120, exportMeur: 150, fossil: { unit: 2000, gas: 1752, neighbour: 0 }, co2Mt: 0.9 }),
-  smr3: set([80, 70, 75], { importTwh: 1, exportTwh: 3, importMeur: 60, exportMeur: 200, fossil: { unit: 1000, gas: 876, neighbour: 0 }, co2Mt: 0.6 }),
 };
 const shift = (tr: Trio, dp: number): Trio => Object.fromEntries(Object.entries(tr).map(([id, s]) => [id, s!.map((x) => ({ ...x, view: { ...x.view, zones: x.view.zones.map((z, k) => (k ? z : { ...z, mean: z.mean + dp })) } }))]));
 // the fleet of 2025 the run's own: nothing is built but the plant
 const fleet2025 = Object.fromEntries(["EE", "LV", "LT"].map((z, i) => [z, Object.fromEntries(r.view.zones[i].fleet.filter((f) => f.installedMw).map((f) => [f.cls, f.installedMw!]))]));
-const c = { plantMw: { gas: 0, smr1: 315, smr2: 630, smr3: 945 }, fleet2025, impact: { kwh: 3030, vat: 0.24, years: 60, sources: "ACER; EMTA; GE" }, strike: 90, clause: false, capex: capexOf(p, 315), rate: 0.03, cfdYears: 40 };
+const c = { plantMw: { gas: 0, smr1: 315, smr2: 630 }, fleet2025, impact: { kwh: 3030, vat: 0.24, years: 60, sources: "ACER; EMTA; GE" }, strike: 90, clause: false, capex: capexOf(p, 315), rate: 0.03, cfdYears: 40 };
 // the neighbours' slide's documentary values as the page hands them in (D-263)
 const NB_PAR = Object.fromEntries(NB_KEYS.map((k) => [k, p.parameters[k]!.value as number]));
 const input = (tr: Trio, e2: Trio = {}, e12: Trio = {}): DeckInput => ({ trio: tr, e2, e12, s: opening(p), c, runs: YEARS.map(([label, weight]) => ({ label, weight })), nb: { par: NB_PAR } });
@@ -174,7 +173,7 @@ test("Finland's price's slide: the profile's price, the level and the model's pr
   assert.match(SLIDES[5](d), /<h1><span class="fl fl-FI"[^>]*><\/span>The case for Finland's price multiplier<\/h1>/);
   // the owner's level on the profile (D-194), the market's year to date beside it
   // one line: the forecast, its multiplier, an arrow to the model's price; the market's year out (D-277)
-  assert.match(text, /AVERAGE ELECTRICITY PRICE DE 2035 forecast: (\d+) ×1\.88 → (\d+) €\/MWh DATA CENTRES/);
+  assert.match(text, /AVERAGE ELECTRICITY PRICE DE 2035 forecast: (\d+) ×2\.00 → (\d+) €\/MWh DATA CENTRES/);
   assert.ok(!text.includes("Market 2026") && !text.includes("Model 2035"), text);
   // Finland's data centres 2.3 TWh in 2024 against Fingrid's 35 in 2035
   assert.ok(text.includes("DATA CENTRES 2 TWh · 2025 → 35 TWh · 2035 Fingrid, Q3/2026: «11–35 terawatt-hours by 2035» connection agreements signed 5 GW ; enquiries 100 GW Google"), text); // a link's end a space in this text
@@ -359,10 +358,8 @@ test("before the runs are in, every slide of figures says so, and the others are
   const three: Trio = { ...trio };
   delete three.smr2;
   assert.match(slides(input(three))[9], /class="ps-pending"/);
-  // three units are on no slide, so their runs are waited for by none (D-250)
-  const noThree: Trio = { ...trio };
-  delete noThree.smr3;
-  const all3 = slides(input(noThree, shift(noThree, 5), shift(noThree, 12)));
+  // three units are on no slide (D-250) and no scenario of the model's since D-343
+  const all3 = slides(input(trio, shift(trio, 5), shift(trio, 12)));
   for (const [i, h] of all3.entries()) {
     if (i !== REPLAY_SLIDE) assert.doesNotMatch(h, /class="ps-pending"/, `slide ${i + 1}`); // the past years wait for their replays alone
     assert.doesNotMatch(h.replace(/<[^>]+>/g, " "), /three units|3 SMR/, `slide ${i + 1}`);

@@ -30,8 +30,8 @@ mootoriga.
   aasta kaalutud keskmine.
 - **Kütus ja CO₂:** ERAA 2025 trajektoor, 2035. aastal gaas 38,2 €/MWh soojust ja CO₂ 197,5 €/t.
 - **Naabrid:** TYNDP 2024 Distributed Energy 2035. aasta hinnad samade ilmaaastate jaoks, nii nagu need on
-  avaldatud, omaniku hinnatasemega: Soome ×1,88, Rootsi SE4 ×1,96, Poola ×2,10, keskmiselt 75, 90 ja 120 €/MWh
-  (D-182, D-185, D-194). Stsenaariumi gaasi- ja CO₂-hind liigutavad ainult Balti jaamu: naabrite profiilide
+  avaldatud, omaniku hinnatasemega: Soome ×2,00, Rootsi SE4 ×1,96, Poola ×2,10, keskmiselt 80, 90 ja 120 €/MWh
+  (D-182, D-185, D-194, D-344; Soome oli kuni 27.11.2026 ×1,88 ehk 75 €/MWh). Stsenaariumi gaasi- ja CO₂-hind liigutavad ainult Balti jaamu: naabrite profiilide
   ümberhinnastamine on eemaldatud (D-194). Teised profiilid algavad ×1-st (D-190).
 - **Ühendused:** merekaablid on nimivõimsusel koos tüüpilise käideldavusega ENTSO-E alalisvooluühenduste
   statistikast; maismaapiirid ERAA 2025 tunnipõhiste võimsustega; Leedu–Poola piir Litgridi plaani järgi,
@@ -64,11 +64,11 @@ Balti hinnad ei ole kunagi sisend.
 
 ## Kuidas tulemusi lugeda
 
-Tulemused on stsenaariumitulemused näidatud eeldustel, mitte prognoosid. Neli 2035. aasta
-stsenaariumi (0, 1, 2 ja 3 SMR) arvutatakse koos ja näidatakse kõrvuti, igaüks oma
+Tulemused on stsenaariumitulemused näidatud eeldustel, mitte prognoosid. Kolm 2035. aasta
+stsenaariumi (0, 1 ja 2 SMR; kolme ploki stsenaarium jäeti välja, D-343) arvutatakse koos ja näidatakse kõrvuti, igaüks oma
 erinevusega juhtumist 0 SMR. Neli standardtundlikkust — omaniku neli LNG ja CO₂ hinnapaari (30/80,
 45/95, 60/120 ja 75/150 €/MWh ja €/t, LNG alumise kütteväärtuse järgi) — on üks tabel, omaniku oma (D-195): iga
-paari all gaasijaamade pakkumine, Eesti hind tuumaenergiata ning ühe kuni kolme plokiga, igaühe juures aasta osa, mil
+paari all gaasijaamade pakkumine, Eesti hind tuumaenergiata ning ühe ja kahe plokiga, igaühe juures aasta osa, mil
 hinna kujundas Balti gaasijaam, ning plokkide kohta hinnaalanduse kasu, hinnavahemehhanism ja tarbijate netokasu
 aastas (D-183, D-184, D-187, D-188). Hinnavahemehhanismi rida arvutab riigi makse jaamaga arvutusest, nii et jaama
 enda mõju hinnale on sees; sama arvutus on esitluse slaidil, mis näitab jaama kogukasu Eestile. Eraldi hinnavahe

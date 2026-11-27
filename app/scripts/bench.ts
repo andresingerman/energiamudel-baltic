@@ -15,8 +15,8 @@ import { nodePool } from "./node_pool.ts";
 import { availableParallelism } from "node:os";
 
 if (process.argv.includes("--change")) {
-  // the four scenarios in scenarioOrder at the priorities i/4 (before D-127: SCENARIOS at 0), the time
-  // to the scenario shown (a) and to all four (b); then its sensitivities at 1, with 0 SMR's
+  // the three scenarios in scenarioOrder at the priorities i/4 (before D-127: SCENARIOS at 0), the time
+  // to the scenario shown (a) and to all three (b); then its sensitivities at 1, with 0 SMR's
   // beside them when the plant is shown, to the last (c). Cold on fresh workers, then warm, Finland's
   // level moved each time so that nothing repeats.
   const old = process.argv.includes("old");
@@ -41,7 +41,7 @@ if (process.argv.includes("--change")) {
       rows.push(`${i ? "warm" : "cold"} ${(a / 1000).toFixed(2)} / ${(b / 1000).toFixed(2)} / ${(c / 1000).toFixed(2)}`);
     }
     await close();
-    console.log(`a change, ${shown} shown, ${old ? "before D-127" : "as the page computes it"}, on ${n} workers — the scenario shown / all four / the sensitivities, s: ${rows.join("; ")}`);
+    console.log(`a change, ${shown} shown, ${old ? "before D-127" : "as the page computes it"}, on ${n} workers — the scenario shown / all three / the sensitivities, s: ${rows.join("; ")}`);
   }
   process.exit(0);
 }
@@ -75,7 +75,7 @@ console.log(`engine of record, four workers: the set cy1995, cy2008, cy2009 with
 // R-ENG-7, R-NFR-2: at most 2 s a year and 6 s a set of three years on four workers
 const over = [[year24, 2000, "2024"], [year09, 2000, "cy2009"], [set, 6000, "the set"]].filter(([t, max]) => (t as number) > (max as number));
 console.log(over.length ? `R-ENG-7: not met — ${over.map(([t, max, what]) => `${what} ${(t as number).toFixed(0)} ms > ${max}`).join("; ")}` : "R-ENG-7: met");
-// the opening view: four scenarios on three climate years, on four workers and on the browser's
+// the opening view: three scenarios on three climate years, on four workers and on the browser's
 // pool of one less than the cores (D-114), the oil shale's two clearings among them
 const s0 = opening(presets());
 const view = SCENARIOS.flatMap((id) => runsOf(presets(), { ...s0, scenario: id }).map((r) => ({ key: r.key, state: { ...s0, scenario: id } })));

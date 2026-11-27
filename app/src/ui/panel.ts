@@ -191,7 +191,7 @@ export function snap(x: number, preset: number, min: number, max: number): numbe
   return Number.isFinite(preset) && Math.abs(x - preset) <= 0.02 * (max - min) ? preset : x;
 }
 
-/** A key's step lands on the slider's grid. Where the preset lies off the grid — a neighbour's default level, ×1.8786
+/** A key's step lands on the slider's grid. Where the preset lies off the grid — a neighbour's default level, ×2.0038
  * on steps of 0.01 — the grid's value nearest it is the preset itself, so that a key can come back to it and the sets
  * computed at the build return (ERRATA E-186). */
 export function keyStep(x: number, preset: number, step: number): number {
@@ -716,12 +716,12 @@ const textFold = (ctx: PanelContext) => `<details class="fold"><summary>${t("Sce
 
 // ---------------------------------------------------------------- the scenario view (D-036)
 
-export const SCENARIO_NAME: Record<ScenarioId, string> = { gas: "0 SMR", smr1: "1 SMR", smr2: "2 SMR", smr3: "3 SMR" };
+export const SCENARIO_NAME: Record<ScenarioId, string> = { gas: "0 SMR", smr1: "1 SMR", smr2: "2 SMR" };
 /** The technologies a zone's sliders move; the others keep the preset (D-036). */
 const MAIN = ["wind_onshore", "wind_offshore", "solar", "battery"];
 
 /** The scenario chips; once a zone's demand or capacities leave the scenario's presets, none of
- * the four is pressed and "Other" is, until a chip returns the zones to their presets (D-088). */
+ * the three is pressed and "Other" is, until a chip returns the zones to their presets (D-088). */
 export function scenarioChips(ctx: PanelContext): string {
   const s = ctx.state;
   const other = s.run === "scenario" && changes(ctx).some((l) => /^(EE|LV|LT)\./.test(l));
@@ -884,7 +884,7 @@ function capacityBox(ctx: PanelContext): string {
     : c === "hydro_daugava" ? [t("water"), t("No bid of its own: the week's water is placed in the dearest hours, so its price is the price of the hour it displaces"), t("value")]
       : ["0", t("Offered at 0 €/MWh: no fuel; it is curtailed only when the price is zero")]);
   // the plant first among Estonia's sources (the owner asked, 2026-10-05; D-058): the scenario shown, by its units
-  const smr = z !== "EE" ? "" : `<div class="row ic"><span class="big">${icon("nuclear", 30)}</span><span class="lbl">${t("SMR units")} ${src(p.parameters["smr.bwrx300.net_output_mw"]!.src, t("the unit's output in the model"), t("BWRX-300, {mw} MW a unit, added to the scenario's fleet: the four scenarios share one base and differ only in their units. Choosing a scenario returns the demand and capacity sliders to its presets. All four cases are computed together.", { mw: fmt(unit, 0) }))}</span><span class="val num tile"><b>${fmt(units * unit, 0)}</b><span class="u">MW</span></span>
+  const smr = z !== "EE" ? "" : `<div class="row ic"><span class="big">${icon("nuclear", 30)}</span><span class="lbl">${t("SMR units")} ${src(p.parameters["smr.bwrx300.net_output_mw"]!.src, t("the unit's output in the model"), t("BWRX-300, {mw} MW a unit, added to the scenario's fleet: the three scenarios share one base and differ only in their units. Choosing a scenario returns the demand and capacity sliders to its presets. All three cases are computed together.", { mw: fmt(unit, 0) }))}</span><span class="val num tile"><b>${fmt(units * unit, 0)}</b><span class="u">MW</span></span>
     ${bidTag(bidOf("nuclear"))}<div class="rng">${chips("scenario", t("SMR units"), SCENARIOS, s.scenario, (k) => String(UNITS[k as ScenarioId]))}</div>
     </div>`;
   const label = (row: string) => S1_ROWS.find(([k]) => k === row)?.[1] ?? row.replaceAll("_", " ");

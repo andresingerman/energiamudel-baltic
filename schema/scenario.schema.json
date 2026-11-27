@@ -8,7 +8,7 @@
   "required": ["v", "run"],
   "properties": {
     "v": {"enum": [1, 2, 3], "description": "version of this contract: 2 added the borders' keys (M5), 3 the scenario shown and the plant's contract (D-036); an older text opens with them at their defaults"},
-    "scenario": {"enum": ["gas", "smr1", "smr2", "smr3"], "description": "scenario run: the scenario shown of the four of 2035 (D-036, D-058)"},
+    "scenario": {"enum": ["gas", "smr1", "smr2", "smr3"], "description": "scenario run: the scenario shown of the three of 2035 (D-036, D-058): gas (0 SMR), smr1, smr2. smr3 is read as smr2 since D-343, which took three units out; a text made before still opens"},
     "smr.clause": {"type": "boolean", "description": "scenario run: the contract's negative-price clause (R-SMR-3, R-SMR-4)"},
     "smr.strike": {"type": "number", "minimum": 40, "maximum": 160, "description": "scenario run: the contract's strike, €/MWh (R-SMR-3)"},
     "run": {"enum": ["scenario", "replay"], "description": "R-APP-2"},

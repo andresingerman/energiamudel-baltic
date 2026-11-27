@@ -52,7 +52,7 @@ export function gotoTarget(target: Element | null, sources: Sources): string | n
   return id ? gotoRow(sources, id) : null;
 }
 
-/** The order the scenario view computes its four scenarios in (D-127): the one shown first, then
+/** The order the scenario view computes its three scenarios in (D-127): the one shown first, then
  * 0 SMR, against which the table gives every difference, then the others in the table's order. */
 export const scenarioOrder = (shown: ScenarioId): ScenarioId[] => [...new Set<ScenarioId>([shown, "gas", ...SCENARIOS])];
 

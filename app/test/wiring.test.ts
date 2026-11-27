@@ -55,9 +55,9 @@ test("an \"in Sources\" link opens its source's row, whichever id it carries (E-
 });
 
 test("the scenario shown is computed first, then 0 SMR, which the table's differences need, then the rest (D-127)", () => {
-  assert.deepEqual(scenarioOrder("gas"), ["gas", "smr1", "smr2", "smr3"]);
-  assert.deepEqual(scenarioOrder("smr2"), ["smr2", "gas", "smr1", "smr3"]);
-  assert.deepEqual(scenarioOrder("smr3"), ["smr3", "gas", "smr1", "smr2"]);
+  assert.deepEqual(scenarioOrder("gas"), ["gas", "smr1", "smr2"]);
+  assert.deepEqual(scenarioOrder("smr1"), ["smr1", "gas", "smr2"]);
+  assert.deepEqual(scenarioOrder("smr2"), ["smr2", "gas", "smr1"]);
 });
 
 test("the chip: the previous settings' results until the scenario shown is in, then the others still to come (D-054, D-127, D-209)", () => {

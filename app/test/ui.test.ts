@@ -21,9 +21,9 @@ test("a slider sticks to its preset within 2 % of its range, and nowhere else", 
   assert.equal(snap(1.02, 1, 0.5, 2), 1); // the multiplier's range is 1.5: it sticks within 0.03
   assert.equal(snap(1.05, 1, 0.5, 2), 1.05);
   // a key's step: the grid's value nearest a preset off the grid is the preset, any other value is itself (ERRATA E-186)
-  assert.equal(keyStep(1.88, 1.8786, 0.01), 1.8786);
-  assert.equal(keyStep(1.89, 1.8786, 0.01), 1.89);
-  assert.equal(keyStep(1.87, 1.8786, 0.01), 1.87);
+  assert.equal(keyStep(2, 2.0038, 0.01), 2.0038);
+  assert.equal(keyStep(2.01, 2.0038, 0.01), 2.01);
+  assert.equal(keyStep(1.99, 2.0038, 0.01), 1.99);
   assert.equal(keyStep(2.1, 2.0982, 0.01), 2.0982);
   assert.equal(keyStep(3000, 3000, 50), 3000);
   assert.equal(keyStep(3050, 3000, 50), 3050);

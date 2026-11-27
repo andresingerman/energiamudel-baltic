@@ -1,6 +1,6 @@
 // Up to eight workers, one less than the cores (D-114; four until then, D-028, D-095), running the
 // engine of record (R-ENG-7, R-NFR-2): jobs wait in a queue by priority (0 to 0.75 the headline's
-// four scenarios, the one shown first, D-127; 1 the standard sensitivities of R-APP-11, which a
+// three scenarios, the one shown first, D-127; 1 the standard sensitivities of R-APP-11, which a
 // scenario shown anew drops by their tag — 2.9 while another page than the Model view is shown, behind
 // that page's own sets, `shift`, D-233; from 2 the presentation's blocks and the deck's outages;
 // 3 the warm-up of a page opened on a view computed before, D-128; a year's later jobs go

@@ -195,7 +195,7 @@ export function trioHtml(trio: Partial<Record<string, YearResult[]>>, names: Rec
   const row = (label: string, unit: string, f: (g: ReturnType<typeof fig>) => number | null, digits = 1, ee = false) =>
     `<tr${ee ? ' class="ee"' : ""}><td>${label}<span class="ru">, ${esc(unit)}</span></td>${ids.map((id) => (x[id] ? cell(id, f(x[id]), gas && f(gas), unit, digits) : computing(id))).join("")}</tr>`;
   // the heading short, its explanation behind the "?" (the owner's design direction, 2026-10-20)
-  return `<section class="card trio-card"><h2 class="rh">${t("Scenarios, 2035")} ${tip(t("The four scenarios of 2035, weighted over the weather years; beside each figure its difference to {gas}", { gas: esc(names.gas) }))}</h2>
+  return `<section class="card trio-card"><h2 class="rh">${t("Scenarios, 2035")} ${tip(t("The three scenarios of 2035, weighted over the weather years; beside each figure its difference to {gas}", { gas: esc(names.gas) }))}</h2>
     <table class="trio">
       <thead><tr><th></th>${ids.map((id) => `<th colspan="2" class="n${id === selected ? " sel" : ""}"><button type="button" class="seg" data-scenario="${id}" aria-pressed="${id === selected}">${esc(names[id])}</button></th>`).join("")}</tr></thead>
       <tbody>
@@ -216,7 +216,7 @@ export function trioHtml(trio: Partial<Record<string, YearResult[]>>, names: Rec
 /** A sensitivity's set; with the plant shown, `gas` is the same sensitivity of 0 SMR (R-SMR-5). */
 export interface SensResult {
   id: string; label: string; set: YearResult[] | null; gas?: YearResult[] | null; error?: string; gasError?: string;
-  // each of the four scenarios' set at the pair, as far as they are in (the owner asked, 2026-10-27; D-184)
+  // each of the three scenarios' set at the pair, as far as they are in (the owner asked, 2026-10-27; D-184)
   by?: Partial<Record<string, YearResult[] | null>>;
   // the gas plants' one bid at the pair (the owner asked, 2026-10-27; D-187)
   bid?: number;
@@ -231,10 +231,10 @@ export interface SensMoney { demandTwh: number; strike: number; clause: boolean 
 
 /** The standard sensitivities as one table, the owner's design (2026-10-28; D-195): a column per price pair of LNG and
  * CO₂ (state/model.ts `FUEL_CASES`, in the order of the ids) under the gas plants' bid at it; then Estonia's average
- * price without the plant and with one to three units, each named by its output and with the share of the year in
+ * price without the plant and with one or two units, each named by its output and with the share of the year in
  * which a Baltic gas plant set Estonia's price; for the units, the gain from the lower price against 0 SMR at the same
  * pair on Estonia's demand, the contract for difference at the strike and the two together (D-188). `names`: the
- * four scenarios, 0 SMR first. */
+ * three scenarios, 0 SMR first. */
 export function sensHtml(trio: Partial<Record<string, YearResult[]>> | null, sens: SensResult[], names: Record<string, string>, money?: SensMoney): string {
   if (!sens.length) return "";
   const [base, ...units] = Object.keys(names);
@@ -272,7 +272,7 @@ export function sensHtml(trio: Partial<Record<string, YearResult[]>> | null, sen
       ${eurRow("", money ? t("Contract for difference at {k} €/MWh", { k: fmt(money.strike, 0) }) : t("Contract for difference"), cfd, true)}
       ${eurRow("net", t("Consumers' net gain"), (b, s, m) => gain(b, s, m) + cfd(b, s, m), true)}</tbody>`;
   };
-  const about = t("The scenario at the owner's four price pairs of LNG and CO₂, everything else the headline's — the neighbours' prices too, their profile as published times its level. LNG per MWh of the gas's net calorific value; the gas plants' bid is the one bid of the Baltic gas plants at the pair. Without nuclear: {gas}; with nuclear: one, two and three units, named by their output in a year. Baltic gas plants set the price: the share of the year's hours in which a gas plant of Estonia, Latvia or Lithuania set Estonia's price. The gain from the lower price: the fall of Estonia's average price against {gas} at the same pair, times Estonia's demand{d} — what its consumers pay less at the exchange. The contract for difference: what the state receives (+) or pays (−) settled hourly at the strike{clause}. The net gain is the two together, M€ a year.",
+  const about = t("The scenario at the owner's four price pairs of LNG and CO₂, everything else the headline's — the neighbours' prices too, their profile as published times its level. LNG per MWh of the gas's net calorific value; the gas plants' bid is the one bid of the Baltic gas plants at the pair. Without nuclear: {gas}; with nuclear: one and two units, named by their output in a year. Baltic gas plants set the price: the share of the year's hours in which a gas plant of Estonia, Latvia or Lithuania set Estonia's price. The gain from the lower price: the fall of Estonia's average price against {gas} at the same pair, times Estonia's demand{d} — what its consumers pay less at the exchange. The contract for difference: what the state receives (+) or pays (−) settled hourly at the strike{clause}. The net gain is the two together, M€ a year.",
     { gas: esc(names[base]), d: money ? t(" of {d} TWh", { d: fmt(money.demandTwh, 1) }) : "", clause: money?.clause ? t(", with the negative-price clause") : "" });
   return `<h2 class="rh">${t("Standard sensitivities")} ${tip(about)}</h2>
     <div class="sens-tab"><table>

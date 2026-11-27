@@ -9,7 +9,7 @@ The application is live at <https://energiamudel.ee>, in English and Estonian. N
 ## What the model is
 
 - **A linear programme of the market, hour by hour.** Every plant, store and interconnector of the three zones bids into each hour; the programme clears a week at a time and is solved in the browser by HiGHS compiled to WebAssembly. The same problem solved by an offline reference gives the same answer on eight test weeks (`make gap`).
-- **Scenarios of 2035 on one base.** *0 SMR* is the transmission system operator's base scenario for Estonia with the author's assumptions on wind, solar and the neighbours' prices, each marked as such; *1 SMR*, *2 SMR* and *3 SMR* add units of 315 MW to the same fleet. Each scenario runs on the climate years 1995, 2008 and 2009 and is shown as their weighted average.
+- **Scenarios of 2035 on one base.** *0 SMR* is the transmission system operator's base scenario for Estonia with the author's assumptions on wind, solar and the neighbours' prices, each marked as such; *1 SMR* and *2 SMR* add units of 315 MW to the same fleet. Each scenario runs on the climate years 1995, 2008 and 2009 and is shown as their weighted average.
 - **Every input has a source.** A measured series carries a lineage record naming the API call it came from; a figure read from a document names the document and the page. The register of sources, with each one's licence, is [`docs/SOURCE_REGISTER.md`](docs/SOURCE_REGISTER.md).
 - **Checked against the past.** The model replays 2020–2026 on each year's own fleet, demand, fuel prices and transfer capacities — never the Baltic prices it is measured against — and its hourly prices are set beside the exchange's.
 
@@ -24,7 +24,7 @@ Eight views:
 | View | What it shows |
 |---|---|
 | *Model* | The scenarios of 2035 and the replays of past years: the panel of assumptions, the results, the charts. |
-| *Presentation* | A deck of seventeen slides whose every figure is read from the runs of the opening state's four scenarios. |
+| *Presentation* | A deck of seventeen slides whose every figure is read from the runs of the opening state's three scenarios. |
 | *Calibration* | The validation: prices, generation and border flows against the record, the EstLink 2 test, the engine against the reference, the fitted parameters. |
 | *Import price* | The neighbours' prices as the model takes them, and the generation and capacity behind them. |
 | *Weather* | Why the climate years 1995, 2008 and 2009, and what they are in the Baltic states. |

@@ -9,7 +9,7 @@ export interface Scenario {
    */
   v: 1 | 2 | 3;
   /**
-   * scenario run: the scenario shown of the four of 2035 (D-036, D-058)
+   * scenario run: the scenario shown of the three of 2035 (D-036, D-058): gas (0 SMR), smr1, smr2. smr3 is read as smr2 since D-343, which took three units out; a text made before still opens
    */
   scenario?: "gas" | "smr1" | "smr2" | "smr3";
   /**

@@ -85,7 +85,7 @@ const phone = matchMedia("(pointer: coarse)").matches && Math.min(screen.width, 
 // every set the page holds, by what it computes from: the page's memory and this browser's store (data/sets.ts, D-232)
 const store = new Sets<YearResult[]>(phone ? 32e6 : 96e6, { prefix: storePrefix, recall: (id) => recall<YearResult[]>(id), remember });
 
-/** The sets of `s` computed before (R-ENG-7, D-126, D-129, D-232) — a scenario's four, a validation run's one under
+/** The sets of `s` computed before (R-ENG-7, D-126, D-129, D-232) — a scenario's three, a validation run's one under
  * its state's scenario: the build's opening view with its sensitivities, the page's memory and this browser's store,
  * a state the build computed for the presentation (`knownSets`); null, and the page computes. */
 async function known(s: State): Promise<{ trio: Record<ScenarioId, YearResult[]>; sens: Record<string, YearResult[]>; from: string } | null> {
@@ -150,8 +150,8 @@ let sources: Sources;
 let state: State;
 let country: Country = "EE";
 let headline: YearResult[] = [];
-// the scenario view's four scenarios (D-036, D-058) and the settings they ran with, the scenario aside
-let trio: Partial<Record<ScenarioId, YearResult[]>> | null = null; // the four as they come in (D-127)
+// the scenario view's three scenarios (D-036, D-058, D-343) and the settings they ran with, the scenario aside
+let trio: Partial<Record<ScenarioId, YearResult[]>> | null = null; // the three as they come in (D-127)
 let trioKey = "";
 let sensResults: SensResult[] = [];
 // the sensitivities' sets per scenario for the settings of `sensKey`: a scenario shown again, or
@@ -291,9 +291,9 @@ function othersComputing(left: number): void {
   status.textContent = t("the scenario shown is in; computing the other scenarios with the engine of record…");
 }
 
-/** The four scenarios of `s` computed, the one shown first and the rest by `scenarioOrder` (D-127):
+/** The three scenarios of `s` computed, the one shown first and the rest by `scenarioOrder` (D-127):
  * the shown one's set is drawn as soon as it is in, the table's others as each comes in. Resolves
- * when all four are in. */
+ * when all three are in. */
 async function runTrio(s: State, key: string, gen: number, t0: number): Promise<{ sets: Record<ScenarioId, YearResult[]>; first: string } | null> {
   const sets: Partial<Record<ScenarioId, YearResult[]>> = {};
   const years = runsOf(p, s).length;
@@ -301,7 +301,7 @@ async function runTrio(s: State, key: string, gen: number, t0: number): Promise<
   await Promise.all(scenarioOrder(s.scenario).map(async (id, i) => {
     // a scenario's first clearings wait behind the one before it, and a year's later jobs go ahead
     // of the queue (runYear), so each scenario's years finish before the next one's (pool.test)
-    // `known` asked the store for the four: one it found — 0 SMR when only the plant's clause moved — is in memory
+    // `known` asked the store for the three: one it found — 0 SMR when only the plant's clause moved — is in memory
     const st = { ...s, scenario: id }, job = jobKey(st, null, null);
     const set = store.peek(job) ?? await computeSet(st, null, i / 4, null, "", job);
     if (gen !== pool.gen) return;
@@ -371,7 +371,7 @@ async function runAll() {
   if (key === running) return;
   running = key;
   const gen = pool.next();
-  // the table of a run superseded before its four scenarios came in is no answer for its settings (D-127)
+  // the table of a run superseded before its three scenarios came in is no answer for its settings (D-127)
   if (trio && SCENARIOS.some((id) => !trio?.[id])) trioKey = "";
   const n = runsOf(p, s).length * (s.run === "scenario" ? SCENARIOS.length : 1);
   const t0 = performance.now();
@@ -459,7 +459,7 @@ function chartsOfShown(): void {
   drawChartsNow();
 }
 
-/** The cards: the four scenarios' table, the contract card, what differs from the presets, the
+/** The cards: the three scenarios' table, the contract card, what differs from the presets, the
  * headline's figures — all a scenario coming in after the one shown changes (D-127). */
 function drawCards() {
   const run = resultsRun(shown, state);
@@ -483,7 +483,7 @@ function drawCards() {
     + marks + cardsHtml(headline, actual, obs, cardsOpen));
 }
 
-/** The four scenarios' table alone, when one of the others comes in: the contract card's strike may
+/** The three scenarios' table alone, when one of the others comes in: the contract card's strike may
  * be in the reader's hand (D-127). */
 function drawTrio() {
   const box = document.getElementById("trio-box");
@@ -513,7 +513,7 @@ function presContext(s: State): PresContext {
 // the states the deck asks for besides the one shown (its outages), while they load (the Presentation page's too until D-249)
 const presLoading = new Set<string>();
 
-/** The four scenarios of a state besides the one shown, into `into` by its run key, `then` drawing the page that asked:
+/** The three scenarios of a state besides the one shown, into `into` by its run key, `then` drawing the page that asked:
  * the build's sets, this browser's, or computed behind the page's own runs (D-177; the deck's outages, D-220). */
 async function loadTrio(into: Map<string, Partial<Record<ScenarioId, YearResult[]>>>, then: () => void, st: State, key: string, priority: number): Promise<void> {
   if (presLoading.has(key)) return;
@@ -542,7 +542,7 @@ async function loadTrio(into: Map<string, Partial<Record<ScenarioId, YearResult[
   if (again) then();
 }
 
-// the deck (D-220, R-APP-16): v3's slides on the state shown, every figure from its runs; the slide shown; the four
+// the deck (D-220, R-APP-16): v3's slides on the state shown, every figure from its runs; the slide shown; the three
 // scenarios with EstLink 2 and with both EstLinks out all year for its cables' slide (deck.ts OUTAGES, without) — the
 // build's sets for the opening state (D-221), else computed behind the page's own runs while the deck shows
 let deckAt = 0;
@@ -576,14 +576,14 @@ function deckReplay(y: number): { model: Side | null; market: Side | null } {
   return got;
 }
 
-/** The deck's state: the opening's, the four scenarios as the build computed them, whatever the Model view shows
+/** The deck's state: the opening's, the three scenarios as the build computed them, whatever the Model view shows
  * (D-340, the owner: the deck "fixed by our scenarios"). */
 let deckState: State | null = null;
 
 function drawDeck(): void {
   if (showing !== "deck") return;
   const s = (deckState ??= opening(p));
-  // the opening's four scenarios and, for the cables' slide, the same with EstLink 2 and with both EstLinks out: the
+  // the opening's three scenarios and, for the cables' slide, the same with EstLink 2 and with both EstLinks out: the
   // build's sets (D-221), read once and kept
   const [main, e2, e12] = [s, ...OUTAGES.map((lines) => without(s, lines))].map((st, i) => {
     const key = runKey(st);
@@ -941,7 +941,7 @@ function show(view: typeof showing, row?: string): void {
   // the deck takes the window's width: the panel folds away while it shows
   document.querySelector(".app")!.classList.toggle("full", view === "deck");
   if (view === "deck") {
-    // the pages are of the opening's four scenarios whatever the panel holds (D-340), and say "computing…" until
+    // the pages are of the opening's three scenarios whatever the panel holds (D-340), and say "computing…" until
     // they are in
     void warmDeck().then(drawDeck);
   } else if (view === "calibration") drawCalibration();

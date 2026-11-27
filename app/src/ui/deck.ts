@@ -1,11 +1,11 @@
 // The deck (the owner asked, 2026-11-08; D-220, R-APP-16): v3's twelve press slides on the Fermi deck's frame — white
 // 1920×1080, Montserrat, the Fermi deck's palette — ported from energiamudel-v3 (PROVENANCE.md), every figure read from
-// the runs the page shows: the state's four scenarios and, for the cables' slide, the same four with EstLink 2 and with
+// the runs the page shows: the state's four scenarios and, for the cables' slide, the same three with EstLink 2 and with
 // both EstLinks out all year. Nothing is frozen, as v3's snapshot was, so no figure of a slide can drift from the model:
 // D13's reason for keeping decks out of the application, which D-220 keeps. Each figure is the weather years' weighted
 // average (R-TIME-4), its whisker the lowest and the highest year. The text is the page's language: v3's Estonian deck,
-// its English mirror the keys (et.ts). The scenarios are v5's: 0 SMR, the TSO's S1 with its gas, and one to three units
-// on the same fleet (D-151), so v3's gas card and nuclear card become the fleet the four share and the plant they differ by.
+// its English mirror the keys (et.ts). The scenarios are v5's: 0 SMR, the TSO's S1 with its gas, and one or two units
+// on the same fleet (D-151), so v3's gas card and nuclear card become the fleet the three share and the plant they differ by.
 // The slide before the last is v5's own (D-229): Estonia's past years beside the market, titled how accurate the model
 // is since the owner's review of 2026-11-12 (D-240), which took out the table of the validation's hourly price errors
 // that stood before it (D-223).
@@ -26,7 +26,7 @@ import type { YearResult } from "./results.ts";
 import { statePaysOf } from "./results.ts";
 
 export type Trio = Partial<Record<ScenarioId, YearResult[]>>;
-/** What the deck reads: the four scenarios of the state shown and of the same state with EstLink 2 (`e2`) and with both
+/** What the deck reads: the three scenarios of the state shown and of the same state with EstLink 2 (`e2`) and with both
  * EstLinks (`e12`) out all year, as far as they are in; the state; the page's context (presentation.ts); the weather
  * years the state runs on, with their weights; for the past years' slide the validation's tables as the Calibration view
  * loads them (`data/derived/validation/<year>.json`, R-APP-7) — null until they are in. */
@@ -75,7 +75,7 @@ export const without = (s: State, lines: string[]): State =>
 // plant's three scenarios the Presentation page's ramp (D-152), lightest dropped: 0 SMR wears the salmon here
 const BRAND = "#2303BD", GREEN = "#15C65D", INK = "#03084C", MUTED = "#6B7280", GRID = "#E5E7EB";
 const GAS = "#F08072", GAS_DEEP = "#D64A3B"; // a fill (2.6:1 on white), and its hue dark enough for text and strokes
-const FILL: Record<ScenarioId, string> = { gas: GAS, smr1: "#7A66EC", smr2: "#4C2FDC", smr3: BRAND };
+const FILL: Record<ScenarioId, string> = { gas: GAS, smr1: "#7A66EC", smr2: "#4C2FDC" };
 export const W = 1920, H = 1080;
 
 // lucide's paths (ISC), as v3 drew them: the plant and gas, the trilemma's three marks, the inputs of the method slide
@@ -100,10 +100,10 @@ const atomsHtml = (n: number, size = 24, c = BRAND) => Array.from({ length: n },
 /** A scenario's mark before its name: the flame for 0 SMR, an atom per unit. */
 const markHtml = (id: DeckId, size = 24) => (UNITS[id] ? atomsHtml(UNITS[id], size, FILL[id]) : icon("flame", GAS_DEEP, size + 4, Math.round(size / 4), 4));
 const NAME = SCENARIO_NAME;
-// the deck's scenarios: 0, 1 and 2 SMR, the three units taken out of every slide at the owner's word (D-250); the page and
-// its Model view keep all four, and the build computes them as before
-type DeckId = Exclude<ScenarioId, "smr3">;
-const SC = SCENARIOS.filter((id): id is DeckId => id !== "smr3");
+// the deck's scenarios: 0, 1 and 2 SMR — the model's own three since three units left it too (D-343; out of the slides
+// since D-250)
+type DeckId = ScenarioId;
+const SC = SCENARIOS;
 /** The scenario with the most units a slide shows, the one its gap and its verdicts are told for (v3's three reactors
  * until D-250). */
 const TOP: DeckId = "smr2";
@@ -334,7 +334,7 @@ const s4 = (d: DeckInput) => {
   ${explain(gaps[1], t("WEIGHT"), t("ENTSO-E's weight for the year: how much of the climate data's spread of weather it stands for. The {n} answers are averaged with these weights into one.", { n }))}`);
 };
 
-// ---- 6 · the four scenarios of 2035 --------------------------------------------------------------------------------------
+// ---- 6 · the three scenarios of 2035 --------------------------------------------------------------------------------------
 /** The growth mark, the deck's one status glyph: a disc with a white arrow, the colour on the mark, the figure in ink. */
 const deltaMark = (up: boolean, s = 20, mr = 5, c = GREEN) => `<svg viewBox="0 0 24 24" width="${s}" height="${s}" style="display:inline-block;vertical-align:middle;margin-right:${mr}px" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="${c}"/><path d="${up ? "M9.5 19.5V13H5.5L12 5.5 18.5 13h-4v6.5z" : "M9.5 4.5V11H5.5L12 18.5 18.5 11h-4V4.5z"}" fill="#fff"/></svg>`;
 const ZC = ["EE", "LV", "LT"] as const;
@@ -1195,7 +1195,7 @@ export function deckShell(): string {
       <button type="button" class="seg" data-deck="prev" aria-label="${esc(t("Previous slide"))}">‹</button>
       <span class="deck-n" aria-live="polite"></span>
       <button type="button" class="seg" data-deck="next" aria-label="${esc(t("Next slide"))}">›</button>
-      <span class="deck-note">${t("Every figure is the model's, computed for the settings shown; a change computes them again.")}</span>
+      <span class="deck-note">${t("Every figure is the model's, computed for its opening scenarios; changes on the Model view do not move the slides.")}</span>
       <button type="button" class="seg" data-deck="full" title="F">${t("Full screen")}</button>
     </div>
     <div class="deck-wrap"><div class="deck-stage" data-deck="stage"></div><span class="deck-n deck-fs" aria-hidden="true"></span></div>

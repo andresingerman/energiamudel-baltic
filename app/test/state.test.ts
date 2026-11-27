@@ -52,6 +52,11 @@ test("the text is the state and the state the text, for a scenario and a replay"
   }
 });
 
+test("a text of before D-343 that shows three units opens on two, the same state otherwise", () => {
+  const s = opening(p);
+  assert.deepEqual(parse(p, serialize(s).replace("scenario=gas", "scenario=smr3")), { ...s, scenario: "smr2" });
+});
+
 test("import rejects what the schema or the presets do not allow", () => {
   const good = serialize(opening(p));
   const bad: [string, RegExp][] = [
@@ -186,7 +191,7 @@ test("\"Other\": every profile the year files hold builds against the scenario o
   }
   assert.deepEqual(s0.level, presetLevel("DE", 2035));
   const moved = withProfile({ ...s0, level: { ...s0.level, FI: 1.6 } }, "TIGHT", 2035).level;
-  assert.ok(Math.abs(moved.FI - 1.6 / 1.8786) < 1e-12 && moved.SE4 === 1 && moved.PL === 1);
+  assert.ok(Math.abs(moved.FI - 1.6 / 2.0038) < 1e-12 && moved.SE4 === 1 && moved.PL === 1);
   assert.throws(() => withProfile(s0, "NT", 2035), /no neighbours' profile NT 2035/);
   assert.throws(() => parse(p, serialize(s0).replace("profile=DE", "profile=NT")), /has no year 2035/);
   // National Trends+ 2030 is not offered: no offshore wind series in its weather files (D-050)

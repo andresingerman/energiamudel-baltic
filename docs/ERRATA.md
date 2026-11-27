@@ -3203,3 +3203,25 @@ resumes. A test holds the three steps. Checked in the browser: after «decline»
 after «agree» the next view goes with `gcs=G101`. A page view queued while consent stood may still leave a moment
 after the withdrawal.
 
+## E-203 — The deck's note still said a change of the settings computes its figures again
+
+**Found:** 2026-11-27, the check of the deck's figures after D-343 and D-344, at the owner's word · D-340 ·
+`app/src/ui/deck.ts` (R-APP-16) · **Status:** fixed 2026-11-27
+
+**What:** the line above the slides read "Every figure is the model's, computed for the settings shown; a change
+computes them again" — true while the deck followed the state shown, and left as it was when D-340 pinned the deck to
+the opening state on 2026-11-26. Since then a change on the Model view moves no slide, and the line said the opposite.
+
+**Effect:** a sentence of the page, in both languages; a reader who moved a slider and opened the deck was told its
+figures were for the settings, when they were the opening's. No figure: every figure of the seventeen slides was
+computed again by the engine for the check — the three scenarios with every cable, without EstLink 2 and without both
+EstLinks — and each agrees with the live site.
+
+**Fix:** the line reads "Every figure is the model's, computed for its opening scenarios; changes on the Model view do
+not move the slides", with its Estonian.
+
+**Deployed:** 2026-11-27 at the owner's word ("Yes, deploy"), main 84be7aa: the rollback copy
+`data/raw-aside/live-f4571dceae46/`; the opening view and the presentation's 42 sets none differing; 132 files as
+built, all four headers sent; `make live-check` passed in Chromium and WebKit. On the live site the note reads as
+fixed in both languages, the slides' figures as before.
+

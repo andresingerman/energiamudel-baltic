@@ -31,15 +31,15 @@ test("a card's figures carry their units; a figure the actual year lacks is a da
 });
 
 test("the scenarios' table: a figure and its difference per scenario, the first scenario's difference blank", () => {
-  const html = trioHtml({ gas: [r], smr1: [r], smr2: [r], smr3: [r] }, { gas: "0 SMR", smr1: "1 SMR", smr2: "2 SMR", smr3: "3 SMR" }, "smr2");
-  assert.equal(html.match(/data-scenario="/g)?.length, 4);
+  const html = trioHtml({ gas: [r], smr1: [r], smr2: [r] }, { gas: "0 SMR", smr1: "1 SMR", smr2: "2 SMR" }, "smr2");
+  assert.equal(html.match(/data-scenario="/g)?.length, 3);
   assert.match(html, /data-scenario="smr2" aria-pressed="true"/);
   const row = html.split(/<tr[^>]*>/).find((x) => x.includes("EE net import"))!;
-  assert.equal(row.match(/<td class="n/g)?.length, 8);
+  assert.equal(row.match(/<td class="n/g)?.length, 6);
   // the weather years' table's weighted column in bold, its heading and each scenario's figure (D-212)
   const byYear = html.split('<table class="by-year">')[1];
   assert.match(byYear, /<th class="n w">weighted<\/th>/);
-  assert.equal(byYear.match(/<td class="n w">[\d.]+ <span class="u">€\/MWh<\/span><\/td>/g)?.length, 4);
+  assert.equal(byYear.match(/<td class="n w">[\d.]+ <span class="u">€\/MWh<\/span><\/td>/g)?.length, 3);
   // Estonia's rows in bold (D-199): its price, net import, fossil hours and gas hours, not Latvia's or the sums
   assert.equal(html.match(/<tr class="ee">/g)?.length, 4);
   assert.match(html, /<tr class="ee"><td>EE net import/);
@@ -51,16 +51,16 @@ test("the scenarios' table: a figure and its difference per scenario, the first 
 });
 
 test("the scenarios' table while the others compute: their cells say so, the differences wait for 0 SMR (D-127)", () => {
-  const names = { gas: "0 SMR", smr1: "1 SMR", smr2: "2 SMR", smr3: "3 SMR" };
+  const names = { gas: "0 SMR", smr1: "1 SMR", smr2: "2 SMR" };
   const shown = trioHtml({ smr2: [r] }, names, "smr2");
-  assert.equal(shown.match(/data-scenario="/g)?.length, 4); // every scenario's button, computed or not
+  assert.equal(shown.match(/data-scenario="/g)?.length, 3); // every scenario's button, computed or not
   const row = shown.split(/<tr[^>]*>/).find((x) => x.includes("EE net import"))!;
-  assert.equal(row.match(/computing…/g)?.length, 3);
+  assert.equal(row.match(/computing…/g)?.length, 2);
   assert.doesNotMatch(row, /<td class="n d[^"]*">[^<]|class="dchip"/); // no difference without 0 SMR
-  assert.equal(shown.split('<table class="by-year">')[1].match(/computing…/g)?.length, 3);
+  assert.equal(shown.split('<table class="by-year">')[1].match(/computing…/g)?.length, 2);
   const withGas = trioHtml({ smr2: [r], gas: [r] }, names, "smr2");
   const row2 = withGas.split(/<tr[^>]*>/).find((x) => x.includes("EE net import"))!;
-  assert.equal(row2.match(/computing…/g)?.length, 2);
+  assert.equal(row2.match(/computing…/g)?.length, 1);
   assert.match(row2, /<td class="n d sel"><span class="dchip">0\.00<\/span><\/td>/); // 2 SMR against 0 SMR, a chip without the unit (D-205)
 });
 

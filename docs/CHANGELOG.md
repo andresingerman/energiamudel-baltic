@@ -6,6 +6,22 @@ public release, is in the author's private history (DECISIONS D-328); what was d
 
 ## Unreleased
 
+- Deployed 2026-11-27 (main 84be7aa: ERRATA E-203's note above the slides): every set as before; the live check
+  passed in Chromium and WebKit.
+
+- The note above the deck's slides says what holds since D-340: the figures are the opening scenarios', and a change
+  on the Model view does not move them (ERRATA E-203).
+
+- Deployed 2026-11-27 (main f4571dc: D-343's three scenarios, D-344's Finland at 80 €/MWh): the opening's sets are new,
+  the other profiles' and the replays' as before but for three units; the live check passed in Chromium and WebKit.
+
+- The opening's Finland at 80 €/MWh, ×2.0038 on the profile as published, in place of 75: Estonia 110.2 / 99.0 / 89.4
+  €/MWh with no, one and two units (108.1 / 96.2 / 86.0). The golden fixture's scenario cases re-baselined (D-344,
+  specification 2.154).
+
+- Three units are no longer a scenario: the model's scenarios are 0, 1 and 2 SMR; a scenario text that shows three
+  units opens on two (D-343, specification 2.153).
+
 - Deployed 2026-11-26 (main b3bcf3a: ERRATA E-202's fix, D-342's Google signals): every set as before; the live check
   passed in Chromium and WebKit.
 

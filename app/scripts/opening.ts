@@ -1,11 +1,11 @@
-// The sets computed when the site is built (R-ENG-7; D-126, D-129). The opening view — the four
+// The sets computed when the site is built (R-ENG-7; D-126, D-129). The opening view — the three
 // scenarios of the opening state and the shown scenario's sensitivities — goes to data/opening.bin.gz,
 // which the page reads at once; the states of the presentation of 10 November 2026 go to
 // data/sets/<name>.bin.gz, listed in data/sets.json.gz and fetched when first asked for, each a pack of the
 // arrays' own bytes (stored.ts `pack`, D-236): the opening
 // state's sensitivities for each other scenario shown, the neighbours' two tight profiles (D-121)
-// with their four scenarios and each scenario's sensitivities, the four scenarios of Global Ambition
-// 2035 and National Trends 2040, which the Presentation page's blocks showed until D-249, and the four of the opening state
+// with their three scenarios and each scenario's sensitivities, the three scenarios of Global Ambition
+// 2035 and National Trends 2040, which the Presentation page's blocks showed until D-249, and the three of the opening state
 // with EstLink 2 and with both EstLinks out all year, the deck's cables' slide (D-221), and the replays of 2023–2026 for its past years' slide (D-229, D-253). Each year is cleared whole on Node
 // workers running the page's own job handler (src/worker/job.ts), which test/worker.test.ts finds the
 // page's parts to the bit; every file carries the commit the bundle was built from and the export's
@@ -57,7 +57,7 @@ rmSync(new URL("sets/", out), { recursive: true, force: true }); // a build's fi
 mkdirSync(new URL("sets/", out), { recursive: true });
 try {
   const tight = [withProfile(s0, "TIGHT", 2035), withProfile(s0, "TIGHTJ", 2035)];
-  // Global Ambition 2035 and National Trends 2040, their four scenarios alone: the Presentation page's other blocks
+  // Global Ambition 2035 and National Trends 2040, their three scenarios alone: the Presentation page's other blocks
   // (D-177) until the page went (D-249), and ready since for a switch of the neighbours' profile on the Model view
   const blocks = [withProfile(s0, "GA", 2035), withProfile(s0, "NT", 2040)];
   // the deck's cables' slide: the opening state with EstLink 2 and with both EstLinks out all year (D-221)

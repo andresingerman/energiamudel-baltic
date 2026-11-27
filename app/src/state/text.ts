@@ -114,7 +114,7 @@ function value(key: string, raw: string, r: Rule): Scalar {
   return raw;
 }
 
-/** The settings a full run computes: a scenario's without the scenario shown and the strike (the four
+/** The settings a full run computes: a scenario's without the scenario shown and the strike (the three
  * run together, the strike moves no dispatch), a replay's whole text. The page keys its sets by it, and
  * the build its opening view (D-126). */
 export const runKey = (s: State): string => (s.run === "scenario" ? serialize({ ...s, scenario: "gas", smr: { ...s.smr, strike: STRIKE } }) : serialize(s));
@@ -218,7 +218,8 @@ export function parse(p: Presets, text: string): State {
     }
   }
   if (s.run === "scenario" && m.v === 3) {
-    s.scenario = take("scenario", str) as State["scenario"];
+    const shown = take("scenario", str);
+    s.scenario = (shown === "smr3" ? "smr2" : shown) as State["scenario"]; // a text of before D-343 that shows three units opens on two: the same state, the nearest scenario left
     s.smr = { clause: take("smr.clause", bool), strike: take("smr.strike", num) };
   }
   if (m.v !== 1) {

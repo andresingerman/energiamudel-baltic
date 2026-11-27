@@ -8872,3 +8872,52 @@ are in: the requests go, what Google makes of them is not seen from the page.
 
 **Done:** D-342 and ERRATA E-202's fix deployed on 2026-11-26 at the owner's word ("Yes, deploy"), main b3bcf3a: the rollback copy `data/raw-aside/live-2771a9618f3b/`; the opening view and the presentation's 54 sets none differing; 144 files as built, all four headers sent; `make live-check` passed in Chromium and WebKit. On the live site: a browser that had declined is not asked again and sends nothing; a first visit shows the banner with signals named, and nothing goes to Google before the choice; after «Nõustun» the page view goes with `gcs=G111`, `npa=1`, and the signals requests with it (`stats.g.doubleclick.net`, `google.ee/ads/ga-audiences`); after «Keeldun» two views and a scroll send nothing, Google's cookies are gone and its switch is on. Whether the demographics arrive is to be looked at in a day or two.
 
+## D-343 · 2026-11-27 · Three units are no longer a scenario
+
+**Status:** Accepted · 2026-11-27 · the owner: "we take three reactors out as a scenario". On R-SMR-1; it ends the
+fourth scenario of D-151, which the deck had left already (D-250).
+
+**Decision:**
+1. **The scenarios of 2035 are three: *0 SMR*, *1 SMR* and *2 SMR*.** `SCENARIOS` and `UNITS` (`state/model.ts`) hold
+   no three units; with them go the fourth column pair of the scenarios' table, the block of three units in the
+   standard sensitivities, the panel's fourth scenario chip and its «3» among the SMR units, and the fourth scenario of
+   every set the build computes (the opening's, the tight profiles', Global Ambition's and National Trends', the
+   outages').
+2. **A scenario text of before still opens.** The schema keeps `smr3` as a word a text may hold, read as `smr2`: the
+   state is the same — the scenario shown is no part of what a run computes — and two units are the nearest scenario
+   left. A test holds it.
+3. **No figure of the three scenarios moves**: each is its own run. The golden fixture has no case of three units.
+4. Specification revision 2.153 (`R-SMR-1`); the methodology in both languages and the README say three.
+
+## D-344 · 2026-11-27 · The opening's Finland at 80 €/MWh
+
+**Status:** Accepted · 2026-11-27 · the owner: "by default in all scenarios set the multiplier so that Finland is at 80
+(now 75)". On R-BND-5; it moves D-182's level of Finland, re-based by D-194.
+
+**Decision:**
+1. **Finland's level on Distributed Energy 2035 is ×2.0038**, which makes 80.0 €/MWh in the panel's box on the profile
+   as published (39.924 €/MWh weighted over the climate years as the runs take it; ×2.0038 gives 79.9998), in place of
+   ×1.8786 for 75.0. SE4's ×1.9607 (90.0) and Poland's ×2.0982 (120.0) stand. It is the default of the opening state
+   and so of each of its scenarios; every other profile opens at ×1 as before (D-190).
+2. **At the opening** Estonia reads 110.2 / 99.0 / 89.4 €/MWh with no, one and two units (108.1 / 96.2 / 86.0 with
+   Finland at 75), Latvia 110.0 / 107.8 / 106.5 (109.5 / 107.4 / 106.0), Lithuania 110.3 / 108.2 / 106.9 (109.9 /
+   107.7 / 106.5); the plant's effect on Estonia's price is −11.2 and −20.8 (−11.9 and −22.1). Estonia's net import
+   4.60 / 2.33 / 0.05 TWh. Under the contract at 90 €/MWh the state receives 28 M€ a year with one unit and 3 with
+   two (+20 and −15 before). At the four price pairs Estonia without the plant reads 93.1 / 101.0 / 108.4 / 114.3
+   €/MWh (90.7 / 98.9 / 106.3 / 112.5), and the consumers' net gain is +64 / +107 / +145 / +176 M€ a year with one
+   unit and +98 / +172 / +236 / +288 with two.
+3. **Neither the validation nor the calibration moves**: a replay takes the neighbours' observed prices. The golden
+   fixture's three scenario cases are re-baselined with a note; the synthetic week and the 2024 replay are unchanged:
+
+   | Case | Before | After |
+   |---|---|---|
+   | `opening_cy2009_gas_record` | `abd22a53…` | `b5ac2140…` |
+   | `opening_cy2009_smr2_record` | `456e6d67…` | `405ff93f…` |
+   | `opening_cy2009_smr2_sens_a_record` | `32a3f27e…` | `e8029a1a…` |
+4. **The deck follows by itself**, reading the opening's runs (D-340): its Finland slide gives ×2.00 and 80 €/MWh.
+5. **Not computed again**, and so of Finland at 75: the lines' variants of the methodology's §9, the Monte Carlo
+   ranges (D-191), the research notes and the talk's pack and its questions and answers.
+6. Specification revision 2.154 (`R-BND-5`); the methodology in both languages.
+
+**Done:** D-343 and D-344 deployed on 2026-11-27 at the owner's word ("Yes, deploy"), main f4571dc: the rollback copy `data/raw-aside/live-b3bcf3a5c872/`. The sets change as decided: the opening's — its three scenarios and their sensitivities on Finland at 80 — are new, every set of three units is gone, and with three units left out of the comparison (`compare_sets.ts --drop=smr3`) the tight profiles', Global Ambition's, National Trends' and the replays' sets are the same as before. 132 files as built, all four headers sent; `make live-check` passed in Chromium and WebKit. On the live site: three scenarios and the chips 0, 1 and 2; Finland's box 80.0; Estonia 110.2 / 99.0 / 89.4 €/MWh; the sensitivities' net gain +64 / +107 / +145 / +176 and +98 / +172 / +236 / +288 M€; the deck's Finland slide ×2.00 → 80 €/MWh and its price slide 110.2 / 99.0 / 89.4; no console error.
+

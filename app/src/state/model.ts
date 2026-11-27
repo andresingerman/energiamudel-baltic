@@ -21,11 +21,12 @@ export interface ZoneState {
   p2hMw: number;
 }
 
-/** The scenario view's four scenarios of 2035 (specification revision 1.6, D-036; one unit since D-058): Elering's gas,
- * or one, two or three SMR units of 315 MW on the same fleet (R-SMR-1; D-151, D-189). */
-export type ScenarioId = "gas" | "smr1" | "smr2" | "smr3";
-export const SCENARIOS: ScenarioId[] = ["gas", "smr1", "smr2", "smr3"];
-export const UNITS: Record<ScenarioId, number> = { gas: 0, smr1: 1, smr2: 2, smr3: 3 };
+/** The scenario view's three scenarios of 2035 (specification revision 1.6, D-036; one unit since D-058): Elering's gas,
+ * or one or two SMR units of 315 MW on the same fleet (R-SMR-1; D-151, D-189). Three units were the fourth scenario
+ * until the owner took them out (D-343). */
+export type ScenarioId = "gas" | "smr1" | "smr2";
+export const SCENARIOS: ScenarioId[] = ["gas", "smr1", "smr2"];
+export const UNITS: Record<ScenarioId, number> = { gas: 0, smr1: 1, smr2: 2 };
 /** The Estonian fleet and demand of 0 SMR (Elering and TalTech's S1), the others' (ERAA). */
 export const S1 = "elering_taltech_s1_2035";
 const ERAA = "eraa2025_nt_2035";
@@ -39,7 +40,7 @@ export const STRIKE = 90;
 
 export interface State {
   run: "scenario" | "replay";
-  scenario: ScenarioId; // the scenario shown; all four run together (D-036, D-058)
+  scenario: ScenarioId; // the scenario shown; all three run together (D-036, D-058, D-343)
   smr: { clause: boolean; strike: number }; // the contract of R-SMR-3, R-SMR-4
   year: number; // replay
   family: "tyndp2024" | "tyndp2026";
@@ -154,9 +155,10 @@ export function opening(p: Presets): State {
 /** The owner's opening values (D-182, 2026-10-27): Estonia's onshore wind and solar, MW, in place of S1's, and the
  * neighbours' price levels — Finland's typed as 75.0 €/MWh, and since D-185 Sweden's SE4 as 90.0 and Poland's as
  * 120.0. Since D-194 on the profile as published, whose averages are 39.9, 45.9 and 57.2 (until then ×1.4783, ×1.4943
- * and ×1.5276 on the profile re-priced to the scenario's gas and CO₂, 50.7, 60.2 and 78.6). */
+ * and ×1.5276 on the profile re-priced to the scenario's gas and CO₂, 50.7, 60.2 and 78.6). Since D-344 Finland's is
+ * 80.0 €/MWh, ×2.0038 (×1.8786 until then). */
 export const OPENING_EE_MW = { wind_onshore: 1300, solar: 2500 } as const;
-export const OPENING_LEVEL = { FI: 1.8786, SE4: 1.9607, PL: 2.0982 } as const;
+export const OPENING_LEVEL = { FI: 2.0038, SE4: 1.9607, PL: 2.0982 } as const;
 
 /** The neighbours' price levels a profile opens with (D-190): the owner's on Distributed Energy 2035, the opening's
  * profile (D-182, D-185); ×1 — the profile as published, or as the research built it — on every other. */
@@ -312,7 +314,7 @@ export function engineScenario(p: Presets, y: Year, s: State): Scenario {
   // a bid moved by hand (D-090): the offset rides on the costs, so it follows the gas and CO₂ prices
   sc.bidAdj = each((z) => Object.fromEntries(Object.entries(s.bids).filter(([k]) => k.startsWith(`${z}.`)).map(([k, v]) => [k.slice(z.length + 1), v])));
   sc.gasAdj = s.bids.gas ?? 0; // the gas plants' one bid moved by hand, for the three zones (D-164)
-  // the plant's scenarios: its units on top of the one base the four share (D-151; until then each unit
+  // the plant's scenarios: its units on top of the one base the scenarios share (D-151; until then each unit
   // replaced its net output of the Estonian peaking gas, D-036)
   const units = UNITS[s.scenario];
   const fleet = each((z) => ({ ...s.zones[z].mw }));
